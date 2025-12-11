@@ -416,8 +416,8 @@ const filtered = allProjects.filter((item: any) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        width: "100%",         // zajmuje całą szerokość kontenera
-        height: "100%",        // pozwala na flex scroll wewnątrz
+        width: "100%",
+        height: "100%",
       }}
     >
       <Box

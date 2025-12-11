@@ -4,6 +4,8 @@ import ProjectListItem from "./ProjectListItem";
 import SubcontractorListItem from "./SubcontractorListItem";
 import warranty from '../../../assets/warranty.png';
 import DataTableFooter from "../Table/DataTableFooter";
+import Legend from "./Legend";
+import MembersList from "./MembersList";
 
 interface CardListProps {
   items: any[];
@@ -41,69 +43,38 @@ const CardList: React.FC<CardListProps> = ({
     // <Box sx={{ display: "flex", flexDirection: "column" }}>
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       {/* Legend */}
-       <Box sx={{ flexShrink: 0 }}>
-      {type === "project" && (
-        <Stack direction="row" spacing={2} alignItems="center" sx={{ justifyContent: "center" }}>
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Box sx={{ width: 12, height: 12, bgcolor: "#54A852", borderRadius: 1 }} />
-            <Typography variant="body2">Project open</Typography>
-          </Stack>
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Box sx={{ width: 12, height: 12, bgcolor: "#e91e63", borderRadius: 1 }} />
-            <Typography variant="body2">Project closed</Typography>
-          </Stack>
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Box sx={{ width: 16, height: 16 }}>
-              <img 
-    src={warranty} 
-    alt="Warranty" 
-    style={{ width: 16, height: 16, display: 'block' }} 
-  />
-            </Box>
-            <Typography variant="body2">Warranty</Typography>
-          </Stack>
-        </Stack>
-      )}
-
-      {type === "subcontractor" && (
-        <Stack direction="row" spacing={2} alignItems="center" sx={{ justifyContent: "center" }}>
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Box sx={{ width: 12, height: 12, bgcolor: "#54A852", borderRadius: 1 }} />
-            <Typography variant="body2">Verified</Typography>
-          </Stack>
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Box sx={{ width: 12, height: 12, bgcolor: "#fbc02d", borderRadius: 1 }} />
-            <Typography variant="body2">Invited</Typography>
-          </Stack>
-          <Stack direction="row" spacing={0.5} alignItems="center">
-            <Box sx={{ width: 12, height: 12, bgcolor: "#9b9b9b", borderRadius: 1 }} />
-            <Typography variant="body2">Not Registered</Typography>
-          </Stack>
-        </Stack>
-      )}
-      </Box>
-       <Box
-      sx={{
-        flex: 1,
-        overflowY: "auto",
-        px: 2,
-        pb: 2,
-        pt: 2,
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-        gap: 2,
-        "&::-webkit-scrollbar": { display: "none" }, // ukrywa scroll w Chrome/Safari/Edge
+        <Legend type={type} />
+      <Box
+  sx={{
+    flex: 1,
+    overflowY: "auto",
+    px: 2,
+    pb: 2,
+    pt: 2,
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+    gap: 2,
+    "&::-webkit-scrollbar": { display: "none" },
     scrollbarWidth: "none",
-      }}
-    >
-        {paginatedItems.map((item, index) =>
-          type === "project" ? (
-            <ProjectListItem key={`${currentPage}-${index}`} {...item} onClick={() => onItemClick?.(item)} />
-          ) : (
-            <SubcontractorListItem key={`${currentPage}-${index}`} {...item} onClick={() => onItemClick?.(item)} />
-          )
-        )}
-      </Box>
+  }}
+>
+  {paginatedItems.map((item, index) =>
+    type === "project" ? (
+      <ProjectListItem
+        key={`${currentPage}-${index}`}
+        {...item}
+        onClick={() => onItemClick?.(item)}
+        renderMembers={() => <MembersList members={item.members} />}
+      />
+    ) : (
+      <SubcontractorListItem
+        key={`${currentPage}-${index}`}
+        {...item}
+        onClick={() => onItemClick?.(item)}
+      />
+    )
+  )}
+</Box>
 
       {/* Footer */}
       <DataTableFooter

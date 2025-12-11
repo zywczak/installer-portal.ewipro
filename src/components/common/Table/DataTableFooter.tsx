@@ -28,7 +28,7 @@ export default function DataTableFooter({
     alignItems: "center",
     gap: 2, // odstęp między wszystkimi elementami (możesz zmienić)
     padding: "8px 16px",
-    backgroundColor: "#ececec",
+    backgroundColor: "#fff",
     borderTop: "1px solid #ddd",
     position: sticky ? "sticky" : "relative",
     bottom: sticky ? 0 : "auto",
