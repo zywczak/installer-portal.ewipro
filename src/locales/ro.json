@@ -1,0 +1,639 @@
+{
+  "components": {
+    "dateTimePicker": {
+      "cancelButtonText": "Anulează",
+      "confirmButtonText": "Confirmă"
+    },
+    "globalError": {
+      "header": "Oops, a apărut o eroare"
+    },
+    "insufficientOwnershipPermissionModal": {
+      "button": "Înțeleg",
+      "header": "Nu mai ești eligibil să creezi proiect sub proprietarul selectat",
+      "message": "Ești proprietarul implicit al proiectelor noi. Dacă trebuie să creezi un proiect în numele altcuiva, vizitează pagina de setări sau selectează opțiunea „proprietar implicit” când creezi un nou proiect."
+    },
+    "insufficientPermission": {
+      "text1": "Permisiuni insuficiente",
+      "text2": "nu ai permisiunea de a efectua această acțiune"
+    },
+    "me": "(eu)",
+    "selectPicker": {
+      "selectPlaceholder": "Selectează"
+    },
+    "takePhotoButton": "fă o poză"
+  },
+  "dashboard": {
+    "hello": "Salut {{name}}!",
+    "ongoingProjects": "Proiecte în desfășurare",
+    "projectList": {
+      "listEmpty": "Nu există proiecte",
+      "Member": "Membru",
+      "Owner": "Proprietar",
+      "projectStage": "Etapa {{stage}}",
+      "seeAll": "Vezi toate"
+    }
+  },
+  "drawer": {
+    "dashboard": "Bord",
+    "logout": "Deconectează-te",
+    "myProfile": "Profilul meu",
+    "myProjects": "Proiectele mele",
+    "settings": "Setări",
+    "subcontractors": "Subcontractanți",
+    "whatsNew": "Noutăți"
+  },
+  "errors": {
+    "validationErrors": {
+      "required": "Câmpul este obligatoriu"
+    }
+  },
+  "newProjectTabs": {
+    "Chat": "Chat",
+    "Documents": "Documente",
+    "Home": "Acasă"
+  },
+  "projectDetails": {
+    "ApplyForWarrantyButton": "APLICĂ PENTRU GARANȚIE",
+    "PhotoDocumentation": "Documentație foto",
+    "ProjectPhotoContainerStage": "Etapa {{stage}}",
+    "projectStage": "ETAPA {{stage}}",
+    "ReApplyForWarrantyButton": "REAPLICĂ PENTRU GARANȚIE",
+    "StageButtonConfirmationButtonPositive": "CONFIRMĂ",
+    "StageLessPhotoPrompt": "Adaugă cel puțin 5 fotografii care să documenteze progresul lucrării.",
+    "StagePhotoPrompt": "Adaugă cel puțin o fotografie pentru Etapa {{stage}}",
+    "StageSubmitConfirmationDescription": "Ești sigur că vrei să trimiți etapa {{stage}} pentru verificare de echipa EWI PRO?",
+    "StageSubmitConfirmationTitle": "Trimitere Etapă",
+    "StageSubmitWaiting": "Așteptare pentru aprobare etapa {{stage}}",
+    "SubmitStageButton": "TRIMITE ETAPA {{stage}}"
+  },
+  "views": {
+    "chat": {
+      "emptyStateLabel": "Niciun mesaj încă",
+      "inputPlaceholder": "Scrie un mesaj...",
+      "now": "Acum",
+      "sendingErrorToastMessage": "Mesajul nu a putut fi trimis. Încearcă din nou."
+    },
+    "dashboard": {
+      "hello": "Salut {{name}}!",
+      "ongoingProjects": "Proiecte în desfășurare",
+      "projectList": {
+        "listEmpty": "Nu există proiecte",
+        "projectStage": "Etapa {{stage}}",
+        "seeAll": "Vezi toate"
+      },
+      "statements": {
+        "assumedCreditLimit": "Limită de credit estimată",
+        "bottomSheet": {
+          "button": "DESCARCĂ",
+          "description": "Selectează data de început a extrasului.",
+          "title": "Descarcă extrasul"
+        },
+        "download": "Descarcă extrasul",
+        "outstandingBalance": "Sold restant",
+        "overdueAmount": "Sumă restantă",
+        "remainingCreditLimit": "Limită de credit rămasă"
+      }
+    },
+    "deviceAuth": {
+      "button": "Conectează-te cu parolă",
+      "header": "Bine ai revenit!"
+    },
+    "EditProject": {
+      "EditTeamMembers": {
+        "addMemberButton": "Adaugă membru",
+        "header": "Membrii echipei",
+        "noMembers": "Încă nu există membri în proiect",
+        "selectRole": "Selectează rol",
+        "subcontractorRemoved": {
+          "errorMessage": "Eroare la eliminarea subcontractantului",
+          "success": "Succes",
+          "successMessage": "Subcontractant eliminat din proiect"
+        }
+      }
+    },
+    "forgotPassword": {
+      "button": {
+        "send": "CONFIRMĂ",
+        "login": "Înapoi la autentificare",
+        "loading": "Se confirmă..."
+      },
+      "confirmation": {
+        "button": "DESCHIDE APLICAȚIA DE MAIL",
+        "header": "Verifică e-mailul",
+        "instruction": "Dacă adresa ta de e-mail este înregistrată, ți-am trimis un link pentru resetarea parolei."
+      },
+      "form": {
+        "header": "Ai uitat parola",
+        "instruction": "Introdu adresa de e-mail utilizată pentru înregistrare la EWI Pro. Vei primi un e-mail cu link pentru resetarea parolei."
+      }
+    },
+    "gallery": {
+      "confirmationModal": {
+        "cancel": "Anulează",
+        "confirm": "Da, Elimină",
+        "description": "Ești sigur că vrei să elimini fotografia?",
+        "header": "Elimină fotografia?"
+      },
+      "projectStage": "Etapa {{stage}}"
+    },
+    "galleryPicker": {
+      "button": "Adaugă Selectate ({{amount}})",
+      "buttonSingle": "Adaugă Selectată",
+      "header": "Adaugă fotografie(i)",
+      "headerSingle": "Adaugă fotografie",
+      "hooks": {
+        "camera": {
+          "cancel": "Anulează",
+          "message": "Te rog vizitează setările aplicației",
+          "settings": "Setări",
+          "title": "Lipsesc permisiunile pentru cameră"
+        },
+        "mediaLibrary": {
+          "cancel": "Anulează",
+          "message": "Te rog vizitează setările aplicației",
+          "settings": "Setări",
+          "title": "Lipsesc permisiunile pentru Biblioteca Foto"
+        }
+      },
+      "sendingErrorToast": "Ne pare rău, adăugarea fotografiilor a eșuat. Încearcă din nou.",
+      "warningToast": "Poți adăuga maxim 5 fotografii în total."
+    },
+    "register":{
+      "header":{
+        "register": "Cereți să vă înregistrați",
+        "description": "Lăsați-ne datele dvs. și vă vom contacta odată ce contul dvs. este înregistrat."
+      },
+      "button":{
+        "login": "ÎNAPOI LA AUTENTIFICARE"
+      }
+    },
+    "login": {
+      "button": {
+        "forgot-password": "Ai uitat parola?",
+        "login": "CONECTEAZĂ-TE",
+        "loading": "Se conectează..."
+      },
+      "form": {
+        "email": "E-mail",
+        "error": {
+          "emailIncorrectFormat": "Format de e-mail incorect",
+          "emailNotProvided": "Introdu adresa de e-mail",
+          "passwordNotProvided": "Introdu parola"
+        },
+        "header": "Bine ai revenit!",
+        "password": "Parolă"
+      }
+    },
+    "MyProjects": {
+      "filterPopup": {
+        "filtering": {
+          "filteringOptions": {
+            "All": "Toate",
+            "archived": "Arhivate",
+            "Member": "Membru",
+            "ongoing": "În desfășurare",
+            "Owner": "Proprietar"
+          },
+          "filteringSectionTitle": "FILTRU",
+          "filteringSelectedToast": "Filtrat după {{filtering}}"
+        },
+        "resetButton": "Resetează",
+        "sorting": {
+          "sortingOptions": {
+            "newest": "Cele mai noi primele",
+            "oldest": "Cele mai vechi primele",
+            "recentlyUpdated": "Actualizate recent primele"
+          },
+          "sortingSectionTitle": "SORTEAZĂ DUPĂ",
+          "sortingSelectedToast": "Sortat după {{sorting}}"
+        }
+      },
+      "header": "Proiectele mele",
+      "listEmpty": "Nu s-au găsit rezultate",
+      "searchCancelButton": "Anulează"
+    },
+    "newProject": {
+      "AddNewTeamMember": {
+        "form": {
+          "companyName": {
+            "label": "Nume companie (opțional)"
+          },
+          "email": {
+            "incorrectFormatError": "Introdu o adresă de e-mail validă.",
+            "label": "E-mail",
+            "requiredError": "Adresa de e-mail este obligatorie."
+          },
+          "inviteUser": {
+            "label": "Invită utilizatorul în aplicație"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "Format incorect de număr de telefon.",
+            "label": "Număr de telefon mobil",
+            "requiredError": "Numărul de telefon este obligatoriu."
+          },
+          "nameSurname": {
+            "label": "Nume și prenume",
+            "requiredError": "Numele și prenumele sunt obligatorii."
+          },
+          "role": {
+            "label": "Rol",
+            "requiredError": "Rolul este obligatoriu."
+          }
+        },
+        "header": "Adaugă membru echipă",
+        "submitButton": "SALVEAZĂ ȘI ADAUGĂ",
+        "submitButtonDescription": "Membrul va fi adăugat în lista „Subcontractanții mei”."
+      },
+      "AddressForm": {
+        "Form": {
+          "addressLine1": {
+            "label": "Adresă",
+            "validationError": {
+              "required": "Adresa este obligatorie"
+            }
+          },
+          "addressLine2": {
+            "label": "Adresă linia 2 (Opțional)"
+          },
+          "city": {
+            "label": "Oraș",
+            "validationError": {
+              "required": "Orașul este obligatoriu"
+            }
+          },
+          "postCode": {
+            "label": "Cod poștal"
+          }
+        },
+        "Header": "Adresă"
+      },
+      "buildType": {
+        "title": "Tip de construcție"
+      },
+      "ChangeOwnerBottomSheet": {
+        "header": "Schimbă proprietarul"
+      },
+      "changeOwnershipModal": {
+        "header": "Schimbi proprietarul proiectului?",
+        "message": "Schimbarea proprietarului proiectului împreună cu membrii echipei va duce la ștergerea acestora din lista de membri ai echipei.",
+        "negativeButton": "ANULEAZĂ",
+        "positiveButton": "DA"
+      },
+      "discardProjectModal": {
+        "header": "Renunți la adăugarea unui nou proiect?",
+        "message": "Dacă renunți acum, vei pierde toate datele introduse.",
+        "negativeButton": "ANULEAZĂ",
+        "positiveButton": "DA, RENUNȚĂ"
+      },
+      "GeneralAddress": {
+        "Form": {
+          "OccupierName": {
+            "label": "Numele ocupantului",
+            "validationError": {
+              "required": "Numele ocupantului este obligatoriu"
+            }
+          },
+          "StartDate": {
+            "label": "Data începerii"
+          }
+        },
+        "Header": "Informații generale"
+      },
+      "Header": "Adaugă proiect",
+      "NewMemberBottomSheet": {
+        "addMember": "ADAUGĂ MEMBRU",
+        "addMemberButton": "Adaugă membru",
+        "AddSelected": "ADAUGĂ SELECTATE",
+        "mySubcontractors": "Subcontractanții mei",
+        "noSavedSubcontractors": "Nu există subcontractanți salvați încă",
+        "noTeamMembers": "Nu există membri în echipă încă",
+        "searchSubcontractors": "Caută subcontractanți",
+        "SelectedCount": "({{count}})",
+        "teamMembersHeader": "Membrii echipei"
+      },
+      "OnSuccessfullyCreatedProject": {
+        "message": "Proiect adăugat"
+      },
+      "ProjectOwner": {
+        "changeOwner": "Schimbă proprietarul",
+        "Header": "Proprietarul proiectului",
+        "useThisOwner": "Folosește acest proprietar implicit când adaugi noi proiecte"
+      },
+      "projectType": {
+        "header": "Tip de proiect",
+        "validationError": {
+          "required": "Acest câmp este obligatoriu."
+        }
+      },
+      "save": "SALVEAZĂ",
+      "SelectAddress": {
+        "Form": {
+          "alternative": "Adaugă adresa manual",
+          "postCode": {
+            "badFormat": "Introdu un cod poștal valid pentru UK/ROI",
+            "label": "Cod poștal",
+            "labelDescription": "Introdu un cod poștal valid din UK/ROI pentru a începe căutarea adresei."
+          }
+        },
+        "Header": "Adresă",
+        "header2": "Selectează adresa",
+        "noResults": "Nu am găsit adresa pentru {{address}}",
+        "searchPrompt": "Caută..."
+      },
+      "substrateType": {
+        "title": "Substrat"
+      },
+      "systemType": {
+        "title": "Sistem"
+      },
+      "TeamMembers": {
+        "addMemberButton": "Adaugă membru",
+        "Header": "Membrii echipei"
+      },
+      "warranty": {
+        "header": "Garanție",
+        "validationError": {
+          "required": "Acest câmp este obligatoriu.",
+          "warrantyPeriodRequired": "Alege perioada garanției."
+        }
+      },
+      "warrantyPeriod": {
+        "title": "Perioada garanției"
+      },
+      "warrantyProvider": {
+        "title": "Furnizor terț de garanție"
+      }
+    },
+    "notifications": {
+      "clearAll": "Șterge tot",
+      "confirmationModal": {
+        "cancel": "Anulează",
+        "confirm": "Confirmă",
+        "description": "Notificările vor fi eliminate din listă.",
+        "title": "Ștergi toate notificările?"
+      },
+      "delete": "Șterge",
+      "empty": "Nu există notificări",
+      "error": "Eroare",
+      "read": "Citite",
+      "title": "Notificări",
+      "unread": "Necitite"
+    },
+    "pdfViewer": {
+      "errorState": {
+        "message": "Încearcă din nou mai târziu.",
+        "title": "Nu s-a putut descărca fișierul PDF"
+      }
+    },
+    "profile": {
+      "bottomSheet": {
+        "chooseFromLibrary": "Alege din bibliotecă",
+        "deletePhoto": "Șterge fotografia",
+        "takePhoto": "Fă o poză",
+        "title": "Fotografie de profil"
+      },
+      "button": "SALVEAZĂ",
+      "deleteUserAvatarError": "Eroare",
+      "form": {
+        "company": "Nume companie (opțional)",
+        "email": "E-mail",
+        "errors": {
+          "phone": "Format de număr de telefon incorect."
+        },
+        "name": "Nume și prenume",
+        "phone": "Număr de telefon"
+      },
+      "formSubmitError": "Eroare",
+      "formSuccessfullySubmitted": "Modificările au fost salvate.",
+      "header": "Profilul meu",
+      "uploadingPictureFailed": "Ne pare rău, adăugarea fotografiei a eșuat. Încearcă din nou."
+    },
+    "projectDetails": {
+      "archiveProjectModal": {
+        "cancel": "ANULEAZĂ",
+        "confirm": "CONFIRMĂ",
+        "description": "Ești sigur că vrei să arhivezi proiectul?",
+        "errorMessage": "Eroare la arhivarea proiectului.",
+        "header": "Arhivează proiectul?",
+        "success": "Succes",
+        "successMessage": "Proiectul a fost arhivat."
+      },
+      "components": {
+        "approvalBottomSheet": {
+          "ApplyForWarrantyDescription": "Confirmă data finalizării proiectului pentru a aplica pentru o garanție.",
+          "ApplyForWarrantyHeader": "Aplică pentru garanție"
+        }
+      },
+      "confirmWarrantySubmission": "CONFIRMĂ ȘI APLICĂ",
+      "documents": {
+        "listEmpty": "Nu există documente încă"
+      },
+      "optionsPopup": {
+        "archiveProject": "Arhivează proiectul",
+        "deleteProject": "Șterge proiectul",
+        "editTeamMembers": "Editează membrii echipei"
+      },
+      "photoDocumentation": "Documentație foto",
+      "projectId": "ID proiect: {{id}}",
+      "projectPhotoContainerStage": "Etapa {{stage}}",
+      "projectStage": "ETAPA {{stage}}",
+      "Warranty": {
+        "WarrantyDeclineReason": "Motivul respingerii"
+      },
+      "WarrantyApplicationDate": "Aplicat pentru garanție: {{date}}",
+      "warrantyApplicationRejected": {
+        "header": "Cererea de garanție a fost respinsă",
+        "seeMore": "Vezi mai multe"
+      },
+      "warrantyBadge": {
+        "description": "documentul de garanție este în curs de procesare. Acest proces poate dura până la 5 minute"
+      },
+      "WarrantyReapplicationDate": "Reaplicat pentru garanție: {{date}}",
+      "warrantyReapply": {
+        "description": "Asigură-te că ai îndeplinit toate condițiile și recomandările EWI PRO înainte de a reaplica pentru garanție.",
+        "header": "Reaplică pentru garanție",
+        "negativeButton": "ANULEAZĂ",
+        "positiveButton": "CONFIRMĂ"
+      }
+    },
+    "settings": {
+      "changePassword": {
+        "form": {
+          "currentPassword": {
+            "label": "Parola actuală"
+          },
+          "formSuccessfullySubmitted": "Succes! Parola a fost schimbată",
+          "newPassword": {
+            "hint": "Cel puțin 8 caractere, o literă mică și una mare, și un număr.",
+            "label": "Parolă nouă",
+            "passwordIncorrectFormat": "Parola nu respectă cerințele"
+          },
+          "repeatPassword": {
+            "label": "Repetă parola nouă",
+            "passwordDoesNotMatch": "Parolele nu se potrivesc"
+          },
+          "submitButton": "SALVEAZĂ",
+          "updating": "ACTUALIZARE..."
+        },
+        "header": "Schimbă parola",
+        "instruction": "Protejați-vă contul cu o parolă nouă."
+      },
+      "header": "Setări",
+      "language": "Limba",
+      "setPin": {
+        "field": "Cod PIN",
+        "header": "Setează codul PIN",
+        "repeat": "Repetă codul PIN",
+        "repeatError": "Codurile PIN nu se potrivesc.",
+        "success": {
+          "button": "OK, ÎNȚELES!",
+          "description": "Acum te poți conecta cu codul PIN.",
+          "header": "PIN setat!"
+        }
+      },
+      "useDefaultOwner": {
+        "header": "Proprietar implicit al proiectului",
+        "description": "Folosește proprietarul selectat ca implicit pentru toate proiectele noi create"
+      },
+      "deleteAccount": {
+        "button": "ȘTERGE CONTUL",
+        "confirmationModal": {
+          "title": "Confirmarea ștergerii contului",
+          "description": "Sigur doriți să vă ștergeți contul? Această operațiune este ireversibilă.",
+          "cancel": "ANULAȚI",
+          "delete": "ȘTERGE CONTUL",
+          "loading": "ȘTERGERE..."
+        }
+      }
+    },
+    "staticPage": {
+      "TSCNegativeButton": "RESPINGE",
+      "TSCPopupCloseButton": "ÎNCHIDE",
+      "TSCPopupMessage": "Toți utilizatorii trebuie să citească și să accepte termenii și condițiile înainte de a primi acces la aplicație. Refuzul de a accepta termenii și condițiile va însemna că nu vei putea folosi aplicația.",
+      "TSCPopupTitle": "Ne pare rău, acceptarea termenilor aplicației este obligatorie.",
+      "TSCPositiveButton": "ACCEPT"
+    },
+    "subcontractors": {
+      "addSubcontractor": {
+        "button": "SALVEAZĂ",
+        "form": {
+          "companyName": {
+            "label": "Nume companie (opțional)"
+          },
+          "email": {
+            "incorrectFormatError": "Introdu o adresă de e-mail validă.",
+            "label": "E-mail",
+            "requiredError": "Adresa de e-mail este obligatorie."
+          },
+          "inviteUser": {
+            "label": "Invită utilizatorul în aplicație"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "Format incorect de număr de telefon.",
+            "label": "Număr de telefon mobil",
+            "requiredError": "Numărul de telefon este obligatoriu."
+          },
+          "nameSurname": {
+            "label": "Nume și prenume",
+            "requiredError": "Numele și prenumele sunt obligatorii."
+          },
+          "role": {
+            "label": "Rol implicit",
+            "requiredError": "Rolul implicit este obligatoriu."
+          }
+        },
+        "header": "Adaugă subcontractant"
+      },
+      "cancelInvitationConfirmationModal": {
+        "cancel": "NU",
+        "confirm": "DA",
+        "description": "Invitația ta va fi anulată.",
+        "header": "Anulezi invitația?"
+      },
+      "discardAddSubcontractorModal": {
+        "cancel": "ANULEAZĂ",
+        "confirm": "DA, RENUNȚĂ",
+        "description": "Dacă renunți acum, vei pierde toate datele introduse.",
+        "header": "Renunți la adăugarea unui nou subcontractant?"
+      },
+      "header": "Subcontractanți",
+      "listEmpty": {
+        "description": "Adaugă subcontractanții tăi și invită-i\nca membri ai echipei tale la proiecte\ndirect din aplicație!",
+        "title": "Nu există subcontractanți încă"
+      },
+      "noSearchResults": "Nu s-au găsit rezultate",
+      "removeConfirmationModal": {
+        "cancel": "ANULEAZĂ",
+        "confirm": "CONFIRMĂ",
+        "description": "Eliminarea subcontractantului <0>va duce la revocarea accesului acestuia ca membru al echipei</0> din toate proiectele tale.",
+        "header": "Elimină subcontractantul?"
+      },
+      "removeSubcontractorFromProjectConfirmationModal": {
+        "cancel": "ANULEAZĂ",
+        "confirm": "CONFIRMĂ",
+        "description": "Ești sigur că vrei să elimini acest subcontractant din acest proiect?",
+        "header": "Elimină subcontractantul?"
+      },
+      "searchCancelButton": "Anulează",
+      "searchPrompt": "Caută",
+      "sendEmailInviteConfirmationModal": {
+        "cancel": "NU, MULȚUMESC",
+        "confirm": "DA, INVITĂ",
+        "description": "Atâta timp cât subcontractantul nu are un cont, el nu va vedea proiectele la care îi oferi acces ca membru al echipei.",
+        "header": "Subcontractantul nu este înregistrat în aplicație. Vrei să trimiți o invitație prin e-mail acum?"
+      },
+      "statuses": {
+        "buttons": {
+          "cancelInvitation": "Anulează invitația",
+          "resend": "Retrimite",
+          "sendInvitation": "Trimite invitația"
+        },
+        "invited": "Invitat",
+        "notRegistered": "Neînregistrat",
+        "notRegisteredDescription": "Acest utilizator nu este încă înregistrat în aplicație. Invită-l să se înregistreze trimițând un e-mail.",
+        "registeredDescription": "Subcontractantul este deja înregistrat."
+      },
+      "subViews": {
+        "details": {
+          "button": "Salvează",
+          "errors": {
+            "phone": "Format incorect de număr de telefon."
+          },
+          "fields": {
+            "company": "Numele companiei",
+            "email": "E-mail",
+            "name": "Nume și prenume",
+            "phone": "Număr de telefon",
+            "role": "Rol"
+          },
+          "header": "Detalii"
+        },
+        "permissions": {
+          "header": "Permisiuni"
+        },
+        "projects": {
+          "header": "Proiecte",
+          "listEmpty": {
+            "title": "Nu este încă membru al niciunui proiect"
+          },
+          "listHeader": "Membru în proiectele tale:"
+        }
+      },
+      "toasts": {
+        "changesSaved": "Modificările au fost salvate!",
+        "errorWhileCancellingInvitation": "Eroare la anularea invitației.",
+        "errorWhileCreating": "Eroare la crearea subcontractantului.",
+        "errorWhileRemovingSubcontractor": "Eroare la eliminarea subcontractantului.",
+        "errorWhileSendingInvitation": "Eroare la trimiterea invitației.",
+        "errorWhileUpdating": "Eroare la actualizarea subcontractantului.",
+        "errorWhileUpdatingPermission": "Eroare la actualizarea permisiunii.",
+        "invitationCancelled": "Invitația a fost anulată.",
+        "invitationSent": "Invitația a fost trimisă.",
+        "permissionUpdated": "Permisiunea a fost actualizată.",
+        "subcontractorAdded": "Subcontractantul a fost adăugat.",
+        "subcontractorAddedAndInvited": "Subcontractantul a fost adăugat și invitat.",
+        "subcontractorRemoved": "Subcontractantul a fost eliminat."
+      }
+    }
+  }
+}

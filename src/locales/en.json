@@ -1,0 +1,639 @@
+{
+  "components": {
+    "dateTimePicker": {
+      "cancelButtonText": "Cancel",
+      "confirmButtonText": "Confirm"
+    },
+    "globalError": {
+      "header": "Oops there was an error"
+    },
+    "insufficientOwnershipPermissionModal": {
+      "button": "I understand",
+      "header": "You're no longer eligible to create project under selected owner",
+      "message": "You are the default owner of new projects. If you need to create a project on behalf of someone else, please visit the settings page or select the \"default owner\" option when creating a new project."
+    },
+    "insufficientPermission": {
+      "text1": "Insufficient Permissions",
+      "text2": "you don't have permission to perform an action"
+    },
+    "me": "(me)",
+    "selectPicker": {
+      "selectPlaceholder": "Select"
+    },
+    "takePhotoButton": "take photo"
+  },
+  "dashboard": {
+    "hello": "Hi {{name}}!",
+    "ongoingProjects": "Ongoing projects",
+    "projectList": {
+      "listEmpty": "No Projects",
+      "Member": "Member",
+      "Owner": "Owner",
+      "projectStage": "Stage {{stage}}",
+      "seeAll": "See all"
+    }
+  },
+  "drawer": {
+    "dashboard": "Dashboard",
+    "logout": "Log out",
+    "myProfile": "My Profile",
+    "myProjects": "My Projects",
+    "settings": "Settings",
+    "subcontractors": "Subcontractors",
+    "whatsNew": "What's New"
+  },
+  "errors": {
+    "validationErrors": {
+      "required": "Field is required"
+    }
+  },
+  "newProjectTabs": {
+    "Chat": "Chat",
+    "Documents": "Documents",
+    "Home": "Home"
+  },
+  "projectDetails": {
+    "ApplyForWarrantyButton": "APPLY FOR WARRANTY",
+    "PhotoDocumentation": "Photo documentation",
+    "ProjectPhotoContainerStage": "Stage {{stage}}",
+    "projectStage": "STAGE {{stage}}",
+    "ReApplyForWarrantyButton": "REAPPLY FOR WARRANTY",
+    "StageButtonConfirmationButtonPositive": "CONFIRM",
+    "StageLessPhotoPrompt": "Add at least 5 photos documenting work progress.",
+    "StagePhotoPrompt": "Add at least one photo to Stage {{stage}}",
+    "StageSubmitConfirmationDescription": "Do you really want to submit stage {{stage}} for verification by EWI PRO team?",
+    "StageSubmitConfirmationTitle": "Stage Submitting",
+    "StageSubmitWaiting": "Waiting for stage {{stage}} approval",
+    "SubmitStageButton": "SUBMIT STAGE {{stage}}"
+  },
+  "views": {
+    "chat": {
+      "emptyStateLabel": "No message yet",
+      "inputPlaceholder": "Type a message...",
+      "now": "Now",
+      "sendingErrorToastMessage": "Couldn't send message. Try again."
+    },
+    "dashboard": {
+      "hello": "Hi {{name}}!",
+      "ongoingProjects": "Ongoing projects",
+      "projectList": {
+        "listEmpty": "No Projects",
+        "projectStage": "Stage {{stage}}",
+        "seeAll": "See all"
+      },
+      "statements": {
+        "assumedCreditLimit": "Assumed credit limit",
+        "bottomSheet": {
+          "button": "DOWNLOAD",
+          "description": "Select the statement's start date.",
+          "title": "Download statement"
+        },
+        "download": "Download statement",
+        "outstandingBalance": "Outstanding balance",
+        "overdueAmount": "Overdue amount",
+        "remainingCreditLimit": "Remaining credit limit"
+      }
+    },
+    "deviceAuth": {
+      "button": "Login with password",
+      "header": "Welcome back!"
+    },
+    "EditProject": {
+      "EditTeamMembers": {
+        "addMemberButton": "Add member",
+        "header": "Team members",
+        "noMembers": "No yet members in project",
+        "selectRole": "Select role",
+        "subcontractorRemoved": {
+          "errorMessage": "Error while removing subcontractor",
+          "success": "Success",
+          "successMessage": "Subcontractor removed from a project"
+        }
+      }
+    },
+    "forgotPassword": {
+      "button": {
+        "send": "CONFIRM",
+        "login": "Back to login",
+        "loading": "Confirming..."
+      },
+      "confirmation": {
+        "button": "OPEN  MAIL APP",
+        "header": "Check your e-mail",
+        "instruction": "If your e-mail is registered, we have sent you a password reset link."
+      },
+      "form": {
+        "header": "Forgot password",
+        "instruction": "Enter the email address used to register with EWI Pro. You will receive an email with link to reset password."
+      }
+    },
+    "gallery": {
+      "confirmationModal": {
+        "cancel": "Cancel",
+        "confirm": "Yes, Remove",
+        "description": "Do you really want to remove photo?",
+        "header": "Remove photo?"
+      },
+      "projectStage": "Stage {{stage}}"
+    },
+    "galleryPicker": {
+      "button": "Add Selected ({{amount}})",
+      "buttonSingle": "Add Selected",
+      "header": "Add photo(s)",
+      "headerSingle": "Add photo",
+      "hooks": {
+        "camera": {
+          "cancel": "Cancel",
+          "message": "Please visit app settings",
+          "settings": "Settings",
+          "title": "Camera permission missing"
+        },
+        "mediaLibrary": {
+          "cancel": "Cancel",
+          "message": "Please visit app settings",
+          "settings": "Settings",
+          "title": "Photo Library permission missing"
+        }
+      },
+      "sendingErrorToast": "Sorry, adding photo(s) failed. Try again.",
+      "warningToast": "You can add max 5 photos in total."
+    },
+    "register":{
+      "header":{
+        "register": "Ask to register",
+        "description": "Leave us your data and we will contact you once your account is registered."
+      },
+      "button":{
+        "login": "BACK TO LOGIN"
+      }
+    },
+    "login": {
+      "button": {
+        "forgot-password": "Forgot password?",
+        "login": "LOGIN",
+        "loading": "Logging in..."
+      },
+      "form": {
+        "email": "E-mail",
+        "error": {
+          "emailIncorrectFormat": "Incorrect e-mail format",
+          "emailNotProvided": "Provide e-mail",
+          "passwordNotProvided": "Provide password"
+        },
+        "header": "Welcome back!",
+        "password": "Password"
+      }
+    },
+    "MyProjects": {
+      "filterPopup": {
+        "filtering": {
+          "filteringOptions": {
+            "All": "All",
+            "archived": "Archived",
+            "Member": "Member",
+            "ongoing": "Ongoing",
+            "Owner": "Owner"
+          },
+          "filteringSectionTitle": "FILTER",
+          "filteringSelectedToast": "Filtering by {{filtering}}"
+        },
+        "resetButton": "Reset",
+        "sorting": {
+          "sortingOptions": {
+            "newest": "Newest first",
+            "oldest": "Oldest first",
+            "recentlyUpdated": "Recently updated first"
+          },
+          "sortingSectionTitle": "SORT BY",
+          "sortingSelectedToast": "Sorting by {{sorting}}"
+        }
+      },
+      "header": "My Projects",
+      "listEmpty": "No results found",
+      "searchCancelButton": "Cancel"
+    },
+    "newProject": {
+      "AddNewTeamMember": {
+        "form": {
+          "companyName": {
+            "label": "Company name (optional)"
+          },
+          "email": {
+            "incorrectFormatError": "Provide valid e-mail address.",
+            "label": "E-mail",
+            "requiredError": "E-mail is required."
+          },
+          "inviteUser": {
+            "label": "Invite user to the app"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "Incorrect phone number format.",
+            "label": "Mobile number",
+            "requiredError": "Mobile Number is required."
+          },
+          "nameSurname": {
+            "label": "Name and surname",
+            "requiredError": "Name and surname are required."
+          },
+          "role": {
+            "label": "Role",
+            "requiredError": "Role is required."
+          }
+        },
+        "header": "Add team member",
+        "submitButton": "SAVE AND ADD",
+        "submitButtonDescription": "Member will be added to “My subcontractors” list."
+      },
+      "AddressForm": {
+        "Form": {
+          "addressLine1": {
+            "label": "Address line",
+            "validationError": {
+              "required": "Address Line is required"
+            }
+          },
+          "addressLine2": {
+            "label": "Address line 2 (Optional)"
+          },
+          "city": {
+            "label": "City",
+            "validationError": {
+              "required": "City is required"
+            }
+          },
+          "postCode": {
+            "label": "Post-code"
+          }
+        },
+        "Header": "Address"
+      },
+      "buildType": {
+        "title": "Build type"
+      },
+      "ChangeOwnerBottomSheet": {
+        "header": "Change owner"
+      },
+      "changeOwnershipModal": {
+        "header": "Change project owner?",
+        "message": "Changing project ownership with team members will result in deleting them from the team members list.",
+        "negativeButton": "CANCEL",
+        "positiveButton": "YES"
+      },
+      "discardProjectModal": {
+        "header": "Quit adding new project?",
+        "message": "If you quit adding a project now, you will lose all entered data.",
+        "negativeButton": "CANCEL",
+        "positiveButton": "YES, QUIT"
+      },
+      "GeneralAddress": {
+        "Form": {
+          "OccupierName": {
+            "label": "Occupier name",
+            "validationError": {
+              "required": "Occupier name is required"
+            }
+          },
+          "StartDate": {
+            "label": "Start date"
+          }
+        },
+        "Header": "General info"
+      },
+      "Header": "Add project",
+      "NewMemberBottomSheet": {
+        "addMember": "ADD MEMBER",
+        "addMemberButton": "Add member",
+        "AddSelected": "ADD SELECTED",
+        "mySubcontractors": "My subcontractors",
+        "noSavedSubcontractors": "No saved subcontractors yet",
+        "noTeamMembers": "No team members yet",
+        "searchSubcontractors": "Search subcontractors",
+        "SelectedCount": "({{count}})",
+        "teamMembersHeader": "Team members"
+      },
+      "OnSuccessfullyCreatedProject": {
+        "message": "Project added"
+      },
+      "ProjectOwner": {
+        "changeOwner": "Change owner",
+        "Header": "Project ownership",
+        "useThisOwner": "Use this Owner by default when adding new projects"
+      },
+      "projectType": {
+        "header": "Project type",
+        "validationError": {
+          "required": "This field is required."
+        }
+      },
+      "save": "SAVE",
+      "SelectAddress": {
+        "Form": {
+          "alternative": "Add address manually",
+          "postCode": {
+            "badFormat": "Provide valid UK/ROI post code ",
+            "label": "Post code",
+            "labelDescription": "Enter valid UK/ ROI post code to start address lookup."
+          }
+        },
+        "Header": "Address",
+        "header2": "Select address",
+        "noResults": "We couldn't find this address for {{address}}",
+        "searchPrompt": "Search..."
+      },
+      "substrateType": {
+        "title": "Substrate"
+      },
+      "systemType": {
+        "title": "System"
+      },
+      "TeamMembers": {
+        "addMemberButton": "Add member",
+        "Header": "Team members"
+      },
+      "warranty": {
+        "header": "Warranty",
+        "validationError": {
+          "required": "This field is required.",
+          "warrantyPeriodRequired": "Choose warranty period."
+        }
+      },
+      "warrantyPeriod": {
+        "title": "Warranty period"
+      },
+      "warrantyProvider": {
+        "title": "Warranty 3rd party provider"
+      }
+    },
+    "notifications": {
+      "clearAll": "Clear all",
+      "confirmationModal": {
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "description": "Notifications will be removed from the list.",
+        "title": "Clear all notifications?"
+      },
+      "delete": "Delete",
+      "empty": "No notifications",
+      "error": "Error",
+      "read": "Read",
+      "title": "Notifications",
+      "unread": "Unread"
+    },
+    "pdfViewer": {
+      "errorState": {
+        "message": "Try again later.",
+        "title": "Couldn’t download the PDF file"
+      }
+    },
+    "profile": {
+      "bottomSheet": {
+        "chooseFromLibrary": "Choose from library",
+        "deletePhoto": "Delete photo",
+        "takePhoto": "Take photo",
+        "title": "Profile photo"
+      },
+      "button": "SAVE",
+      "deleteUserAvatarError": "Error",
+      "form": {
+        "company": "Company name (optional)",
+        "email": "E-mail",
+        "errors": {
+          "phone": "Incorrect phone number format."
+        },
+        "name": "Name and surname",
+        "phone": "Phone number"
+      },
+      "formSubmitError": "Error",
+      "formSuccessfullySubmitted": "Changes saved.",
+      "header": "My profile",
+      "uploadingPictureFailed": "Sorry, adding photo(s) failed. Try again."
+    },
+    "projectDetails": {
+      "archiveProjectModal": {
+        "cancel": "CANCEL",
+        "confirm": "CONFIRM",
+        "description": "Do you really want to archive project?",
+        "errorMessage": "Error while archiving project.",
+        "header": "Archive project?",
+        "success": "Success",
+        "successMessage": "Project archived."
+      },
+      "components": {
+        "approvalBottomSheet": {
+          "ApplyForWarrantyDescription": "Confirm a date of project`s finish to apply for a warranty.",
+          "ApplyForWarrantyHeader": "Apply for warranty"
+        }
+      },
+      "confirmWarrantySubmission": "CONFIRM AND APPLY",
+      "documents": {
+        "listEmpty": "No documents yet"
+      },
+      "optionsPopup": {
+        "archiveProject": "Archive project",
+        "deleteProject": "Remove project",
+        "editTeamMembers": "Edit team members"
+      },
+      "photoDocumentation": "Photo documentation",
+      "projectId": "Project ID: {{id}}",
+      "projectPhotoContainerStage": "Stage {{stage}}",
+      "projectStage": "STAGE {{stage}}",
+      "Warranty": {
+        "WarrantyDeclineReason": "Reason for decline"
+      },
+      "WarrantyApplicationDate": "Applied for warranty: {{date}}",
+      "warrantyApplicationRejected": {
+        "header": "Warranty application rejected",
+        "seeMore": "See more"
+      },
+      "warrantyBadge": {
+        "description": "warranty document is being processed. This process might take up to 5 minutes"
+      },
+      "WarrantyReapplicationDate": "Reapplied for warranty: {{date}}",
+      "warrantyReapply": {
+        "description": "Make sure you’ve met all EWI PRO’s conditions and recommendations before reapplying for warranty.",
+        "header": "Reapply for warranty",
+        "negativeButton": "CANCEL",
+        "positiveButton": "CONFIRM"
+      }
+    },
+    "settings": {
+      "changePassword": {
+        "form": {
+          "currentPassword": {
+            "label": "Current password"
+          },
+          "formSuccessfullySubmitted": "Success! Password changed",
+          "newPassword": {
+            "hint": "At least 8 characters, one low and upper case and number.",
+            "label": "New password",
+            "passwordIncorrectFormat": "Password does not match the requirements"
+          },
+          "repeatPassword": {
+            "label": "Repeat new password",
+            "passwordDoesNotMatch": "Passwords do not match"
+          },
+          "submitButton": "SAVE",
+          "updating": "UPDATING..."
+        },
+        "header": "Change password",
+        "instruction": "Secure your account with a new password."
+      },
+      "header": "Settings",
+      "language": "Language",
+      "setPin": {
+        "field": "PIN code",
+        "header": "Set PIN code",
+        "repeat": "Repeat PIN code",
+        "repeatError": "PIN codes don’t match.",
+        "success": {
+          "button": "OK, GOT IT!",
+          "description": "Now you can log in with the PIN code.",
+          "header": "PIN set!"
+        }
+      },
+      "useDefaultOwner": {
+        "header": "Default project owner",
+        "description": "Use the selected owner as default for all newly created projects"
+      },
+      "deleteAccount": {
+        "button": "DELETE ACCOUNT",
+        "confirmationModal": {
+          "title": "Confirmation of account destruction",
+          "description": "Are you sure you want to delete your account? This operation is irreversible.",
+          "cancel": "CANCEL",
+          "delete": "DELETE ACCOUNT",
+          "loading": "DELETING..."
+        }
+      }
+    },
+    "staticPage": {
+      "TSCNegativeButton": "REJECT",
+      "TSCPopupCloseButton": "CLOSE",
+      "TSCPopupMessage": "All users are required to read and accept the terms and conditions before access to the app will be granted. Refusing to accept the terms and conditions will mean you will not be able to use the app.",
+      "TSCPopupTitle": "Sorry, accepting the App Terms is mandatory.",
+      "TSCPositiveButton": "ACCEPT"
+    },
+    "subcontractors": {
+      "addSubcontractor": {
+        "button": "SAVE",
+        "form": {
+          "companyName": {
+            "label": "Company name (optional)"
+          },
+          "email": {
+            "incorrectFormatError": "Provide valid e-mail address.",
+            "label": "E-mail",
+            "requiredError": "E-mail is required."
+          },
+          "inviteUser": {
+            "label": "Invite user to the app"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "Incorrect phone number format.",
+            "label": "Mobile number",
+            "requiredError": "Mobile Number is required."
+          },
+          "nameSurname": {
+            "label": "Name and surname",
+            "requiredError": "Name and surname are required."
+          },
+          "role": {
+            "label": "Default role",
+            "requiredError": "Default role is required."
+          }
+        },
+        "header": "Add subcontractor"
+      },
+      "cancelInvitationConfirmationModal": {
+        "cancel": "NO",
+        "confirm": "YES",
+        "description": "Your invitation will be cancelled.",
+        "header": "Cancel invitation?"
+      },
+      "discardAddSubcontractorModal": {
+        "cancel": "CANCEL",
+        "confirm": "YES, QUIT",
+        "description": "If you quit adding a subcontractor now, you will lose all entered data.",
+        "header": "Quit adding new subcontractor?"
+      },
+      "header": "Subcontractors",
+      "listEmpty": {
+        "description": "Add your subcontractors and invite\nthem as team members to your projects\neven faster!",
+        "title": "No subcontractors yet"
+      },
+      "noSearchResults": "No results found",
+      "removeConfirmationModal": {
+        "cancel": "CANCEL",
+        "confirm": "CONFIRM",
+        "description": "Removing the subcontractor <0>will cause revoking its access as a team member</0> to all of your projects.",
+        "header": "Remove subcontractor?"
+      },
+      "removeSubcontractorFromProjectConfirmationModal": {
+        "cancel": "CANCEL",
+        "confirm": "CONFIRM",
+        "description": "Are you sure you want to remove this subcontractor from this project?",
+        "header": "Remove subcontractor?"
+      },
+      "searchCancelButton": "Cancel",
+      "searchPrompt": "Search",
+      "sendEmailInviteConfirmationModal": {
+        "cancel": "NO, THANKS",
+        "confirm": "YES, INVITE",
+        "description": "As long as the subcontractor does not have an account, he will not see the projects to which you give him access ad a team member.",
+        "header": "Subcontractor is not registered in the app yet. Do you want to send an e-mail invitation now?"
+      },
+      "statuses": {
+        "buttons": {
+          "cancelInvitation": "Cancel invitation",
+          "resend": "Resend",
+          "sendInvitation": "Send invitation"
+        },
+        "invited": "Invited",
+        "notRegistered": "Not registered",
+        "notRegisteredDescription": "This user isn’t registered in the app yet. Ask to register by sending an invitation e-mail.",
+        "registeredDescription": "The subcontractor is already registered."
+      },
+      "subViews": {
+        "details": {
+          "button": "SAVE",
+          "errors": {
+            "phone": "Incorrect mobile number format."
+          },
+          "fields": {
+            "company": "Company name (optional)",
+            "email": "E-mail",
+            "name": "Name and surname",
+            "phone": "Mobile number",
+            "role": "Default role"
+          },
+          "header": "Details"
+        },
+        "permissions": {
+          "header": "Permissions"
+        },
+        "projects": {
+          "header": "Projects",
+          "listEmpty": {
+            "title": "Not yet a member of any of your projects"
+          },
+          "listHeader": "Team member in your projects:"
+        }
+      },
+      "toasts": {
+        "changesSaved": "Changes saved!",
+        "errorWhileCancellingInvitation": "Error while cancelling invitation.",
+        "errorWhileCreating": "Error while creating subcontractor.",
+        "errorWhileRemovingSubcontractor": "Error while removing subcontractor.",
+        "errorWhileSendingInvitation": "Error while sending invitation.",
+        "errorWhileUpdating": "Error while updating subcontractor.",
+        "errorWhileUpdatingPermission": "Error while updating permission.",
+        "invitationCancelled": "Invitation cancelled.",
+        "invitationSent": "Invitation sent.",
+        "permissionUpdated": "Permission updated.",
+        "subcontractorAdded": "Subcontractor added.",
+        "subcontractorAddedAndInvited": "Subcontractor added and invited.",
+        "subcontractorRemoved": "Subcontractor removed."
+      }
+    }
+  }
+}

@@ -1,0 +1,639 @@
+{
+  "components": {
+    "dateTimePicker": {
+      "cancelButtonText": "منسوخ کریں",
+      "confirmButtonText": "تصدیق کریں"
+    },
+    "globalError": {
+      "header": "اوہ، ایک خرابی ہوئی ہے"
+    },
+    "insufficientOwnershipPermissionModal": {
+      "button": "میں سمجھ گیا",
+      "header": "آپ اب منتخب کردہ مالک کے تحت پروجیکٹ بنانے کے اہل نہیں ہیں",
+      "message": "آپ نئے پروجیکٹس کے ڈیفالٹ مالک ہیں۔ اگر آپ کو کسی اور کی جانب سے پروجیکٹ بنانا ہے تو، براہ کرم سیٹنگز پیج پر جائیں یا نیا پروجیکٹ بناتے وقت 'ڈیفالٹ مالک' کا آپشن منتخب کریں۔"
+    },
+    "insufficientPermission": {
+      "text1": "ناکافی اجازتیں",
+      "text2": "آپ کو یہ کارروائی انجام دینے کی اجازت نہیں ہے"
+    },
+    "me": "(میں)",
+    "selectPicker": {
+      "selectPlaceholder": "منتخب کریں"
+    },
+    "takePhotoButton": "تصویر لیں"
+  },
+  "dashboard": {
+    "hello": "ہیلو {{name}}!",
+    "ongoingProjects": "جاری منصوبے",
+    "projectList": {
+      "listEmpty": "کوئی منصوبے نہیں",
+      "Member": "رکن",
+      "Owner": "مالک",
+      "projectStage": "مرحلہ {{stage}}",
+      "seeAll": "سب دیکھیں"
+    }
+  },
+  "drawer": {
+    "dashboard": "ڈیش بورڈ",
+    "logout": "لاگ آوٹ",
+    "myProfile": "میری پروفائل",
+    "myProjects": "میرے منصوبے",
+    "settings": "ترتیبات",
+    "subcontractors": "ذیلی ٹھیکیدار",
+    "whatsNew": "کیا نیا ہے"
+  },
+  "errors": {
+    "validationErrors": {
+      "required": "فیلڈ درکار ہے"
+    }
+  },
+  "newProjectTabs": {
+    "Chat": "چیٹ",
+    "Documents": "دستاویزات",
+    "Home": "ہوم"
+  },
+  "projectDetails": {
+    "ApplyForWarrantyButton": "ضمانت کے لیے درخواست دیں",
+    "PhotoDocumentation": "تصویری دستاویزات",
+    "ProjectPhotoContainerStage": "مرحلہ {{stage}}",
+    "projectStage": "مرحلہ {{stage}}",
+    "ReApplyForWarrantyButton": "دوبارہ درخواست دیں",
+    "StageButtonConfirmationButtonPositive": "تصدیق کریں",
+    "StageLessPhotoPrompt": "کام کی پیش رفت کو دستاویزی بنانے کے لیے کم از کم 5 تصاویر شامل کریں۔",
+    "StagePhotoPrompt": "مرحلہ {{stage}} کے لیے کم از کم ایک تصویر شامل کریں",
+    "StageSubmitConfirmationDescription": "کیا آپ واقعی مرحلہ {{stage}} کو EWI PRO ٹیم کے ذریعہ توثیق کے لیے جمع کرانا چاہتے ہیں؟",
+    "StageSubmitConfirmationTitle": "مرحلہ جمع کرنا",
+    "StageSubmitWaiting": "مرحلہ {{stage}} کی منظوری کا انتظار ہے",
+    "SubmitStageButton": "مرحلہ {{stage}} جمع کریں"
+  },
+  "views": {
+    "chat": {
+      "emptyStateLabel": "ابھی کوئی پیغام نہیں",
+      "inputPlaceholder": "پیغام ٹائپ کریں...",
+      "now": "اب",
+      "sendingErrorToastMessage": "پیغام بھیجنے میں ناکامی ہوئی۔ دوبارہ کوشش کریں۔"
+    },
+    "dashboard": {
+      "hello": "ہیلو {{name}}!",
+      "ongoingProjects": "جاری منصوبے",
+      "projectList": {
+        "listEmpty": "کوئی منصوبے نہیں",
+        "projectStage": "مرحلہ {{stage}}",
+        "seeAll": "سب دیکھیں"
+      },
+      "statements": {
+        "assumedCreditLimit": "مفروضہ کریڈٹ حد",
+        "bottomSheet": {
+          "button": "ڈاؤن لوڈ کریں",
+          "description": "بیان کی شروعاتی تاریخ منتخب کریں۔",
+          "title": "بیان ڈاؤن لوڈ کریں"
+        },
+        "download": "بیان ڈاؤن لوڈ کریں",
+        "outstandingBalance": "باقی بیلنس",
+        "overdueAmount": "زیادہ مدت کی رقم",
+        "remainingCreditLimit": "باقی کریڈٹ حد"
+      }
+    },
+    "deviceAuth": {
+      "button": "پاس ورڈ کے ساتھ لاگ ان کریں",
+      "header": "خوش آمدید!"
+    },
+    "EditProject": {
+      "EditTeamMembers": {
+        "addMemberButton": "رکن شامل کریں",
+        "header": "ٹیم کے اراکین",
+        "noMembers": "منصوبے میں ابھی کوئی رکن نہیں",
+        "selectRole": "کردار منتخب کریں",
+        "subcontractorRemoved": {
+          "errorMessage": "ذیلی ٹھیکیدار کو ہٹاتے وقت خرابی",
+          "success": "کامیابی",
+          "successMessage": "ذیلی ٹھیکیدار کو منصوبے سے ہٹا دیا گیا ہے"
+        }
+      }
+    },
+    "forgotPassword": {
+      "button": {
+        "send": "تصدیق کریں",
+        "login": "واپس لاگ ان پر جائیں",
+        "loading": "تصدیق کی جا رہی ہے..."
+      },
+      "confirmation": {
+        "button": "میل ایپ کھولیں",
+        "header": "ای میل چیک کریں",
+        "instruction": "اگر آپ کا ای میل رجسٹرڈ ہے، تو ہم نے آپ کو پاس ورڈ ری سیٹ کرنے کا لنک بھیج دیا ہے۔"
+      },
+      "form": {
+        "header": "پاس ورڈ بھول گئے",
+        "instruction": "EWI Pro کے ساتھ رجسٹرڈ ای میل پتہ درج کریں۔ آپ کو پاس ورڈ ری سیٹ کرنے کے لیے ایک لنک موصول ہوگا۔"
+      }
+    },
+    "gallery": {
+      "confirmationModal": {
+        "cancel": "منسوخ کریں",
+        "confirm": "ہاں، ہٹائیں",
+        "description": "کیا آپ واقعی تصویر ہٹانا چاہتے ہیں؟",
+        "header": "تصویر ہٹائیں؟"
+      },
+      "projectStage": "مرحلہ {{stage}}"
+    },
+    "galleryPicker": {
+      "button": "منتخب کردہ ({{amount}}) شامل کریں",
+      "buttonSingle": "منتخب کردہ شامل کریں",
+      "header": "تصاویر شامل کریں",
+      "headerSingle": "تصویر شامل کریں",
+      "hooks": {
+        "camera": {
+          "cancel": "منسوخ کریں",
+          "message": "براہ کرم ایپ سیٹنگز ملاحظہ کریں",
+          "settings": "ترتیبات",
+          "title": "کیمرے کی اجازت غائب ہے"
+        },
+        "mediaLibrary": {
+          "cancel": "منسوخ کریں",
+          "message": "براہ کرم ایپ سیٹنگز ملاحظہ کریں",
+          "settings": "ترتیبات",
+          "title": "تصویر لائبریری کی اجازت غائب ہے"
+        }
+      },
+      "sendingErrorToast": "معذرت، تصویر شامل کرنے میں ناکامی ہوئی۔ دوبارہ کوشش کریں۔",
+      "warningToast": "آپ کل 5 تصاویر تک شامل کر سکتے ہیں۔"
+    },
+    "register":{
+      "header":{
+        "register": "رجسٹر کرنے کو کہیں۔",
+        "description": "اپنا ڈیٹا ہمیں دیں اور جب آپ کا اکاؤنٹ رجسٹر ہو جائے گا تو ہم آپ سے رابطہ کریں گے۔"
+      },
+      "button":{
+        "login": "لاگ ان پر واپس جائیں۔"
+      }
+    },
+    "login": {
+      "button": {
+        "forgot-password": "پاس ورڈ بھول گئے؟",
+        "login": "لاگ ان کریں",
+        "loading": "لاگ ان کیا جا رہا ہے..."
+      },
+      "form": {
+        "email": "ای میل",
+        "error": {
+          "emailIncorrectFormat": "ای میل فارمیٹ غلط ہے",
+          "emailNotProvided": "ای میل فراہم کریں",
+          "passwordNotProvided": "پاس ورڈ فراہم کریں"
+        },
+        "header": "خوش آمدید!",
+        "password": "پاس ورڈ"
+      }
+    },
+    "MyProjects": {
+      "filterPopup": {
+        "filtering": {
+          "filteringOptions": {
+            "All": "سب",
+            "archived": "آرکائیو شدہ",
+            "Member": "رکن",
+            "ongoing": "جاری",
+            "Owner": "مالک"
+          },
+          "filteringSectionTitle": "فلٹر",
+          "filteringSelectedToast": "{{filtering}} کے ذریعے فلٹرنگ"
+        },
+        "resetButton": "ری سیٹ کریں",
+        "sorting": {
+          "sortingOptions": {
+            "newest": "سب سے نیا پہلے",
+            "oldest": "سب سے پرانا پہلے",
+            "recentlyUpdated": "حال ہی میں اپ ڈیٹ کیا گیا پہلے"
+          },
+          "sortingSectionTitle": "ترتیب دیں",
+          "sortingSelectedToast": "{{sorting}} کے ذریعے ترتیب دیں"
+        }
+      },
+      "header": "میرے منصوبے",
+      "listEmpty": "کوئی نتائج نہیں ملے",
+      "searchCancelButton": "منسوخ کریں"
+    },
+    "newProject": {
+      "AddNewTeamMember": {
+        "form": {
+          "companyName": {
+            "label": "کمپنی کا نام (اختیاری)"
+          },
+          "email": {
+            "incorrectFormatError": "صحیح ای میل ایڈریس فراہم کریں۔",
+            "label": "ای میل",
+            "requiredError": "ای میل درکار ہے۔"
+          },
+          "inviteUser": {
+            "label": "صارف کو ایپ میں مدعو کریں"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "غلط فون نمبر فارمیٹ۔",
+            "label": "موبائل نمبر",
+            "requiredError": "موبائل نمبر درکار ہے۔"
+          },
+          "nameSurname": {
+            "label": "نام اور کنیت",
+            "requiredError": "نام اور کنیت درکار ہیں۔"
+          },
+          "role": {
+            "label": "کردار",
+            "requiredError": "کردار درکار ہے۔"
+          }
+        },
+        "header": "ٹیم کے رکن شامل کریں",
+        "submitButton": "محفوظ کریں اور شامل کریں",
+        "submitButtonDescription": "رکن 'میرے ذیلی ٹھیکیداروں' کی فہرست میں شامل کیا جائے گا۔"
+      },
+      "AddressForm": {
+        "Form": {
+          "addressLine1": {
+            "label": "پتہ",
+            "validationError": {
+              "required": "پتہ درکار ہے"
+            }
+          },
+          "addressLine2": {
+            "label": "پتہ لائن 2 (اختیاری)"
+          },
+          "city": {
+            "label": "شہر",
+            "validationError": {
+              "required": "شہر درکار ہے"
+            }
+          },
+          "postCode": {
+            "label": "پوسٹ کوڈ"
+          }
+        },
+        "Header": "پتہ"
+      },
+      "buildType": {
+        "title": "تعمیر کی قسم"
+      },
+      "ChangeOwnerBottomSheet": {
+        "header": "مالک تبدیل کریں"
+      },
+      "changeOwnershipModal": {
+        "header": "کیا آپ منصوبے کے مالک کو تبدیل کرنا چاہتے ہیں؟",
+        "message": "ٹیم کے اراکین کے ساتھ منصوبے کی ملکیت کو تبدیل کرنے کا نتیجہ انہیں ٹیم کے رکن کی فہرست سے حذف کرنے میں نکلے گا۔",
+        "negativeButton": "منسوخ کریں",
+        "positiveButton": "ہاں"
+      },
+      "discardProjectModal": {
+        "header": "کیا آپ نئے منصوبے کو شامل کرنا چھوڑنا چاہتے ہیں؟",
+        "message": "اگر آپ ابھی نیا منصوبہ شامل کرنا چھوڑ دیتے ہیں، تو آپ نے درج کردہ تمام ڈیٹا ضائع ہو جائے گا۔",
+        "negativeButton": "منسوخ کریں",
+        "positiveButton": "ہاں، چھوڑ دیں"
+      },
+      "GeneralAddress": {
+        "Form": {
+          "OccupierName": {
+            "label": "قابض کا نام",
+            "validationError": {
+              "required": "قابض کا نام درکار ہے"
+            }
+          },
+          "StartDate": {
+            "label": "آغاز کی تاریخ"
+          }
+        },
+        "Header": "عمومی معلومات"
+      },
+      "Header": "نیا منصوبہ شامل کریں",
+      "NewMemberBottomSheet": {
+        "addMember": "رکن شامل کریں",
+        "addMemberButton": "رکن شامل کریں",
+        "AddSelected": "منتخب کردہ شامل کریں",
+        "mySubcontractors": "میرے ذیلی ٹھیکیدار",
+        "noSavedSubcontractors": "ابھی کوئی محفوظ ذیلی ٹھیکیدار نہیں",
+        "noTeamMembers": "ابھی کوئی ٹیم رکن نہیں",
+        "searchSubcontractors": "ذیلی ٹھیکیدار تلاش کریں",
+        "SelectedCount": "({{count}})",
+        "teamMembersHeader": "ٹیم کے رکن"
+      },
+      "OnSuccessfullyCreatedProject": {
+        "message": "منصوبہ شامل کیا گیا"
+      },
+      "ProjectOwner": {
+        "changeOwner": "مالک تبدیل کریں",
+        "Header": "منصوبے کی ملکیت",
+        "useThisOwner": "نئے منصوبے شامل کرتے وقت اس مالک کو ڈیفالٹ کے طور پر استعمال کریں"
+      },
+      "projectType": {
+        "header": "منصوبے کی قسم",
+        "validationError": {
+          "required": "یہ فیلڈ درکار ہے۔"
+        }
+      },
+      "save": "محفوظ کریں",
+      "SelectAddress": {
+        "Form": {
+          "alternative": "پتہ دستی طور پر شامل کریں",
+          "postCode": {
+            "badFormat": "صحیح UK/ROI پوسٹ کوڈ فراہم کریں",
+            "label": "پوسٹ کوڈ",
+            "labelDescription": "پتہ کی تلاش شروع کرنے کے لیے صحیح UK/ROI پوسٹ کوڈ درج کریں۔"
+          }
+        },
+        "Header": "پتہ",
+        "header2": "پتہ منتخب کریں",
+        "noResults": "ہم {{address}} کے لیے یہ پتہ نہیں پا سکے",
+        "searchPrompt": "تلاش کریں..."
+      },
+      "substrateType": {
+        "title": "ذیلی مواد"
+      },
+      "systemType": {
+        "title": "نظام"
+      },
+      "TeamMembers": {
+        "addMemberButton": "رکن شامل کریں",
+        "Header": "ٹیم کے رکن"
+      },
+      "warranty": {
+        "header": "ضمانت",
+        "validationError": {
+          "required": "یہ فیلڈ درکار ہے۔",
+          "warrantyPeriodRequired": "ضمانت کا دورانیہ منتخب کریں۔"
+        }
+      },
+      "warrantyPeriod": {
+        "title": "ضمانت کا دورانیہ"
+      },
+      "warrantyProvider": {
+        "title": "ضمانت کی تیسری پارٹی فراہم کنندہ"
+      }
+    },
+    "notifications": {
+      "clearAll": "سب صاف کریں",
+      "confirmationModal": {
+        "cancel": "منسوخ کریں",
+        "confirm": "تصدیق کریں",
+        "description": "اطلاعات فہرست سے ہٹا دی جائیں گی۔",
+        "title": "تمام اطلاعات کو صاف کریں؟"
+      },
+      "delete": "حذف کریں",
+      "empty": "کوئی اطلاعات نہیں",
+      "error": "خرابی",
+      "read": "پڑھا گیا",
+      "title": "اطلاعات",
+      "unread": "ناخواندہ"
+    },
+    "pdfViewer": {
+      "errorState": {
+        "message": "براہ کرم بعد میں دوبارہ کوشش کریں۔",
+        "title": "PDF فائل ڈاؤن لوڈ نہیں کی جا سکی"
+      }
+    },
+    "profile": {
+      "bottomSheet": {
+        "chooseFromLibrary": "لائبریری سے منتخب کریں",
+        "deletePhoto": "تصویر حذف کریں",
+        "takePhoto": "تصویر لیں",
+        "title": "پروفائل تصویر"
+      },
+      "button": "محفوظ کریں",
+      "deleteUserAvatarError": "خرابی",
+      "form": {
+        "company": "کمپنی کا نام (اختیاری)",
+        "email": "ای میل",
+        "errors": {
+          "phone": "غلط فون نمبر فارمیٹ۔"
+        },
+        "name": "نام اور کنیت",
+        "phone": "فون نمبر"
+      },
+      "formSubmitError": "خرابی",
+      "formSuccessfullySubmitted": "تبدیلیاں محفوظ کر دی گئی ہیں۔",
+      "header": "میری پروفائل",
+      "uploadingPictureFailed": "معذرت، تصویر شامل کرنے میں ناکامی ہوئی۔ دوبارہ کوشش کریں۔"
+    },
+    "projectDetails": {
+      "archiveProjectModal": {
+        "cancel": "منسوخ کریں",
+        "confirm": "تصدیق کریں",
+        "description": "کیا آپ واقعی اس پروجیکٹ کو آرکائیو کرنا چاہتے ہیں؟",
+        "errorMessage": "پروجیکٹ کو آرکائیو کرتے وقت خرابی ہوئی۔",
+        "header": "پروجیکٹ کو آرکائیو کریں؟",
+        "success": "کامیابی",
+        "successMessage": "پروجیکٹ کو کامیابی سے آرکائیو کیا گیا۔"
+      },
+      "components": {
+        "approvalBottomSheet": {
+          "ApplyForWarrantyDescription": "ضمانت کے لیے درخواست دینے کے لیے پروجیکٹ کی تکمیل کی تاریخ کی تصدیق کریں۔",
+          "ApplyForWarrantyHeader": "ضمانت کے لیے درخواست دیں"
+        }
+      },
+      "confirmWarrantySubmission": "تصدیق کریں اور درخواست دیں",
+      "documents": {
+        "listEmpty": "ابھی تک کوئی دستاویزات نہیں ہیں"
+      },
+      "optionsPopup": {
+        "archiveProject": "پروجیکٹ کو آرکائیو کریں",
+        "deleteProject": "پروجیکٹ کو ہٹائیں",
+        "editTeamMembers": "ٹیم کے اراکین کو ایڈٹ کریں"
+      },
+      "photoDocumentation": "تصویری دستاویزات",
+      "projectId": "پروجیکٹ آئی ڈی: {{id}}",
+      "projectPhotoContainerStage": "مرحلہ {{stage}}",
+      "projectStage": "مرحلہ {{stage}}",
+      "Warranty": {
+        "WarrantyDeclineReason": "رد کرنے کی وجہ"
+      },
+      "WarrantyApplicationDate": "ضمانت کے لیے درخواست دی گئی: {{date}}",
+      "warrantyApplicationRejected": {
+        "header": "ضمانت کی درخواست مسترد کر دی گئی",
+        "seeMore": "مزید دیکھیں"
+      },
+      "warrantyBadge": {
+        "description": "ضمانت کا دستاویز پروسیسنگ میں ہے۔ یہ عمل پانچ منٹ تک لے سکتا ہے۔"
+      },
+      "WarrantyReapplicationDate": "دوبارہ درخواست دی گئی: {{date}}",
+      "warrantyReapply": {
+        "description": "اس بات کو یقینی بنائیں کہ آپ نے EWI PRO کی تمام شرائط اور سفارشات پوری کر لی ہیں، اس سے پہلے کہ آپ دوبارہ درخواست دیں۔",
+        "header": "دوبارہ درخواست دیں",
+        "negativeButton": "منسوخ کریں",
+        "positiveButton": "تصدیق کریں"
+      }
+    },
+    "settings": {
+      "changePassword": {
+        "form": {
+          "currentPassword": {
+            "label": "موجودہ پاس ورڈ"
+          },
+          "formSuccessfullySubmitted": "کامیابی! پاس ورڈ تبدیل کر دیا گیا",
+          "newPassword": {
+            "hint": "کم از کم 8 حروف، ایک چھوٹا اور ایک بڑا حرف اور ایک نمبر ہونا ضروری ہے۔",
+            "label": "نیا پاس ورڈ",
+            "passwordIncorrectFormat": "پاس ورڈ ضروریات کے مطابق نہیں ہے"
+          },
+          "repeatPassword": {
+            "label": "نیا پاس ورڈ دوبارہ لکھیں",
+            "passwordDoesNotMatch": "پاس ورڈز مطابقت نہیں رکھتے"
+          },
+          "submitButton": "محفوظ کریں",
+          "updating": "اپ ڈیٹ ہو رہا ہے..."
+        },
+        "header": "پاس ورڈ تبدیل کریں",
+        "instruction": "اپنے اکاؤنٹ کو نئے پاس ورڈ سے محفوظ کریں۔"
+      },
+      "header": "ترتیبات",
+      "language": "زبان",
+      "setPin": {
+        "field": "PIN کوڈ",
+        "header": "PIN کوڈ مقرر کریں",
+        "repeat": "PIN کوڈ دوبارہ درج کریں",
+        "repeatError": "PIN کوڈز مطابقت نہیں رکھتے۔",
+        "success": {
+          "button": "ٹھیک ہے، سمجھ گیا!",
+          "description": "اب آپ PIN کوڈ کے ساتھ لاگ ان کر سکتے ہیں۔",
+          "header": "PIN مقرر کر دیا گیا!"
+        }
+      },
+      "useDefaultOwner": {
+        "header": "پروجیکٹ کے لیے ڈیفالٹ مالک",
+        "description": "تمام نئے بنائے گئے پروجیکٹس کے لیے منتخب شدہ مالک کو ڈیفالٹ کے طور پر استعمال کریں"
+      },
+      "deleteAccount": {
+        "button": "اکاؤنٹ حذف کریں",
+        "confirmationModal": {
+          "title": "اکاؤنٹ کے خاتمے کی تصدیق",
+          "description": "کیا آپ واقعی اپنا اکاؤنٹ حذف کرنا چاہتے ہیں؟ یہ عمل ناقابل واپسی ہے۔",
+          "cancel": "منسوخ کریں",
+          "delete": "اکاؤنٹ حذف کریں",
+          "loading": "حذف کیا جا رہا ہے..."
+        }
+      }
+    },
+    "staticPage": {
+      "TSCNegativeButton": "رد کریں",
+      "TSCPopupCloseButton": "بند کریں",
+      "TSCPopupMessage": "ایپ تک رسائی حاصل کرنے سے پہلے تمام صارفین کو شرائط و ضوابط کو پڑھنا اور قبول کرنا ضروری ہے۔ شرائط و ضوابط کو قبول نہ کرنے کا مطلب ہے کہ آپ ایپ استعمال نہیں کر سکیں گے۔",
+      "TSCPopupTitle": "معذرت، ایپ کی شرائط کو قبول کرنا لازمی ہے۔",
+      "TSCPositiveButton": "قبول کریں"
+    },
+    "subcontractors": {
+      "addSubcontractor": {
+        "button": "محفوظ کریں",
+        "form": {
+          "companyName": {
+            "label": "کمپنی کا نام (اختیاری)"
+          },
+          "email": {
+            "incorrectFormatError": "صحیح ای میل ایڈریس فراہم کریں۔",
+            "label": "ای میل",
+            "requiredError": "ای میل درکار ہے۔"
+          },
+          "inviteUser": {
+            "label": "صارف کو ایپ میں مدعو کریں"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "غلط فون نمبر فارمیٹ۔",
+            "label": "موبائل نمبر",
+            "requiredError": "موبائل نمبر درکار ہے۔"
+          },
+          "nameSurname": {
+            "label": "نام اور کنیت",
+            "requiredError": "نام اور کنیت درکار ہیں۔"
+          },
+          "role": {
+            "label": "کردار",
+            "requiredError": "کردار درکار ہے۔"
+          }
+        },
+        "header": "ذیلی ٹھیکیدار شامل کریں"
+      },
+      "cancelInvitationConfirmationModal": {
+        "cancel": "نہیں",
+        "confirm": "ہاں",
+        "description": "آپ کی دعوت منسوخ کر دی جائے گی۔",
+        "header": "دعوت کو منسوخ کریں؟"
+      },
+      "discardAddSubcontractorModal": {
+        "cancel": "منسوخ کریں",
+        "confirm": "ہاں، چھوڑ دیں",
+        "description": "اگر آپ ابھی ذیلی ٹھیکیدار شامل کرنا چھوڑ دیتے ہیں، تو آپ نے درج کردہ تمام ڈیٹا ضائع ہو جائے گا۔",
+        "header": "نیا ذیلی ٹھیکیدار شامل کرنا چھوڑ دیں؟"
+      },
+      "header": "ذیلی ٹھیکیدار",
+      "listEmpty": {
+        "description": "اپنے ذیلی ٹھیکیداروں کو شامل کریں اور انہیں اپنے پروجیکٹس میں تیزی سے ٹیم کے رکن کے طور پر مدعو کریں!",
+        "title": "ابھی تک کوئی ذیلی ٹھیکیدار نہیں"
+      },
+      "noSearchResults": "کوئی نتائج نہیں ملے",
+      "removeConfirmationModal": {
+        "cancel": "منسوخ کریں",
+        "confirm": "تصدیق کریں",
+        "description": "ذیلی ٹھیکیدار کو ہٹانے سے اسے آپ کے تمام پروجیکٹس میں ٹیم کے رکن کے طور پر رسائی ختم ہو جائے گی۔",
+        "header": "ذیلی ٹھیکیدار کو ہٹائیں؟"
+      },
+      "removeSubcontractorFromProjectConfirmationModal": {
+        "cancel": "منسوخ کریں",
+        "confirm": "تصدیق کریں",
+        "description": "کیا آپ واقعی اس ذیلی ٹھیکیدار کو اس پروجیکٹ سے ہٹانا چاہتے ہیں؟",
+        "header": "ذیلی ٹھیکیدار کو ہٹائیں؟"
+      },
+      "searchCancelButton": "منسوخ کریں",
+      "searchPrompt": "تلاش کریں",
+      "sendEmailInviteConfirmationModal": {
+        "cancel": "نہیں، شکریہ",
+        "confirm": "ہاں، دعوت بھیجیں",
+        "description": "جب تک ذیلی ٹھیکیدار کا اکاؤنٹ نہیں ہے، وہ ان پروجیکٹس کو نہیں دیکھ سکے گا جن تک آپ انہیں ٹیم کے رکن کے طور پر رسائی دیں گے۔",
+        "header": "ذیلی ٹھیکیدار ابھی تک ایپ میں رجسٹرڈ نہیں ہے۔ کیا آپ ابھی ای میل دعوت بھیجنا چاہتے ہیں؟"
+      },
+      "statuses": {
+        "buttons": {
+          "cancelInvitation": "دعوت کو منسوخ کریں",
+          "resend": "دوبارہ بھیجیں",
+          "sendInvitation": "دعوت بھیجیں"
+        },
+        "invited": "مدعو",
+        "notRegistered": "رجسٹرڈ نہیں ہے",
+        "notRegisteredDescription": "یہ صارف ابھی تک ایپ میں رجسٹرڈ نہیں ہے۔ دعوت ای میل بھیج کر اسے رجسٹر کرنے کے لیے کہیں۔",
+        "registeredDescription": "ذیلی ٹھیکیدار پہلے ہی رجسٹرڈ ہے۔"
+      },
+      "subViews": {
+        "details": {
+          "button": "محفوظ کریں",
+          "errors": {
+            "phone": "غلط موبائل نمبر فارمیٹ۔"
+          },
+          "fields": {
+            "company": "کمپنی کا نام (اختیاری)",
+            "email": "ای میل",
+            "name": "نام اور کنیت",
+            "phone": "موبائل نمبر",
+            "role": "ڈیفالٹ کردار"
+          },
+          "header": "تفصیلات"
+        },
+        "permissions": {
+          "header": "اجازتیں"
+        },
+        "projects": {
+          "header": "پروجیکٹس",
+          "listEmpty": {
+            "title": "ابھی تک آپ کے کسی بھی پروجیکٹ کا رکن نہیں"
+          },
+          "listHeader": "آپ کے پروجیکٹس میں ٹیم کے رکن:"
+        }
+      },
+      "toasts": {
+        "changesSaved": "تبدیلیاں محفوظ کر دی گئی ہیں!",
+        "errorWhileCancellingInvitation": "دعوت منسوخ کرتے وقت خرابی ہوئی۔",
+        "errorWhileCreating": "ذیلی ٹھیکیدار بناتے وقت خرابی ہوئی۔",
+        "errorWhileRemovingSubcontractor": "ذیلی ٹھیکیدار کو ہٹاتے وقت خرابی ہوئی۔",
+        "errorWhileSendingInvitation": "دعوت بھیجتے وقت خرابی ہوئی۔",
+        "errorWhileUpdating": "ذیلی ٹھیکیدار کو اپ ڈیٹ کرتے وقت خرابی ہوئی۔",
+        "errorWhileUpdatingPermission": "اجازت اپ ڈیٹ کرتے وقت خرابی ہوئی۔",
+        "invitationCancelled": "دعوت منسوخ کر دی گئی۔",
+        "invitationSent": "دعوت بھیج دی گئی۔",
+        "permissionUpdated": "اجازت اپ ڈیٹ کر دی گئی۔",
+        "subcontractorAdded": "ذیلی ٹھیکیدار شامل کر دیا گیا۔",
+        "subcontractorAddedAndInvited": "ذیلی ٹھیکیدار شامل کیا گیا اور مدعو کیا گیا۔",
+        "subcontractorRemoved": "ذیلی ٹھیکیدار کو ہٹا دیا گیا۔"
+      }
+    }
+  }
+}

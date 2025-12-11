@@ -1,0 +1,639 @@
+{
+  "components": {
+    "dateTimePicker": {
+      "cancelButtonText": "Anuluj",
+      "confirmButtonText": "Zatwierdź"
+    },
+    "globalError": {
+      "header": "Ups, wystąpił błąd"
+    },
+    "insufficientOwnershipPermissionModal": {
+      "button": "Rozumiem",
+      "header": "Nie posiadasz juz uprawnień, żeby tworzyć projekty w imieniu tego użytkownika",
+      "message": "Jesteś domyślnym właścicielem nowych projektów. Jeżeli potrzebujesz stworzyć projekt w czyimś imieniu odwiedź seksję ustawień lub wybierz domyślnego właściciela kiedy tworzysz nowy projekt."
+    },
+    "insufficientPermission": {
+      "text1": "Niewystarczające uprawnienia",
+      "text2": "Nie masz wystarczających uprawnień, żeby wykonać tą akcję."
+    },
+    "me": "(ja)",
+    "selectPicker": {
+      "selectPlaceholder": "Wybierz"
+    },
+    "takePhotoButton": "zrób zdjęcie"
+  },
+  "dashboard": {
+    "hello": "Witaj {{name}}!",
+    "ongoingProjects": "Trwające projekty",
+    "projectList": {
+      "listEmpty": "Brak Projektów",
+      "Member": "Członek",
+      "Owner": "Właściciel",
+      "projectStage": "Etap {{stage}}",
+      "seeAll": "Zobacz wszystko"
+    }
+  },
+  "drawer": {
+    "dashboard": "Panel",
+    "logout": "Wyloguj",
+    "myProfile": "Mój Profil",
+    "myProjects": "Moje Projekty",
+    "settings": "Ustawienia",
+    "subcontractors": "Podwykonawcy",
+    "whatsNew": "What's New"
+  },
+  "errors": {
+    "validationErrors": {
+      "required": "Pole jest wymagane"
+    }
+  },
+  "newProjectTabs": {
+    "Chat": "Chat",
+    "Documents": "Dokumenty",
+    "Home": "Start"
+  },
+  "projectDetails": {
+    "ApplyForWarrantyButton": "ZŁÓŻ WNIOSEK O GWARANCJĘ",
+    "PhotoDocumentation": "Dokumentacja fotograficzna",
+    "ProjectPhotoContainerStage": "Etap {{stage}}",
+    "projectStage": "ETAP {{stage}}",
+    "ReApplyForWarrantyButton": "PONOWNA APLIKACJA O GWARANCJĘ",
+    "StageButtonConfirmationButtonPositive": "POTWIERDŹ",
+    "StageLessPhotoPrompt": "Dodaj przynajmniej 5 zdjęć dokumentujących postęp prac.",
+    "StagePhotoPrompt": "Dodaj min. 1 zdjęcie do etapu {{stage}}",
+    "StageSubmitConfirmationDescription": "Czy na pewno chcesz wnioskować o zatwierdzenie etapu {{stage}} przez zespół EWI PRO?",
+    "StageSubmitConfirmationTitle": "Wnioskowanie o zatwierdzenie Etapu",
+    "StageSubmitWaiting": "Oczekiwanie na zatwierdzenie etapu {{stage}}",
+    "SubmitStageButton": "APLIKUJ ETAP {{stage}}"
+  },
+  "views": {
+    "chat": {
+      "emptyStateLabel": "Brak wiadomości",
+      "inputPlaceholder": "Napisz wiadomość...",
+      "now": "Teraz",
+      "sendingErrorToastMessage": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+    },
+    "dashboard": {
+      "hello": "Witaj {{name}}!",
+      "ongoingProjects": "Trwające projekty",
+      "projectList": {
+        "listEmpty": "Brak projektów",
+        "projectStage": "Etap {{stage}}",
+        "seeAll": "Zobacz wszystko"
+      },
+      "statements": {
+        "assumedCreditLimit": "Przyznany limit kredytowy",
+        "bottomSheet": {
+          "button": "POBIERZ",
+          "description": "Wybierz datę początkową wyciągu.",
+          "title": "Pobierz wygiąg"
+        },
+        "download": "Pobierz wyciąg",
+        "outstandingBalance": "Saldo konta",
+        "overdueAmount": "Przeterminowana kwota",
+        "remainingCreditLimit": "Dostępny limit kredytowy"
+      }
+    },
+    "deviceAuth": {
+      "button": "Zaloguj się hasłem",
+      "header": "Witaj ponownie!"
+    },
+    "EditProject": {
+      "EditTeamMembers": {
+        "addMemberButton": "Dodaj członka zespołu",
+        "header": "Członkowie Zespołu",
+        "noMembers": "Brak członków w projekcie",
+        "selectRole": "Wybierz rolę",
+        "subcontractorRemoved": {
+          "errorMessage": "Wystąpił błąd w trakcie usuwania podwykonawcy",
+          "success": "Udało się",
+          "successMessage": "Podwykonawca został usunięty z projektu"
+        }
+      }
+    },
+    "forgotPassword": {
+      "button": {
+        "send": "POTWIERDŹ",
+        "login": "Wróć do logowania",
+        "loading": "Potwierdzanie..."
+      },
+      "confirmation": {
+        "button": "OTWÓRZ APLIKACJE POCZTY",
+        "header": "Sprawdź e-mail",
+        "instruction": "Jeżeli Twój e-mail znajduje się w naszej bazie danych wyślemy Ci na niego wiadomość z linkiem resetującym hasło."
+      },
+      "form": {
+        "header": "Przypomnij hasło",
+        "instruction": "Wpisz adres e-mail użyty do rejestracji w EWI Pro. Na ten adres zostanie wysłana wiadomość z linkiem umożliwiającym zresetowanie Twojego hasła."
+      }
+    },
+    "gallery": {
+      "confirmationModal": {
+        "cancel": "Anuluj",
+        "confirm": "Tak, Usuń",
+        "description": "Czy na pewno chcesz usunąć to zdjęcie?",
+        "header": "Usunąć zdjęcie?"
+      },
+      "projectStage": "Etap {{stage}}"
+    },
+    "galleryPicker": {
+      "button": "Dodaj zaznaczone ({{amount}})",
+      "buttonSingle": "Dodaj zaznaczone",
+      "header": "Dodaj zdjęcie(a)",
+      "headerSingle": "Dodaj zdjęcie",
+      "hooks": {
+        "camera": {
+          "cancel": "Anuluj",
+          "message": "Sprawdź ustawienia telefonu",
+          "settings": "Ustawienia",
+          "title": "Brak uprawnień do korzystania z aparatu telefonu"
+        },
+        "mediaLibrary": {
+          "cancel": "Anuluj",
+          "message": "Sprawdź w ustawieniach telefonu",
+          "settings": "Ustawienia",
+          "title": "Brak uprawnień do przeglądania galerii zdjęć."
+        }
+      },
+      "sendingErrorToast": "Przesyłanie zdjęć się nie powiodło. Spróbuj ponownie.",
+      "warningToast": "Możesz dodać maksymalnie 5 zdjęć."
+    },
+    "register":{
+      "header":{
+        "register": "Poproś o rejestrację",
+        "description": "Zostaw nam swoje dane, a skontaktujemy się z Tobą, gdy Twoje konto zostanie zarejestrowane."
+      },
+      "button":{
+        "login": "WRÓĆ DO LOGOWANIA"
+      }
+    },
+    "login": {
+      "button": {
+        "forgot-password": "Odzyskaj hasło",
+        "login": "LOGOWANIE",
+        "loading": "Logowanie..."
+      },
+      "form": {
+        "email": "E-mail",
+        "error": {
+          "emailIncorrectFormat": "Nieprawidłowy format adresu e-mail",
+          "emailNotProvided": "Wpisz adres e-mail",
+          "passwordNotProvided": "Wpisz hasło"
+        },
+        "header": "Witaj ponownie!",
+        "password": "Hasło"
+      }
+    },
+    "MyProjects": {
+      "filterPopup": {
+        "filtering": {
+          "filteringOptions": {
+            "All": "Wszystkie",
+            "archived": "Zarchiwizowane",
+            "Member": "Członek",
+            "ongoing": "Trwające",
+            "Owner": "Właściciel"
+          },
+          "filteringSectionTitle": "FILTR",
+          "filteringSelectedToast": "Filtrowanie przez {{filtering}}"
+        },
+        "resetButton": "Resetuj",
+        "sorting": {
+          "sortingOptions": {
+            "newest": "Najnowsze na górze",
+            "oldest": "Najstarsze na górze",
+            "recentlyUpdated": "Ostatnio aktualizowane najpierw"
+          },
+          "sortingSectionTitle": "SORTUJ WEDŁUG",
+          "sortingSelectedToast": "Sortowanie według {{sorting}}"
+        }
+      },
+      "header": "Moje Projekty",
+      "listEmpty": "Brak wyników wyszukiwania",
+      "searchCancelButton": "Anuluj"
+    },
+    "newProject": {
+      "AddNewTeamMember": {
+        "form": {
+          "companyName": {
+            "label": "Nazwa firmy (opcjonalnie)"
+          },
+          "email": {
+            "incorrectFormatError": "podaj prawidłowy adres e-mail",
+            "label": "E-mail",
+            "requiredError": "e-mail jest wymagany"
+          },
+          "inviteUser": {
+            "label": "Wyślij zaproszenie"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "podaj prawidłowy numer komórkowy",
+            "label": "Numer komórkowy",
+            "requiredError": "numer komórkowy jest wymagany"
+          },
+          "nameSurname": {
+            "label": "Imię i Nazwisko",
+            "requiredError": "imię i nazwisko są wymagane"
+          },
+          "role": {
+            "label": "Rola",
+            "requiredError": "rola jest wymagana"
+          }
+        },
+        "header": "Dodaj członka zespołu",
+        "submitButton": "ZAPISZ I DODAJ",
+        "submitButtonDescription": "Członek zostanie dodany do listy “Moi Podwykonawcy”."
+      },
+      "AddressForm": {
+        "Form": {
+          "addressLine1": {
+            "label": "Addres 1",
+            "validationError": {
+              "required": "Address Line is required"
+            }
+          },
+          "addressLine2": {
+            "label": "Addres 2 (Opcjonalnie)"
+          },
+          "city": {
+            "label": "Miasto",
+            "validationError": {
+              "required": "Miasto jest wymagane"
+            }
+          },
+          "postCode": {
+            "label": "Kod pocztowy"
+          }
+        },
+        "Header": "Addres"
+      },
+      "buildType": {
+        "title": "Typ budowli"
+      },
+      "ChangeOwnerBottomSheet": {
+        "header": "Zmień właściciela"
+      },
+      "changeOwnershipModal": {
+        "header": "Zmienić właściciela projektu?",
+        "message": "Zmiana własności tworzonego projektu z dodanymi podwykonawcami spowoduje wyczyszczenie listy podwykonawców, a następnie zmianę własności.",
+        "negativeButton": "ANULUJ",
+        "positiveButton": "OK"
+      },
+      "discardProjectModal": {
+        "header": "Przerwać dodawanie nowego projektu?",
+        "message": "Opuszczenie formularza spowoduje utratę wszystkich niezapisanych informacji.",
+        "negativeButton": "ANULUJ",
+        "positiveButton": "OK, WYJDŹ"
+      },
+      "GeneralAddress": {
+        "Form": {
+          "OccupierName": {
+            "label": "Imię i nazwisko właściciela nieruchomości",
+            "validationError": {
+              "required": "Wymagane jest podanie imienia i nazwisko właściciela nieruchomości"
+            }
+          },
+          "StartDate": {
+            "label": "Data rozpoczęcia"
+          }
+        },
+        "Header": "Podstawowe informacje"
+      },
+      "Header": "Dodaj projekt",
+      "NewMemberBottomSheet": {
+        "addMember": "Dodaj członka",
+        "addMemberButton": "Dodaj członka",
+        "AddSelected": "DODAJ ZAZNACZONE",
+        "mySubcontractors": "Moi podwykonawcy",
+        "noSavedSubcontractors": "Brak podwykonawców na tą chwilę",
+        "noTeamMembers": "Brak członków zespołu",
+        "searchSubcontractors": "Przeszukaj podwykonawców",
+        "SelectedCount": "({{count}})",
+        "teamMembersHeader": "Członkowie zespołu"
+      },
+      "OnSuccessfullyCreatedProject": {
+        "message": "Projekt stworzony"
+      },
+      "ProjectOwner": {
+        "changeOwner": "Zmień właściciela",
+        "Header": "Właściciel projektu",
+        "useThisOwner": "Użyj tego właściciela domyślnie tworząc nowy projekt."
+      },
+      "projectType": {
+        "header": "Typ projektu",
+        "validationError": {
+          "required": "To pole jest wymagane."
+        }
+      },
+      "save": "ZAPISZ",
+      "SelectAddress": {
+        "Form": {
+          "alternative": "Wprowadź adres ręcznie",
+          "postCode": {
+            "badFormat": "Nieprawidłowy format kodu pocztowego UK/ROI ",
+            "label": "Kod pocztowy",
+            "labelDescription": "Wprowadź prawidłowy kod pocztowy dla UK/ROI, żeby rozpocząć wyszukiwanie"
+          }
+        },
+        "Header": "Adres",
+        "header2": "Wybierz adres",
+        "noResults": "Nie udało się znaleźć adresu dla {{address}}",
+        "searchPrompt": "Wyszukaj..."
+      },
+      "substrateType": {
+        "title": "Podłoże"
+      },
+      "systemType": {
+        "title": "System"
+      },
+      "TeamMembers": {
+        "addMemberButton": "Dodaj członka zespołu",
+        "Header": "Członkowie zespołu"
+      },
+      "warranty": {
+        "header": "Gwarancja",
+        "validationError": {
+          "required": "To pole jest wymagane.",
+          "warrantyPeriodRequired": "Wybierz okres trwania gwarancji."
+        }
+      },
+      "warrantyPeriod": {
+        "title": "Okres gwarancji"
+      },
+      "warrantyProvider": {
+        "title": "Zewnętrzny dostawca gwarancji"
+      }
+    },
+    "notifications": {
+      "clearAll": "Wyczyść wszystko",
+      "confirmationModal": {
+        "cancel": "Anuluj",
+        "confirm": "Potwierdź",
+        "description": "Powiadomienia zostaną usunięte z tej listy.",
+        "title": "Wyczyścić wszystkie powiadomienia?"
+      },
+      "delete": "Usuń",
+      "empty": "Brak powiadomień",
+      "error": "Błąd",
+      "read": "Przeczytane",
+      "title": "Powiadomienia",
+      "unread": "Nieodczytane"
+    },
+    "pdfViewer": {
+      "errorState": {
+        "message": "Spróbuj ponownie później.",
+        "title": "Nie udało się pobrać pliku PDF"
+      }
+    },
+    "profile": {
+      "bottomSheet": {
+        "chooseFromLibrary": "Wybierz z biblioteki",
+        "deletePhoto": "Usuń zdjęcie",
+        "takePhoto": "Zrób zdjęcie",
+        "title": "Zdjęcie profilowe"
+      },
+      "button": "ZAPISZ",
+      "deleteUserAvatarError": "Błąd",
+      "form": {
+        "company": "Nazwa firmy (opcjonalnie)",
+        "email": "E-mail",
+        "errors": {
+          "phone": "Nieprawidłowy format numeru telefonu."
+        },
+        "name": "Imię i Nazwisko",
+        "phone": "Numer komórkowy"
+      },
+      "formSubmitError": "Błąd",
+      "formSuccessfullySubmitted": "Zmiany zostały zapisane.",
+      "header": "Mój Profil",
+      "uploadingPictureFailed": "Przykro nam, przesyłanie zdjęcia nie powiodło się. Spróbuj ponownie."
+    },
+    "projectDetails": {
+      "archiveProjectModal": {
+        "cancel": "ANULUJ",
+        "confirm": "POTWIERDŹ",
+        "description": "Czy na pewno chcesz zarchiwizować projekt?",
+        "errorMessage": "Wystąpił błąd przy archiwizowaniu projektu.",
+        "header": "Czy zarchiwizować projekt?",
+        "success": "Sukces",
+        "successMessage": "Projekt został zarchiwizowany"
+      },
+      "components": {
+        "approvalBottomSheet": {
+          "ApplyForWarrantyDescription": "W celu złożenia wniosku o gwarancję, potwierdź datę zakończenia projektu.",
+          "ApplyForWarrantyHeader": "Złóż wniosek o gwarancję"
+        }
+      },
+      "confirmWarrantySubmission": "POTWIERDZ I APLIKUJ",
+      "documents": {
+        "listEmpty": "Brak dokumentów do wyświetlenia"
+      },
+      "optionsPopup": {
+        "archiveProject": "Zarchiwizuj projekt",
+        "deleteProject": "Usuń projekt",
+        "editTeamMembers": "Edytuj członków projektu"
+      },
+      "photoDocumentation": "Dokumentacja fotograficzna",
+      "projectId": "Projekt ID: {{id}}",
+      "projectPhotoContainerStage": "Etap {{stage}}",
+      "projectStage": "ETAP {{stage}}",
+      "Warranty": {
+        "WarrantyDeclineReason": "Powód odrzucenia"
+      },
+      "WarrantyApplicationDate": "Wnioskowano o gwarancję: {{date}}",
+      "warrantyApplicationRejected": {
+        "header": "Wniosek o gwarancję odrzucony",
+        "seeMore": "Zobacz więcej"
+      },
+      "warrantyBadge": {
+        "description": "dokument gwarancyjny jest w trakcie tworzenia. Proces ten może potrwać około 5 minut."
+      },
+      "WarrantyReapplicationDate": "Ponownie wnioskowano o gwarancję: {{date}}",
+      "warrantyReapply": {
+        "description": "Upewnij się, że wszystkie wymagania i uwagi dotyczące projektu zostały spełnione przed ponownym wnioskowaniem o gwarancję. ",
+        "header": "Złóż ponowny wniosek o gwarancję",
+        "negativeButton": "ANULUJ",
+        "positiveButton": "ZATWIERDŹ"
+      }
+    },
+    "settings": {
+      "changePassword": {
+        "form": {
+          "currentPassword": {
+            "label": "Obecne hasło"
+          },
+          "formSuccessfullySubmitted": "Udało się! Hasło zostało zmienione",
+          "newPassword": {
+            "hint": "Hasło powinno zawierać minimalnie 8 znaków w tym wielkie litery i cyfry.",
+            "label": "Nowe hasło",
+            "passwordIncorrectFormat": "Hasło nie spełnia minimalnych wymagań"
+          },
+          "repeatPassword": {
+            "label": "Powtórz nowe hasło",
+            "passwordDoesNotMatch": "Hasła nie pasują do siebie"
+          },
+          "submitButton": "ZAPISZ",
+          "updating": "AKTUALIZOWANIE..."
+        },
+        "header": "Zmiana hasła",
+        "instruction": "Zabezpiecz swoje konto nowym hasłem."
+      },
+      "header": "Ustawienia",
+      "language": "Język",
+      "setPin": {
+        "field": "Kod PIN",
+        "header": "Ustaw kod PIN",
+        "repeat": "Powtórz kod PIN",
+        "repeatError": "Wpisane kody PIN nie pasują do siebie",
+        "success": {
+          "button": "OK, ROZUMIEM",
+          "description": "Od teraz możesz się logować za pomocą kodu PIN",
+          "header": "Ustaw PIN"
+        }
+      },
+      "useDefaultOwner": {
+        "header": "Domyślny właściciel projektu",
+        "description": "Użyj wybranego właściciela jako domyślnego dla wszystkich nowotworzonych projektów"
+      },
+      "deleteAccount": {
+        "button": "USUŃ KONTO",
+        "confirmationModal": {
+          "title": "Potwierdzenie usunięcia konta",
+          "description": "Czy na pewno chcesz usunąć swoje konto? Ta operacja jest nieodwracalna.",
+          "cancel": "ANULUJ",
+          "delete": "USUŃ KONTO",
+          "loading": "USUWANIE..."
+        }
+      }
+    },
+    "staticPage": {
+      "TSCNegativeButton": "ODRZUĆ",
+      "TSCPopupCloseButton": "ZAMKNIJ",
+      "TSCPopupMessage": "Przed uzyskaniem dostępu do aplikacji, przeczytaj i zaakceptuj regulamin. W przypadku braku akceptacji postanowień regulaminu, nie będzie możliwe dalsze korzystanie z programu.",
+      "TSCPopupTitle": "Wymagana jest akceptacja regulaminu aplikacji",
+      "TSCPositiveButton": "ZAAKCEPTUJ"
+    },
+    "subcontractors": {
+      "addSubcontractor": {
+        "button": "ZAPISZ",
+        "form": {
+          "companyName": {
+            "label": "Nazwa firmy (opcjonalnie)"
+          },
+          "email": {
+            "incorrectFormatError": "wprowadź prawidłowy adres e-mail",
+            "label": "E-mail",
+            "requiredError": "wymagany jest adres e-mail  "
+          },
+          "inviteUser": {
+            "label": "Zaproś użytkownika do aplikacji"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "wprowadź prawidłowy numer komórkowy",
+            "label": "Numer komórkowy",
+            "requiredError": "numer komórkowy jest wymagany"
+          },
+          "nameSurname": {
+            "label": "Imię i nazwisko",
+            "requiredError": "Wymagane jest imię i nazwisko"
+          },
+          "role": {
+            "label": "Domyślna rola",
+            "requiredError": "Wymagana jest domyślna rola"
+          }
+        },
+        "header": "Dodaj Podwykonawcę"
+      },
+      "cancelInvitationConfirmationModal": {
+        "cancel": "ANULUJ",
+        "confirm": "OK",
+        "description": "Twoje zaproszenie zostanie anulowane.",
+        "header": "Anulować zaproszenie?"
+      },
+      "discardAddSubcontractorModal": {
+        "cancel": "ANULUJ",
+        "confirm": "TAK, WYJDŹ",
+        "description": "Jeżeli anulujesz, dane nie zostaną zapisane.",
+        "header": "Anuluj dodawanie Podwykonawcy?"
+      },
+      "header": "Podwykonawcy",
+      "listEmpty": {
+        "description": "Dodaj swoich Podwykonawców oraz zaproś ich do aplikacji. Podwykonawców możesz łatwo dodawać do swoich projektów jako Członków Zespołu!",
+        "title": "Brak podwykonawców"
+      },
+      "noSearchResults": "Brak wyników",
+      "removeConfirmationModal": {
+        "cancel": "ANULUJ",
+        "confirm": "POTWIERDŹ",
+        "description": "Usunięcie podwykonawcy <0>spowoduje usunięcie jego dostępu jako Członka Zespołu</0> ze wszystkich Twoich projektów.",
+        "header": "Usunąć podwykonawce?"
+      },
+      "removeSubcontractorFromProjectConfirmationModal": {
+        "cancel": "ANULUJ",
+        "confirm": "POTWIERDŹ",
+        "description": "Czy jesteś pewien, że chcesz usunąć podwykonawcę z tego projektu?",
+        "header": "Usunąć podwykonawcę?"
+      },
+      "searchCancelButton": "Anuluj",
+      "searchPrompt": "Wyszukaj",
+      "sendEmailInviteConfirmationModal": {
+        "cancel": "NIE, DZIĘKUJĘ",
+        "confirm": "TAK, ZAPROŚ",
+        "description": "Tak długo jak podwykonawca nie posiada swojego konta w aplikacji, nie będzie mógł zalogować się w aplikacji i zobaczyć szczegółów Twoich projektów, do których jest przypisany.",
+        "header": "Podwykonawca nie został zarejestrowany. Czy chcesz wysłać mu zaproszenie?"
+      },
+      "statuses": {
+        "buttons": {
+          "cancelInvitation": "Anuluj zaproszenie",
+          "resend": "Wyślij ponownie",
+          "sendInvitation": "Wyślij zaproszenie"
+        },
+        "invited": "Zaproszony",
+        "notRegistered": "Niezarejestrowany",
+        "notRegisteredDescription": "Ten użytkownik nie jest zarejestrowany w aplikacji. Zaproś poprzez wysłanie mu zaproszenia.",
+        "registeredDescription": "Podwykonawca jest już zarejestrowany."
+      },
+      "subViews": {
+        "details": {
+          "button": "ZAPISZ",
+          "errors": {
+            "phone": "Nieprawidłowy format numeru telefonu."
+          },
+          "fields": {
+            "company": "Nazwa firmy (opcjonalnie)",
+            "email": "E-mail",
+            "name": "Imię i nazwisko",
+            "phone": "Numer komórkowy",
+            "role": "Rola domyślna"
+          },
+          "header": "Szczegóły"
+        },
+        "permissions": {
+          "header": "Uprawnienia"
+        },
+        "projects": {
+          "header": "Projekty",
+          "listEmpty": {
+            "title": "Nie jest członkiem żadnego Twojego projektu."
+          },
+          "listHeader": "Jest członkiem w następujących projektach:"
+        }
+      },
+      "toasts": {
+        "changesSaved": "Zmiany zapisane!",
+        "errorWhileCancellingInvitation": "Błąd podczas anulowania zaproszenia.",
+        "errorWhileCreating": "Błąd podczas zapisywania podwykonawcy.",
+        "errorWhileRemovingSubcontractor": "Błąd podczas usuwania podwykonawcy.",
+        "errorWhileSendingInvitation": "Wystąpił błąd przy wysyłaniu zaproszenia.",
+        "errorWhileUpdating": "Błąd podczas aktualizowania danych podwykonawcy.",
+        "errorWhileUpdatingPermission": "Błąd podczas aktualizacji uprawnień.",
+        "invitationCancelled": "Zaproszenie zostało anulowane.",
+        "invitationSent": "Zaproszenie wysłane.",
+        "permissionUpdated": "Uprawnienia zaktualizowane.",
+        "subcontractorAdded": "Podwykonawca został dodany.",
+        "subcontractorAddedAndInvited": "Podwykonawca został zapisany i zaproszony.",
+        "subcontractorRemoved": "Podwykonawca został usunięty."
+      }
+    }
+  }
+}

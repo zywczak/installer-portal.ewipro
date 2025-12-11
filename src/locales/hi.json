@@ -1,0 +1,640 @@
+{
+  "components": {
+    "dateTimePicker": {
+      "cancelButtonText": "रद्द करें",
+      "confirmButtonText": "पुष्टि करें"
+    },
+    "globalError": {
+      "header": "ओह, एक त्रुटि हुई है"
+    },
+    "insufficientOwnershipPermissionModal": {
+      "button": "मैं समझता हूँ",
+      "header": "आप अब चयनित मालिक के तहत प्रोजेक्ट बनाने के योग्य नहीं हैं",
+      "message": "आप नए प्रोजेक्ट्स के डिफ़ॉल्ट मालिक हैं। यदि आपको किसी और की ओर से प्रोजेक्ट बनाना है, तो कृपया सेटिंग्स पेज पर जाएँ या नया प्रोजेक्ट बनाते समय 'डिफ़ॉल्ट मालिक' विकल्प चुनें।"
+    },
+    "insufficientPermission": {
+      "text1": "अपर्याप्त अनुमतियाँ",
+      "text2": "आपके पास इस क्रिया को करने की अनुमति नहीं है"
+    },
+    "me": "(मैं)",
+    "selectPicker": {
+      "selectPlaceholder": "चुनें"
+    },
+    "takePhotoButton": "फोटो लें"
+  },
+  "dashboard": {
+    "hello": "नमस्ते {{name}}!",
+    "ongoingProjects": "चल रहे प्रोजेक्ट्स",
+    "projectList": {
+      "listEmpty": "कोई प्रोजेक्ट नहीं",
+      "Member": "सदस्य",
+      "Owner": "मालिक",
+      "projectStage": "चरण {{stage}}",
+      "seeAll": "सभी देखें"
+    }
+  },
+  "drawer": {
+    "dashboard": "डैशबोर्ड",
+    "logout": "लॉग आउट",
+    "myProfile": "मेरी प्रोफाइल",
+    "myProjects": "मेरे प्रोजेक्ट्स",
+    "settings": "सेटिंग्स",
+    "subcontractors": "सब-कॉन्ट्रैक्टर्स",
+    "whatsNew": "क्या नया है"
+  },
+  "errors": {
+    "validationErrors": {
+      "required": "फ़ील्ड आवश्यक है"
+    }
+  },
+  "newProjectTabs": {
+    "Chat": "चैट",
+    "Documents": "दस्तावेज़",
+    "Home": "होम"
+  },
+  "projectDetails": {
+    "ApplyForWarrantyButton": "गारंटी के लिए आवेदन करें",
+    "PhotoDocumentation": "फोटो दस्तावेज़",
+    "ProjectPhotoContainerStage": "चरण {{stage}}",
+    "projectStage": "चरण {{stage}}",
+    "ReApplyForWarrantyButton": "पुनः गारंटी के लिए आवेदन करें",
+    "StageButtonConfirmationButtonPositive": "पुष्टि करें",
+    "StageLessPhotoPrompt": "कार्य प्रगति को दर्शाने के लिए कम से कम 5 फोटो जोड़ें।",
+    "StagePhotoPrompt": "चरण {{stage}} के लिए कम से कम एक फोटो जोड़ें",
+    "StageSubmitConfirmationDescription": "क्या आप वास्तव में चरण {{stage}} को EWI PRO टीम द्वारा सत्यापन के लिए प्रस्तुत करना चाहते हैं?",
+    "StageSubmitConfirmationTitle": "चरण जमा करना",
+    "StageSubmitWaiting": "चरण {{stage}} की स्वीकृति का इंतजार",
+    "SubmitStageButton": "चरण {{stage}} जमा करें"
+  },
+  "views": {
+    "chat": {
+      "emptyStateLabel": "अभी कोई संदेश नहीं",
+      "inputPlaceholder": "संदेश टाइप करें...",
+      "now": "अभी",
+      "sendingErrorToastMessage": "संदेश भेजने में विफल। फिर से प्रयास करें।"
+    },
+    "dashboard": {
+      "hello": "नमस्ते {{name}}!",
+      "ongoingProjects": "चल रहे प्रोजेक्ट्स",
+      "projectList": {
+        "listEmpty": "कोई प्रोजेक्ट नहीं",
+        "projectStage": "चरण {{stage}}",
+        "seeAll": "सभी देखें"
+      },
+      "statements": {
+        "assumedCreditLimit": "अनुमानित क्रेडिट सीमा",
+        "bottomSheet": {
+          "button": "डाउनलोड करें",
+          "description": "विवरण की प्रारंभ तिथि चुनें।",
+          "title": "विवरण डाउनलोड करें"
+        },
+        "download": "विवरण डाउनलोड करें",
+        "outstandingBalance": "बकाया राशि",
+        "overdueAmount": "अतिदेय राशि",
+        "remainingCreditLimit": "शेष क्रेडिट सीमा"
+      }
+    },
+    "deviceAuth": {
+      "button": "पासवर्ड से लॉगिन करें",
+      "header": "वापसी पर स्वागत है!"
+    },
+    "EditProject": {
+      "EditTeamMembers": {
+        "addMemberButton": "सदस्य जोड़ें",
+        "header": "टीम के सदस्य",
+        "noMembers": "प्रोजेक्ट में अभी तक कोई सदस्य नहीं है",
+        "selectRole": "भूमिका चुनें",
+        "subcontractorRemoved": {
+          "errorMessage": "सब-कॉन्ट्रैक्टर को हटाते समय त्रुटि",
+          "success": "सफलता",
+          "successMessage": "सब-कॉन्ट्रैक्टर को प्रोजेक्ट से हटा दिया गया है"
+        }
+      }
+    },
+    "forgotPassword": {
+      "button": {
+        "send": "पुष्टि करें",
+        "login": "लॉगिन पर वापस जाएं",
+        "loading": "पुष्टि की जा रही है..."
+      },
+      "confirmation": {
+        "button": "मेल ऐप खोलें",
+        "header": "ईमेल चेक करें",
+        "instruction": "यदि आपका ईमेल पंजीकृत है, तो हमने आपको पासवर्ड रीसेट करने का लिंक भेज दिया है।"
+      },
+      "form": {
+        "header": "पासवर्ड भूल गए",
+        "instruction": "EWI Pro के साथ पंजीकृत ईमेल पता दर्ज करें। आपको पासवर्ड रीसेट करने के लिए एक लिंक प्राप्त होगा।"
+      }
+    },
+    "gallery": {
+      "confirmationModal": {
+        "cancel": "रद्द करें",
+        "confirm": "हाँ, हटाएँ",
+        "description": "क्या आप वास्तव में फोटो हटाना चाहते हैं?",
+        "header": "फोटो हटाएँ?"
+      },
+      "projectStage": "चरण {{stage}}"
+    },
+    "galleryPicker": {
+      "button": "चयनित जोड़ें ({{amount}})",
+      "buttonSingle": "चयनित जोड़ें",
+      "header": "फोटो जोड़ें",
+      "headerSingle": "फोटो जोड़ें",
+      "hooks": {
+        "camera": {
+          "cancel": "रद्द करें",
+          "message": "कृपया ऐप सेटिंग्स पर जाएं",
+          "settings": "सेटिंग्स",
+          "title": "कैमरा अनुमति नहीं है"
+        },
+        "mediaLibrary": {
+          "cancel": "रद्द करें",
+          "message": "कृपया ऐप सेटिंग्स पर जाएं",
+          "settings": "सेटिंग्स",
+          "title": "मीडिया लाइब्रेरी की अनुमति नहीं है"
+        }
+      },
+      "sendingErrorToast": "माफ़ करें, फोटो जोड़ने में विफल। फिर से प्रयास करें।",
+      "warningToast": "आप अधिकतम 5 फोटो जोड़ सकते हैं।"
+    },
+    "register":{
+      "header":{
+        "register": "पंजीकरण करने के लिए कहें",
+        "description": "हमें अपना डेटा दें और जब आपका खाता पंजीकृत हो जाएगा तो हम आपसे संपर्क करेंगे।"
+      },
+      "button":{
+        "login": "लॉगिन पर वापस जाएं"
+      }
+    },
+    "login": {
+      "button": {
+        "forgot-password": "पासवर्ड भूल गए?",
+        "login": "लॉगिन करें",
+        "loading": "लॉग इन किया जा रहा है..."
+      },
+      "form": {
+        "email": "ईमेल",
+        "error": {
+          "emailIncorrectFormat": "गलत ईमेल प्रारूप",
+          "emailNotProvided": "ईमेल दर्ज करें",
+          "passwordNotProvided": "पासवर्ड दर्ज करें"
+        },
+        "header": "वापसी पर स्वागत है!",
+        "password": "पासवर्ड"
+      }
+    },
+    "MyProjects": {
+      "filterPopup": {
+        "filtering": {
+          "filteringOptions": {
+            "All": "सभी",
+            "archived": "संग्रहित",
+            "Member": "सदस्य",
+            "ongoing": "चल रहे",
+            "Owner": "मालिक"
+          },
+          "filteringSectionTitle": "फिल्टर",
+          "filteringSelectedToast": "{{filtering}} द्वारा फ़िल्टर किया गया"
+        },
+        "resetButton": "रीसेट करें",
+        "sorting": {
+          "sortingOptions": {
+            "newest": "नवीनतम पहले",
+            "oldest": "सबसे पुराना पहले",
+            "recentlyUpdated": "हाल ही में अपडेट किया गया पहले"
+          },
+          "sortingSectionTitle": "क्रमबद्ध करें",
+          "sortingSelectedToast": "{{sorting}} द्वारा क्रमबद्ध किया गया"
+        }
+      },
+      "header": "मेरे प्रोजेक्ट्स",
+      "listEmpty": "कोई परिणाम नहीं मिला",
+      "searchCancelButton": "रद्द करें"
+    },
+    "newProject": {
+      "AddNewTeamMember": {
+        "form": {
+          "companyName": {
+            "label": "कंपनी का नाम (वैकल्पिक)"
+          },
+          "email": {
+            "incorrectFormatError": "सही ईमेल पता दर्ज करें।",
+            "label": "ईमेल",
+            "requiredError": "ईमेल आवश्यक है।"
+          },
+          "inviteUser": {
+            "label": "उपयोगकर्ता को ऐप में आमंत्रित करें"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "गलत फ़ोन नंबर प्रारूप।",
+            "label": "मोबाइल नंबर",
+            "requiredError": "मोबाइल नंबर आवश्यक है।"
+          },
+          "nameSurname": {
+            "label": "नाम और उपनाम",
+            "requiredError": "नाम और उपनाम आवश्यक हैं।"
+          },
+          "role": {
+            "label": "भूमिका",
+            "requiredError": "भूमिका आवश्यक है।"
+          }
+        },
+        "header": "टीम सदस्य जोड़ें",
+        "submitButton": "सहेजें और जोड़ें",
+        "submitButtonDescription": "सदस्य को 'मेरे सब-कॉन्ट्रैक्टर्स' सूची में जोड़ा जाएगा।"
+      },
+      "AddressForm": {
+        "Form": {
+          "addressLine1": {
+            "label": "पता",
+            "validationError": {
+              "required": "पता आवश्यक है"
+            }
+          },
+          "addressLine2": {
+            "label": "पता लाइन 2 (वैकल्पिक)"
+          },
+          "city": {
+            "label": "शहर",
+            "validationError": {
+              "required": "शहर आवश्यक है"
+            }
+          },
+          "postCode": {
+            "label": "पोस्ट कोड"
+          }
+        },
+        "Header": "पता"
+      },
+      "buildType": {
+        "title": "निर्माण प्रकार"
+      },
+      "ChangeOwnerBottomSheet": {
+        "header": "मालिक बदलें"
+      },
+      "changeOwnershipModal": {
+        "header": "क्या आप प्रोजेक्ट के मालिक को बदलना चाहते हैं?",
+        "message": "टीम के सदस्यों के साथ प्रोजेक्ट की स्वामित्व बदलने से उन्हें टीम सदस्य सूची से हटा दिया जाएगा।",
+        "negativeButton": "रद्द करें",
+        "positiveButton": "हाँ"
+      },
+      "discardProjectModal": {
+        "header": "नया प्रोजेक्ट जोड़ना बंद करें?",
+        "message": "यदि आप अभी नया प्रोजेक्ट जोड़ना बंद करते हैं, तो आप द्वारा दर्ज किया गया सारा डेटा खो जाएगा।",
+        "negativeButton": "रद्द करें",
+        "positiveButton": "हाँ, बंद करें"
+      },
+      "GeneralAddress": {
+        "Form": {
+          "OccupierName": {
+            "label": "किरायेदार का नाम",
+            "validationError": {
+              "required": "किरायेदार का नाम आवश्यक है"
+            }
+          },
+          "StartDate": {
+            "label": "प्रारंभ तिथि"
+          }
+        },
+        "Header": "सामान्य जानकारी"
+      },
+      "Header": "प्रोजेक्ट जोड़ें",
+      "NewMemberBottomSheet": {
+        "addMember": "सदस्य जोड़ें",
+        "addMemberButton": "सदस्य जोड़ें",
+        "AddSelected": "चयनित जोड़ें",
+        "mySubcontractors": "मेरे सब-कॉन्ट्रैक्टर्स",
+        "noSavedSubcontractors": "अभी तक कोई सहेजा हुआ सब-कॉन्ट्रैक्टर नहीं है",
+        "noTeamMembers": "अभी तक कोई टीम सदस्य नहीं",
+        "searchSubcontractors": "सब-कॉन्ट्रैक्टर्स खोजें",
+        "SelectedCount": "({{count}})",
+        "teamMembersHeader": "टीम के सदस्य"
+      },
+      "OnSuccessfullyCreatedProject": {
+        "message": "प्रोजेक्ट जोड़ा गया"
+      },
+      "ProjectOwner": {
+        "changeOwner": "मालिक बदलें",
+        "Header": "प्रोजेक्ट स्वामित्व",
+        "useThisOwner": "नए प्रोजेक्ट्स जोड़ते समय इस मालिक का डिफ़ॉल्ट के रूप में उपयोग करें"
+      },
+      "projectType": {
+        "header": "प्रोजेक्ट प्रकार",
+        "validationError": {
+          "required": "यह फ़ील्ड आवश्यक है।"
+        }
+      },
+      "save": "सहेजें",
+      "SelectAddress": {
+        "Form": {
+          "alternative": "पता मैन्युअल रूप से जोड़ें",
+          "postCode": {
+            "badFormat": "सही UK/ROI पोस्ट कोड दर्ज करें",
+            "label": "पोस्ट कोड",
+            "labelDescription": "पता खोजने के लिए सही UK/ROI पोस्ट कोड दर्ज करें।"
+          }
+        },
+        "Header": "पता",
+        "header2": "पता चुनें",
+        "noResults": "हमें {{address}} के लिए यह पता नहीं मिल सका",
+        "searchPrompt": "खोजें..."
+      },
+      "substrateType": {
+        "title": "सब्सट्रेट"
+      },
+      "systemType": {
+        "title": "सिस्टम"
+      },
+      "TeamMembers": {
+        "addMemberButton": "सदस्य जोड़ें",
+        "Header": "टीम के सदस्य"
+      },
+      "warranty": {
+        "header": "गारंटी",
+        "validationError": {
+          "required": "यह फ़ील्ड आवश्यक है।",
+          "warrantyPeriodRequired": "गारंटी अवधि चुनें।"
+        }
+      },
+      "warrantyPeriod": {
+        "title": "गारंटी अवधि"
+      },
+      "warrantyProvider": {
+        "title": "गारंटी 3rd पार्टी प्रदाता"
+      }
+    },
+    "notifications": {
+      "clearAll": "सभी साफ़ करें",
+      "confirmationModal": {
+        "cancel": "रद्द करें",
+        "confirm": "पुष्टि करें",
+        "description": "सूचनाएँ सूची से हटा दी जाएँगी।",
+        "title": "सभी सूचनाएँ साफ़ करें?"
+      },
+      "delete": "हटाएँ",
+      "empty": "कोई सूचनाएँ नहीं",
+      "error": "त्रुटि",
+      "read": "पढ़ी गई",
+      "title": "सूचनाएँ",
+      "unread": "अपठित"
+    },
+    "pdfViewer": {
+      "errorState": {
+        "message": "बाद में फिर से प्रयास करें।",
+        "title": "PDF फ़ाइल डाउनलोड नहीं हो सकी"
+      }
+    },
+    "profile": {
+      "bottomSheet": {
+        "chooseFromLibrary": "लाइब्रेरी से चुनें",
+        "deletePhoto": "फोटो हटाएँ",
+        "takePhoto": "फोटो लें",
+        "title": "प्रोफाइल फोटो"
+      },
+      "button": "सहेजें",
+      "deleteUserAvatarError": "त्रुटि",
+      "form": {
+        "company": "कंपनी का नाम (वैकल्पिक)",
+        "email": "ईमेल",
+        "errors": {
+          "phone": "गलत फ़ोन नंबर प्रारूप।"
+        },
+        "name": "नाम और उपनाम",
+        "phone": "फ़ोन नंबर"
+      },
+      "formSubmitError": "त्रुटि",
+      "formSuccessfullySubmitted": "परिवर्तन सफलतापूर्वक सहेजे गए।",
+      "header": "मेरी प्रोफाइल",
+      "uploadingPictureFailed": "माफ़ करें, फोटो जोड़ने में विफल। फिर से प्रयास करें।"
+    },
+    "projectDetails": {
+      "archiveProjectModal": {
+        "cancel": "रद्द करें",
+        "confirm": "पुष्टि करें",
+        "description": "क्या आप वास्तव में इस प्रोजेक्ट को संग्रहित करना चाहते हैं?",
+        "errorMessage": "प्रोजेक्ट संग्रहित करते समय त्रुटि हुई।",
+        "header": "प्रोजेक्ट संग्रहित करें?",
+        "success": "सफलता",
+        "successMessage": "प्रोजेक्ट को सफलतापूर्वक संग्रहित किया गया।"
+      },
+      "components": {
+        "approvalBottomSheet": {
+          "ApplyForWarrantyDescription": "गारंटी के लिए आवेदन करने के लिए प्रोजेक्ट की समाप्ति तिथि की पुष्टि करें।",
+          "ApplyForWarrantyHeader": "गारंटी के लिए आवेदन करें"
+        }
+      },
+      "confirmWarrantySubmission": "पुष्टि करें और आवेदन करें",
+      "documents": {
+        "listEmpty": "अभी तक कोई दस्तावेज़ नहीं हैं"
+      },
+      "optionsPopup": {
+        "archiveProject": "प्रोजेक्ट संग्रहित करें",
+        "deleteProject": "प्रोजेक्ट हटाएं",
+        "editTeamMembers": "टीम के सदस्यों को संपादित करें"
+      },
+      "photoDocumentation": "फोटो दस्तावेज़",
+      "projectId": "प्रोजेक्ट आईडी: {{id}}",
+      "projectPhotoContainerStage": "चरण {{stage}}",
+      "projectStage": "चरण {{stage}}",
+      "Warranty": {
+        "WarrantyDeclineReason": "अस्वीकृति का कारण"
+      },
+      "WarrantyApplicationDate": "गारंटी के लिए आवेदन किया गया: {{date}}",
+      "warrantyApplicationRejected": {
+        "header": "गारंटी आवेदन अस्वीकृत",
+        "seeMore": "अधिक देखें"
+      },
+      "warrantyBadge": {
+        "description": "गारंटी दस्तावेज़ प्रक्रिया में है। इस प्रक्रिया में पाँच मिनट तक का समय लग सकता है।"
+      },
+      "WarrantyReapplicationDate": "पुनः आवेदन किया गया: {{date}}",
+      "warrantyReapply": {
+        "description": "पुनः आवेदन करने से पहले सुनिश्चित करें कि आपने EWI PRO की सभी शर्तों और अनुशंसाओं का पालन किया है।",
+        "header": "पुनः गारंटी के लिए आवेदन करें",
+        "negativeButton": "रद्द करें",
+        "positiveButton": "पुष्टि करें"
+      }
+    },
+    "settings": {
+      "changePassword": {
+        "form": {
+          "currentPassword": {
+            "label": "वर्तमान पासवर्ड"
+          },
+          "formSuccessfullySubmitted": "सफलता! पासवर्ड बदल दिया गया",
+          "newPassword": {
+            "hint": "कम से कम 8 वर्ण, एक छोटा और एक बड़ा अक्षर, और एक संख्या होनी चाहिए।",
+            "label": "नया पासवर्ड",
+            "passwordIncorrectFormat": "पासवर्ड आवश्यकताओं के अनुरूप नहीं है"
+          },
+          "repeatPassword": {
+            "label": "नया पासवर्ड पुनः दर्ज करें",
+            "passwordDoesNotMatch": "पासवर्ड मेल नहीं खा रहे हैं"
+          },
+          "submitButton": "सहेजें",
+          "updating": "अद्यतन कर रहा है..."
+        },
+        "header": "पासवर्ड बदलें",
+        "instruction": "अपने खाते को नए पासवर्ड से सुरक्षित करें।"
+      },
+      "header": "सेटिंग्स",
+      "language": "भाषा",
+      "setPin": {
+        "field": "पिन कोड",
+        "header": "पिन कोड सेट करें",
+        "repeat": "पिन कोड पुनः दर्ज करें",
+        "repeatError": "पिन कोड मेल नहीं खा रहे हैं।",
+        "success": {
+          "button": "ठीक है, समझ गया!",
+          "description": "अब आप पिन कोड के साथ लॉग इन कर सकते हैं।",
+          "header": "पिन सेट हो गया!"
+        }
+      },
+     "useDefaultOwner": {
+        "header": "डिफ़ॉल्ट परियोजना मालिक",
+        "description": "सभी नए बनाए गए परियोजनाओं के लिए चयनित मालिक को डिफ़ॉल्ट के रूप में उपयोग करें"
+      },
+      "deleteAccount": {
+        "button": "खाता हटाएँ",
+        "confirmationModal": {
+          "title": "खाता हटाने की पुष्टि",
+          "description": "क्या आप वाकई अपना खाता हटाना चाहते हैं? यह क्रिया अपरिवर्तनीय है।",
+          "cancel": "रद्द करें",
+          "delete": "खाता हटाएँ",
+          "loading": "हटाया जा रहा है..."
+        }
+      }
+
+    },
+    "staticPage": {
+      "TSCNegativeButton": "अस्वीकार करें",
+      "TSCPopupCloseButton": "बंद करें",
+      "TSCPopupMessage": "एप्लिकेशन तक पहुंच प्राप्त करने से पहले सभी उपयोगकर्ताओं को नियम और शर्तों को पढ़ना और स्वीकार करना आवश्यक है। शर्तों को स्वीकार न करने का मतलब है कि आप एप्लिकेशन का उपयोग नहीं कर सकेंगे।",
+      "TSCPopupTitle": "क्षमा करें, एप्लिकेशन की शर्तों को स्वीकार करना अनिवार्य है।",
+      "TSCPositiveButton": "स्वीकार करें"
+    },
+    "subcontractors": {
+      "addSubcontractor": {
+        "button": "सहेजें",
+        "form": {
+          "companyName": {
+            "label": "कंपनी का नाम (वैकल्पिक)"
+          },
+          "email": {
+            "incorrectFormatError": "सही ईमेल पता प्रदान करें।",
+            "label": "ईमेल",
+            "requiredError": "ईमेल आवश्यक है।"
+          },
+          "inviteUser": {
+            "label": "उपयोगकर्ता को एप्लिकेशन में आमंत्रित करें"
+          },
+          "mobileNumber": {
+            "incorrectFormatError": "फोन नंबर का गलत प्रारूप।",
+            "label": "मोबाइल नंबर",
+            "requiredError": "मोबाइल नंबर आवश्यक है।"
+          },
+          "nameSurname": {
+            "label": "नाम और उपनाम",
+            "requiredError": "नाम और उपनाम आवश्यक हैं।"
+          },
+          "role": {
+            "label": "भूमिका",
+            "requiredError": "भूमिका आवश्यक है।"
+          }
+        },
+        "header": "सब-कॉन्ट्रैक्टर जोड़ें"
+      },
+      "cancelInvitationConfirmationModal": {
+        "cancel": "नहीं",
+        "confirm": "हां",
+        "description": "आपका आमंत्रण रद्द कर दिया जाएगा।",
+        "header": "आमंत्रण रद्द करें?"
+      },
+      "discardAddSubcontractorModal": {
+        "cancel": "रद्द करें",
+        "confirm": "हां, छोड़ दें",
+        "description": "यदि आप अभी सब-कॉन्ट्रैक्टर जोड़ना बंद कर देते हैं, तो आपने जो भी डेटा दर्ज किया है वह खो जाएगा।",
+        "header": "नए सब-कॉन्ट्रैक्टर को जोड़ना बंद करें?"
+      },
+      "header": "सब-कॉन्ट्रैक्टर",
+      "listEmpty": {
+        "description": "अपने सब-कॉन्ट्रैक्टर जोड़ें और उन्हें अपने प्रोजेक्ट्स में टीम के सदस्य के रूप में और तेजी से आमंत्रित करें!",
+        "title": "अभी तक कोई सब-कॉन्ट्रैक्टर नहीं"
+      },
+      "noSearchResults": "कोई परिणाम नहीं मिले",
+      "removeConfirmationModal": {
+        "cancel": "रद्द करें",
+        "confirm": "पुष्टि करें",
+        "description": "सब-कॉन्ट्रैक्टर को हटाने से सभी प्रोजेक्ट्स में टीम के सदस्य के रूप में उनकी पहुंच वापस ले ली जाएगी।",
+        "header": "सब-कॉन्ट्रैक्टर को हटाएं?"
+      },
+      "removeSubcontractorFromProjectConfirmationModal": {
+        "cancel": "रद्द करें",
+        "confirm": "पुष्टि करें",
+        "description": "क्या आप वास्तव में इस सब-कॉन्ट्रैक्टर को इस प्रोजेक्ट से हटाना चाहते हैं?",
+        "header": "सब-कॉन्ट्रैक्टर को हटाएं?"
+      },
+      "searchCancelButton": "रद्द करें",
+      "searchPrompt": "खोजें",
+      "sendEmailInviteConfirmationModal": {
+        "cancel": "नहीं, धन्यवाद",
+        "confirm": "हां, आमंत्रण भेजें",
+        "description": "जब तक सब-कॉन्ट्रैक्टर के पास खाता नहीं है, वह उन प्रोजेक्ट्स को नहीं देख पाएगा जिन तक आप उन्हें टीम के सदस्य के रूप में पहुंच देते हैं।",
+        "header": "सब-कॉन्ट्रैक्टर अभी तक एप्लिकेशन में पंजीकृत नहीं है। क्या आप अभी ईमेल आमंत्रण भेजना चाहते हैं?"
+      },
+      "statuses": {
+        "buttons": {
+          "cancelInvitation": "आमंत्रण रद्द करें",
+          "resend": "पुनः भेजें",
+          "sendInvitation": "आमंत्रण भेजें"
+        },
+        "invited": "आमंत्रित किया गया",
+        "notRegistered": "पंजीकृत नहीं है",
+        "notRegisteredDescription": "यह उपयोगकर्ता अभी तक एप्लिकेशन में पंजीकृत नहीं है। ईमेल आमंत्रण भेजकर उन्हें पंजीकरण के लिए कहें।",
+        "registeredDescription": "सब-कॉन्ट्रैक्टर पहले से ही पंजीकृत है।"
+      },
+      "subViews": {
+        "details": {
+          "button": "सहेजें",
+          "errors": {
+            "phone": "गलत मोबाइल नंबर प्रारूप।"
+          },
+          "fields": {
+            "company": "कंपनी का नाम (वैकल्पिक)",
+            "email": "ईमेल",
+            "name": "नाम और उपनाम",
+            "phone": "मोबाइल नंबर",
+            "role": "डिफ़ॉल्ट भूमिका"
+          },
+          "header": "विवरण"
+        },
+        "permissions": {
+          "header": "अनुमतियाँ"
+        },
+        "projects": {
+          "header": "प्रोजेक्ट्स",
+          "listEmpty": {
+            "title": "अभी तक आपके किसी भी प्रोजेक्ट का सदस्य नहीं"
+          },
+          "listHeader": "आपके प्रोजेक्ट्स में टीम का सदस्य:"
+        }
+      },
+      "toasts": {
+        "changesSaved": "परिवर्तन सहेजे गए!",
+        "errorWhileCancellingInvitation": "आमंत्रण रद्द करते समय त्रुटि हुई।",
+        "errorWhileCreating": "सब-कॉन्ट्रैक्टर बनाते समय त्रुटि हुई।",
+        "errorWhileRemovingSubcontractor": "सब-कॉन्ट्रैक्टर को हटाते समय त्रुटि हुई।",
+        "errorWhileSendingInvitation": "आमंत्रण भेजते समय त्रुटि हुई।",
+        "errorWhileUpdating": "सब-कॉन्ट्रैक्टर को अपडेट करते समय त्रुटि हुई।",
+        "errorWhileUpdatingPermission": "अनुमति अपडेट करते समय त्रुटि हुई।",
+        "invitationCancelled": "आमंत्रण रद्द कर दिया गया।",
+        "invitationSent": "आमंत्रण भेजा गया।",
+        "permissionUpdated": "अनुमति अपडेट कर दी गई।",
+        "subcontractorAdded": "सब-कॉन्ट्रैक्टर जोड़ा गया।",
+        "subcontractorAddedAndInvited": "सब-कॉन्ट्रैक्टर जोड़ा गया और आमंत्रित किया गया।",
+        "subcontractorRemoved": "सब-कॉन्ट्रैक्टर को हटा दिया गया।"
+      }
+    }
+  }
+}
