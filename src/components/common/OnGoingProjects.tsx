@@ -5,6 +5,7 @@ import axios from "axios";
 import CardList from "../common/List/CardList";
 import warranty from '../../assets/warranty.png';
 import { fallbackColors, stageColors } from "./colors";
+import api from "../../api/axiosApi";
 
 interface Project {
   id: string;
@@ -187,14 +188,11 @@ const OnGoingProjects: React.FC<ProjectsProps> = ({ isMobile }) => {
       setLoading(true);
       setError(null);
       try {
-        const token = localStorage.getItem("access");
-        const res = await axios.post(
-          "https://api-veen-e.ewipro.com/installer/info/",
-          { action: "getProjectsList", filters: [{
-            "ongoingOnly": true
-        }], sort: "projectIDDESC" },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const res = await api.post({
+        action: "getProjectsList",
+        filters: [{ ongoingOnly: true }],
+        sort: "projectIDDESC",
+      });
 
         const data = Array.isArray(res.data?.projects) ? res.data.projects : [];
         const mapped: Project[] = data.map((item: any) => {

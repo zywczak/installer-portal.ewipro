@@ -4,6 +4,7 @@ import {
     Stack, 
     Card,
 } from "@mui/material";
+import api from "../../api/axiosApi";
 import LockIcon from "@mui/icons-material/Lock";
 import FormTextField from "../common/FormTextField";
 import AcceptButton from "../common/AcceptButton";
@@ -90,50 +91,43 @@ const ChangePassword: React.FC<Props> = ({ showSuccess, showError }) => {
     };
 
     const handleSubmit = async () => {
-        if (!validateBeforeSubmit()) return;
+    if (!validateBeforeSubmit()) return;
 
-        setLoading(true);
-        setError(null);
-        setSuccess(null);
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
 
-        try {
-            const token = localStorage.getItem("access");
+    try {
+        const body = {
+            action: "changePassword",
+            newPasswordHash: md5(newPassword),
+            currentPasswordHash: md5(currentPassword),
+        };
 
-            const body = {
-                action: "changePassword",
-                newPasswordHash: md5(newPassword),
-                currentPasswordHash: md5(currentPassword)
-            };
+        const response = await api.post(body);
 
-            const response = await fetch("https://api-veen-e.ewipro.com/installer/info/", {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(body),
-            });
+        // W Axiosie sprawdzasz status lub używasz try/catch
+        // Jeśli serwer zwróci błąd HTTP, Axios automatycznie rzuca wyjątek
 
-            if (!response.ok) {
-                throw new Error("Server returned error");
-            }
+        const data = response.data; // tutaj masz już wynik w JS
 
-            await response.json();
-            setCurrentPassword("");
-            setNewPassword("");
-            setConfirmPassword("");
+        // Reset pól
+        setCurrentPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
 
-            showSuccess(t('views.settings.changePassword.form.formSuccessfullySubmitted'));
+        showSuccess(t('views.settings.changePassword.form.formSuccessfullySubmitted'));
 
-            window.location.href = "/#settings";
+        window.location.href = "/#settings";
 
-        } catch (err: any) {
-            console.error(err);
-            showError("Failed to change password. first again.");
-        } finally {
-            setLoading(false);
-        }
-    };
+    } catch (err: any) {
+        console.error(err);
+        showError("Failed to change password. Try again.");
+    } finally {
+        setLoading(false);
+    }
+};
+
 
     const isFormInvalid =
         !currentPassword || !newPassword || !confirmPassword ||

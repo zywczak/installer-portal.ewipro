@@ -1281,8 +1281,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ChatIcon from "@mui/icons-material/Chat";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ListAltIcon from "@mui/icons-material/ListAlt";
-
-import axios from "axios";
+import api from "../../api/axiosApi";
 
 import ProjectHeader from "../common/ProjectHeader";
 import { Documents } from "../common/Documents";
@@ -1378,35 +1377,32 @@ const Project: React.FC<ProjectProps> = ({ projectId, contactId, onAddressChange
 
   const isMobile = width <= 768;
 
-  // Fetch project details
   useEffect(() => {
-    const load = async () => {
-      try {
-        setLoading(true);
-        const token = localStorage.getItem("access");
+  const load = async () => {
+    try {
+      setLoading(true);
 
-        const res = await axios.post(
-          "https://api-veen-e.ewipro.com/installer/info/",
-          { action: "getProjectDetails", projectID: projectId },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+      const res = await api.post({
+        action: "getProjectDetails",
+        projectID: projectId,
+      });
 
-        if (res.data?.status && res.data?.result) {
-          setProject(res.data.result);
-
-        } else {
-          setError("Nie udało się pobrać danych projektu.");
-        }
-        
-      } catch (err: any) {
-        setError("Błąd pobierania projektu.");
-      } finally {
-        setLoading(false);
+      if (res.data?.status && res.data?.result) {
+        setProject(res.data.result);
+      } else {
+        setError("Nie udało się pobrać danych projektu.");
       }
-    };
+      
+    } catch (err: any) {
+      console.error(err);
+      setError("Błąd pobierania projektu.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    load();
-  }, [projectId]);
+  load();
+}, [projectId]);
 
   // Przekazywanie adresu do rodzica gdy zmienia się projekt lub zakładka
   useEffect(() => {

@@ -3,11 +3,10 @@ import { Stack, Avatar, Box, IconButton, CircularProgress, Card } from "@mui/mat
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import FormTextField from "../common/FormTextField";
 import AcceptButton from "../common/AcceptButton";
-import axios from "axios";
 import CloseIcon from "@mui/icons-material/Close";
 import profilePhoto from "../../assets/profile-photo.png";
+import api from "../../api/axiosApi";
 
-const API_URL = "https://api-veen-e.ewipro.com/installer/info/";
 const phoneRegex = /^[0-9\s+()-]{9,15}$/;
 
 interface ProfileViewProps {
@@ -27,43 +26,32 @@ const ProfileView: React.FC<ProfileViewProps> = ({ showSuccess, showError }) => 
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    const storedEmail = localStorage.getItem("userEmail");
-if (storedEmail) setEmail(storedEmail);
-    const fetchProfile = async () => {
-      setLoading(true);
-      try {
-        const token = localStorage.getItem("access");
-        if (!token) throw new Error("Brak tokena JWT");
+ useEffect(() => {
+  const storedEmail = localStorage.getItem("userEmail");
+  if (storedEmail) setEmail(storedEmail);
 
-        const response = await axios.post(
-          API_URL,
-          { action: "getBasicUserData" },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  const fetchProfile = async () => {
+    setLoading(true);
+    try {
+      const response = await api.post({ action: "getBasicUserData" });
+      const userData = response.data;
 
-        const userData = response.data;
+      setUser(userData);
+      setPhoto(userData?.avatar || "/profile-photo.png");
 
-        setUser(userData);
-        setPhoto(userData?.avatar || "/profile-photo.png");
+      const phoneNumber = userData?.phones?.mobile || userData?.phones?.phone || "";
+      setPhone(phoneNumber);
+      setCompany(userData?.company_name || "");
+    } catch (err) {
+      console.error("Błąd pobierania profilu:", err);
+      showError?.("Nie udało się pobrać danych użytkownika");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        const phoneNumber = userData?.phones?.mobile || userData?.phones?.phone || "";
-        setPhone(phoneNumber);
-        setCompany(userData?.company_name || "");
-      } catch (err) {
-        console.error("Błąd pobierania profilu:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProfile();
-  }, []);
+  fetchProfile();
+}, []);
 
   const handlePhoneChange = (val: string) => {
     setPhone(val);
@@ -77,37 +65,24 @@ if (storedEmail) setEmail(storedEmail);
   };
 
   const handleDeletePhoto = async () => {
-    if (!user?.avatar) return;
+  if (!user?.avatar) return;
 
-    setLoading(true);
-    try {
-      const token = localStorage.getItem("access");
-      if (!token) throw new Error("Brak tokena JWT");
+  setLoading(true);
+  try {
+    await api.post({ action: "deleteUserAvatar" });
 
-      await axios.post(
-        API_URL,
-        { action: "deleteUserAvatar" },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+    showSuccess?.("Zdjęcie zostało usunięte");
+    setPhoto(profilePhoto);
+    setPhotoChanged(false);
 
-      showSuccess?.("Zdjęcie zostało usunięte");
-      setPhoto(profilePhoto);
-      setPhotoChanged(false);
-
-      // Aktualizujemy user.avatar
-      setUser((prev: any) => ({ ...prev, avatar: null }));
-    } catch (err) {
-      console.error("Błąd usuwania zdjęcia:", err);
-      showError?.("Nie udało się usunąć zdjęcia");
-    } finally {
-      setLoading(false);
-    }
-  };
+    setUser((prev: any) => ({ ...prev, avatar: null }));
+  } catch (err) {
+    console.error("Błąd usuwania zdjęcia:", err);
+    showError?.("Nie udało się usunąć zdjęcia");
+  } finally {
+    setLoading(false);
+  }
+};
 
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,45 +100,26 @@ if (storedEmail) setEmail(storedEmail);
  const handleSave = async () => {
   setLoading(true);
   try {
-    const token = localStorage.getItem("access");
-    if (!token) throw new Error("Brak tokena JWT");
-
-    // 1. Zapis zdjęcia
     if (photoChanged && fileInputRef.current?.files?.[0]) {
       const formData = new FormData();
       formData.append("action", "postAvatarToUserProfile");
       formData.append("avatar", fileInputRef.current.files[0]);
 
-      await axios.post(API_URL, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await api.post(formData, { headers: { "Content-Type": "multipart/form-data" } });
 
       showSuccess?.("Zdjęcie zostało zapisane");
       setPhotoChanged(false);
     }
 
-    // 2. Zapis danych billing (telefon + firma)
     const phoneChanged = phone !== (user?.phones?.mobile || user?.phones?.phone);
     const companyChanged = company !== (user?.company_name || "");
 
     if (phoneChanged || companyChanged) {
-      const response = await axios.post(
-        API_URL,
-        {
-          action: "updateProfileBilling",
-          phoneNumber: phone,
-          companyName: company,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await api.post({
+        action: "updateProfileBilling",
+        phoneNumber: phone,
+        companyName: company,
+      });
 
       if (response.data.status === true) {
         showSuccess?.("Dane zostały zapisane");
@@ -182,14 +138,6 @@ if (storedEmail) setEmail(storedEmail);
 };
 
 
-
-  // const canSave =
-  //   photoChanged ||
-  //   (user && phone !== (user?.phones?.mobile || user?.phones?.phone) && phoneRegex.test(phone) && !error);
-  // const canSave =
-  // photoChanged ||
-  // (user && phone !== (user?.phones?.mobile || user?.phones?.phone)) ||
-  // (user && company !== (user?.company_name || ""));
   const canSave =
   photoChanged ||
   (
@@ -229,13 +177,12 @@ if (storedEmail) setEmail(storedEmail);
     sx={{ width: 140, height: 140, border: "2px solid #ccc", zIndex: 1, pointerEvents: 'none' }}
   />
   
-  {/* Przycisk do zmiany zdjęcia */}
   <IconButton
     onClick={() => fileInputRef.current?.click()}
     sx={{
       position: "absolute",
-      bottom: 10,
-      right: 10,
+      bottom: 3,
+      right: 3,
       bgcolor: "white",
       boxShadow: 2,
       zIndex: 2,
@@ -245,14 +192,13 @@ if (storedEmail) setEmail(storedEmail);
     <CameraAltIcon color="action" fontSize="medium" />
   </IconButton>
 
-  {/* Przycisk do usunięcia zdjęcia */}
   {user?.avatar && (
   <IconButton
     onClick={handleDeletePhoto}
     sx={{
       position: "absolute",
-      top: 10,
-      right: 10,
+      top: 3,
+      right: 5,
       bgcolor: "white",
       boxShadow: 2,
       zIndex: 2,

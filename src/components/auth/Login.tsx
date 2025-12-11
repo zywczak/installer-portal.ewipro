@@ -83,11 +83,6 @@ const Login: React.FC<LoginProps> = ({
           "password": password,
           "updateAuth": false,
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
       );
       localStorage.setItem("access", response.data.jwt);
       localStorage.setItem("userID", response.data.user_id);

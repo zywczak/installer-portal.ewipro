@@ -3,6 +3,7 @@ import { Box, Typography, IconButton, Popover, Drawer, Divider } from "@mui/mate
 import CloseIcon from "@mui/icons-material/Close";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationList, { Notification } from "../common/NotificationList";
+import api from "../../api/axiosApi";
 
 interface NotificationBannerProps {
     isMobile: boolean;
@@ -15,8 +16,6 @@ interface NotificationBannerProps {
     onUnreadChange?: (hasUnread: boolean) => void;
 }
 
-const API_URL = "https://api-veen-e.ewipro.com/installer/info/";
-
 const NotificationBanner: React.FC<NotificationBannerProps> = ({
     isMobile,
     notifications,
@@ -28,38 +27,31 @@ const NotificationBanner: React.FC<NotificationBannerProps> = ({
 }) => {
     const [localNotifications, setLocalNotifications] = useState<Notification[]>(notifications);
 
-    // aktualizacja gdy przyjdą nowe z backendu
     useEffect(() => {
         setLocalNotifications(notifications);
     }, [notifications]);
 
     const token = localStorage.getItem("access");
 
-    // powiadomienie rodzica o liczbie nieprzeczytanych
     useEffect(() => {
         const hasUnread = localNotifications.some((n) => !n.read);
         onUnreadChange?.(hasUnread);
     }, [localNotifications]);
 
-    const sendAction = async (action: string, notificationID: number) => {
-        try {
-            await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({ action, notificationID }),
-            });
-        } catch (err) {
-            console.error("Błąd sieci:", err);
-        }
-    };
+   const sendAction = async (action: string, notificationID: number) => {
+    try {
+        await api.post({
+            action,
+            notificationID,
+        });
+    } catch (err) {
+        console.error("Błąd sieci:", err);
+    }
+};
 
     const handleToggleRead = (notif: Notification) => {
         const action = notif.read ? "markNotificationUnread" : "markNotificationRead";
 
-        // OPTIMISTIC UPDATE
         setLocalNotifications((prev) =>
             prev.map((n) => (n.id === notif.id ? { ...n, read: !n.read } : n))
         );
