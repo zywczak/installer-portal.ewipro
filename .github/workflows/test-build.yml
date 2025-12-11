@@ -15,8 +15,7 @@ defaults:
 
 jobs:
   test-build:
-    if: github.event.pull_request.merged == true
-    runs-on: stage-fortpublish
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
