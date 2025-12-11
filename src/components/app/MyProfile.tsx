@@ -220,12 +220,13 @@ if (storedEmail) setEmail(storedEmail);
          alignItems: "center",
         maxWidth: 420,
         mx: "auto",
+        mb: 1,
        }}
      >
       <Box sx={{ position: "relative", mb: 3 }}>
   <Avatar
     src={photo}
-    sx={{ width: 200, height: 200, border: "2px solid #ccc", zIndex: 1, pointerEvents: 'none' }}
+    sx={{ width: 140, height: 140, border: "2px solid #ccc", zIndex: 1, pointerEvents: 'none' }}
   />
   
   {/* Przycisk do zmiany zdjęcia */}
@@ -272,7 +273,7 @@ if (storedEmail) setEmail(storedEmail);
   />
 </Box>
 
-      <Stack spacing={2} sx={{ width: "100%" }}>
+      <Stack spacing={5} sx={{ width: "100%" }}>
         <FormTextField
           value={user?.name || ""}
           onChange={() => {}}
@@ -310,7 +311,6 @@ if (storedEmail) setEmail(storedEmail);
   label="Zapisz"
   loadingLabel="Zapisywanie..."
   disabled={!canSave}
-  size="small"
 />
         </Box>
       </Box>

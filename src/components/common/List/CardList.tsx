@@ -82,21 +82,6 @@ const CardList: React.FC<CardListProps> = ({
         </Stack>
       )}
       </Box>
-
-      {/* Items */}
-      {/* <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: 2,
-          px: 2,
-          pb: 2,
-          pt: 2,
-          flex: 1,
-          overflowY: "auto",
-          overflowX: "hidden",
-        }}
-      > */}
        <Box
       sx={{
         flex: 1,

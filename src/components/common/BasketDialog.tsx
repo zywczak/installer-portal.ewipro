@@ -16,7 +16,9 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { BasketItem } from "../../hooks/useBasket";
+import EmptyStateBox from "./EmptyStateBox";
 
 interface BasketDialogProps {
   open: boolean;
@@ -69,16 +71,26 @@ export const BasketDialog: React.FC<BasketDialogProps> = ({
             scrollbarWidth: 'none'
           }}
         >
-          {items.map(item => (
-            <Box key={item.id} sx={{
-              position: 'relative',
-              display: 'flex',
-              flexDirection: 'column',
-              p: 2,
-              borderRadius: 2,
-              bgcolor: '#f5f5f5',
-              border: "1px solid #e0e0e0"
-            }}>
+          {items.length === 0 ? (
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <EmptyStateBox
+                icon={<ShoppingCartIcon />}
+                text="Your basket is empty"
+                isDisabled={true}
+                size={{ width: "100%", height: 150 }}
+              />
+            </Box>
+          ) : (
+            items.map(item => (
+              <Box key={item.id} sx={{
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                p: 2,
+                borderRadius: 2,
+                bgcolor: '#f5f5f5',
+                border: "1px solid #e0e0e0"
+              }}>
               {/* Discount Badge */}
               {item.percentDiscount && item.percentDiscount > 0 && (
                 <Chip
@@ -223,7 +235,8 @@ export const BasketDialog: React.FC<BasketDialogProps> = ({
                 </Box>
               </Box>
             </Box>
-          ))}
+            ))
+          )}
         </Box>
 
         {/* TOTAL NET */}

@@ -48,8 +48,6 @@ const StageBox: React.FC<{ stage: string }> = ({ stage }) => {
   );
 };
 
-
-
 const ProjectListItem: React.FC<ProjectListItemProps> = ({
   id,
   postcode,

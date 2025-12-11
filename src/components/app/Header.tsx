@@ -156,6 +156,7 @@ interface HeaderProps {
     onMenuClick?: () => void;
     isMobile: boolean;
     projectAddress?: string | null;
+    subcontractorName?: string | null;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -164,6 +165,7 @@ const Header: React.FC<HeaderProps> = ({
     onMenuClick,
     isMobile,
     projectAddress,
+    subcontractorName,
 }) => {
 
     const formatAddress = (addr: string) => {
@@ -276,6 +278,23 @@ const Header: React.FC<HeaderProps> = ({
 
         {/* ADRES — zawsze w nowej linii */}
         {projectAddress && formatAddress(projectAddress)}
+
+        {/* IMIĘ I NAZWISKO SUBCONTRACTORA */}
+        {subcontractorName && (
+            <Typography
+                sx={{
+                    mt: 1,
+                    fontWeight: 700,
+                    textAlign: "center",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    maxWidth: "100%",
+                }}
+            >
+                {subcontractorName}
+            </Typography>
+        )}
 
     </Box>
 );

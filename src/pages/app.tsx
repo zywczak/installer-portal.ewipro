@@ -27,7 +27,9 @@ function App() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   const isProjectView = view.startsWith("projects/");
+  const isSubcontractorView = view.startsWith("subcontractors/");
   const [projectAddress, setProjectAddress] = useState<string | null>(null);
+  const [subcontractorName, setSubcontractorName] = useState<string | null>(null);
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -147,7 +149,12 @@ return (
 
 }
     if (view.startsWith("subcontractors/") && viewParam) {
-      return <Subcontractor subcontractorId={viewParam} />;
+      return (
+        <Subcontractor 
+          subcontractorId={viewParam}
+          onNameChange={(name) => setSubcontractorName(name)}
+        />
+      );
     }
 
     if (view.startsWith("createOrder/")) {
@@ -219,48 +226,6 @@ return (
           />
         </Drawer>
       )}
-
-      {/* {isMobileContent ? (
-        <Box
-          sx={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            overflowY: "auto",
-            "&::-webkit-scrollbar": { width: 0, background: "transparent" },
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          <Header
-            isMobile={isMobileContent}
-            onNotificationsClick={(e) => {
-              if (isMobileContent) setDrawerOpen(true);
-              else setAnchorEl((prev) => (prev ? null : e.currentTarget));
-            }}
-            onMenuClick={() => setMobileSidebarOpen(true)}
-            hasNewNotifications={hasUnreadNotifications}
-            projectAddress={isProjectView ? projectAddress : null}
-          />
-          />
-          <Box>
-            {renderView()}
-
-            <SuccessSnackbar
-              message={globalSuccess}
-              onClose={() => setGlobalSuccess(null)}
-              sidebarWidth={0}
-            />
-
-            <ErrorSnackbar
-              message={globalError}
-              onClose={() => setGlobalError(null)}
-              sidebarWidth={0}
-            />
-
-          </Box>
-        </Box>
-      ) : ( */}
       {isMobileContent ? (
 <Box sx={{ flex: 1, display: "flex", flexDirection: "column", overflowY: "hidden" }}>
   <Box sx={{ position: "sticky", top: 0, zIndex: 1000 }}>
@@ -273,6 +238,7 @@ return (
       onMenuClick={() => setMobileSidebarOpen(true)}
       hasNewNotifications={hasUnreadNotifications}
       projectAddress={isProjectView ? projectAddress : null}
+      subcontractorName={isSubcontractorView ? subcontractorName : null}
     />
   </Box>
   <Box
@@ -307,6 +273,7 @@ return (
             }}
             hasNewNotifications={hasUnreadNotifications}
             projectAddress={isProjectView ? projectAddress : null}
+            subcontractorName={isSubcontractorView ? subcontractorName : null}
           />
           <Box
             sx={{

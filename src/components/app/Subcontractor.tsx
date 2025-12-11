@@ -63,6 +63,7 @@ interface Project {
 
 interface SubcontractorProps {
   subcontractorId: string;
+  onNameChange?: (name: string | null) => void;
 }
 
 const ALL_PERMISSIONS: Omit<SubcontractorPermission, "enabled">[] = [
@@ -74,7 +75,7 @@ const ALL_PERMISSIONS: Omit<SubcontractorPermission, "enabled">[] = [
   { key: "projectChatAccess", label: "Project Chat access", description: "If you enable this option this user will have access to see and post into the chats on your projects where he is added as a team member." },
 ];
 
-const Subcontractor: React.FC<SubcontractorProps> = ({ subcontractorId }) => {
+const Subcontractor: React.FC<SubcontractorProps> = ({ subcontractorId, onNameChange }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<SubcontractorInfo | null>(null);
@@ -118,7 +119,7 @@ const Subcontractor: React.FC<SubcontractorProps> = ({ subcontractorId }) => {
 
       // MOCK subcontractor info
       setInfo({
-        name: `Subcontractor #${subcontractorId}`,
+        name: "Jan Kowalski",
         email: "email@example.com",
         mobile: "07123416788",
         companyName: "Firma Testowa",
@@ -207,6 +208,23 @@ const filtered = allProjects.filter((item: any) => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  // Przekazywanie nazwy do rodzica tylko gdy NIE jesteśmy na zakładce "info"
+  useEffect(() => {
+    if (onNameChange && info) {
+      if (activeTab !== "info") {
+        onNameChange(info.name);
+      } else {
+        onNameChange(null);
+      }
+    }
+    
+    return () => {
+      if (onNameChange) {
+        onNameChange(null);
+      }
+    };
+  }, [activeTab, info, onNameChange]);
 
   const handleTogglePermission = (key: string, enabled: boolean) => {
     setPermissions((prev) => prev.map((p) => (p.key === key ? { ...p, enabled } : p)));
@@ -348,7 +366,7 @@ const filtered = allProjects.filter((item: any) => {
               mx: "auto",
              }}
            >
-        <Stack spacing={2} sx={{ width: "100%" }}>
+        <Stack spacing={5} sx={{ width: "100%" }}>
           <FormTextField
             value={info?.name || ""}
             onChange={() => {}}

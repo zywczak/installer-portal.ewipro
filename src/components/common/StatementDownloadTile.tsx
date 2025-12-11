@@ -33,7 +33,7 @@ const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
           minHeight: "100%", // Wypełnia całą wysokość Card
           display: "flex",
           alignItems: "center",
-          border: "2px solid #3877B6",
+          border: "1px solid #3877B6",
           justifyContent: "center",
           padding: 3,
         }}
@@ -49,7 +49,7 @@ const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
           {/* Ikona pobierania */}
           <FileDownloadOutlined
             sx={{
-              fontSize: "3.5rem",
+              fontSize: "3rem",
               color: "#3877B6",
               marginBottom: 1,
             }}
@@ -57,8 +57,8 @@ const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
           {/* Tekst przycisku */}
           <Typography
             sx={{
-              fontSize: "1.2rem",
-              fontWeight: 800,
+              fontSize: "1.1rem",
+              fontWeight: 700,
               color: "#3877B6",
             }}
           >

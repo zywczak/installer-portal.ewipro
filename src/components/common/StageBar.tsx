@@ -394,17 +394,18 @@ return (
               !(projectMaxStage && currentStage > projectMaxStage) &&
               projectStatusName !== "Closed" &&
               index < stages.length - 1 && (
-                <Box position="absolute" top={-10} right={-20} zIndex={99}>
+                <Box position="absolute" top={-15} right={-10} zIndex={99}>
                   <Box
                     component="button"
                     onClick={handleSubmitStage}
                     sx={{
                       backgroundColor: "#d9534f",
                       border: "0px solid",
-                      padding: "12px",
+                      px: 2,
+                      py: 1,
                       color: "white",
                       fontFamily: "'Open Sans', sans-serif",
-                      fontSize: "16px",
+                      fontSize: "12px",
                       fontWeight: "bold",
                       cursor: "pointer",
                       borderRadius: "7px",
