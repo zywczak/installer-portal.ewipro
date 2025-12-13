@@ -1,0 +1,46 @@
+import { Avatar, Tooltip } from "@mui/material";
+import { motion } from "framer-motion";
+import profilePhoto from "../../assets/profile-photo.png";
+
+interface UserAvatarProps {
+  avatarUrl?: string;
+  size?: number;
+  tooltip?: string;
+  onClick?: () => void;
+}
+
+const MotionAvatar = motion(Avatar);
+
+const UserAvatar: React.FC<UserAvatarProps> = ({
+  avatarUrl,
+  size = 80,
+  tooltip,
+  onClick,
+}) => {
+  const avatar = (
+    <MotionAvatar
+      src={avatarUrl || profilePhoto}
+      onClick={onClick}
+      whileHover={{ scale: 1.08 }}
+      animate={{ width: size, height: size }}
+      transition={{ duration: 0.3 }}
+      sx={{
+        bgcolor: "rgba(255,255,255,0.4)",
+        cursor: onClick ? "pointer" : "default",
+        boxShadow: onClick
+          ? "0 0 10px rgba(255,255,255,0.3)"
+          : "none",
+      }}
+    />
+  );
+
+  return tooltip ? (
+    <Tooltip title={tooltip} arrow placement="right">
+      {avatar}
+    </Tooltip>
+  ) : (
+    avatar
+  );
+};
+
+export default UserAvatar;
