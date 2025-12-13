@@ -1,93 +1,74 @@
-import React, { useState } from "react";
+import React from "react";
 import { Stack } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import FormHeader from "../common/FormHeader";
 import FormTextField from "../common/FormTextField";
 import AcceptButton from "../common/AcceptButton";
 import ActionLink from "../common/ActionLink";
-import ErrorSnackbar from "../common/ErrorSnackbar";
 import { useTranslation } from "react-i18next";
+import api from "../../api/axiosApi";
+import { useAuthNotification } from "../../context/AuthContext";
+import { useFormField } from "../../hooks/useFormField";
+import { validateEmail } from "../../utils/validation/validators";
+import { AUTH_ENDPOINTS } from "../../utils/api/auth.api";
 
 interface ForgotPasswordProps {
   onBack: () => void;
+  onCheckEmail: () => void;
 }
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onBack }) => {
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
+const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onBack, onCheckEmail }) => {
   const { t } = useTranslation();
+  const { showError } = useAuthNotification();
+  const emailField = useFormField("", validateEmail);
+  const [loading, setLoading] = React.useState(false);
 
-  const handleEmailChange = (value: string) => {
-    setEmail(value);
-
-    if (!value) setEmailError(t("views.login.form.error.emailNotProvided"));
-    else if (!emailPattern.test(value)) setEmailError(t("views.login.form.error.emailIncorrectFormat"));
-    else setEmailError(null);
-  };
+  const isFormInvalid = !emailField.value || !!emailField.error;
 
   const handleSendReset = async () => {
-    if (!email || !!emailError) return;
-
+    if (isFormInvalid) return;
     setLoading(true);
-    setError(null);
 
     try {
-      console.log("Reset link sent to:", email);
-      onBack();
+      await api.post(AUTH_ENDPOINTS.forgot, { username: emailField.value }, {
+        headers: { "Content-Type": "application/json" },
+      });
+      onCheckEmail();
     } catch (err: any) {
-      const msg =
-        err.response?.data?.detail ||
-        err.response?.data?.message ||
-        "Failed to send reset link.";
-      setError(msg);
+      showError(err.response?.data?.detail || err.response?.data?.message || "Failed to send reset link.");
     } finally {
       setLoading(false);
     }
   };
 
-  const isFormInvalid = !email || !!emailError;
-
   return (
-    <>
-      <Stack spacing={2}>
-        <FormHeader
-          title={t("views.forgotPassword.form.header")}
-          description={t("views.forgotPassword.form.instruction")}
-        />
-
-        <FormTextField
-          value={email}
-          onChange={handleEmailChange}
-          placeholder={t("views.login.form.email")}
-          error={emailError}
-          icon={<EmailIcon color="action" />}
-        />
-
-        <AcceptButton
-          onClick={handleSendReset}
-          label={t("views.forgotPassword.button.send")}
-          loading={loading}
-          loadingLabel="Sending..."
-          disabled={isFormInvalid}
-        />
-
-        <ActionLink
-          label={t("views.forgotPassword.button.login")}
-          onClick={onBack}
-          align="center"
-        />
-      </Stack>
-
-      <ErrorSnackbar
-        message={error}
-        onClose={() => setError(null)}
+    <Stack spacing={2}>
+      <FormHeader
+        title={t("views.forgotPassword.form.header")}
+        description={t("views.forgotPassword.form.instruction")}
       />
-    </>
+
+      <FormTextField
+        value={emailField.value}
+        onChange={emailField.onChange}
+        placeholder={t("views.login.form.email")}
+        error={emailField.error}
+        icon={<EmailIcon color="action" />}
+      />
+
+      <AcceptButton
+        onClick={handleSendReset}
+        label={t("views.forgotPassword.button.send")}
+        loading={loading}
+        disabled={isFormInvalid}
+      />
+
+      <ActionLink
+        label={t("views.forgotPassword.button.login")}
+        onClick={onBack}
+        align="center"
+      />
+    </Stack>
   );
 };
 

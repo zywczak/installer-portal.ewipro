@@ -1,13 +1,16 @@
-import { useState } from "react";
-
-export type AuthView = "login" | "register" | "check" | "forgot";
+import { useState, useCallback } from "react";
+import { AuthView } from "../types/auth.types";
 
 export const useAuthView = (initial: AuthView = "login") => {
   const [view, setView] = useState<AuthView>(initial);
-  const toLogin = () => setView("login");
-  const toRegister = () => setView("register");
-  const toForgot = () => setView("forgot");
-  const toCheck = () => setView("check");
 
-  return { view, setView, toLogin, toRegister, toForgot, toCheck };
+  return {
+    view,
+    toLogin: useCallback(() => setView("login"), []),
+    toRegister: useCallback(() => setView("register"), []),
+    toForgot: useCallback(() => setView("forgot"), []),
+    toCheck: useCallback(() => setView("check"), []),
+    toReset: useCallback(() => setView("reset"), []),
+    setView,
+  };
 };

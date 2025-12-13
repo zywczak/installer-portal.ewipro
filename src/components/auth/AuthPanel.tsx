@@ -1,18 +1,32 @@
 import React from "react";
 import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
 import { AnimatePresence } from "framer-motion";
+
 import Login from "./Login";
 import Register from "./Register";
-import CheckEmail from "./CheckEmail";
 import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
+import CheckEmail from "./CheckEmail";
 import AnimatedView from "./AnimatedView";
+import { AuthView } from "../../types/auth.types";
 
 interface AuthPanelProps {
-  view: "login" | "register" | "check" | "forgot";
-  setView: (v: "login" | "register" | "check" | "forgot") => void;
+  view: AuthView;
+  toLogin: () => void;
+  toRegister: () => void;
+  toForgot: () => void;
+  toCheck: () => void;
+  toReset: () => void;
 }
 
-const AuthPanel: React.FC<AuthPanelProps> = ({ view, setView }) => {
+const AuthPanel: React.FC<AuthPanelProps> = ({
+  view,
+  toLogin,
+  toRegister,
+  toForgot,
+  toCheck,
+  toReset,
+}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -27,10 +41,9 @@ const AuthPanel: React.FC<AuthPanelProps> = ({ view, setView }) => {
         backgroundColor: "#fff",
         borderRadius: isMobile ? "2rem 2rem 0 0" : "2rem 0 0 2rem",
         position: "relative",
-        bottom: "auto",
         width: isMobile ? "100%" : "auto",
         maxHeight: isMobile ? "none" : "100vh",
-        overflowY: isMobile ? "visible" : "visible",
+        overflowY: "visible",
         "&::-webkit-scrollbar": { display: "none" },
         zIndex: 2,
         ml: isMobile ? 0 : "-2rem",
@@ -41,31 +54,35 @@ const AuthPanel: React.FC<AuthPanelProps> = ({ view, setView }) => {
           {view === "login" && (
             <AnimatedView viewKey="login">
               <Login
-                onRegister={() => setView("register")}
-                onCheckEmail={() => setView("check")}
-                onForgotPassword={() => setView("forgot")}
+                onRegister={toRegister}
+                onCheckEmail={toCheck}
+                onForgotPassword={toForgot}
+                onResetPassword={toReset}
               />
             </AnimatedView>
           )}
 
           {view === "register" && (
             <AnimatedView viewKey="register">
-              <Register
-                onBack={() => setView("login")}
-                onCheckEmail={() => setView("check")}
-              />
+              <Register onBack={toLogin} onCheckEmail={toCheck} />
             </AnimatedView>
           )}
 
           {view === "forgot" && (
             <AnimatedView viewKey="forgot">
-              <ForgotPassword onBack={() => setView("login")} />
+              <ForgotPassword onBack={toLogin} onCheckEmail={toCheck} />
+            </AnimatedView>
+          )}
+
+          {view === "reset" && (
+            <AnimatedView viewKey="reset">
+              <ResetPassword onBackToLogin={toLogin} />
             </AnimatedView>
           )}
 
           {view === "check" && (
             <AnimatedView viewKey="check">
-              <CheckEmail onBack={() => setView("login")} />
+              <CheckEmail onBack={toLogin} />
             </AnimatedView>
           )}
         </AnimatePresence>
