@@ -16,7 +16,8 @@ export const Address: React.FC<{ addr: string }> = ({ addr }) => {
                 lineHeight: 1.2,
                 display: "flex",
                 flexWrap: "wrap",
-                justifyContent: "center",
+                justifyContent: "center", // wyśrodkowanie poziome
+                alignItems: "center",     // wyśrodkowanie pionowe
                 gap: 0.5,
             }}
         >
@@ -27,6 +28,8 @@ export const Address: React.FC<{ addr: string }> = ({ addr }) => {
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     minWidth: 0,
+                    mr: 1,
+                    fontSize: "1.2rem",
                 }}
             >
                 {postcode}
@@ -37,6 +40,7 @@ export const Address: React.FC<{ addr: string }> = ({ addr }) => {
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     minWidth: 0,
+                    fontSize: "1rem",
                 }}
             >
                 {main}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, IconButton, Badge, Typography } from "@mui/material";
+import { Box, IconButton, Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/cropped-EWI-Pro-Logo.png";
@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
                 flexDirection: "column",
                 alignItems: "center",
                 px: 4,
-                py: 3,
+                py: 2,
                 position: "relative",
                 "&::after": {
                     content: '""',

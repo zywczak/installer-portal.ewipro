@@ -278,6 +278,7 @@ return (
           <Box
             sx={{
               flex: 1,
+              mt: 1,
               overflowY: "auto",
               overflowX: "hidden",
               "&::-webkit-scrollbar": { width: 0, background: "transparent" },
