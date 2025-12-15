@@ -217,7 +217,7 @@
     }
 
     return (
-      <Box p={3} borderRadius={3} boxShadow={2} bgcolor="#fff">
+      <Box p={3} height="100%" borderRadius={3} boxShadow={2} bgcolor="#fff">
         <Box display="flex" alignItems="center" mb={2}>
     <SourceIcon sx={{ mr: 1, color: 'grey', fontSize: 36 }} />
     <Box>
@@ -240,11 +240,27 @@
   </Box>
         <Divider sx={{ mb: 2 }} />
 
-        <Box
+        {/* <Box
     display="flex"
     flexWrap="wrap"
     gap={2}
-  >
+  > */}
+  <Box
+  sx={{
+    flex: 1,                     // <── zajmuje całą pozostałą przestrzeń
+    overflowY: "auto",           // <── scroll tylko na liście
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 2,
+
+    /* Ukrycie scrollbara */
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+  }}
+>
     {files.length === 0 ? (
       <EmptyStateBox
         icon={<InboxIcon />}

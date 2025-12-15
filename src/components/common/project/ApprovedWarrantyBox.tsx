@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import DownloadIcon from "@mui/icons-material/Download";
 import warranty from '../../../assets/warranty.png';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
 interface ApprovedWarrantyProps {
   approvedWarranty: {
@@ -15,6 +15,7 @@ interface ApprovedWarrantyProps {
 
 const ApprovedWarrantyBox: React.FC<ApprovedWarrantyProps> = ({ approvedWarranty }) => {
   if (!approvedWarranty || approvedWarranty.status !== "Approved") return null;
+  console.log(localStorage.getItem("access"));
 
   const handleClick = () => {
     if (approvedWarranty.downloadURI) {
@@ -41,8 +42,8 @@ const ApprovedWarrantyBox: React.FC<ApprovedWarrantyProps> = ({ approvedWarranty
       onClick={handleClick}
     >
       <Box display="flex" alignItems="center" gap={1.5}>
-        <Box width={26} height={26} display="flex" alignItems="center" justifyContent="center">
-          <img src={warranty} alt="Warranty" style={{ width: 26, height: 26, display: "block" }} />
+        <Box width={24} height={24} display="flex" alignItems="center" justifyContent="center">
+          <img src={warranty} alt="Warranty" style={{ width: 24, height: 24, display: "block" }} />
         </Box>
 
         <Box>
@@ -60,7 +61,7 @@ const ApprovedWarrantyBox: React.FC<ApprovedWarrantyProps> = ({ approvedWarranty
             lineHeight={1.3}
             sx={{ fontSize: "0.75rem" }}
           >
-            {approvedWarranty.number}
+            GC/EWIPRO/{approvedWarranty.number}
           </Typography>
         </Box>
       </Box>
@@ -74,7 +75,7 @@ const ApprovedWarrantyBox: React.FC<ApprovedWarrantyProps> = ({ approvedWarranty
         alignItems="center"
         justifyContent="center"
       >
-        <DownloadIcon sx={{ color: "white", fontSize: 18 }} />
+        <FileDownloadOutlinedIcon sx={{color: "#fff", fontSize: 18 }} />
       </Box>
     </Box>
   );

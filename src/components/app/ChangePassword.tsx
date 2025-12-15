@@ -106,9 +106,6 @@ const ChangePassword: React.FC<Props> = ({ showSuccess, showError }) => {
 
         const response = await api.post(body);
 
-        // W Axiosie sprawdzasz status lub używasz try/catch
-        // Jeśli serwer zwróci błąd HTTP, Axios automatycznie rzuca wyjątek
-
         const data = response.data; // tutaj masz już wynik w JS
 
         // Reset pól

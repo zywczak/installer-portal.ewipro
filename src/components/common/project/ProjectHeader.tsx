@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, AvatarGroup } from "@mui/material";
 import StageBar from "./StageBar";
 import UserAvatar from "../../common/UserAvatar";
 import { Address } from "../address";
@@ -84,12 +84,9 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
     projectMaxStage !== undefined &&
     currentStage > projectMaxStage;
 
-  const fullAddress = [address1, address2, address3].filter(Boolean).join(", ");
-
   return (
     <Box p={3} mt={1} pb={0} mb={3} borderRadius={3} boxShadow={2} bgcolor="#fff">
 
-      {/* Adres i awatary */}
       {!approvedWarranty || approvedWarranty.status !== "Approved" ? (
         <Box display="flex" alignItems="center" justifyContent="space-between" flexWrap="wrap" mb={2}>
           <Address addr={projectAddress} />
@@ -99,20 +96,28 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
               <UserAvatar
                 avatarUrl={ownerAvatar}
                 size={48}
-                tooltip={installer}
                 onClick={() => { window.location.hash = `subcontractors/${ownerId}`; }}
               />
             )}
-
+           <AvatarGroup
+               max={100}
+            spacing={10} 
+  sx={{
+    "& .MuiAvatar-root": {
+      border: "2px solid white",
+      cursor: "pointer",
+    },
+  }}
+>
             {projectMembers.map((member) => (
               <UserAvatar
                 key={member.id}
                 avatarUrl={member.avatar || undefined}
                 size={40}
-                tooltip={member.name}
                 onClick={() => { window.location.hash = `subcontractors/${member.userID || member.id}`; }}
               />
             ))}
+            </AvatarGroup>
           </Box>
         </Box>
       ) : (
@@ -134,19 +139,28 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
                 <UserAvatar
                   avatarUrl={ownerAvatar}
                   size={48}
-                  tooltip={installer}
                   onClick={() => { window.location.hash = `subcontractors/${ownerId}`; }}
                 />
               )}
+               <AvatarGroup
+               max={100}
+            spacing={10} 
+  sx={{
+    "& .MuiAvatar-root": {
+      border: "2px solid white",
+      cursor: "pointer",
+    },
+  }}
+>
               {projectMembers.map((member) => (
                 <UserAvatar
                   key={member.id}
                   avatarUrl={member.avatar || undefined}
                   size={40}
-                  tooltip={member.name}
                   onClick={() => { window.location.hash = `subcontractors/${member.userID || member.id}`; }}
                 />
               ))}
+              </AvatarGroup>
             </Box>
 
             {approvedWarranty && approvedWarranty.status === "Approved" && (
@@ -160,7 +174,6 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
       <StageBar
         currentStage={currentStage}
         stagingSystemID={stagingSystemID}
-        finishDate={finishDate}
         projectMaxStage={projectMaxStage}
         projectStatusName={projectStatusName}
       />

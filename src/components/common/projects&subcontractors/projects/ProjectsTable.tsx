@@ -10,9 +10,10 @@ interface Props {
   rows: Project[];
   onRowClick: (row: Project) => void;
   onOverflow: (overflow: boolean) => void;
+  stickyFooter?: boolean;
 }
 
-const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow }) => {
+const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFooter }) => {
   const rowStatusColor = { Open: "#54A852", Closed: "#e91e63" };
 
   const columns: Column<Project>[] = [
@@ -73,6 +74,7 @@ const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow }) => {
       onHorizontalOverflow={onOverflow}
       getRowStatusColor={(row) => rowStatusColor[row.status]}
       type="project"
+      stickyFooter={stickyFooter}
     />
   );
 };

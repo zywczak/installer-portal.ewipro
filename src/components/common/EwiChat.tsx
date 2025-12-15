@@ -352,7 +352,19 @@ const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
       <Divider sx={{ mb: 2, mx: 3 }} />
 
-      <Box ref={listRef} sx={{ flex: 1, overflowY: "auto", px: 4, display: "flex", flexDirection: "column", gap: 0.8 }}>
+      <Box ref={listRef} sx={{ 
+        flex: 1, 
+        overflowY: "auto", 
+        px: 4, 
+        display: "flex", 
+        flexDirection: "column", 
+        gap: 0.8,
+         scrollbarWidth: "none",       // Firefox
+    msOverflowStyle: "none",      // IE/Edge
+    "&::-webkit-scrollbar": {
+      display: "none",            // Chrome/Safari
+    },
+        }}>
         {messages.length === 0 && <Typography variant="body2" color="text.secondary" textAlign="center" mt={2}>No messages yet. Start chatting below 👇</Typography>}
         {messages.map((m) => (
           <ChatMessageBubble

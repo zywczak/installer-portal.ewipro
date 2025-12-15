@@ -10,6 +10,7 @@ interface ProjectsViewProps {
   sort?: "projectIDDESC" | "projectIDASC";
   ongoingOnly?: boolean;
   showAddButton?: boolean;
+  stickyFooter?: boolean;
 }
 
 const ProjectsView: React.FC<ProjectsViewProps> = ({
@@ -17,6 +18,7 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
   sort = "projectIDDESC",
   ongoingOnly = false,
   showAddButton = true,
+  stickyFooter = true,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [useTiles, setUseTiles] = useState(false);
@@ -83,12 +85,13 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
       <Legend type="project" showAddButton={showAddButton} />
 
       {isMobile || useTiles ? (
-        <ProjectsCards projects={projects} />
+        <ProjectsCards projects={projects} stickyFooter={stickyFooter}/>
       ) : (
         <ProjectsTable
           rows={projects}
           onRowClick={handleRowClick}
           onOverflow={handleTableOverflow}
+          stickyFooter={stickyFooter}
         />
       )}
     </Box>

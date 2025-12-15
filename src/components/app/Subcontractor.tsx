@@ -20,8 +20,8 @@ import SecurityIcon from "@mui/icons-material/Security";
 import FolderIcon from "@mui/icons-material/Folder";
 import axios from "axios";
 
-import DataTable, { Column } from "../common/Table/DataTable";
-import CardList from "../common/List/CardList";
+import DataTable, { Column } from "../common/projects&subcontractors/Table/DataTable";
+import CardList from "../common/projects&subcontractors/List/CardList";
 import { fallbackColors, stageColors } from "../common/colors";
 import warranty from "../../assets/warranty.png";
 import AcceptButton from "../common/AcceptButton";

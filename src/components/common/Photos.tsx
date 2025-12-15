@@ -754,6 +754,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography, CircularProgress, IconButton, Stack, Divider } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import Header from "./Header";
 import axios from "axios";
 import { fallbackColors, stageColors } from "./colors";
 import SuccessSnackbar from "./SuccessSnackbar";
@@ -765,6 +766,7 @@ interface PhotosProps {
   projectId: number;
   contactId: number;
   isProjectClosed: boolean;
+  sideBySideWithChat?: boolean;
 }
 
 interface PhotoItem {
@@ -778,7 +780,7 @@ interface PhotoItem {
 
 const IMAGE_OVERLAY_COLOR = "#2D3538";
 
-export const Photos: React.FC<PhotosProps> = ({ projectId, contactId, isProjectClosed }) => {
+export const Photos: React.FC<PhotosProps> = ({ projectId, contactId, isProjectClosed, sideBySideWithChat = false}) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [photosByStage, setPhotosByStage] = useState<Record<string, PhotoItem[]>>({});
@@ -1010,34 +1012,27 @@ export const Photos: React.FC<PhotosProps> = ({ projectId, contactId, isProjectC
         onChange={handleFilesSelected}
       />
 
-      <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <PhotoCameraIcon sx={{ color: 'grey', fontSize: 36 }} />
-          <Stack direction="column" spacing={0.2} alignItems="flex-start">
-            <Typography variant="h6" fontWeight="bold" sx={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>Photos</Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              EWI Stages Visual Documentation
-            </Typography>
-          </Stack>
-        </Stack>
-
-        {!isProjectClosed && (
-          <IconButton
-            onClick={handleUploadClick}
-            sx={{
-              backgroundColor: "#E0E0E0",
-              width: 30,
-              height: 30,
-              borderRadius: "25%",
-              "&:hover": { backgroundColor: "#D0D0D0" }
-            }}
-          >
-            <AddIcon fontSize="medium" sx={{ color: "#333" }} />
-          </IconButton>
-        )}
-      </Stack>
-
-      <Divider sx={{ mb: 2 }} />
+      <Header
+        icon={<PhotoCameraIcon />}
+        title="Photos"
+        description="EWI Stages Visual Documentation"
+        actions={
+          !isProjectClosed ? (
+            <IconButton
+              onClick={handleUploadClick}
+              sx={{
+                backgroundColor: "#E0E0E0",
+                width: 30,
+                height: 30,
+                borderRadius: "25%",
+                "&:hover": { backgroundColor: "#D0D0D0" }
+              }}
+            >
+              <AddIcon fontSize="medium" sx={{ color: "#333" }} />
+            </IconButton>
+          ) : undefined
+        }
+      />
 
       <Stack
         direction="row"
@@ -1045,7 +1040,20 @@ export const Photos: React.FC<PhotosProps> = ({ projectId, contactId, isProjectC
         flexWrap="wrap"
         gap={2}
         justifyContent="center"
-        sx={{ width: "100%" }}
+        sx={{
+    width: "100%",
+    ...(sideBySideWithChat && {
+      maxHeight: "calc(100% - 125px)", // dostosuj, np. 100px na header
+      overflowY: "auto",
+      paddingRight: 1,
+    }),
+     scrollbarWidth: "none",                   // Firefox
+    msOverflowStyle: "none",                  // IE/Edge
+    "&::-webkit-scrollbar": {
+      display: "none",                        // Chrome/Safari
+    },
+
+  }}
       >
         {Object.keys(photosByStage).length === 0 ? (
           <EmptyStateBox

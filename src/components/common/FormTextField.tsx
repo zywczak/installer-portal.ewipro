@@ -113,6 +113,28 @@
 // };
 
 // export default FormTextField;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
 import {
   TextField,
@@ -226,3 +248,79 @@ const FormTextField: React.FC<FormTextFieldProps> = ({
 };
 
 export default FormTextField;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from "react";
+// import { TextField, InputAdornment, IconButton } from "@mui/material";
+// import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+// interface FormTextFieldProps {
+//   value: string;
+//   onChange: (value: string) => void;
+//   placeholder?: string;
+//   type?: string;
+//   error?: string | null;
+//   icon?: React.ReactNode;
+//   showPasswordToggle?: boolean;
+// }
+
+// const FormTextField: React.FC<FormTextFieldProps> = ({
+//   value,
+//   onChange,
+//   placeholder,
+//   type = "text",
+//   error,
+//   icon,
+//   showPasswordToggle = false,
+// }) => {
+//   const [showPassword, setShowPassword] = React.useState(false);
+
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value);
+
+//   const isPassword = type === "password";
+//   const inputType = isPassword && showPasswordToggle ? (showPassword ? "text" : "password") : type;
+
+//   return (
+//     <TextField
+//       value={value}
+//       onChange={handleChange}
+//       placeholder={placeholder}
+//       type={inputType}
+//       error={!!error}
+//       helperText={error}
+//       fullWidth
+//       InputProps={{
+//         startAdornment: icon ? <InputAdornment position="start">{icon}</InputAdornment> : undefined,
+//         endAdornment: isPassword && showPasswordToggle ? (
+//           <InputAdornment position="end">
+//             <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+//               {showPassword ? <VisibilityOff /> : <Visibility />}
+//             </IconButton>
+//           </InputAdornment>
+//         ) : undefined,
+//       }}
+//     />
+//   );
+// };
+
+// export default FormTextField;

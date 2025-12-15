@@ -4,9 +4,10 @@ import { Project } from "./types";
 
 interface Props {
   projects: Project[];
+  stickyFooter?: boolean;
 }
 
-const ProjectsCards: React.FC<Props> = ({ projects }) => {
+const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter }) => {
   return (
     <CardList
       items={projects.map(p => ({
@@ -28,6 +29,7 @@ const ProjectsCards: React.FC<Props> = ({ projects }) => {
       }))}
       type="project"
       onItemClick={(item) => { window.location.hash = `projects/${item.id}/${item.contactID}`; }}
+      stickyFooter={stickyFooter}
     />
   );
 };
