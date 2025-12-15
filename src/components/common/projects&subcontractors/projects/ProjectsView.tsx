@@ -9,14 +9,14 @@ interface ProjectsViewProps {
   isMobile: boolean;
   sort?: "projectIDDESC" | "projectIDASC";
   ongoingOnly?: boolean;
-  showAddButton?: boolean; // <-- nowa props dla Legend
+  showAddButton?: boolean;
 }
 
 const ProjectsView: React.FC<ProjectsViewProps> = ({
   isMobile,
   sort = "projectIDDESC",
   ongoingOnly = false,
-  showAddButton = true, // domyślnie przycisk widoczny
+  showAddButton = true,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [useTiles, setUseTiles] = useState(false);
@@ -79,7 +79,7 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
 
   return (
     <Box sx={{ height: "100%" }} ref={containerRef}>
-        
+
       <Legend type="project" showAddButton={showAddButton} />
 
       {isMobile || useTiles ? (
