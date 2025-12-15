@@ -388,24 +388,28 @@ const FinanceTiles: React.FC = () => {
             }}
           >
             {/* Pie Chart */}
-            <Box sx={{ width: 200, height: 200, position: "relative" }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={chartData}
-                    innerRadius="60%"
-                    outerRadius="90%"
-                    paddingAngle={0}
-                    dataKey="value"
-                    stroke="none"
-                    strokeWidth={0}
-                  >
-                    {chartData.map((entry, index) => (
-                      <Cell key={index} fill={colors[index]} />
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
+<Box sx={{ width: 200, height: 200, position: "relative" }}>
+  <ResponsiveContainer width="100%" height="100%">
+    <PieChart>
+      <Pie
+        data={chartData}
+        innerRadius="65%"
+        outerRadius="95%"
+        paddingAngle={1}
+        dataKey="value"
+        stroke="none"
+        strokeWidth={0}
+        startAngle={90}
+        endAngle={450}
+        cornerRadius={6}
+      >
+        {chartData.map((entry, index) => (
+          <Cell key={index} fill={colors[index]} />
+        ))}
+      </Pie>
+    </PieChart>
+  </ResponsiveContainer>
+
               <Box
   sx={{
     position: "absolute",

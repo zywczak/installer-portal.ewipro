@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, Typography, Divider, IconButton, Button, useTheme, useMediaQuery } from "@mui/material";
-import OnGoingProjects from "../common/projects&subcontractors/projects/OnGoingProjects";
 import FinanceTiles from "../common/FinanceTiles";
 import StatementDownloadTile from "../common/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
 import { ArrowForwardIos } from "@mui/icons-material";
+import ProjectsView from "../common/projects&subcontractors/projects/ProjectsView";
+import { hover } from "framer-motion";
 
 interface DashboardProps {
   isMobile: boolean;
@@ -63,10 +64,10 @@ const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
       >
         <IconButton
           size="medium"
-          sx={{ color: "#388E3C", fontSize: "2rem", padding: 1.2 }}
+          sx={{ color: "#388E3C", fontSize: "1.9rem", padding: 1.2, "&:hover": { bgcolor: "transparent" } }}
           onClick={handleAddProjectClick}
         >
-          <AddIcon sx={{ fontSize: "2rem", fontWeight: "bold" }} />
+          <AddIcon sx={{ fontSize: "1.9rem", fontWeight: "bold" }} />
         </IconButton>
 
         <Typography
@@ -97,8 +98,8 @@ const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
         >
           <Typography
             variant="caption"
-            fontWeight="bold"
-            sx={{ fontSize: "0.85rem" }}
+            fontWeight="800"
+            sx={{ fontSize: "0.9rem" }}
           >
             See all
           </Typography>
@@ -109,7 +110,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
         </Button>
       </Box>
 
-      <OnGoingProjects isMobile={isMobile} />
+      <ProjectsView isMobile={isMobile} ongoingOnly sort="projectIDASC" showAddButton={false} stickyFooter={false} />
     </Box>
   );
 };
