@@ -10,7 +10,8 @@ export default function DataTableHeader<T>({ columns }: Props<T>) {
     <TableHead
       sx={{
         "& .MuiTableCell-root": {
-          backgroundColor: "#ececec",
+          borderBottom: "1px solid #ccc",
+          borderTop: "1px solid #ccc",
           color: "#333",
           fontSize: "0.85rem",
           textTransform: "uppercase",

@@ -23,19 +23,12 @@ export default function BaseRow<T>({
       key={rowKey}
       onClick={onClick}
       sx={{
-        backgroundColor: "inherit",
-        "&:nth-of-type(even)": {
-          backgroundColor:"#f9f9f9",
-        },
-        "&:nth-of-type(odd)": {
-          backgroundColor: "#ffffff",
-        },
         "&:hover": {
-          backgroundColor: "#f0f0f0",
+          backgroundColor: "#f9f9f9",
         },
         cursor: "pointer",
         transition: "background 0.2s ease",
-        "td, th": { borderBottom: "1px solid #eee" },
+        "td, th": { borderBottom: "1px solid #ccc" },
 
         "& .MuiTableCell-root:first-of-type": {
           position: "relative",

@@ -25,7 +25,6 @@ const EmptyStateBox: React.FC<EmptyStateBoxProps> = ({
     borderRadius: 2,
     p: 1,
     border: `2px dashed #ccc`,
-    bgcolor: "#f5f5f5",
 
     display: "flex",
     flexDirection: "column",

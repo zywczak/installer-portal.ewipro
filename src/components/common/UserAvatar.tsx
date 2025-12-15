@@ -5,7 +5,6 @@ import profilePhoto from "../../assets/profile-photo.png";
 interface UserAvatarProps {
   avatarUrl?: string;
   size?: number;
-  tooltip?: string;
   onClick?: () => void;
 }
 
@@ -14,7 +13,6 @@ const MotionAvatar = motion(Avatar);
 const UserAvatar: React.FC<UserAvatarProps> = ({
   avatarUrl,
   size = 80,
-  tooltip,
   onClick,
 }) => {
   const avatar = (
@@ -34,13 +32,8 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
     />
   );
 
-  return tooltip ? (
-    <Tooltip title={tooltip} arrow placement="right">
-      {avatar}
-    </Tooltip>
-  ) : (
-    avatar
-  );
+  return( avatar)
+   
 };
 
 export default UserAvatar;

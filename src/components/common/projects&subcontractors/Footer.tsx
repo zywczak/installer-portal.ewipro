@@ -11,7 +11,7 @@ interface Props {
   sticky?: boolean;
 }
 
-export default function DataTableFooter({
+export default function Footer({
   currentPage,
   totalPages,
   itemsCount,
@@ -24,9 +24,9 @@ export default function DataTableFooter({
     <Box
   sx={{
     display: "flex",
-    justifyContent: "center", // środek
+    justifyContent: "center",
     alignItems: "center",
-    gap: 2, // odstęp między wszystkimi elementami (możesz zmienić)
+    gap: 2,
     padding: "8px 16px",
     backgroundColor: "#fff",
     borderTop: "1px solid #ddd",

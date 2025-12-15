@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Table, TableContainer, TableBody, Box, Typography, Stack } from "@mui/material";
+import { Table, TableContainer, TableBody, Box} from "@mui/material";
 import DataTableHeader from "./DataTableHeader";
-import DataTableFooter from "./DataTableFooter";
+import Footer from "../Footer";
 import ProjectRow from "./ProjectRow";
 import SubcontractorRow from "./SubcontractorRow";
-import warranty from '../../../assets/warranty.png';
 import ExpandedRow from "./ExpandedRow";
 import ProjectRowDetails from "./ProjectRowDetails";
-import Legend from "../List/Legend";
+import Legend from "../Legend";
 
 export interface Column<T> {
   key: keyof T | string;
@@ -97,13 +96,13 @@ export default function DataTable<T>({
 
   <Legend type={type} />
 
-      {/* Table */}
       <TableContainer
         ref={tableContainerRef}
         sx={{
           flex: 1,
           overflowY: "auto",
           px: 1,
+          mt: 2,
           width: "98%",
           mx: "auto",
           maxHeight,
@@ -145,14 +144,13 @@ export default function DataTable<T>({
         </Table>
       </TableContainer>
 
-      {/* Footer */}
-      <DataTableFooter
+      <Footer
         currentPage={currentPage}
         totalPages={totalPages}
         itemsCount={paginatedRows.length}
         onPrev={() => setCurrentPage(p => Math.max(p - 1, 1))}
         onNext={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
-        onPageSelect={(page) => setCurrentPage(page)}   // <-- NOWE
+        onPageSelect={(page) => setCurrentPage(page)}
         sticky={stickyFooter}
       />
 
