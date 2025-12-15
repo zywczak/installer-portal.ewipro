@@ -151,7 +151,7 @@
 
 import React from "react";
 import { Box, Typography, Divider, IconButton, Button, useTheme, useMediaQuery } from "@mui/material";
-import OnGoingProjects from "../common/OnGoingProjects";
+import OnGoingProjects from "../common/projects&subcontractors/projects/OnGoingProjects";
 import FinanceTiles from "../common/FinanceTiles";
 import StatementDownloadTile from "../common/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";

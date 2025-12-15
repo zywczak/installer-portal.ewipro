@@ -94,8 +94,6 @@ export default function DataTable<T>({
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%", borderRadius: 2 }}>
 
-  <Legend type={type} />
-
       <TableContainer
         ref={tableContainerRef}
         sx={{

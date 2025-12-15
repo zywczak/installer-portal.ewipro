@@ -3,7 +3,12 @@ import api from "../api/axiosApi";
 import { mapProjectData } from "../utils/mapProjectData";
 import { Project } from "../components/common/projects&subcontractors/projects/types";
 
-export const useProjects = () => {
+interface UseProjectsOptions {
+  sort?: "projectIDDESC" | "projectIDASC";
+  ongoingOnly?: boolean;
+}
+
+export const useProjects = ({ sort = "projectIDDESC", ongoingOnly = false }: UseProjectsOptions = {}) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -15,10 +20,13 @@ export const useProjects = () => {
       setError(null);
 
       try {
+        const filters: any[] = [];
+        if (ongoingOnly) filters.push({ ongoingOnly: true });
+
         const res = await api.post({
           action: "getProjectsList",
-          filters: [],
-          sort: "projectIDDESC",
+          filters,
+          sort,
         });
 
         const data = Array.isArray(res.data?.projects) ? res.data.projects : [];
@@ -32,7 +40,7 @@ export const useProjects = () => {
     };
 
     fetchProjects();
-  }, [userID]);
+  }, [sort, ongoingOnly, userID]);
 
   return { projects, loading, error };
 };

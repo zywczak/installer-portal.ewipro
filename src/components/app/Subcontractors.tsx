@@ -226,6 +226,7 @@ import SubcontractorsTable from "../common/projects&subcontractors/subcontractor
 import SubcontractorsCards from "../common/projects&subcontractors/subcontractors/SubcontractorsCards";
 import { useSubcontractors } from "../../hooks/useSubcontractors";
 import { User } from "../common/projects&subcontractors/subcontractors/types";
+import Legend from "../common/projects&subcontractors/Legend";
 
 interface Props {
   isMobile: boolean;
@@ -272,6 +273,7 @@ const Subcontractors: React.FC<Props> = ({ isMobile, onSubcontractorClick }) => 
 
   return (
     <Box sx={{ height: "100%" }} ref={containerRef}>
+      <Legend type="subcontractor" />
       {isMobile || useTiles
         ? <SubcontractorsCards users={users} onItemClick={(id) => handleRowClick({ id } as unknown as User)} />
         : <SubcontractorsTable users={users} onRowClick={handleRowClick} onOverflow={handleTableOverflow} />}

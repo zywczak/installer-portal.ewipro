@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import ProjectListItem from "./ProjectListItem";
 import SubcontractorListItem from "./SubcontractorListItem";
 import Footer from "../Footer";
-import Legend from "../Legend";
 
 interface CardListProps {
   items: any[];
@@ -23,7 +22,6 @@ const CardList: React.FC<CardListProps> = ({ items, type, itemsPerPage = 20, onI
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      <Legend type={type} />
       <Box sx={{ 
         flex: 1, 
         overflowY: "auto", 
