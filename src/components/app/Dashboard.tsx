@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Divider, IconButton, Button, useTheme, useMediaQuery } from "@mui/material";
-import FinanceTiles from "../common/FinanceTiles";
-import StatementDownloadTile from "../common/StatementDownloadTile";
+import FinanceTiles from "../common/dashboard/FinanceTiles";
+import StatementDownloadTile from "../common/dashboard/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
 import { ArrowForwardIos } from "@mui/icons-material";
 import ProjectsView from "../common/projects&subcontractors/projects/ProjectsView";
@@ -52,7 +52,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
         )}
       </Box>
 
-      <Divider sx={{ mb: 1 }} />
+      <Divider sx={{ mx: 2, my: 1 }} />
 
       <Box
         sx={{

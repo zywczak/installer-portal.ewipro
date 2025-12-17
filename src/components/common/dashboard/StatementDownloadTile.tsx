@@ -4,7 +4,6 @@ import { FileDownloadOutlined } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 
 interface StatementDownloadTileProps {
-  // Możesz dodać props do obsługi logiki pobierania
   onDownloadClick: () => void;
 }
 
@@ -15,25 +14,22 @@ const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
 
   return (
     <Card
-      elevation={0}
       sx={{
-        width: "100%", // W Dashboard dostosujemy, by zajmował dostępne miejsce
-        flexShrink: 0, // Domyślnie nie pozwalamy na jego kurczenie
-        border: "1px solid #e0e0e0",
+        width: "100%",
+        flexShrink: 0,
+        border: "1px solid #3877B6",
         borderRadius: 2,
         overflow: "hidden",
         p: 0,
         my: 2,
-        
       }}
     >
       <CardActionArea
         onClick={onDownloadClick}
         sx={{
-          minHeight: "100%", // Wypełnia całą wysokość Card
+          minHeight: "100%",
           display: "flex",
           alignItems: "center",
-          border: "1px solid #3877B6",
           justifyContent: "center",
           padding: 3,
         }}
@@ -46,7 +42,7 @@ const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
             textAlign: "center",
           }}
         >
-          {/* Ikona pobierania */}
+
           <FileDownloadOutlined
             sx={{
               fontSize: "3rem",
@@ -54,7 +50,7 @@ const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
               marginBottom: 1,
             }}
           />
-          {/* Tekst przycisku */}
+
           <Typography
             sx={{
               fontSize: "1.1rem",
@@ -62,7 +58,7 @@ const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
               color: "#3877B6",
             }}
           >
-            Download Statement
+            {t("views.dashboard.statements.download")}
           </Typography>
         </Box>
       </CardActionArea>
