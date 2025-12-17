@@ -209,6 +209,23 @@
           "sortingSelectedToast": "Sortowanie według {{sorting}}"
         }
       },
+      "legend": {
+        "open": "Projekt otwarty",
+        "closed": "Projekt zamknięty",
+        "warranty": "Gwarancja"
+      },
+      "table": {
+        "project": "PROJEKT",
+        "address": "ADRES",
+        "stage": "ETAP",
+        "access": "DOSTĘP",
+        "members": "CZŁONKOWIE"
+      },
+      "footer": {
+        "page": "Strona",
+        "of": "z",
+        "items": "elementów"
+      },
       "header": "Moje Projekty",
       "listEmpty": "Brak wyników wyszukiwania",
       "searchCancelButton": "Anuluj"
@@ -545,6 +562,18 @@
           }
         },
         "header": "Dodaj Podwykonawcę"
+      },
+      "legend": {
+        "invited": "Zaproszony",
+        "notRegistered": "Niezarejestrowany",
+        "verified": "Zweryfikowany"
+      },
+      "table": {
+        "name": "IMIĘ I NAZWISKO",
+        "company": "FIRMA",
+        "email": "EMAIL",
+        "phone": "TELEFON",
+        "role": "ROLA"
       },
       "cancelInvitationConfirmationModal": {
         "cancel": "ANULUJ",

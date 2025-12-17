@@ -209,6 +209,23 @@
           "sortingSelectedToast": "Sortat după {{sorting}}"
         }
       },
+      "legend": {
+        "open": "Proiect deschis",
+        "closed": "Proiect închis",
+        "warranty": "Garanție"
+      },
+      "table": {
+        "project": "PROIECT",
+        "address": "ADRESĂ",
+        "stage": "ETAPĂ",
+        "access": "ACCES",
+        "members": "MEMBRI"
+      },
+      "footer": {
+        "page": "Pagina",
+        "of": "din",
+        "items": "elemente"
+      },
       "header": "Proiectele mele",
       "listEmpty": "Nu s-au găsit rezultate",
       "searchCancelButton": "Anulează"
@@ -545,6 +562,18 @@
           }
         },
         "header": "Adaugă subcontractant"
+      },
+      "legend": {
+        "invited": "Invitat",
+        "notRegistered": "Neînregistrat",
+        "verified": "Verificat"
+      },
+      "table": {
+        "name": "NUME",
+        "company": "COMPANIE",
+        "email": "EMAIL",
+        "phone": "TELEFON",
+        "role": "ROL"
       },
       "cancelInvitationConfirmationModal": {
         "cancel": "NU",

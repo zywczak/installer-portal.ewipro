@@ -209,6 +209,23 @@
           "sortingSelectedToast": "{{sorting}} کے ذریعے ترتیب دیں"
         }
       },
+      "legend": {
+        "open": "پروجیکٹ کھلا",
+        "closed": "پروجیکٹ بند",
+        "warranty": "وارنٹی"
+      },
+      "table": {
+        "project": "پروجیکٹ",
+        "address": "پتہ",
+        "stage": "مرحلہ",
+        "access": "رسائی",
+        "members": "ارکان"
+      },
+      "footer": {
+        "page": "صفحہ",
+        "of": "کا",
+        "items": "اشیاء"
+      },
       "header": "میرے منصوبے",
       "listEmpty": "کوئی نتائج نہیں ملے",
       "searchCancelButton": "منسوخ کریں"
@@ -545,6 +562,18 @@
           }
         },
         "header": "ذیلی ٹھیکیدار شامل کریں"
+      },
+      "legend": {
+        "invited": "مدعو",
+        "notRegistered": "غیر رجسٹرڈ",
+        "verified": "تصدیق شدہ"
+      },
+      "table": {
+        "name": "نام",
+        "company": "کمپنی",
+        "email": "ای میل",
+        "phone": "فون",
+        "role": "کردار"
       },
       "cancelInvitationConfirmationModal": {
         "cancel": "نہیں",

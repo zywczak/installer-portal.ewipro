@@ -207,6 +207,23 @@
           },
           "sortingSectionTitle": "SORT BY",
           "sortingSelectedToast": "Sorting by {{sorting}}"
+        },
+        "legend": {
+          "open": "Project open",
+          "closed": "Project closed",
+          "warranty": "Warranty"
+        },
+        "table":{
+          "project": "PROJECT",
+          "address": "ADDRESS",
+          "stage": "STAGE",
+          "access": "ACCESS",
+          "members": "MEMBERS"
+        },
+        "footer":{
+          "page": "Page",
+          "of": "of",
+          "items": "items"
         }
       },
       "header": "My Projects",
@@ -545,6 +562,18 @@
           }
         },
         "header": "Add subcontractor"
+      },
+      "legend": {
+        "invited": "Invited",
+        "notRegistered": "Not Registered",
+        "verified": "Verified"
+      },
+      "table": {
+        "name": "NAME",
+        "company": "COMPANY",
+        "email": "EMAIL",
+        "phone": "PHONE",
+        "role": "ROLE"
       },
       "cancelInvitationConfirmationModal": {
         "cancel": "NO",

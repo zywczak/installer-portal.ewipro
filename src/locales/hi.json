@@ -209,6 +209,23 @@
           "sortingSelectedToast": "{{sorting}} द्वारा क्रमबद्ध किया गया"
         }
       },
+      "legend": {
+        "open": "परियोजना खुली",
+        "closed": "परियोजना बंद",
+        "warranty": "गारंटी"
+      },
+      "table": {
+        "project": "परियोजना",
+        "address": "पता",
+        "stage": "चरण",
+        "access": "पहुँच",
+        "members": "सदस्य"
+      },
+      "footer": {
+        "page": "पृष्ठ",
+        "of": "का",
+        "items": "आइटम"
+      },
       "header": "मेरे प्रोजेक्ट्स",
       "listEmpty": "कोई परिणाम नहीं मिला",
       "searchCancelButton": "रद्द करें"
@@ -546,6 +563,18 @@
           }
         },
         "header": "सब-कॉन्ट्रैक्टर जोड़ें"
+      },
+      "legend": {
+        "invited": "आमंत्रित",
+        "notRegistered": "पंजीकृत नहीं",
+        "verified": "सत्यापित"
+      },
+      "table": {
+        "name": "नाम",
+        "company": "कंपनी",
+        "email": "ईमेल",
+        "phone": "फ़ोन",
+        "role": "भूमिका"
       },
       "cancelInvitationConfirmationModal": {
         "cancel": "नहीं",

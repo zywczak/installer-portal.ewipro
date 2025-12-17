@@ -1,5 +1,6 @@
 import { Box, Typography, IconButton, Select, MenuItem } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { t } from "i18next";
 
 interface Props {
   currentPage: number;
@@ -40,7 +41,7 @@ export default function Footer({
   </IconButton>
 
   <Typography variant="body2" color="text.secondary">
-    Page
+    {t("views.MyProjects.footer.page")}
   </Typography>
 
   <Select
@@ -78,7 +79,7 @@ export default function Footer({
   </Select>
 
   <Typography variant="body2" color="text.secondary">
-    of {totalPages}, {itemsCount} items
+    {t("views.MyProjects.footer.of")} {totalPages}, {itemsCount} {t("views.MyProjects.footer.items")}
   </Typography>
 
   <IconButton

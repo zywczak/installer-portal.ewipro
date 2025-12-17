@@ -5,6 +5,7 @@ import ProjectMembers from "./ProjectMembers";
 import warranty from '../../../../assets/warranty.png';
 import { Box, Tooltip, Typography } from "@mui/material";
 import { fallbackColors, stageColors } from "../../colors";
+import { t } from "i18next";
 
 interface Props {
   rows: Project[];
@@ -19,7 +20,7 @@ const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFo
   const columns: Column<Project>[] = [
     {
       key: "projectCode",
-      label: "Project",
+      label: t("views.MyProjects.table.project"),
       align: "left",
       render: (p) => (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -34,10 +35,10 @@ const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFo
         </Box>
       ),
     },
-    { key: "address", label: "Address", align: "left", render: (p) => <span><b>{p.address.postcode},</b> {p.address.rest}</span> },
+    { key: "address", label: t("views.MyProjects.table.address"), align: "left", render: (p) => <span><b>{p.address.postcode},</b> {p.address.rest}</span> },
     {
       key: "stage",
-      label: "Stage",
+      label: t("views.MyProjects.table.stage"),
       align: "center",
       render: (p) => {
         const [current] = p.stage.split("/").map(Number);
@@ -61,8 +62,8 @@ const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFo
         );
       },
     },
-    { key: "accessType", label: "Access", align: "center" },
-    { key: "members", label: "Members", render: (p) => <ProjectMembers members={p.members} /> },
+    { key: "accessType", label: t("views.MyProjects.table.access"), align: "center" },
+    { key: "members", label: t("views.MyProjects.table.members"), render: (p) => <ProjectMembers members={p.members} /> },
   ];
 
   return (

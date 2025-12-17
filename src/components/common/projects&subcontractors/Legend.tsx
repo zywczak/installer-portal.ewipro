@@ -2,6 +2,7 @@ import React from "react";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import warranty from '../../../assets/warranty.png';
 import AddIcon from "@mui/icons-material/Add";
+import { t } from "i18next";
 
 interface LegendProps {
   type: "project" | "subcontractor";
@@ -26,11 +27,11 @@ const Legend: React.FC<LegendProps> = ({ type, showAddButton = true }) => {
         <Stack direction="row" spacing={2} alignItems="center" justifyContent="center" flex={1}>
           <Stack direction="row" spacing={0.5} alignItems="center">
             <Box sx={{ width: 12, height: 12, bgcolor: "#54A852", borderRadius: 1 }} />
-            <Typography variant="body2">Project open</Typography>
+            <Typography variant="body2">{t("views.MyProjects.legend.open")}</Typography>
           </Stack>
           <Stack direction="row" spacing={0.5} alignItems="center">
             <Box sx={{ width: 12, height: 12, bgcolor: "#e91e63", borderRadius: 1 }} />
-            <Typography variant="body2">Project closed</Typography>
+            <Typography variant="body2">{t("views.MyProjects.legend.closed")}</Typography>
           </Stack>
           <Stack direction="row" spacing={0.5} alignItems="center">
             <Box
@@ -48,7 +49,7 @@ const Legend: React.FC<LegendProps> = ({ type, showAddButton = true }) => {
                 style={{ width: 16, height: 16, display: "block" }}
               />
             </Box>
-            <Typography variant="body2">Warranty</Typography>
+            <Typography variant="body2">{t("views.MyProjects.legend.warranty")}</Typography>
           </Stack>
         </Stack>
 
@@ -70,15 +71,15 @@ const Legend: React.FC<LegendProps> = ({ type, showAddButton = true }) => {
       <Stack direction="row" spacing={2} alignItems="center" justifyContent="center" pt={2} mb={1} px={2}>
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Box sx={{ width: 12, height: 12, bgcolor: "#54A852", borderRadius: 1 }} />
-          <Typography variant="body2">Verified</Typography>
+          <Typography variant="body2">{t("views.subcontractors.legend.verified")}</Typography>
         </Stack>
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Box sx={{ width: 12, height: 12, bgcolor: "#fbc02d", borderRadius: 1 }} />
-          <Typography variant="body2">Invited</Typography>
+          <Typography variant="body2">{t("views.subcontractors.legend.invited")}</Typography>
         </Stack>
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Box sx={{ width: 12, height: 12, bgcolor: "#9b9b9b", borderRadius: 1 }} />
-          <Typography variant="body2">Not Registered</Typography>
+          <Typography variant="body2">{t("views.subcontractors.legend.notRegistered")}</Typography>
         </Stack>
       </Stack>
     );
