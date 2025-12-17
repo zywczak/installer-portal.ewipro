@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SidebarMenuItem from "./SidebarMenuItem";
+import { t } from "i18next";
 
 interface SidebarFooterProps {
   isCollapsed: boolean;
@@ -11,7 +12,7 @@ interface SidebarFooterProps {
 const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed, isMobile }) => {
   const footerItems = [
     {
-      text: "Logout",
+      text: t("drawer.logout"),
       icon: <LogoutIcon />,
       action: () => {
         localStorage.removeItem("access");

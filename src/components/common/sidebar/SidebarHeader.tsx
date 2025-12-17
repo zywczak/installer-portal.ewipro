@@ -2,7 +2,6 @@ import React from "react";
 import { Box, IconButton } from "@mui/material";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import CloseIcon from "@mui/icons-material/Close";
-
 import UserAvatar from "../UserAvatar";
 import UserInfo from "./UserInfo";
 

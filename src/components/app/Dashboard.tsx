@@ -5,7 +5,7 @@ import StatementDownloadTile from "../common/dashboard/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
 import { ArrowForwardIos } from "@mui/icons-material";
 import ProjectsView from "../common/projects&subcontractors/projects/ProjectsView";
-import { hover } from "framer-motion";
+import { t } from "i18next";
 
 interface DashboardProps {
   isMobile: boolean;
@@ -80,7 +80,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
             flex: 1,
           }}
         >
-          Ongoing projects
+          {t("views.dashboard.ongoingProjects")}
         </Typography>
 
         <Button
@@ -101,7 +101,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
             fontWeight="800"
             sx={{ fontSize: "0.9rem" }}
           >
-            See all
+            {t("views.dashboard.projectList.seeAll")}
           </Typography>
 
           <ArrowForwardIos

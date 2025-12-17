@@ -6,6 +6,7 @@ interface UserAvatarProps {
   avatarUrl?: string;
   size?: number;
   onClick?: () => void;
+  tooltip?: string;
 }
 
 const MotionAvatar = motion(Avatar);
@@ -14,6 +15,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
   avatarUrl,
   size = 80,
   onClick,
+  tooltip,
 }) => {
   const avatar = (
     <MotionAvatar
@@ -32,8 +34,14 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
     />
   );
 
-  return( avatar)
-   
+  if (!tooltip) return avatar;
+
+  return (
+    <Tooltip title={tooltip} arrow>
+      <span>{avatar}</span>
+    </Tooltip>
+  );
 };
+
 
 export default UserAvatar;

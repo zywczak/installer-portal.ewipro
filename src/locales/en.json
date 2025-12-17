@@ -40,7 +40,8 @@
     "myProjects": "My Projects",
     "settings": "Settings",
     "subcontractors": "Subcontractors",
-    "whatsNew": "What's New"
+    "whatsNew": "What's New",
+    "ewiCalculator": "EWI Calculator"
   },
   "errors": {
     "validationErrors": {

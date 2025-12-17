@@ -7,6 +7,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import SidebarMenuItem from "./SidebarMenuItem";
 import ScrollableContainerWithArrows from "../ScrollableContainerWithArrows";
+import { t } from "i18next";
 
 interface SidebarMenuProps {
   currentView: string;
@@ -24,11 +25,11 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
   onClose,
 }) => {
   const menuItems = [
-    { text: "Dashboard", icon: <DashboardIcon />, view: "dashboard" },
-    { text: "My Projects", icon: <ListAltIcon />, view: "projects" },
-    { text: "Subcontractors", icon: <PeopleAltIcon />, view: "subcontractors" },
-    { text: "EWI Calculator", icon: <CalculateOutlinedIcon />, view: "materialsCalculator" },
-    { text: "Settings", icon: <SettingsIcon />, view: "settings" },
+    { text: t("drawer.dashboard"), icon: <DashboardIcon />, view: "dashboard" },
+    { text: t("drawer.myProjects"), icon: <ListAltIcon />, view: "projects" },
+    { text: t("drawer.subcontractors"), icon: <PeopleAltIcon />, view: "subcontractors" },
+    { text: t("drawer.ewiCalculator"), icon: <CalculateOutlinedIcon />, view: "materialsCalculator" },
+    { text: t("drawer.settings"), icon: <SettingsIcon />, view: "settings" },
   ];
 
   return (
