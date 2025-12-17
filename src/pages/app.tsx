@@ -8,16 +8,15 @@ import Dashboard from "../components/app/Dashboard";
 import Settings from "../components/app/Settings";
 import ChangePassword from "../components/app/ChangePassword";
 import NotificationBanner from "../components/app/NotificationBanner";
-import { Notification } from "../components/common/NotificationBanner/NotificationList";
+import { Notification } from "../components/common/NotificationBanner/types";
 import ProfileView from "../components/app/MyProfile";
 import Project from "../components/app/Project";
-import AIAssistant from "../components/common/AIAssistant";
+import AIAssistant from "../components/app/AIAssistant";
 import Subcontractor from "../components/app/Subcontractor";
 import SuccessSnackbar from "../components/common/SuccessSnackbar";
 import ErrorSnackbar from "../components/common/ErrorSnackbar";
 import AddProjectForm from "../components/app/AddProjectForm";
 import Form from "../components/app/form";
-import { create } from "@mui/material/styles/createTransitions";
 import OrderCreationPage from "../components/app/OrderCreationPage";
 
 function App() {
