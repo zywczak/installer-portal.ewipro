@@ -665,6 +665,22 @@
         "subcontractorAddedAndInvited": "Podwykonawca został zapisany i zaproszony.",
         "subcontractorRemoved": "Podwykonawca został usunięty."
       }
+    },
+    "chatView": {
+      "status": {
+        "connected": "Połączono",
+        "disconnected": "Rozłączono"
+      },
+      "AI": {
+        "title": "Asystent Veen-E",
+        "description": "Twój asystent AI",
+        "inputPlaceholder": "Spróbuj mnie! Postaram się jak najlepiej Ci pomóc"
+      },
+      "board": {
+        "title": "EWI Pro Board",
+        "description": "Kanał zespołu technicznego",
+        "inputPlaceholder": "Napisz wiadomość do zespołu technicznego EWI Pro..."
+      }
     }
   }
 }

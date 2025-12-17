@@ -12,6 +12,7 @@ const api = axios.create({
 const excludedPaths: any[] = [
     "/installer/authenticate/",
     "/installer/registration/",
+    "/installer/forget-password/",
 ];
 
 // Interceptor request – dodawanie tokena do nagłówków

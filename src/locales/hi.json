@@ -666,6 +666,22 @@
         "subcontractorAddedAndInvited": "सब-कॉन्ट्रैक्टर जोड़ा गया और आमंत्रित किया गया।",
         "subcontractorRemoved": "सब-कॉन्ट्रैक्टर को हटा दिया गया।"
       }
+    },
+    "chatView": {
+      "status": {
+        "connected": "कनेक्टेड",
+        "disconnected": "डिसकनेक्टेड"
+      },
+      "AI": {
+        "title": "वीन-ई असिस्टेंट",
+        "description": "आपका AI सहायक",
+        "inputPlaceholder": "मुझे आज़माएँ! मैं आपकी मदद करने की पूरी कोशिश करूंगा"
+      },
+      "board": {
+        "title": "EWI Pro Board",
+        "description": "तकनीकी टीम चैनल",
+        "inputPlaceholder": "EWI Pro तकनीकी टीम को संदेश लिखें..."
+      }
     }
   }
 }

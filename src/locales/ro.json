@@ -665,6 +665,22 @@
         "subcontractorAddedAndInvited": "Subcontractantul a fost adăugat și invitat.",
         "subcontractorRemoved": "Subcontractantul a fost eliminat."
       }
+    },
+    "chatView": {
+      "status": {
+        "connected": "Conectat",
+        "disconnected": "Deconectat"
+      },
+      "AI": {
+        "title": "Asistent Veen-E",
+        "description": "Asistentul tău AI",
+        "inputPlaceholder": "Încearcă-mă! Voi face tot posibilul să te ajut"
+      },
+      "board": {
+        "title": "EWI Pro Board",
+        "description": "Canalul echipei tehnice",
+        "inputPlaceholder": "Scrie un mesaj echipei tehnice EWI Pro..."
+      }
     }
   }
 }

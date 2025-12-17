@@ -21,7 +21,7 @@ const CardList: React.FC<CardListProps> = ({ items, type, itemsPerPage = 20, onI
   useEffect(() => { if(currentPage > totalPages) setCurrentPage(totalPages || 1); }, [totalPages]);
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100% - 52px)" }}>
       <Box sx={{ 
         flex: 1, 
         overflowY: "auto", 

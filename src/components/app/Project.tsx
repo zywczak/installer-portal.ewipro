@@ -16,7 +16,7 @@ import api from "../../api/axiosApi";
 import ProjectHeader from "../common/project/ProjectHeader";
 import { Documents } from "../common/Documents";
 import { DeliveriesList } from "../common/DeliveriesList";
-import EWIProBoard from "../common/EWIProBoard";
+import EWIProBoard from "../common/EWIProBoard/EWIProBoard";
 import { Photos } from "../common/Photos";
 import { Orders } from "../common/Orders";
 

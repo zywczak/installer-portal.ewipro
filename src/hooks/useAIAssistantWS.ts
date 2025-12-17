@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { ChatMessage } from "../components/common/EwiChat";
+import { ChatMessage } from "../components/common/EWIChat/ChatMessage.types";
 
 const WS_URL = "wss://veen-e.ewipro.com:7443/ws/ai-assistant";
 

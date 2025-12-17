@@ -665,6 +665,22 @@
         "subcontractorAddedAndInvited": "ذیلی ٹھیکیدار شامل کیا گیا اور مدعو کیا گیا۔",
         "subcontractorRemoved": "ذیلی ٹھیکیدار کو ہٹا دیا گیا۔"
       }
+    },
+    "chatView": {
+      "status": {
+        "connected": "متصل",
+        "disconnected": "منقطع"
+      },
+      "AI": {
+        "title": "وین-ای اسسٹنٹ",
+        "description": "آپ کا AI اسسٹنٹ",
+        "inputPlaceholder": "مجھے آزمائیں! میں آپ کی مدد کرنے کی پوری کوشش کروں گا"
+      },
+      "board": {
+        "title": "EWI پرو بورڈ",
+        "description": "ٹیکنیکل ٹیم چینل",
+        "inputPlaceholder": "EWI Pro تکنیکی ٹیم کو پیغام لکھیں..."
+      }
     }
   }
 }

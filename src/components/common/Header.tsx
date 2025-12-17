@@ -27,6 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
               display: "flex",
               alignItems: "center",
               '& svg': { fontSize: 'inherit' },
+              pr: 1
             }}
           >
             {icon}
@@ -57,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
           </Box>
         )}
       </Stack>
-      {showDivider && <Divider sx={{ mb: 2 }} />}
+      {showDivider && <Divider sx={{ mb: 1 }} />}
     </>
   );
 };

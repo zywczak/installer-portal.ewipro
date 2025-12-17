@@ -92,7 +92,7 @@ export default function DataTable<T>({
   const RowComponent = type === "project" ? ProjectRow : SubcontractorRow;
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100%", borderRadius: 2 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100% - 52px)", borderRadius: 2 }}>
 
       <TableContainer
         ref={tableContainerRef}

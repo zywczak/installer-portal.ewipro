@@ -44,6 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       });
 
       localStorage.setItem("userAvatar", data.avatar);
+      console.log("Sidebar fetched user avatar:", data.avatar);
     } catch (error) {
       console.error("Błąd przy pobieraniu danych użytkownika:", error);
     }

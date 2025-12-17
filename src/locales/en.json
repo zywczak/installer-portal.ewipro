@@ -665,6 +665,22 @@
         "subcontractorAddedAndInvited": "Subcontractor added and invited.",
         "subcontractorRemoved": "Subcontractor removed."
       }
+    },
+    "chatView": {
+      "status": {
+        "connected": "Connected",
+        "disconnected": "Disconnected"
+      },
+      "AI":{
+        "title": "Veen-E Assistant",
+        "description": "Your AI assistant",
+        "inputPlaceholder": "Try me! I will do my best to help You"
+      },
+      "board":{
+        "title": "EWI Pro Board",
+        "description": "Technical Team Channel",
+        "inputPlaceholder": "Write a message to EWI Pro Technical Team.."
+      }
     }
   }
 }
