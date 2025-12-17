@@ -85,6 +85,7 @@ const Settings: React.FC<SettingsProps> = ({
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     i18n.changeLanguage(lang);
+    window.location.reload();
   };
 
   return (
