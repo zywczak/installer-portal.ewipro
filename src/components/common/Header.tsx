@@ -19,8 +19,16 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <Box sx={{ color: 'grey', fontSize: 36 }}>
+        <Stack direction="row" alignItems="center" spacing={1.5}>
+          <Box
+            sx={{
+              color: "grey",
+              fontSize: 32,
+              display: "flex",
+              alignItems: "center",
+              '& svg': { fontSize: 'inherit' },
+            }}
+          >
             {icon}
           </Box>
           <Stack direction="column" spacing={0.2} alignItems="flex-start">

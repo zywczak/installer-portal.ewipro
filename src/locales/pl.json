@@ -378,6 +378,7 @@
       "error": "Błąd",
       "read": "Przeczytane",
       "title": "Powiadomienia",
+      "description": "Nowe aktualizacje",
       "unread": "Nieodczytane"
     },
     "pdfViewer": {

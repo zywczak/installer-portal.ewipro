@@ -1,154 +1,98 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, IconButton, Popover, Drawer, Divider } from "@mui/material";
+import React from "react";
+import { Box, IconButton, Drawer, Popover } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import NotificationList, { Notification } from "../common/NotificationList";
-import api from "../../api/axiosApi";
 
-interface NotificationBannerProps {
-    isMobile: boolean;
-    notifications: Notification[];
-    open: boolean;
-    drawerOpen: boolean;
-    onClose: () => void;
-    anchorEl?: HTMLElement | null;
+import Header from "../common/Header";
+import { useNotifications } from "../../hooks/useNotifications";
+import NotificationList from "../common/NotificationBanner/NotificationList";
+import { Notification } from "../common/NotificationBanner/types";
+import { t } from "i18next";
 
-    onUnreadChange?: (hasUnread: boolean) => void;
+interface Props {
+  isMobile: boolean;
+  notifications: Notification[];
+  open: boolean;
+  drawerOpen: boolean;
+  onClose: () => void;
+  anchorEl?: HTMLElement | null;
+  onUnreadChange?: (hasUnread: boolean) => void;
 }
 
-const NotificationBanner: React.FC<NotificationBannerProps> = ({
-    isMobile,
-    notifications,
-    open,
-    drawerOpen,
-    onClose,
-    anchorEl,
-    onUnreadChange,
+const NotificationBanner: React.FC<Props> = ({
+  isMobile,
+  notifications,
+  open,
+  drawerOpen,
+  onClose,
+  anchorEl,
+  onUnreadChange,
 }) => {
-    const [localNotifications, setLocalNotifications] = useState<Notification[]>(notifications);
+  const {
+    notifications: localNotifications,
+    toggleRead,
+    deleteNotification,
+  } = useNotifications({ notifications, onUnreadChange });
 
-    useEffect(() => {
-        setLocalNotifications(notifications);
-    }, [notifications]);
+  const header = (
+    <Box px={3} pt={2}>
+      <Header
+        icon={<NotificationsIcon />}
+        title={t("views.notifications.title")}
+        description={t("views.notifications.description")}
+        actions={
+          <IconButton onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        }
+      />
+    </Box>
+  );
 
-    const token = localStorage.getItem("access");
+  const content = (
+    <Box flex={1} mx={3} overflow="hidden">
+      <NotificationList
+        notifications={localNotifications}
+        onToggleRead={toggleRead}
+        onDelete={deleteNotification}
+        onClick={() => {}}
+      />
+    </Box>
+  );
 
-    useEffect(() => {
-        const hasUnread = localNotifications.some((n) => !n.read);
-        onUnreadChange?.(hasUnread);
-    }, [localNotifications]);
-
-   const sendAction = async (action: string, notificationID: number) => {
-    try {
-        await api.post({
-            action,
-            notificationID,
-        });
-    } catch (err) {
-        console.error("Błąd sieci:", err);
-    }
-};
-
-    const handleToggleRead = (notif: Notification) => {
-        const action = notif.read ? "markNotificationUnread" : "markNotificationRead";
-
-        setLocalNotifications((prev) =>
-            prev.map((n) => (n.id === notif.id ? { ...n, read: !n.read } : n))
-        );
-
-        sendAction(action, notif.id);
-    };
-
-    const handleDelete = (notif: Notification) => {
-        setLocalNotifications((prev) => prev.filter((n) => n.id !== notif.id));
-        sendAction("deleteNotification", notif.id);
-    };
-
-    const Header = (
-        <Box>
-            <Box
-                sx={{
-                    position: "relative",
-                    py: 2,
-                    px: 3,
-                    backgroundColor: "white",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                }}
-            >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                    <NotificationsIcon sx={{ fontSize: 32, color: "#777" }} />
-
-                    <Box>
-                        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                            Notifications
-                        </Typography>
-                        <Typography variant="subtitle2" sx={{ color: "#777" }}>
-                            New activity updates
-                        </Typography>
-                    </Box>
-                </Box>
-
-                <IconButton onClick={onClose}>
-                    <CloseIcon />
-                </IconButton>
-            </Box>
-
-            <Divider sx={{ mx: 3 }} />
-        </Box>
-    );
-
-    const NotificationContent = (
-        <Box sx={{ flex: 1, overflow: "hidden", mx: 3 }}>
-            <NotificationList
-                notifications={localNotifications}
-                onClick={() => {}}
-                onToggleRead={handleToggleRead}
-                onDelete={handleDelete}
-                showArrows={localNotifications.length > 0}
-            />
-        </Box>
-    );
-
-    if (isMobile) {
-        return (
-            <Drawer
-                anchor="left"
-                open={drawerOpen}
-                onClose={onClose}
-                PaperProps={{ sx: { width: "100%", height: "100%", display: "flex" } }}
-            >
-                <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
-                    {Header}
-                    {NotificationContent}
-                </Box>
-            </Drawer>
-        );
-    }
-
+  if (isMobile) {
     return (
-        <Popover
-            open={open}
-            anchorEl={anchorEl}
-            onClose={onClose}
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            transformOrigin={{ vertical: "top", horizontal: "right" }}
-            PaperProps={{
-                sx: {
-                    width: 450,
-                    height: 500,
-                    display: "flex",
-                    flexDirection: "column",
-                    borderRadius: 3,
-                    overflow: "hidden",
-                },
-            }}
-        >
-            {Header}
-            {NotificationContent}
-        </Popover>
+      <Drawer anchor="left" open={drawerOpen} onClose={onClose}>
+        <Box display="flex" flexDirection="column" height="100%">
+          {header}
+          {content}
+        </Box>
+      </Drawer>
     );
+  }
+
+  return (
+    <Popover
+      open={open}
+      anchorEl={anchorEl}
+      onClose={onClose}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      PaperProps={{
+        sx: {
+          width: 450,
+          height: 500,
+          display: "flex",
+          flexDirection: "column",
+          borderRadius: 2,
+          border: "1px solid #e0e0e0",
+        },
+      }}
+    >
+      {header}
+      {content}
+    </Popover>
+  );
 };
 
 export default NotificationBanner;

@@ -378,6 +378,7 @@
       "error": "Error",
       "read": "Read",
       "title": "Notifications",
+      "description": "New activity updates",
       "unread": "Unread"
     },
     "pdfViewer": {

@@ -8,7 +8,7 @@ import Dashboard from "../components/app/Dashboard";
 import Settings from "../components/app/Settings";
 import ChangePassword from "../components/app/ChangePassword";
 import NotificationBanner from "../components/app/NotificationBanner";
-import { Notification } from "../components/common/NotificationList";
+import { Notification } from "../components/common/NotificationBanner/NotificationList";
 import ProfileView from "../components/app/MyProfile";
 import Project from "../components/app/Project";
 import AIAssistant from "../components/common/AIAssistant";

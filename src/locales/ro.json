@@ -378,6 +378,7 @@
       "error": "Eroare",
       "read": "Citite",
       "title": "Notificări",
+      "description": "Actualizări ale activităților noi",
       "unread": "Necitite"
     },
     "pdfViewer": {
