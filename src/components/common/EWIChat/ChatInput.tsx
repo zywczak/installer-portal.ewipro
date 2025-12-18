@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Box, TextField, IconButton, Avatar } from "@mui/material";
+import { Box, TextField, IconButton, InputAdornment } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import UserAvatar from "../UserAvatar";
@@ -35,13 +35,10 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   };
 
   return (
-    <Box sx={{ p: 1.5, display: "flex", alignItems: "center", gap: 1, borderTop: "1px solid #BDBDBD", bgColor: "background.paper" }}>
+    <Box sx={{ p: 1.5, display: "flex", alignItems: "center", gap: 1, borderTop: "1px solid #BDBDBD", bgcolor: "background.paper" }}>
       <UserAvatar avatarUrl={userAvatarUrl} size={44} tooltip="Your avatar" />
-      <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center", borderRadius: "28px", px: 1 }}>
+      <Box sx={{ flexGrow: 1 }}>
         <input type="file" accept="image/*" ref={fileInputRef} onChange={handleFileChange} style={{ display: "none" }} />
-        <IconButton onClick={handleAddPhotoClick} sx={{ color: sendIconColor }}>
-          <PhotoCameraIcon />
-        </IconButton>
         <TextField
           fullWidth
           multiline
@@ -51,14 +48,32 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           placeholder={inputPlaceholder}
           size="small"
           sx={{
-            "& .MuiOutlinedInput-root": { backgroundColor: "transparent", borderRadius: "24px", px: 1, fontSize: 14 },
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "28px",
+              px: 1,
+              fontSize: 14,
+              bgcolor: "transparent",
+            },
             "& textarea": { minHeight: "1em", overflow: "hidden" },
           }}
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <IconButton onClick={handleAddPhotoClick} sx={{ color: sendIconColor }}>
+                  <PhotoCameraIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={handleSend} disabled={!input.trim()} sx={{ color: sendIconColor }}>
+                  <SendIcon sx={{ fontSize: "26px" }} />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
-        <IconButton onClick={handleSend} disabled={!input.trim()} sx={{ color: sendIconColor }}>
-          <SendIcon sx={{ fontSize: "30px" }} />
-        </IconButton>
       </Box>
     </Box>
   );
