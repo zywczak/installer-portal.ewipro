@@ -26,6 +26,7 @@ import { fallbackColors, stageColors } from "../common/colors";
 import warranty from "../../assets/warranty.png";
 import AcceptButton from "../common/AcceptButton";
 import FormTextField from "../common/FormTextField";
+import BottomTabs, { TabItem } from "../common/BottomTabs";
 
 interface SubcontractorInfo {
   name: string;
@@ -229,6 +230,12 @@ const filtered = allProjects.filter((item: any) => {
   const handleTogglePermission = (key: string, enabled: boolean) => {
     setPermissions((prev) => prev.map((p) => (p.key === key ? { ...p, enabled } : p)));
   };
+
+  const tabs: TabItem[] = [
+    { key: "info", label: "Info", icon: <PersonIcon /> },
+    { key: "projects", label: "Projects", icon: <FolderIcon /> },
+    { key: "permissions", label: "Permissions", icon: <SecurityIcon /> },
+  ];
 
   // TABLE COLUMNS — SAME AS Projects.tsx
   const columns: Column<Project>[] = [
@@ -494,17 +501,11 @@ const filtered = allProjects.filter((item: any) => {
       >
         {renderContent()}
       </Box>
-<Box sx={{ borderTop: "1px solid #ddd", backgroundColor: "background.paper" }}>
-      <BottomNavigation
-        showLabels
+      <BottomTabs
         value={activeTab}
-        onChange={(e, v) => setActiveTab(v)}
-      >
-        <BottomNavigationAction label="Info" value="info" icon={<PersonIcon />} />
-        <BottomNavigationAction label="Projects" value="projects" icon={<FolderIcon />} />
-        <BottomNavigationAction label="Permissions" value="permissions" icon={<SecurityIcon />} />
-      </BottomNavigation>
-      </Box>
+        tabs={tabs}
+        onChange={setActiveTab}
+      />
     </Box>
   );
 };

@@ -207,24 +207,24 @@
           },
           "sortingSectionTitle": "SORT BY",
           "sortingSelectedToast": "Sorting by {{sorting}}"
-        },
-        "legend": {
-          "open": "Project open",
-          "closed": "Project closed",
-          "warranty": "Warranty"
-        },
-        "table":{
-          "project": "PROJECT",
-          "address": "ADDRESS",
-          "stage": "STAGE",
-          "access": "ACCESS",
-          "members": "MEMBERS"
-        },
-        "footer":{
-          "page": "Page",
-          "of": "of",
-          "items": "items"
         }
+      },
+      "legend": {
+        "open": "Project open",
+        "closed": "Project closed",
+        "warranty": "Warranty"
+      },
+      "table":{
+        "project": "PROJECT",
+        "address": "ADDRESS",
+        "stage": "STAGE",
+        "access": "ACCESS",
+        "members": "MEMBERS"
+      },
+      "footer":{
+        "page": "Page",
+        "of": "of",
+        "items": "items"
       },
       "header": "My Projects",
       "listEmpty": "No results found",

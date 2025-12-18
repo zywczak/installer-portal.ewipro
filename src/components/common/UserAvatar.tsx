@@ -7,6 +7,7 @@ interface UserAvatarProps {
   size?: number;
   onClick?: () => void;
   tooltip?: string;
+  sx?: object;
 }
 
 const MotionAvatar = motion(Avatar);
@@ -16,6 +17,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
   size = 80,
   onClick,
   tooltip,
+  sx = {},
 }) => {
   const avatar = (
     <MotionAvatar
@@ -30,6 +32,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
         boxShadow: onClick
           ? "0 0 10px rgba(255,255,255,0.3)"
           : "none",
+        ...sx, 
       }}
     />
   );

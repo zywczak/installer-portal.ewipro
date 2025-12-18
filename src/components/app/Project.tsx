@@ -13,12 +13,13 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import api from "../../api/axiosApi";
 
-import ProjectHeader from "../common/project/ProjectHeader";
+import ProjectHeader from "../common/project/ProjectHeader/ProjectHeader";
 import { Documents } from "../common/Documents";
 import { DeliveriesList } from "../common/DeliveriesList";
 import EWIProBoard from "../common/EWIProBoard/EWIProBoard";
-import { Photos } from "../common/Photos";
 import { Orders } from "../common/Orders";
+import BottomTabs, { TabItem } from "../common/BottomTabs";
+import Photos from "../common/project/photos/Photos";
 
 interface ProjectProps {
   projectId: string;
@@ -326,17 +327,11 @@ const Project: React.FC<ProjectProps> = ({ projectId, contactId, onAddressChange
         {renderContent()}
       </Box>
 
-      <Box sx={{ borderTop: "1px solid #ddd", backgroundColor: "background.paper" }}>
-        <BottomNavigation
-          showLabels
-          value={activeTab}
-          onChange={(e, v) => setActiveTab(v)}
-        >
-          {tabs.map((t) => (
-            <BottomNavigationAction key={t.key} label={t.label} value={t.key} icon={t.icon} />
-          ))}
-        </BottomNavigation>
-      </Box>
+      <BottomTabs
+        value={activeTab}
+        tabs={tabs}
+        onChange={setActiveTab}
+      />
     </Box>
   );
 };

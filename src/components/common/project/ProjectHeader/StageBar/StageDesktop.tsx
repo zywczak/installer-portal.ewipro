@@ -1,5 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
+import DesktopStageStep from "./DesktopStageStep";
 
 interface Stage {
   id?: number;
@@ -14,8 +15,6 @@ interface StageDesktopProps {
   projectMaxStage?: number;
   projectStatusName?: string;
 }
-
-import DesktopStageStep from "./DesktopStageStep";
 
 export const StageDesktop: React.FC<StageDesktopProps> = ({
   stages,

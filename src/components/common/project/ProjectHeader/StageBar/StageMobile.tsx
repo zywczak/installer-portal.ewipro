@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { fallbackColors, stageColors } from "../colors";
+import { fallbackColors, stageColors } from "../../../colors";
 
 interface Stage {
   id?: number;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { fallbackColors, stageColors } from "../colors";
+import { fallbackColors, stageColors } from "../../../colors";
 
 interface Stage {
   id?: number;

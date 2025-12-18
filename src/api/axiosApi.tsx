@@ -15,7 +15,6 @@ const excludedPaths: any[] = [
     "/installer/forget-password/",
 ];
 
-// Interceptor request – dodawanie tokena do nagłówków
 api.interceptors.request.use(
     (config) => {
         const token = getAccessToken();

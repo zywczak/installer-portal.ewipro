@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import warranty from '../../../assets/warranty.png';
+import warranty from '../../../../assets/warranty.png';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
 interface ApprovedWarrantyProps {
@@ -15,8 +15,7 @@ interface ApprovedWarrantyProps {
 
 const ApprovedWarrantyBox: React.FC<ApprovedWarrantyProps> = ({ approvedWarranty }) => {
   if (!approvedWarranty || approvedWarranty.status !== "Approved") return null;
-  console.log(localStorage.getItem("access"));
-
+  
   const handleClick = () => {
     if (approvedWarranty.downloadURI) {
       window.open(approvedWarranty.downloadURI, "_blank");

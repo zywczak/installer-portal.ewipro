@@ -4,7 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { ChatMessage } from "./ChatMessage.types";
 import { ChatMessageBubble } from "./ChatMessageBubble";
 import { ChatInput } from "./ChatInput";
-import PhotoGallery from "../PhotoGallery";
+import PhotoGallery from "../project/photoGallery/PhotoGallery";
 import Header from "../Header";
 import Ewi from "../../../assets/Ewi.svg";
 
