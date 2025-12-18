@@ -15,6 +15,7 @@ const MainCard: React.FC<MainCardProps> = ({ children }) => {
         boxSizing: "border-box",
         borderRadius: 2,
         mx: "auto",
+        my: 0.5,
       }}
     >
       {children}

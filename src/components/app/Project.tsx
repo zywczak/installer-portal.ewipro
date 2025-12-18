@@ -14,7 +14,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import api from "../../api/axiosApi";
 
 import ProjectHeader from "../common/project/ProjectHeader/ProjectHeader";
-import { Documents } from "../common/Documents";
+import { Documents } from "../common/project/document/Documents";
 import { DeliveriesList } from "../common/DeliveriesList";
 import EWIProBoard from "../common/EWIProBoard/EWIProBoard";
 import { Orders } from "../common/Orders";
