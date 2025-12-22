@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { HelpImage } from "../form/types";
+import { HelpImage } from "../../../form/types";
 
 interface HelpImagesProps {
   images: HelpImage[];
@@ -21,9 +21,8 @@ const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
-          maxHeight: "70vh",
           overflow: "hidden",
-          p: 2,
+          p: "24px",
         }}
       >
         <Box
@@ -64,33 +63,29 @@ const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
 
   return (
     <Box
-  sx={{
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    gap: 2,
-    width: "100%",
-    p: 1,
-  }}
->
-
+      sx={{
+        display: "grid",
+        gridTemplateColumns: {
+          xs: "repeat(1, 1fr)",
+          sm: "repeat(2, 1fr)",
+          md: "repeat(3, 1fr)",
+          lg: "repeat(4, 1fr)",
+        },
+        gap: 2,
+        width: "100%",
+        justifyItems: "end",
+      }}
+    >
       {images.map((img) => (
         <Box
           key={img.id}
           sx={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            alignItems: "flex-end",
             justifyContent: "center",
-            flex: "1 1 auto",
+            width: "100%",
             minWidth: `${minWidth}px`,
-            maxWidth: {
-              xs: "100%",
-              sm: "48%",
-              md: "24%",
-              lg: "18%",
-            },
           }}
         >
           <Box

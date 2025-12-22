@@ -16,8 +16,8 @@ import Subcontractor from "../components/app/Subcontractor";
 import SuccessSnackbar from "../components/common/SuccessSnackbar";
 import ErrorSnackbar from "../components/common/ErrorSnackbar";
 import AddProjectForm from "../components/app/AddProjectForm";
-import Form from "../components/app/form";
 import OrderCreationPage from "../components/app/OrderCreationPage";
+import Calculator from "../components/app/Calculator";
 
 function App() {
   const [view, setView] = useState<string>(window.location.hash.replace("#", "") || "dashboard");
@@ -168,7 +168,7 @@ return (
       projects: <Projects isMobile={isMobileContent} />,
       subcontractors: <Subcontractors isMobile={isMobileContent} />,
       settings: <Settings isMobile={isMobileContent} navigateTo={navigateTo} />,
-      materialsCalculator: <Form />,
+      materialsCalculator: <Calculator />,
       changepassword: (
         <ChangePassword 
           showSuccess={showSuccess}

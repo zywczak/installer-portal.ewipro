@@ -147,8 +147,16 @@
     component={Paper}
     elevation={0}
     sx={{
-      overflowX: "auto",
-    }}
+      "&::-webkit-scrollbar": {
+        display: "none",
+      },
+
+    // Firefox
+    scrollbarWidth: "none",
+
+    // IE / stary Edge
+    msOverflowStyle: "none",
+  }}
   >
         <MuiTable
     size="small"
