@@ -7,16 +7,8 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import HelpImages from "./HelpImages";
-import HelpTable, { Table } from "./HelpTable";
-import { HelpImage } from "../../../form/types";
-
-interface HelpSection {
-  id: number;
-  help_title: string;
-  description?: string | null;
-  images?: HelpImage[];
-  tables?: Table[];
-}
+import HelpTable from "./HelpTable";
+import { HelpSection } from "../../../../data/steps/stepsData";
 
 interface HelpModalProps {
   open: boolean;
@@ -42,134 +34,219 @@ const HelpModal: React.FC<HelpModalProps> = ({
     <Dialog
       open={open}
       onClose={onClose}
+      fullScreen={false}
       maxWidth={false}
       container={container}
       sx={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        "& .MuiBackdrop-root": { 
-          position: "absolute",
-          backgroundColor: "transparent",
-          boxShadow: "none"
-        },
-        "& .MuiDialog-container": { 
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: "flex",
-          alignItems: "center", 
-          justifyContent: "center",
-        },
+        ...(isMobile
+          ? {
+            "& .MuiBackdrop-root": {
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+            },
+            "& .MuiDialog-container": {
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          }
+          : {
+            position: "absolute",
+            inset: 0,
+            "& .MuiBackdrop-root": {
+              position: "absolute",
+              backgroundColor: "transparent",
+              boxShadow: "none",
+            },
+            "& .MuiDialog-container": {
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          }),
       }}
+
       PaperProps={{
         sx: {
-          width: "1245px",
-          maxHeight: "625px",
+          width: isMobile ? "100vw" : "1245px",
+          maxWidth: isMobile ? "100vw" : "1245px",
+          height: isMobile ? "auto" : "auto",
+          maxHeight: isMobile ? "100vh" : "625px",
           borderRadius: "20px",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
-          boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
-          pb: "40px",
+          boxShadow: isMobile
+            ? "none"
+            : "0px 0px 20px rgba(0, 0, 0, 0.2)",
+          pb: isMobile ? 0 : "40px",
+          m: isMobile ? 0 : "auto",
         },
       }}
-    >
-      {/* Przycisk zamknięcia */}
-      <IconButton
-        onClick={onClose}
-        sx={{
-          alignSelf: "flex-end",
-          mr: "10px",
-          my: "6px",
-          backgroundColor: "#000",
-          borderRadius: "50%",
-          height: "24px",
-          width: "24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          p: 0,
-          "&:hover": {
-            backgroundColor: "#333",
-          },
-        }}
-      >
-        <CloseIcon sx={{ color: "#fff", fontSize: "16px" }} />
-      </IconButton>
 
-      {/* Główny kontener Flexbox */}
+    >
+      {isMobile ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            pl: isMobile ? "16px" : "32px",
+            pr: "10px",
+            py: "10px",
+          }}
+        >
+          <Typography
+            sx={{ fontWeight: 700, color: "#333333", fontSize: "16px" }}
+          >
+            Help
+          </Typography>
+          <IconButton
+            onClick={onClose}
+            sx={{
+              backgroundColor: "#000",
+              borderRadius: "50%",
+              height: "24px",
+              width: "24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              p: 0,
+              "&:hover": {
+                backgroundColor: "#333",
+              },
+            }}
+          >
+            <CloseIcon sx={{ color: "#fff", fontSize: "16px" }} />
+          </IconButton>
+        </Box>
+      ) : (
+        <IconButton
+          onClick={onClose}
+          sx={{
+            alignSelf: "flex-end",
+            mr: "10px",
+            my: "6px",
+            backgroundColor: "#000",
+            borderRadius: "50%",
+            height: "24px",
+            width: "24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            p: 0,
+            "&:hover": {
+              backgroundColor: "#333",
+            },
+          }}
+        >
+          <CloseIcon sx={{ color: "#fff", fontSize: "16px" }} />
+        </IconButton>
+      )}
+
+      {isMobile && (
+        <Box sx={{ pl: "16px", pr: "16px", pt: "10px", pb: "15px", backgroundColor: "#fff" }}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 700,
+              lineHeight: "38px",
+              fontSize: "32px",
+            }}
+          >
+            {currentHelp.help_title}
+          </Typography>
+        </Box>
+      )}
+
       <Box
         sx={{
           display: "flex",
           flexDirection: isMobile ? "column" : "row",
-          gap: "22px",
+          gap: isMobile ? "0px" : "22px",
           height: "100%",
           width: "100%",
-        }}
-      >
-        {/* Lewa kolumna: Teksty */}
-        <Box
-          sx={{
-            pl: "32px",
-            pt: "10px",
-            flex: "0 0 295px",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Typography
-            sx={{ fontWeight: 700, mb: "28px", color: "#333333", fontSize: "16px" }}
-          >
-            Help
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{ fontWeight: 700, mb: "50px", lineHeight: "38px", fontSize: "32px" }}
-          >
-            {currentHelp.help_title}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 400, fontSize: "12px" }}
-          >
-            {currentHelp.description}
-          </Typography>
-        </Box>
-
-        {/* Prawa kolumna: Szary kontener */}
-        <Box
-          sx={{
-            flex: 1,
-            backgroundColor: "#f4f4f4",
-            borderTopLeftRadius: "20px",
-            borderBottomLeftRadius: "20px",
-            boxSizing: "border-box",
-            maxHeight: "545px",
-            p: "28px",
-            overflowY: "auto",
-            overflowX: "auto",
+          overflowY: isMobile ? "auto" : "visible",
+          overflowX: "hidden",
+          ...(isMobile && {
             "&::-webkit-scrollbar": {
               display: "none",
             },
             scrollbarWidth: "none",
             msOverflowStyle: "none",
+          }),
+        }}
+      >
+        <Box
+          sx={{
+            pl: isMobile ? "16px" : "32px",
+            pr: isMobile ? "16px" : 0,
+            pb: isMobile ? "28px" : 0,
+            pt: "10px",
+            flex: isMobile ? "0 0 auto" : "0 0 295px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {!isMobile && (
+            <Typography
+              sx={{ fontWeight: 700, mb: "28px", color: "#333333", fontSize: "16px" }}
+            >
+              Help
+            </Typography>
+          )}
+          {!isMobile && (
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 700,
+                mb: "50px",
+                lineHeight: "38px",
+                fontSize: "32px",
+              }}
+            >
+              {currentHelp.help_title}
+            </Typography>
+          )}
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 400, fontSize: "12px" }}
+            dangerouslySetInnerHTML={{ __html: currentHelp.description || "" }}
+          />
+
+        </Box>
+
+        <Box
+          sx={{
+            flex: 1,
+            width: isMobile ? "100%" : "auto",
+            backgroundColor: "#f4f4f4",
+            borderTopLeftRadius: isMobile ? 0 : "20px",
+            borderBottomLeftRadius: isMobile ? 0 : "20px",
+            boxSizing: "border-box",
+            maxHeight: isMobile ? "auto" : "545px",
+            p: isMobile ? "0px" : "28px",
+            py: "28px",
+            overflowY: isMobile ? "visible" : "auto",
+            overflowX: isMobile ? "visible" : "auto",
+            ...(!isMobile && {
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }),
           }}
         >
           {currentHelp.images && currentHelp.images.length > 0 && (
-            <HelpImages images={currentHelp.images} />
+            <HelpImages images={currentHelp.images} isMobile={isMobile} />
           )}
 
-          {currentHelp.tables &&
-            currentHelp.tables.map((table) => (
-              <Box key={table.id} sx={{ mt: 2 }}>
-                <HelpTable table={table} />
-              </Box>
-            ))}
+          {currentHelp.table && (
+            <Box sx={{ mt: 2 }}>
+              <HelpTable table={currentHelp.table} />
+            </Box>
+          )}
         </Box>
       </Box>
     </Dialog>

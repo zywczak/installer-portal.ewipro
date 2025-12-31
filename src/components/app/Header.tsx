@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                px: 4,
+                px: isMobile ? 0 : 4,
                 py: 2,
                 position: "relative",
                 "&::after": {

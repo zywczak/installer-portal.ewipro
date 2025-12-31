@@ -4,8 +4,17 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import HelpButton from "./helpButton";
 import EwiproLogo from "../../../assets/EWI-Pro-Render-Systems.png";
 
+// ============================================================================
+// VERSION 1: Accepts null for step_name - ACTIVE
+// ============================================================================
 interface StepHeaderProps {
-  stepName: string;
+  stepName: string | null;
+
+// ============================================================================
+// VERSION 2: Backend version - COMMENTED OUT
+// ============================================================================
+// interface StepHeaderProps {
+//   stepName: string;
   stepIndex?: number;
   maxSteps?: number;
   helpAvailable: boolean;
@@ -115,7 +124,7 @@ const StepHeader: React.FC<StepHeaderProps> = ({
       </Typography>
 }
       {helpAvailable && !isMobile && (
-        <Box sx={{ position: "absolute", bottom: -26, left: 24 }}>
+        <Box sx={{ position: "absolute", bottom: "-16px", left: "34px" }}>
           <HelpButton helpAvailable={helpAvailable} onHelpClick={onHelpClick} />
         </Box>
       )}

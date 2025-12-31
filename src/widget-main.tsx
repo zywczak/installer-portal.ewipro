@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import reactToWebComponent from "react-to-webcomponent";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { theme } from "./theme/theme";
-import Form from "./components/app/form";
+import Calculator from "./components/app/Calculator";
 
 const ThemedForm = () => (
   <ThemeProvider theme={theme}>
     <CssBaseline />
-    <Form />
+    <Calculator />
   </ThemeProvider>
 );
 

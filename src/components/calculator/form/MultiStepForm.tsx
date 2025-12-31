@@ -2,12 +2,22 @@ import React from "react";
 import { Box, Divider, Typography } from "@mui/material";
 import StepInput from "./step/StepInput";
 import SubStep from "./step/SubStep";
-import { Step } from "./types";
+
+// ============================================================================
+// VERSION 1: Local data types (FormStep) - ACTIVE
+// ============================================================================
+import { FormStep } from "../../../data/steps/stepsData";
+
+// ============================================================================
+// VERSION 2: Backend types (Step) - COMMENTED OUT
+// ============================================================================
+// import { Step } from "./types";
+// Change all FormStep to Step throughout the file
 
 interface MultiStepFormProps {
   currentStep: number;
   totalSteps: number;
-  parentStep: Step;
+  parentStep: FormStep;
   skipStepIds: number[];
   onNext: (
     values: Record<string, string | number | Record<string, any>>,
@@ -56,6 +66,26 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
       return values[step.id] !== undefined && values[step.id] !== "" && !errors[step.id];
     });
   }, [values, errors, parentStep]);
+
+  // Jeśli przy wejsciu do kroku istnieją już ustawione wartości (np. po cofnięciu
+  // lub przywróceniu stanu), przekaż odpowiadające im `optionId` do nadrzędnego
+  // komponentu, żeby `selectedOptions` zostało zsynchronizowane natychmiast.
+  React.useEffect(() => {
+    const allSteps = [parentStep, ...(parentStep.substeps || [])];
+
+    allSteps.forEach(step => {
+      if (step.input_type === "radio") {
+        const val = values[step.id];
+        if (val !== undefined && val !== "") {
+          const opt = step.options?.find(o => o.option_value === val);
+          if (opt) {
+            onOptionChange(opt.id, step.id);
+          }
+        }
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [parentStep.id, JSON.stringify(values)]);
 
   const handleChange = (stepId: number, value: string | number, optionId?: number) => {
     setValues(prev => {
@@ -111,7 +141,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   };
 
   const updateJsonValues = (
-    step: Step,
+    step: FormStep,
     valueMap: Record<number, string | number>
   ): Record<string, any> => {
     let result: Record<string, any> = {};
@@ -120,7 +150,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
 
     if (step.json_key !== undefined) {
       if (step.input_type === "radio") {
-        const selectedOption = step.options?.find(o => o.option_value === stepValue);
+        const selectedOption = step.options?.find((o: { id: number; option_value: string; json_value?: string | null }) => o.option_value === stepValue);
         if (selectedOption?.json_value !== undefined) {
           result[step.json_key] = selectedOption.json_value;
         }
@@ -259,7 +289,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
                 <StepInput
                   key={sub.id}
                   step={sub}
-                  label={sub.step_name}
+                  label={sub.step_name || undefined}
                   value={value}
                   onChange={(val) => handleChange(sub.id, val)}
                   onErrorChange={(hasError) =>

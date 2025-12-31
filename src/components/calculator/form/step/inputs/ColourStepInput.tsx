@@ -14,7 +14,7 @@ const ColourStepInput: React.FC<StepInputProps> = ({
 }) => {
   const [page, setPage] = useState(0);
   const colourOptions = step.options || [];
-  
+
   const totalPages = Math.ceil(colourOptions.length / ITEMS_PER_PAGE);
   const startIndex = page * ITEMS_PER_PAGE;
   const currentPageOptions = colourOptions.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -28,13 +28,12 @@ const ColourStepInput: React.FC<StepInputProps> = ({
 
   return (
     <Box sx={{ width: isMobile ? "calc(100% - 48px)" : "240px", mx: "24px" }}>
-      {/* Nagłówek z Paginacją */}
-      <Box 
-        display="flex" 
-        alignItems="center" 
-        justifyContent="space-between" 
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
         sx={{ mb: 3 }}
-        
+
       >
         <Typography sx={{ fontSize: "16px", fontWeight: "bold", color: "#333" }}>
           Page <span style={{ color: "#333" }}>{page + 1}</span>
@@ -43,40 +42,40 @@ const ColourStepInput: React.FC<StepInputProps> = ({
 
         <Box sx={{ flexGrow: 1, height: "1px", backgroundColor: "#ccc", mx: "10px" }} />
 
-       <Box display="flex" alignItems="center" gap={"32px"}>
-  <IconButton 
-    onClick={prevPage} 
-    disabled={page === 0}
-    sx={{ 
-      backgroundColor: "#c4c4c4", 
-      height: "30px", 
-      width:"30px", 
-      "&:hover": { backgroundColor: "#D0D0D0" },
-      "&.Mui-disabled": {
-        backgroundColor: "#E0E0E0", // jaśniejszy kolor tła
-        color: "#aaa", // jaśniejszy kolor ikony
-      }
-    }}
-  >
-    <ArrowBackRoundedIcon sx={{ fontSize: 18, color: "#fff", "&.Mui-disabled": { color: "#aaa" } }} />
-  </IconButton>
-  <IconButton 
-    onClick={nextPage} 
-    disabled={page === totalPages - 1}
-    sx={{ 
-      backgroundColor: "#c4c4c4", 
-      height: "30px", 
-      width:"30px", 
-      "&:hover": { backgroundColor: "#D0D0D0" },
-      "&.Mui-disabled": {
-        backgroundColor: "#e0e0e0ff", 
-        color: "#aaa",
-      }
-    }}
-  >
-    <ArrowForwardRoundedIcon sx={{ fontSize: 18, color: "#fff", "&.Mui-disabled": { color: "#aaa" } }} />
-  </IconButton>
-</Box>
+        <Box display="flex" alignItems="center" gap={"32px"}>
+          <IconButton
+            onClick={prevPage}
+            disabled={page === 0}
+            sx={{
+              backgroundColor: "#c4c4c4",
+              height: "30px",
+              width: "30px",
+              "&:hover": { backgroundColor: "#D0D0D0" },
+              "&.Mui-disabled": {
+                backgroundColor: "#E0E0E0",
+                color: "#aaa",
+              }
+            }}
+          >
+            <ArrowBackRoundedIcon sx={{ fontSize: 18, color: "#fff", "&.Mui-disabled": { color: "#aaa" } }} />
+          </IconButton>
+          <IconButton
+            onClick={nextPage}
+            disabled={page === totalPages - 1}
+            sx={{
+              backgroundColor: "#c4c4c4",
+              height: "30px",
+              width: "30px",
+              "&:hover": { backgroundColor: "#D0D0D0" },
+              "&.Mui-disabled": {
+                backgroundColor: "#e0e0e0ff",
+                color: "#aaa",
+              }
+            }}
+          >
+            <ArrowForwardRoundedIcon sx={{ fontSize: 18, color: "#fff", "&.Mui-disabled": { color: "#aaa" } }} />
+          </IconButton>
+        </Box>
 
       </Box>
 
@@ -87,7 +86,7 @@ const ColourStepInput: React.FC<StepInputProps> = ({
       >
         {currentPageOptions.map((opt) => {
           const isSelected = value === opt.json_value;
-          
+
           return (
             <Box
               key={opt.id}
@@ -104,7 +103,6 @@ const ColourStepInput: React.FC<StepInputProps> = ({
                 "&:hover": { transform: "scale(1.03)" },
               }}
             >
-              {/* Ciemna nakładka i tekst tylko dla zaznaczonego */}
               {isSelected && (
                 <Box
                   sx={{

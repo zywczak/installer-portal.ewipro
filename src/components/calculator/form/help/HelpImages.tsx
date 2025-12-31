@@ -4,11 +4,11 @@ import { HelpImage } from "../../../form/types";
 
 interface HelpImagesProps {
   images: HelpImage[];
+  isMobile?: boolean;
 }
 
-const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
+const HelpImages: React.FC<HelpImagesProps> = ({ images, isMobile = false }) => {
   const count = images.length;
-  const minWidth = 120;
   const minHeight = 120;
 
   if (count === 1) {
@@ -21,19 +21,19 @@ const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
-          overflow: "hidden",
-          p: "24px",
+          height: "100%",
+          px: isMobile ? "0px" : "24px",
+          boxSizing: "border-box",
         }}
       >
         <Box
           sx={{
             width: "100%",
-            maxWidth: "100%",
+            height: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            overflow: "hidden",
-            backgroundColor: "#fafafa",
+            position: "relative",
           }}
         >
           <img
@@ -41,22 +41,133 @@ const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
             alt={img.caption || ""}
             style={{
               maxWidth: "100%",
+              maxHeight: "100%",
               height: "auto",
-              maxHeight: "60vh",
+              width: "auto",
+              display: "block",
+              objectFit: "scale-down",
             }}
           />
-        </Box>
 
-        {img.caption && (
-          <Typography
-            variant="caption"
-            display="block"
-            align="center"
-            sx={{ mt: 1 }}
+          {img.caption && (
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
+                py: 1,
+                px: 2,
+              }}
+            >
+              <Typography
+                variant="caption"
+                display="block"
+                align="center"
+                sx={{
+                  fontWeight: 600,
+                  color: "#000",
+                }}
+              >
+                {img.caption}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+      </Box>
+    );
+  }
+
+  const hasAnyDescription = images.some((img) => img.description);
+
+  if (!hasAnyDescription) {
+    return (
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: isMobile
+            ? "repeat(2, 1fr)"
+            : {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+            },
+          gap: 1.5,
+          width: "100%",
+          px: "24px",
+          // py: "24px",
+          boxSizing: "border-box",
+        }}
+      >
+        {images.map((img) => (
+          <Box
+            key={img.id}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight: `${minHeight}px`,
+              width: "100%",
+              boxSizing: "border-box",
+            }}
           >
-            {img.caption}
-          </Typography>
-        )}
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                position: "relative",
+                backgroundColor: "#fafafa",
+              }}
+            >
+              <img
+                src={img.image_url}
+                alt={img.caption || ""}
+                style={{
+                  maxWidth: "100%",
+                  width: "100%",
+                  height: "auto",
+                  maxHeight: "30vh",
+                  objectFit: "contain",
+                  borderRadius: "8px",
+                  display: "block",
+                }}
+              />
+
+              {img.caption && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    borderBottomLeftRadius: "8px",
+                    borderBottomRightRadius: "8px",
+                    py: 1,
+                    px: 2,
+                  }}
+                >
+                  <Typography
+                    variant="caption"
+                    display="block"
+                    align="center"
+                    sx={{
+                      fontWeight: 600,
+                      color: "#000",
+                    }}
+                  >
+                    {img.caption}
+                  </Typography>
+                </Box>
+              )}
+            </Box>
+          </Box>
+        ))}
       </Box>
     );
   }
@@ -65,15 +176,14 @@ const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: {
-          xs: "repeat(1, 1fr)",
-          sm: "repeat(2, 1fr)",
-          md: "repeat(3, 1fr)",
-          lg: "repeat(4, 1fr)",
-        },
+        gridTemplateColumns: isMobile
+          ? "1fr"
+          : {
+            xs: "1fr",
+            md: "repeat(2, 1fr)",
+          },
         gap: 2,
-        width: "100%",
-        justifyItems: "end",
+        px: isMobile ? "12px" : "0px",
       }}
     >
       {images.map((img) => (
@@ -81,21 +191,23 @@ const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
           key={img.id}
           sx={{
             display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-            justifyContent: "center",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            gap: 2,
             width: "100%",
-            minWidth: `${minWidth}px`,
+            minHeight: `${minHeight}px`,
           }}
         >
           <Box
             sx={{
-              width: "100%",
+              flexShrink: 0,
+              width: "120px",
               minHeight: `${minHeight}px`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               overflow: "hidden",
+              position: "relative",
             }}
           >
             <img
@@ -109,17 +221,57 @@ const HelpImages: React.FC<HelpImagesProps> = ({ images }) => {
                 borderRadius: "8px",
               }}
             />
+
+            {img.caption && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  borderBottomLeftRadius: "8px",
+                  borderBottomRightRadius: "8px",
+                  py: 1,
+                  px: 2,
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  display="block"
+                  align="center"
+                  sx={{
+                    fontWeight: 600,
+                    color: "#000",
+                  }}
+                >
+                  {img.caption}
+                </Typography>
+              </Box>
+            )}
           </Box>
 
-          {img.caption && (
-            <Typography
-              variant="caption"
-              display="block"
-              align="center"
-              sx={{ mt: 0.5 }}
+          {img.description && (
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                alignItems: "flex-start",
+                maxHeight: `calc(${minHeight}px + 40px)`,
+                overflow: "auto",
+              }}
             >
-              {img.caption}
-            </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#000000",
+                  fontSize: "12px",
+                  lineHeight: 1.5,
+                }}
+              >
+                {img.description}
+              </Typography>
+            </Box>
           )}
         </Box>
       ))}

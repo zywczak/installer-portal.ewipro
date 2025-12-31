@@ -1,31 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
-import { Box, Card, Paper, Typography } from "@mui/material";
-import FormWrapper from "../form/FormWrapper";
+import { Box, Card, Typography } from "@mui/material";
 import ProcessFlow from "../calculator/flow/ProcessFlow";
-import ResultsTable from "../result/ResultsTable";
-import HousePreview from "../calculator/HousePreview";
-import Loading from "../calculator/Loading";
-import { StepsResponse } from "../form/types";
 import StepHeader from "../calculator/header/StepHeader";
 import EwiproLogo from "../../assets/EWI-Pro-Render-Systems.png";
 import Form from "../calculator/form/Form";
 import HelpModal from "../calculator/form/help/HelpModal";
 import ActionButton from "../calculator/form/buttons/actionButton";
 import HelpButton from "../calculator/header/helpButton";
+import ResponsiveCalculatorWrapper from "../calculator/form/FormWrapper";
+
+import { STEPS_DATA, StepsData } from "../../data/steps/stepsData";
 
 const Calculator: React.FC = () => {
-  const [stepsData, setStepsData] = useState<StepsResponse | null>(null);
+  const [stepsData] = useState<StepsData>(STEPS_DATA);
   const [currentStep, setCurrentStep] = useState(0);
   const [skipStepIds, ] = useState<number[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
-  const [isMobileView, setIsMobileView] = useState(
-  window.innerWidth <= 700
-);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 705);
+  const [isSmallerTitle, setIsSmallerTitle] = useState(window.innerWidth <= 900);
 
 useEffect(() => {
   const handleResize = () => {
-    setIsMobileView(window.innerWidth <= 700);
+    setIsMobileView(window.innerWidth <= 705);
+    setIsSmallerTitle(window.innerWidth <= 900);
   };
 
   window.addEventListener("resize", handleResize);
@@ -53,20 +50,11 @@ useEffect(() => {
   
   const handleOptionChange = (optionId: number, stepId: number) => {
     setSelectedOptions(prev => {
-      const stepOptions = stepsData?.steps.find(s => s.id === stepId)?.options?.map(o => o.id) || [];
+      const stepOptions = stepsData.steps.find(s => s.id === stepId)?.options?.map(o => o.id) || [];
       const filtered = prev.filter(opt => !stepOptions.includes(opt));
       return [...filtered, optionId];
     });
   };
-
-  useEffect(() => {
-    axios
-      .get<StepsResponse>("http://localhost:8000/api/form-steps-with-options/")
-      .then((res) => setStepsData(res.data))
-      .catch((err) => console.error("Error fetching steps:", err));
-  }, []);
-
-  if (!stepsData) return <Loading />;
 
   const parentSteps = stepsData.steps
     .filter(step => !step.parent)
@@ -77,6 +65,13 @@ useEffect(() => {
     triggerStepId?: number,
     selectedOptionId?: number
   ) => {
+    let effectiveSelected = selectedOptions;
+    if (selectedOptionId !== undefined && triggerStepId !== undefined) {
+      const stepOptions = stepsData.steps.find(s => s.id === triggerStepId)?.options?.map(o => o.id) || [];
+      effectiveSelected = effectiveSelected.filter(opt => !stepOptions.includes(opt));
+      if (!effectiveSelected.includes(selectedOptionId)) effectiveSelected = [...effectiveSelected, selectedOptionId];
+    }
+
     let nextStep = currentStep + 1;
 
     while (nextStep < parentSteps.length) {
@@ -87,12 +82,16 @@ useEffect(() => {
         .some(prevStep =>
           prevStep.conditions?.some(cond =>
             cond.skip_steps.includes(step.id) &&
-            selectedOptions.includes(cond.trigger_option)
+            effectiveSelected.includes(cond.trigger_option)
           )
         );
 
       if (!shouldSkip) break;
       nextStep++;
+    }
+
+    if (selectedOptionId !== undefined && triggerStepId !== undefined) {
+      setSelectedOptions(effectiveSelected);
     }
 
     setCurrentStep(Math.min(nextStep, parentSteps.length - 1));
@@ -116,6 +115,9 @@ useEffect(() => {
       if (!shouldSkip) break;
       prevStep--;
     }
+
+    const allowedStepIds = parentSteps.slice(0, Math.max(prevStep + 1, 0)).flatMap(step => step.options?.map(o => o.id) || []);
+    setSelectedOptions(prev => prev.filter(optId => allowedStepIds.includes(optId)));
 
     setCurrentStep(Math.max(prevStep, 0));
   };
@@ -142,16 +144,37 @@ useEffect(() => {
   return (
     <>
       <Box sx={{ textAlign: "center", py: "16px" }}>
-        <Typography sx={{ fontSize: isMobileView ? "32px" : "48px", fontWeight: "extraLight", mb: "8px" }}>
+        <Typography
+          sx={{
+            fontSize: isSmallerTitle ? "32px" : "48px",
+            fontWeight: "extraLight",
+            mb: "8px",
+            transition: "font-size 240ms ease, transform 240ms ease",
+            transform: isSmallerTitle ? "scale(0.95)" : "scale(1)",
+            willChange: "font-size, transform",
+          }}
+        >
           Quote smarter.
         </Typography>
-        <Typography sx={{  fontSize: isMobileView ? "32px" : "48px", fontWeight: 700 }}>
+        <Typography
+          sx={{
+            fontSize: isSmallerTitle ? "32px" : "48px",
+            fontWeight: 700,
+            transition: "font-size 240ms ease, transform 240ms ease",
+            transform: isSmallerTitle ? "scale(0.98)" : "scale(1)",
+            willChange: "font-size, transform",
+          }}
+        >
           Use Material Calculator
         </Typography>
       
 
       </Box>
-      {/* <FormWrapper onMobileChange={setIsMobileView}> */}
+      <ResponsiveCalculatorWrapper 
+  isMobileView={isMobileView} 
+  defaultWidth={1265}
+>
+  <Box sx = {{ px: isMobileView ? "0px" : "1px", pb: "1px" }}>
        <Card
         ref={cardRef}
         elevation={0}
@@ -214,12 +237,13 @@ useEffect(() => {
           mt: '24px' 
         }}>
           <Box sx={{ visibility: isFirstStep ? 'hidden' : 'visible' }}>
-            <ActionButton onClick={handlePrevClick} variant="prev" />
+            <ActionButton onClick={handlePrevClick}  isMobile={isMobileView} variant="prev" />
           </Box>
           
           <Box sx={{ visibility: !!parentStep.help?.length ? 'visible' : 'hidden' }}>
             <HelpButton 
               helpAvailable={true}
+              isMobile={isMobileView}
               onHelpClick={() => {
                 setOpenHelp(true);
                 setHelpClickedSteps((prev) => ({ ...prev, [parentStep.id]: true }));
@@ -229,9 +253,9 @@ useEffect(() => {
           
           <Box>
             {isLastStep ? (
-              <ActionButton variant="send" onClick={handleNextClick} disabled={!isStepComplete} />
+              <ActionButton variant="send" isMobile={isMobileView} onClick={handleNextClick} disabled={!isStepComplete} />
             ) : (
-              <ActionButton onClick={handleNextClick} variant="next" disabled={!isStepComplete} />
+              <ActionButton onClick={handleNextClick} variant="next" isMobile={isMobileView} disabled={!isStepComplete} />
             )}
           </Box>
         </Box> : 
@@ -250,7 +274,8 @@ useEffect(() => {
           container={cardRef.current}
         />
       </Card>
-      {/* </FormWrapper> */}
+      </Box>
+      </ResponsiveCalculatorWrapper>
     </>
   );
 };

@@ -4,10 +4,11 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 interface HelpButtonProps {
   helpAvailable: boolean;
+  isMobile?: boolean;
   onHelpClick: () => void;
 }
 
-const HelpButton: React.FC<HelpButtonProps> = ({ helpAvailable, onHelpClick }) => {
+const HelpButton: React.FC<HelpButtonProps> = ({ helpAvailable, onHelpClick, isMobile = false }) => {
   if (!helpAvailable) return null;
 
   return (
@@ -15,11 +16,11 @@ const HelpButton: React.FC<HelpButtonProps> = ({ helpAvailable, onHelpClick }) =
       onClick={onHelpClick}
       sx={{
         backgroundColor: "#437A8E",
-        width: "202px",
+        width: isMobile ? "130px" : "202px",
         borderRadius: "999px",
         textTransform: "none",
         fontSize: "16px",
-        forntWeight: 700,
+        fontWeight: 700,
         boxShadow: "none",
         color: "#fff",
       }}

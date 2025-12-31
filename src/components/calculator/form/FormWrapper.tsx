@@ -1,176 +1,75 @@
-// import React, { useEffect, useRef, useState } from "react";
-// import { Box, useTheme } from "@mui/material";
+import React, { useEffect, useState, useRef } from "react";
 
-// interface FormWrapperProps {
-//   children: React.ReactNode;
-//   onMobileChange?: (isMobile: boolean) => void;
-// }
-
-// const FormWrapper: React.FC<FormWrapperProps> = ({ children, onMobileChange }) => {
-//   const containerRef = useRef<HTMLDivElement>(null);
-//   const [scale, setScale] = useState(1);
-//   const [isMobile, setIsMobile] = useState(false);
-//   const theme = useTheme();
-
-//   const designWidth = 1200;
-//   const designHeight = 560;
-//   const mobileBreakpoint = theme.breakpoints.values.md;
-//   const minScale = 0.7;
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//       if (!containerRef.current) return;
-      
-//       const container = containerRef.current;
-//       const containerRect = container.getBoundingClientRect();
-//       const availableWidth = containerRect.width;
-//       const availableHeight = containerRect.height;
-      
-//       const windowWidth = window.innerWidth;
-      
-//       const scaleWidth = availableWidth / designWidth;
-//       const scaleHeight = availableHeight / designHeight;
-      
-//       const widthMobile = windowWidth < mobileBreakpoint;
-//       const scaleTooSmall = scaleWidth < minScale;
-//       const heightTooSmall = scaleHeight < minScale;
-      
-//       const shouldBeMobile = widthMobile || scaleTooSmall || heightTooSmall;
-      
-//       setIsMobile(shouldBeMobile);
-//       onMobileChange?.(shouldBeMobile);
-
-//       if (!shouldBeMobile) {
-//         setScale(scaleWidth);
-//       } else {
-//         setScale(1);
-//       }
-//     };
-
-//     handleResize();
-//     window.addEventListener("resize", handleResize);
-    
-//     const resizeObserver = new ResizeObserver(handleResize);
-//     if (containerRef.current) {
-//       resizeObserver.observe(containerRef.current);
-//     }
-
-//     return () => {
-//       window.removeEventListener("resize", handleResize);
-//       resizeObserver.disconnect();
-//     };
-//   }, [mobileBreakpoint, minScale, onMobileChange]);
-
-//   return (
-//     <Box
-//       ref={containerRef}
-//       sx={{
-//         width: `calc(100% - 32px)`,
-//         height: isMobile ? "auto" : designHeight * scale,
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "flex-start",
-//         overflow: "hidden",
-//         position: "relative",
-//         mx: "16px",
-//         borderRadius: 3,
-//       }}
-//     >
-//       <Box
-//         sx={{
-//           width: isMobile ? "100%" : designWidth,
-//           height: isMobile ? "auto" : designHeight,
-//           transform: isMobile ? "none" : `scale(${scale})`,
-//           transformOrigin: "top center",
-//           flexShrink: 0,
-//         }}
-//       >
-//         {children}
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// export default FormWrapper;
-
-
-import React, { useEffect, useRef, useState } from "react";
-import { Box, useTheme } from "@mui/material";
-
-interface FormWrapperProps {
+interface ResponsiveCalculatorWrapperProps {
   children: React.ReactNode;
-  onMobileChange?: (isMobile: boolean) => void;
+  defaultWidth?: number;
+  defaultHeight?: number;
+  isMobileView: boolean;
 }
 
-const DESIGN_WIDTH = 1225;
-const DESIGN_HEIGHT = 680;
-
-const FormWrapper: React.FC<FormWrapperProps> = ({ children, onMobileChange }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const theme = useTheme();
-
+const ResponsiveCalculatorWrapper: React.FC<ResponsiveCalculatorWrapperProps> = ({ 
+  children, 
+  defaultWidth = 1225,
+  defaultHeight = 680,
+  isMobileView 
+}) => {
   const [scale, setScale] = useState(1);
-  const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (!containerRef.current) return;
-
-      const containerWidth = containerRef.current.offsetWidth;
-      const isMobileView = window.innerWidth < theme.breakpoints.values.md;
-
-      setIsMobile(isMobileView);
-      onMobileChange?.(isMobileView);
-
-      if (isMobileView) {
+    const updateScale = () => {
+      if (isMobileView || !containerRef.current) {
         setScale(1);
         return;
       }
 
-      if (containerWidth >= DESIGN_WIDTH) {
+      const containerWidth = containerRef.current.offsetWidth;
+      
+      if (containerWidth >= defaultWidth) {
         setScale(1);
       } else {
-        setScale(containerWidth / DESIGN_WIDTH);
+        const newScale = containerWidth / defaultWidth;
+        setScale(newScale);
       }
     };
 
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    const observer = new ResizeObserver(handleResize);
-
-    observer.observe(containerRef.current!);
-
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    
+    // Dodatkowe sprawdzenie po krótkim opóźnieniu (dla pewności, że DOM się załadował)
+    const timeout = setTimeout(updateScale, 100);
+    
     return () => {
-      window.removeEventListener("resize", handleResize);
-      observer.disconnect();
+      window.removeEventListener("resize", updateScale);
+      clearTimeout(timeout);
     };
-  }, [onMobileChange, theme.breakpoints.values.md]);
+  }, [isMobileView, defaultWidth]);
 
   return (
-    <Box
-  ref={containerRef}
-  sx={{
-    width: "100%",
-    overflow: "hidden",
-    display: "flex",
-    justifyContent: "center",
-    height: isMobile ? "auto" : DESIGN_HEIGHT * scale, // <- tutaj dynamiczna wysokość
-  }}
->
-  <Box
-    sx={{
-      width: isMobile ? "100%" : DESIGN_WIDTH,
-      height: isMobile ? "auto" : DESIGN_HEIGHT,
-      transform: isMobile ? "none" : `scale(${scale})`,
-      transformOrigin: "top center",
-      transition: "transform 0.2s ease",
-    }}
-  >
+    <div 
+      ref={containerRef}
+      style={{ 
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        overflow: 'visible',
+        height: isMobileView ? 'auto' : `${defaultHeight * scale}px`,
+        transition: 'height 0.3s ease'
+      }}
+    >
+      <div
+        style={{
+          transform: isMobileView ? 'none' : `scale(${scale})`,
+          transformOrigin: 'top center',
+          transition: 'transform 0.3s ease',
+          width: isMobileView ? '100%' : `${defaultWidth}px`,
+          height: isMobileView ? 'auto' : `${defaultHeight}px`,
+        }}
+      >
         {children}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
-export default FormWrapper;
+export default ResponsiveCalculatorWrapper;

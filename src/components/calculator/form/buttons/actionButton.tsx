@@ -5,6 +5,7 @@ import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutl
 
 interface ActionButtonProps {
   onClick: () => void;
+  isMobile?: boolean;
   variant?: "next" | "prev" | "send" | "nextStep";
   disabled?: boolean;
 }
@@ -13,6 +14,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   onClick,
   variant = "next",
   disabled = false,
+  isMobile = false,
 }) => {
   const isNext = variant === "next";
   const isPrev = variant === "prev";
@@ -25,7 +27,8 @@ const ActionButton: React.FC<ActionButtonProps> = ({
       disabled={disabled}
       sx={{
         backgroundColor: disabled ? "#BDBDBD" : "#438E44",
-        width: isNextStep ? "202px" : "99px",
+        width: isNextStep ? (isMobile ? "130px" : "202px") : isMobile ? "80px" : "99px",
+        minWidth: isNextStep ? (isMobile ? "130px" : "202px") : isMobile ? "80px" : "99px",
         borderRadius: "999px",
         textTransform: "none",
         fontSize: "16px",

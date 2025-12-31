@@ -1,22 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import axios from "axios";
 import defaultImage from "../../assets/default.png";
-
-interface StepOptionImage {
-  id: number;
-  layer:
-    | "main"
-    | "second"
-    | "third"
-    | "fourth"
-    | "fifth"
-    | "sixth"
-    | "seventh"
-    | "eighth";
-  image_url: string;
-  options: number[];
-}
+import {
+  buildOverlayImages,
+  LayerType,
+  LAYER_Z_INDEX
+} from "../../data/images/imageMapping";
 
 interface OverlayImages {
   main: string | null;
@@ -35,8 +24,11 @@ interface HousePreviewProps {
   isMobile?: boolean;
 }
 
-const HousePreview: React.FC<HousePreviewProps> = ({ selectedOptions, colour, isMobile = false }) => {
-  const [allImages, setAllImages] = useState<StepOptionImage[]>([]);
+const HousePreview: React.FC<HousePreviewProps> = ({
+  selectedOptions,
+  colour,
+  isMobile = false
+}) => {
   const [overlayImages, setOverlayImages] = useState<OverlayImages>({
     main: null,
     second: null,
@@ -49,69 +41,9 @@ const HousePreview: React.FC<HousePreviewProps> = ({ selectedOptions, colour, is
   });
 
   useEffect(() => {
-    axios
-      .get<StepOptionImage[]>("http://localhost:8000/api/step-option-images/")
-      .then((res) => setAllImages(res.data))
-      .catch((err) => console.error("Error fetching images:", err));
-  }, []);
-
-  useEffect(() => {
-    if (allImages.length === 0) return;
-
-    setOverlayImages(() => {
-      const updated: OverlayImages = {
-        main: null,
-        second: null,
-        third: null,
-        fourth: null,
-        fifth: null,
-        sixth: null,
-        seventh: null,
-        eighth: null,
-      };
-
-      (
-        [
-          "main",
-          "second",
-          "third",
-          "fourth",
-          "fifth",
-          "sixth",
-          "seventh",
-          "eighth",
-        ] as const
-      ).forEach((layer) => {
-        const matched = allImages
-          .filter((img) => img.layer === layer)
-          .filter((img) =>
-            img.options.every((optId) => selectedOptions.includes(optId))
-          );
-
-        if (matched.length > 0) {
-          const bestMatch = matched.reduce((prev, curr) => {
-            const prevMax = Math.max(...prev.options);
-            const currMax = Math.max(...curr.options);
-            return currMax > prevMax ? curr : prev;
-          });
-          updated[layer] = bestMatch.image_url;
-        }
-      });
-
-      return updated;
-    });
-  }, [selectedOptions, allImages]);
-
-  const layerZIndex: Record<keyof OverlayImages, number> = {
-    main: 1,
-    second: 2,
-    third: 3,
-    fourth: 4,
-    fifth: 5,
-    sixth: 6,
-    seventh: 7,
-    eighth: 8,
-  };
+    const newOverlays = buildOverlayImages(selectedOptions);
+    setOverlayImages(newOverlays);
+  }, [selectedOptions, colour]);
 
   return (
     <Box
@@ -143,18 +75,7 @@ const HousePreview: React.FC<HousePreviewProps> = ({ selectedOptions, colour, is
         }}
       />
 
-      {(
-        [
-          "main",
-          "second",
-          "third",
-          "fourth",
-          "fifth",
-          "sixth",
-          "seventh",
-          "eighth",
-        ] as const
-      )
+      {(Object.keys(overlayImages) as LayerType[])
         .filter((layer) => overlayImages[layer] !== null)
         .map((layer) => (
           <Box
@@ -171,11 +92,11 @@ const HousePreview: React.FC<HousePreviewProps> = ({ selectedOptions, colour, is
               objectFit: "contain",
               transition: "opacity 0.4s ease-in-out",
               opacity: 1,
-              zIndex: layerZIndex[layer],
+              zIndex: LAYER_Z_INDEX[layer],
             }}
           />
         ))}
-        
+
       {overlayImages.fifth && (
         <Box
           sx={{
@@ -184,7 +105,7 @@ const HousePreview: React.FC<HousePreviewProps> = ({ selectedOptions, colour, is
             left: 0,
             width: "100%",
             height: "100%",
-            zIndex: layerZIndex.fifth,
+            zIndex: LAYER_Z_INDEX.fifth,
             backgroundColor: colour,
             WebkitMaskImage: `url(${overlayImages.fifth})`,
             WebkitMaskRepeat: "no-repeat",

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, useTheme } from "@mui/material";
+import { TextField } from "@mui/material";
 import { StepInputProps } from "../StepInput";
 
 const TextStepInput: React.FC<StepInputProps> = ({
@@ -42,7 +42,7 @@ const TextStepInput: React.FC<StepInputProps> = ({
         sx: {
           color: "#9E9E9E",
           position: "absolute",
-          fontSize: "12px",
+          fontSize: "16px",
           left: !!localValue ? "14px" : "50%",
           top: !!localValue ? 0 : "22px",
           transform: !!localValue
@@ -71,7 +71,7 @@ const TextStepInput: React.FC<StepInputProps> = ({
           height: "44px",
           borderRadius: "44px",
           backgroundColor: "#fff",
-          fontSize: "12px",
+          fontSize: "16px",
           "& fieldset": {
             borderColor: "#E0E0E0",
           },

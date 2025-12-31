@@ -23,36 +23,36 @@ const RadioStepInput: React.FC<StepInputProps> = ({ step, value, onChange, isSub
         const isLast = index === sortedOptions.length - 1;
 
         return (
-         <Box
-  key={opt.id}
-  onClick={() => handleChange(opt.option_value)}
-  sx={{
-    cursor: "pointer",
-    display: "flex",
-    height: isSubstep ? "30px" : "45px",
-    alignItems: "center",
-    pl: "30px",
-    position: "relative", // potrzebne do ::before
-    transition: "background-color 0.2s ease",
-    backgroundColor: isSelected ? "#438E44" : "transparent", 
-    fontWeight: isSelected ? "700" : "400",
-    color: isSelected ? "#fff" : "#000",
-    "&::before": {
-      content: '""',
-      position: "absolute",
-      bottom: 0,
-      left: "20px",   // odsunięcie od lewej
-      right: isSubstep ? "24px" : "20px",  // odsunięcie od prawej
-      height: "1px",
-      backgroundColor: isLast ? "transparent" : isSelected ? "transparent" : "#E0E0E0",
-    },
-  }}
->
+          <Box
+            key={opt.id}
+            onClick={() => handleChange(opt.option_value)}
+            sx={{
+              cursor: "pointer",
+              display: "flex",
+              height: isSubstep ? "30px" : "45px",
+              alignItems: "center",
+              pl: "30px",
+              position: "relative",
+              transition: "background-color 0.2s ease",
+              backgroundColor: isSelected ? "#438E44" : "transparent",
+              fontWeight: isSelected ? "700" : "400",
+              color: isSelected ? "#fff" : "#000",
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                bottom: 0,
+                left: "20px",
+                right: isSubstep ? "24px" : "20px",
+                height: "1px",
+                backgroundColor: isLast ? "transparent" : isSelected ? "transparent" : "#E0E0E0",
+              },
+            }}
+          >
 
             <Typography
               sx={{
                 fontWeight: isSelected ? 700 : 400,
-                fontSize: isSubstep ? "12px" : "16px",
+                fontSize: isSubstep ? "14px" : "16px",
                 pl: 1,
               }}
             >

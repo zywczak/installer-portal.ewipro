@@ -1,12 +1,12 @@
 import React from "react";
-import { Step } from "../types";
+import { FormStep } from "../../../../data/steps/stepsData";
 import RadioStepInput from "./inputs/RadioStepInput";
 import TextStepInput from "./inputs/TextStepInput";
 import NumberStepInput from "./inputs/NumberStepInput";
 import ColourStepInput from "./inputs/ColourStepInput";
 
 export interface StepInputProps {
-  step: Step;
+  step: FormStep;
   value: string | number;
   onChange: (value: string | number, optionId?: number) => void;
   onErrorChange?: (hasError: boolean) => void;
