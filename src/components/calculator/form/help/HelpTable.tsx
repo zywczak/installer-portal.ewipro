@@ -102,6 +102,7 @@ const HelpTable: React.FC<HelpTableProps> = ({ table }) => {
         component={Paper}
         elevation={0}
         sx={{
+          lineHeight: 'normal',
           "&::-webkit-scrollbar": { display: "none" },
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -173,7 +174,7 @@ const HelpTable: React.FC<HelpTableProps> = ({ table }) => {
                             textAlign: "center",
                           }}
                         >
-                          <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "1rem" }}>
+                          <Typography variant="body1" sx={{ fontWeight: 600, fontSize: "1rem", lineHeight: 'normal' }}>
                             {col.label}
                           </Typography>
                         </Box>

@@ -62,7 +62,12 @@ const NotificationBanner: React.FC<Props> = ({
 
   if (isMobile) {
     return (
-      <Drawer anchor="left" open={drawerOpen} onClose={onClose}>
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={onClose}
+        PaperProps={{ sx: { width: '100%', height: '100%', maxWidth: '100%' } }}
+      >
         <Box display="flex" flexDirection="column" height="100%">
           {header}
           {content}
