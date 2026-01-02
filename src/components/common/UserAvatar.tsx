@@ -23,7 +23,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
     <MotionAvatar
       src={avatarUrl || profilePhoto}
       onClick={onClick}
-      whileHover={{ scale: 1.08 }}
+      whileHover={onClick ? { scale: 1.08 } : undefined}
       animate={{ width: size, height: size }}
       transition={{ duration: 0.3 }}
       sx={{
@@ -37,7 +37,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
     />
   );
 
-  if (!tooltip) return avatar;
+  if (!tooltip || !onClick) return avatar;
 
   return (
     <Tooltip title={tooltip} arrow>

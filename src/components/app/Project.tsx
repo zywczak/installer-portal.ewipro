@@ -135,7 +135,6 @@ const Project: React.FC<ProjectProps> = ({ projectId, contactId, onAddressChange
   load();
 }, [projectId]);
 
-  // Przekazywanie adresu do rodzica gdy zmienia się projekt lub zakładka
   useEffect(() => {
     if (onAddressChange && project && activeTab !== "home") {
       const addr = [project.address1, project.address2, project.address3, project.postcode]
@@ -147,7 +146,6 @@ const Project: React.FC<ProjectProps> = ({ projectId, contactId, onAddressChange
     }
   }, [project, activeTab, onAddressChange]);
 
-  // ---- TABS: ALWAYS DEFINED (NO HOOKS HERE) ----
   let tabs: Array<{ key: string; label: string; icon: JSX.Element }> = [];
 
   if (width > 1390) {
@@ -175,10 +173,6 @@ const Project: React.FC<ProjectProps> = ({ projectId, contactId, onAddressChange
   const hasChatTab = tabs.some((t) => t.key === "chat");
   const hasDocsTab = tabs.some((t) => t.key === "documents");
   const hasDelivTab = tabs.some((t) => t.key === "deliveries");
-
-  // ----------------------------
-  // RENDER CONTENT
-  // ----------------------------
 
   const renderContent = () => {
     if (loading)

@@ -42,7 +42,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         <TextField
           fullWidth
           multiline
-          maxRows={4}
+          maxRows={3}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={inputPlaceholder}
@@ -54,7 +54,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               fontSize: 14,
               bgcolor: "transparent",
             },
-            "& textarea": { minHeight: "1em", overflow: "hidden" },
+            "& textarea": { overflow: "hidden", height: "20px" },
           }}
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
           InputProps={{

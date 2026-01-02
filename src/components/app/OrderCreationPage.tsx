@@ -16,7 +16,6 @@ import {
   Typography,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import ProductDetailsDialog, { Product } from '../common/ProductDetailsDialog';
 import { BasketDialog } from '../common/BasketDialog';
