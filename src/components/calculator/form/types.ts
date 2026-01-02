@@ -56,3 +56,12 @@ export interface StepsResponse {
   total_steps: number;
   steps: Step[];
 }
+
+export interface HelpImage {
+  id: number;
+  image_url: string;
+  caption?: string | null;
+  description?: string | null;
+  order?: number;
+}
+
