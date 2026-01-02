@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, ListItemButton, ListItemText, CircularProgress } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import UserAvatar from "../common/UserAvatar";
@@ -33,6 +34,31 @@ const OwnerSelector: React.FC<Props> = ({
   ownerButtonRef,
 }) => {
   if (!isEnabled) return null;
+
+  const dropdownContent = (() => {
+    if (loading) {
+      return (
+        <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
+          <CircularProgress size={26} />
+        </Box>
+      );
+    }
+
+    if (owners.length === 0) {
+      return <Box sx={{ textAlign: "center", p: 2 }}>Brak ownerów do wyboru</Box>;
+    }
+
+    return owners
+      .filter(o => o.userID !== selectedOwner?.userID)
+      .map(owner => (
+        <ListItemButton key={owner.userID} onClick={() => onSelect(owner)}>
+          <Box sx={{ mr: 2 }}>
+            <UserAvatar avatarUrl={owner.avatar || undefined} size={36} />
+          </Box>
+          <ListItemText primary={owner.name} secondary={owner.email} />
+        </ListItemButton>
+      ));
+  })();
 
   return (
     <>
@@ -75,24 +101,7 @@ const OwnerSelector: React.FC<Props> = ({
             boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
           }}
         >
-          {loading ? (
-            <Box sx={{ display: "flex", justifyContent: "center", p: 2 }}>
-              <CircularProgress size={26} />
-            </Box>
-          ) : owners.length === 0 ? (
-            <Box sx={{ textAlign: "center", p: 2 }}>Brak ownerów do wyboru</Box>
-          ) : (
-            owners
-              .filter(o => o.userID !== selectedOwner?.userID)
-              .map(owner => (
-                <ListItemButton key={owner.userID} onClick={() => onSelect(owner)}>
-                  <Box sx={{ mr: 2 }}>
-                    <UserAvatar avatarUrl={owner.avatar || undefined} size={36} />
-                  </Box>
-                  <ListItemText primary={owner.name} secondary={owner.email} />
-                </ListItemButton>
-              ))
-          )}
+          {dropdownContent}
         </Box>
       )}
     </>
