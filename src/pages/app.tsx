@@ -20,7 +20,7 @@ import OrderCreationPage from "../components/app/OrderCreationPage";
 import Calculator from "../components/app/Calculator";
 
 function App() {
-  const [view, setView] = useState<string>(window.location.hash.replace("#", "") || "dashboard");
+  const [view, setView] = useState<string>(globalThis.location.hash.replace("#", "") || "dashboard");
   const [viewParam, setViewParam] = useState<string | null>(null);
   const [isMobileContent, setIsMobileContent] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -45,7 +45,7 @@ function App() {
 
   useEffect(() => {
   const onHashChange = () => {
-  const hash = window.location.hash.replace("#", "") || "dashboard";
+  const hash = globalThis.location.hash.replace("#", "") || "dashboard";
   setView(hash);
 
   const parts = hash.split("/");
@@ -61,9 +61,9 @@ function App() {
   setMobileSidebarOpen(false);
 };
 
-    window.addEventListener("hashchange", onHashChange);
+    globalThis.addEventListener("hashchange", onHashChange);
     onHashChange();
-    return () => window.removeEventListener("hashchange", onHashChange);
+    return () => globalThis.removeEventListener("hashchange", onHashChange);
   }, []);
 useEffect(() => {
   const fetchNotifications = async () => {
@@ -127,7 +127,7 @@ useEffect(() => {
     setViewParam(null);
   }
 
-  window.location.hash = newView;
+  globalThis.location.hash = newView;
 };
 
 
@@ -137,7 +137,6 @@ useEffect(() => {
 const parts = view.split("/");
 const projectId = parts[1];
 const contactId = parts[2] ?? "";
-// return <Project projectId={projectId} contactId={contactId} />;
 return (
 <Project
   projectId={projectId}
@@ -216,7 +215,7 @@ return (
           anchor="left"
           open={mobileSidebarOpen}
           onClose={() => setMobileSidebarOpen(false)}
-          PaperProps={{ sx: { width: "100%", height: "100%", background: "transparent" } }}
+          slotProps={{ paper: { sx: { width: "100%", height: "100%", background: "transparent" } } }}
         >
           <Sidebar
             navigateTo={navigateTo}
