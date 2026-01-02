@@ -24,26 +24,32 @@ const ResponsiveCalculatorWrapper: React.FC<ResponsiveCalculatorWrapperProps> = 
       }
 
       const containerWidth = containerRef.current.offsetWidth;
-      
-      if (containerWidth >= defaultWidth) {
-        setScale(1);
-      } else {
-        const newScale = containerWidth / defaultWidth;
-        setScale(newScale);
+      const windowHeight = window.innerHeight;
+
+      // Skala na podstawie szerokości
+      let newScale = containerWidth >= defaultWidth ? 1 : containerWidth / defaultWidth;
+
+      // Sprawdzenie wysokości – jeśli po tej skali jest za wysoko (>80% okna)
+      const scaledHeight = defaultHeight * newScale;
+      const maxHeight = windowHeight * 0.8;
+
+      if (scaledHeight > maxHeight) {
+        newScale = maxHeight / defaultHeight;
       }
+
+      setScale(newScale);
     };
 
     updateScale();
     window.addEventListener("resize", updateScale);
-    
-    // Dodatkowe sprawdzenie po krótkim opóźnieniu (dla pewności, że DOM się załadował)
+
     const timeout = setTimeout(updateScale, 100);
-    
+
     return () => {
       window.removeEventListener("resize", updateScale);
       clearTimeout(timeout);
     };
-  }, [isMobileView, defaultWidth]);
+  }, [isMobileView, defaultWidth, defaultHeight]);
 
   return (
     <div 
