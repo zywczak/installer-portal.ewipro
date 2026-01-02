@@ -9,7 +9,7 @@ const api = axios.create({
     baseURL: BASE_API_URL,
 });
 
-const excludedPaths: any[] = [
+const excludedPaths: string[] = [
     "/installer/authenticate/",
     "/installer/registration/",
     "/installer/forget-password/",
@@ -37,18 +37,16 @@ api.interceptors.response.use(
         if (error.response?.status === 401) {
             console.warn("Unauthorized! Redirecting to /auth...");
             localStorage.clear(); 
-            window.location.href = "/auth";
+            globalThis.location.href = "/auth";
         }
         return Promise.reject(error);
     }
 );
 
-// Wrapper do post z domyślnym endpointem
-const post = async (urlOrData?: string | any, data?: any, config?: AxiosRequestConfig) => {
+const post = async (urlOrData?: any, data?: any, config?: AxiosRequestConfig) => {
     if (typeof urlOrData === "string") {
         return api.post(urlOrData, data, config);
     } else {
-        // urlOrData jest body, dodajemy token jawnie w nagłówkach
         const token = getAccessToken();
         const headers = { Authorization: token ? `Bearer ${token}` : undefined };
         const finalConfig: AxiosRequestConfig = { ...config, headers };
@@ -56,11 +54,10 @@ const post = async (urlOrData?: string | any, data?: any, config?: AxiosRequestC
     }
 };
 
-// Wrapper do get z domyślnym endpointem
 const get = async (url?: string, config?: AxiosRequestConfig) => {
     const token = getAccessToken();
     const headers = { Authorization: token ? `Bearer ${token}` : undefined };
-    return api.get(url || DEFAULT_PATH, { ...(config || {}), headers });
+    return api.get(url || DEFAULT_PATH, { ...(config), headers });
 };
 
 export default {
