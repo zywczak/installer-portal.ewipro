@@ -5,26 +5,24 @@ import {
   Pagination,
   Typography,
   Button,
-  Card, // Używane do kart podsumowania
-  CardContent, // Używane do kart podsumowania
+  Card,
+  CardContent,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add"; // Ikona do przycisku dodawania
+import AddIcon from "@mui/icons-material/Add";
 import { Finances, OrderItem, OrdersListProps, ProformaItem, QuoteItem } from "./ewistore/types";
 import { fetchOrders } from "./ewistore/api";
 import { OrderCard } from "./ewistore/OrderCard";
 import { OrderDetailsDialog } from "./ewistore/OrderDetailsDialog";
 import { QuoteDetailsDialog } from "./ewistore/QuoteDetailsDialog";
-import EWIStore from "../../assets/ewistore_render_specialists.svg"; // Zakładam, że ścieżka do SVG jest poprawna
+import EWIStore from "../../assets/ewistore_render_specialists.svg";
 import QuotesAndDraftsSection from "./QuotesAndDraftsSection";
 
 const ITEMS_PER_PAGE = 12;
 
-// --- Komponent nagłówka z podsumowaniem i przyciskiem dodawania ---
 interface OrdersHeaderProps {
   onAddOrder: () => void;
   finances: Finances;
 }
-
 
 const OrdersHeader: React.FC<OrdersHeaderProps> = ({ onAddOrder, finances }) => {
   const summaryCards = [
@@ -47,11 +45,11 @@ const OrdersHeader: React.FC<OrdersHeaderProps> = ({ onAddOrder, finances }) => 
   sx={{
     bgcolor: "#54A852",
     "&:hover": { bgcolor: "#397838" },
-    minWidth: "40px", // opcjonalnie, żeby przycisk nie był za szeroki
+    minWidth: "40px",
     width: "40px",
     height: "40px",
     padding: 0,
-    borderRadius: "50%", // okrągły przycisk
+    borderRadius: "50%",
   }}
 >
   <AddIcon />
@@ -78,7 +76,7 @@ const OrdersHeader: React.FC<OrdersHeaderProps> = ({ onAddOrder, finances }) => 
   );
 };
 
-interface EmptyStateProps { // <-- Ta definicja jest w pliku Orders.tsx
+interface EmptyStateProps {
   onAddOrder: () => void;
 }
 // --- Komponent stanu pustego (EmptyState) ---
@@ -180,7 +178,7 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
 
   // Logika przekierowania na stronę tworzenia zamówienia
   const handleAddOrder = () => {
-    window.location.hash = `createOrder/${projectID}/${contactID}`;
+    globalThis.location.hash = `createOrder/${projectID}/${contactID}`;
   };
 
   if (isListEmpty) {

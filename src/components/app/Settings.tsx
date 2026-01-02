@@ -1,4 +1,4 @@
-import { Box, Divider, List, useTheme } from "@mui/material";
+import { Box, Divider, List } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useState, useRef } from "react";
 
@@ -23,7 +23,6 @@ const Settings: React.FC<SettingsProps> = ({
   showSuccess,
   showError,
 }) => {
-  const theme = useTheme();
   const { t, i18n } = useTranslation();
 
   const [isDefaultOwnerEnabled, setIsDefaultOwnerEnabled] = useState(() => {
@@ -85,7 +84,7 @@ const Settings: React.FC<SettingsProps> = ({
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     i18n.changeLanguage(lang);
-    window.location.reload();
+    globalThis.location.reload();
   };
 
   return (

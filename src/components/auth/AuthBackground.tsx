@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, useTheme, useMediaQuery } from "@mui/material";
 import bg from "../../assets/ewistore-splash.jpg";
-// import EwiproLogo from "../../assets/EwiproLogo";
 
 interface AuthBackgroundProps {
   isMobile?: boolean;

@@ -16,6 +16,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import api from '../../api/axiosApi';
 
 export interface Product {
   stockQty: number;
@@ -62,7 +63,6 @@ const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
     onClose();
   };
 
-  // Reset on product change
   useEffect(() => {
     setSelectedChild(null);
     setQuantity(1);
@@ -71,7 +71,6 @@ const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
     setDisplayedImage(product?.imageUrl);
   }, [product]);
 
-  // Fetch colors when selectedChild changes
   useEffect(() => {
     if (!selectedChild) {
       setColors([]);
@@ -81,44 +80,41 @@ const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
     }
 
     const fetchColors = async () => {
-      const token = localStorage.getItem('access');
-      try {
-        const body = {
-          action: 'getColourCodes',
-          filters: [
-            { productID: selectedChild.id },
-            { popularColoursOnly: true },
-          ],
-          start: 0,
-          limit: 50000,
-        };
-
-        const res = await fetch('https://api-veen-e.ewipro.com/installer/info/', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(body),
-        });
-
-        const data = await res.json();
-        const fetchedColors = data.results || [];
-        setColors(fetchedColors);
-        setSelectedColor(fetchedColors[0]?.colour_code || '');
-        setDisplayedImage(fetchedColors[0]?.imageUrl || selectedChild.imageUrl || product?.imageUrl);
-      } catch (err) {
-        console.error(err);
-        setColors([]);
-        setSelectedColor('');
-        setDisplayedImage(selectedChild.imageUrl || product?.imageUrl);
-      }
+  try {
+    const body = {
+      action: "getColourCodes",
+      filters: [
+        { productID: selectedChild.id },
+        { popularColoursOnly: true },
+      ],
+      start: 0,
+      limit: 50000,
     };
+
+    const res = await api.post(body);
+
+    const fetchedColors = res.data?.results || [];
+
+    setColors(fetchedColors);
+    setSelectedColor(fetchedColors[0]?.colour_code || "");
+    setDisplayedImage(
+      fetchedColors[0]?.imageUrl ||
+        selectedChild.imageUrl ||
+        product?.imageUrl
+    );
+  } catch (err) {
+    console.error(err);
+    setColors([]);
+    setSelectedColor("");
+    setDisplayedImage(
+      selectedChild.imageUrl || product?.imageUrl
+    );
+  }
+};
 
     fetchColors();
   }, [selectedChild, product]);
 
-  // Update displayed image when color changes
   useEffect(() => {
   if (!selectedColor) return;
 
@@ -135,9 +131,8 @@ const ProductDetailsDialog: React.FC<ProductDetailsDialogProps> = ({
 
   const displayedProduct = selectedChild || product;
 
-  // Przeliczanie ceny całkowitej
-const unitPrice = parseFloat(displayedProduct.price || "0");
-const unitOriginal = parseFloat(displayedProduct.originalPrice || "0");
+const unitPrice = Number.parseFloat(displayedProduct.price || "0");
+const unitOriginal = Number.parseFloat(displayedProduct.originalPrice || "0");
 
 const totalPrice = (unitPrice * quantity).toFixed(2);
 const totalOriginal = (unitOriginal * quantity).toFixed(2);
@@ -167,7 +162,6 @@ const totalOriginal = (unitOriginal * quantity).toFixed(2);
         },
       }}
     >
-      {/* HEADER */}
       <Box sx={{ backgroundColor: '#fff', color: 'text.primary', p: 2 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Box>
@@ -195,8 +189,6 @@ const totalOriginal = (unitOriginal * quantity).toFixed(2);
           '&::-webkit-scrollbar': { display: 'none' },
         }}
       >
-
-        {/* IMAGE */}
         <Box sx={{ display: 'flex', justifyContent: 'center', py: 1 }}>
           {displayedImage ? (
             <img
@@ -214,8 +206,6 @@ const totalOriginal = (unitOriginal * quantity).toFixed(2);
             <PhotoCameraIcon sx={{ fontSize: 80, color: 'gray' }} />
           )}
         </Box>
-
-        {/* VARIANT SELECT */}
         {hasVariants && (
           <Box sx={{ px: 1, mb: 2 }}>
             <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
@@ -243,8 +233,6 @@ const totalOriginal = (unitOriginal * quantity).toFixed(2);
             </Select>
           </Box>
         )}
-
-        {/* COLOR SELECT */}
         {colors.length > 0 && (
           <Box sx={{ px: 1, mb: 2 }}>
             <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
@@ -327,7 +315,6 @@ const totalOriginal = (unitOriginal * quantity).toFixed(2);
           </Box>
         )}
 
-        {/* DESCRIPTION */}
         {displayedProduct.descriptionLong && (
           <Box sx={{ mb: 2 }}>
             <div dangerouslySetInnerHTML={{ __html: displayedProduct.descriptionLong }} />
@@ -335,7 +322,6 @@ const totalOriginal = (unitOriginal * quantity).toFixed(2);
         )}
       </Box>
 
-      {/* PRICE + QUANTITY + ADD */}
       <Box
         sx={{
           p: 2,
@@ -382,35 +368,22 @@ const totalOriginal = (unitOriginal * quantity).toFixed(2);
                 <RemoveIcon />
               </IconButton>
 
-              {/* <InputBase
-                value={quantity}
-                readOnly
-                sx={{
-                  flexGrow: 1,
-                  textAlign: 'center',
-                  '& input': { textAlign: 'center', fontWeight: 600 },
-                }}
-              /> */}
               <InputBase
                 value={quantity}
                 onChange={(e) => {
                   const value = e.target.value;
-                  // Allow empty input for editing
                   if (value === '') {
                     setQuantity(1);
                     return;
                   }
                   
-                  const numValue = parseInt(value, 10);
-                  // Only update if it's a valid number
-                  if (!isNaN(numValue) && numValue > 0) {
-                    // Cap at stock quantity
+                  const numValue = Number.parseInt(value, 10);
+                  if (!Number.isNaN(numValue) && numValue > 0) {
                     setQuantity(Math.min(numValue, displayedProduct.stockQty));
                   }
                 }}
                 onBlur={(e) => {
-                  // Ensure we have at least 1 when input loses focus
-                  if (e.target.value === '' || parseInt(e.target.value, 10) < 1) {
+                  if (e.target.value === '' || Number.parseInt(e.target.value, 10) < 1) {
                     setQuantity(1);
                   }
                 }}

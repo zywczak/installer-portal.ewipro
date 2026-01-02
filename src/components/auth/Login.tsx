@@ -54,7 +54,7 @@ const Login: React.FC<LoginProps> = ({ onRegister, onCheckEmail, onForgotPasswor
       localStorage.setItem("userNameSurname", response.data.namesurname);
       localStorage.setItem("userEmail", emailField.value);
 
-      window.location.href = "/";
+      globalThis.location.href = "/";
     } catch (err: any) {
       showError(err.response?.data?.detail || err.response?.data?.message || "Login failed. Please check your credentials.");
     } finally {

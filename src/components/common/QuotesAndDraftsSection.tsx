@@ -29,7 +29,7 @@ const infoContent = (
     display: 'flex', 
     alignItems: 'center', 
     gap: 0.5, 
-    color: 'green', // kolor tekstu i ikony
+    color: 'green',
   }}
 >
   <LocalPhoneIcon fontSize="small" sx={{ color: 'green' }} />
@@ -48,17 +48,15 @@ const QuotesAndDraftsSection = ({ unsoldQuotesLength }: { unsoldQuotesLength: nu
       mb: 2
     }}
   >
-    {/* LEWA STRONA: Nagłówek */}
     <Typography variant="h6" fontWeight={700}>
       Oferty ({unsoldQuotesLength})
     </Typography>
 
-    {/* PRAWA STRONA: Liczba w kółku + tooltip */}
     <Tooltip 
       title={infoContent} 
       arrow 
       placement="bottom-end"
-      componentsProps={{
+      slotProps={{
         tooltip: {
           sx: {
             backgroundColor: 'white',
