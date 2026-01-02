@@ -17,7 +17,6 @@ const BASKET_KEY = 'ewipro_basket';
 export const useBasket = () => {
   const [items, setItems] = useState<BasketItem[]>([]);
 
-  // Load basket from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem(BASKET_KEY);
     if (saved) {
@@ -29,7 +28,6 @@ export const useBasket = () => {
     }
   }, []);
 
-  // Save basket to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(BASKET_KEY, JSON.stringify(items));
   }, [items]);
@@ -47,14 +45,12 @@ export const useBasket = () => {
       const existingIndex = prev.findIndex(item => item.id === product.id);
       
       if (existingIndex >= 0) {
-        // Update quantity if item exists
         const updated = [...prev];
         updated[existingIndex].quantity += quantity;
         return updated;
       } else {
-        // Add new item
-        const rate = parseFloat(product.price);
-        const rateRRP = product.originalPrice ? parseFloat(product.originalPrice) : undefined;
+        const rate = Number.parseFloat(product.price);
+        const rateRRP = product.originalPrice ? Number.parseFloat(product.originalPrice) : undefined;
         const percentDiscount = rateRRP && rateRRP > rate 
           ? Math.round(((rateRRP - rate) / rateRRP) * 100) 
           : undefined;

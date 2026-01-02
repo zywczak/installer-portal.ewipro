@@ -55,16 +55,15 @@ export const useDraggableChatIcon = (
       dragRef.current.dragging = false;
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    globalThis.addEventListener("mousemove", handleMouseMove);
+    globalThis.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      globalThis.removeEventListener("mousemove", handleMouseMove);
+      globalThis.removeEventListener("mouseup", handleMouseUp);
     };
   }, [pos.bottom, pos.right]);
 
-  /** 👇 jawny reset – używany po kliknięciu ikony */
   const resetPosition = () => {
     setPos(DEFAULT_POS);
   };

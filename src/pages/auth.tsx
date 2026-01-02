@@ -15,7 +15,6 @@ const AuthContent: React.FC = () => {
   const panelRef = useRef<HTMLDivElement>(null);
   const [panelHeight, setPanelHeight] = useState(0);
 
-  // Obserwowanie wysokości panelu na mobilkach
   useEffect(() => {
     if (!isMobile || !panelRef.current) return;
 
@@ -44,7 +43,6 @@ const AuthContent: React.FC = () => {
           overflow: "hidden",
         }}
       >
-        {/* Lewa część: tło */}
         <Box
           sx={{
             flex: isMobile ? "0 0 auto" : "1 1 50%",

@@ -58,7 +58,7 @@ const HelpTable: React.FC<HelpTableProps> = ({ table }) => {
 
     if (rowType === "scale" && rowIcon && rowScale) {
       const numValue = Number(value);
-      const [min, max] = rowScale;
+      const [_, max] = rowScale;
       const iconSize = 24;
       const gap = 2;
       const coverPercent = Math.max(0, (max - numValue) / max) * 100;

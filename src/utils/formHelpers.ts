@@ -1,7 +1,5 @@
 import { FormData } from "../components/common/steps/types";
 
-// Pomocnicze funkcje dla formularza projektu
-
 export const getInitialOwnerId = (): number => {
   const defaultEnabled = JSON.parse(
     localStorage.getItem("defaultProjectOwner") || "false"
@@ -12,7 +10,6 @@ export const getInitialOwnerId = (): number => {
     if (defaultOwnerId) return defaultOwnerId;
   }
 
-  // If no default owner, use current user's ID
   const userID = Number(localStorage.getItem("userID"));
   return userID || 0;
 };

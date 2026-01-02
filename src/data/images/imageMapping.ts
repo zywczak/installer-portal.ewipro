@@ -158,7 +158,7 @@ export const findBestMatchingImage = (
     const prevMax = Math.max(...prev.options);
     const currMax = Math.max(...curr.options);
     return currMax > prevMax ? curr : prev;
-  });
+  }, matched[0]);
 
   return bestMatch.image_url;
 };

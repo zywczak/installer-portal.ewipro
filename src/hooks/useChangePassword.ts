@@ -20,7 +20,7 @@ export const useChangePassword = ({ showSuccess, showError }: UseChangePasswordP
   const { t } = useTranslation();
 
   const validatePasswordComplexity = (password: string): string | null => {
-    if (password.length < 8 || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
+    if (password.length < 8 || !/[A-Z]/.test(password) || !/\d/.test(password)) {
       return t('views.settings.changePassword.form.newPassword.hint');
     }
     return null;
@@ -94,7 +94,7 @@ export const useChangePassword = ({ showSuccess, showError }: UseChangePasswordP
       setConfirmPassword("");
 
       showSuccess(t('views.settings.changePassword.form.formSuccessfullySubmitted'));
-      window.location.href = "/#settings";
+      globalThis.location.href = "/#settings";
     } catch (err: any) {
       console.error(err);
       showError(t('views.settings.changePassword.form.errorSubmitting') || "Failed to change password. Try again.");
