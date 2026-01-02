@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { HelpImage } from "../types";
+import { HelpImage } from "../../../form/types";
 
 interface HelpImagesProps {
   images: HelpImage[];

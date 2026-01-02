@@ -29,7 +29,7 @@ export const useChatAnimation = (
   const [chatStyle, setChatStyle] = useState<ChatStyle>(getClosedStyle);
 
   const updateOpenStyle = () => {
-    const isMobile = globalThis.matchMedia("(max-width: 705px)").matches;
+    const isMobile = window.matchMedia("(max-width: 705px)").matches;
 
     setChatStyle({
       top: 0,
@@ -58,6 +58,7 @@ export const useChatAnimation = (
     }, 300);
   };
 
+  /** resize – dokładnie jak w starej wersji */
   useEffect(() => {
     const handleResize = () => {
       if (!open) return;

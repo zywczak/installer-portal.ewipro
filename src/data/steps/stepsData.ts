@@ -1,3 +1,5 @@
+// src/data/steps/stepsData.ts
+
 import { ReactNode } from 'react';
 import { HELP_TABLES, SimpleTable } from '../tables/tables';
 import { OPTION_IDS } from '../constants/optionIds';
@@ -38,12 +40,10 @@ export interface HelpImage {
   description: string | null;
 }
 
-export type DescriptionType = string | ReactNode | null;
-
 export interface HelpSection {
   id: number;
   help_title: string;
-  description: DescriptionType;
+  description: string | ReactNode | null;
   images: HelpImage[];
   table?: SimpleTable;
 }
@@ -685,7 +685,7 @@ export const STEPS_DATA: StepsData = {
           placeholder: null,
           required: true,
           parent: 15,
-          validation_regex: String.raw`^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]{1,100}$`,
+          validation_regex: "^[A-Za-zÀ-ÖØ-öø-ÿ\\s'-]{1,100}$",
           substeps: [],
           options: [],
           help: [],
@@ -701,7 +701,7 @@ export const STEPS_DATA: StepsData = {
           placeholder: null,
           required: true,
           parent: 15,
-          validation_regex: String.raw`^\+?[1-9]\d{8,14}$`,
+          validation_regex: "^\\+?[1-9]\\d{8,14}$",
           substeps: [],
           options: [],
           help: [],
@@ -717,7 +717,7 @@ export const STEPS_DATA: StepsData = {
           placeholder: null,
           required: true,
           parent: 15,
-          validation_regex: String.raw`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`,
+          validation_regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
           substeps: [],
           options: [],
           help: [],
@@ -733,7 +733,7 @@ export const STEPS_DATA: StepsData = {
           placeholder: null,
           required: true,
           parent: 15,
-          validation_regex: String.raw`^([A-Za-z0-9\s-]{3,10})$`,
+          validation_regex: "^([A-Za-z0-9\\s-]{3,10})$",
           substeps: [],
           options: [],
           help: [],

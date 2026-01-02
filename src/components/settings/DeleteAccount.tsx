@@ -16,14 +16,14 @@ const DeleteAccount: React.FC<Props> = ({ open, onOpen, onClose, onDelete, delet
       <Button
         startIcon={<DeleteIcon />}
         variant="text"
-        onClick={onOpen}
+        onClick={onOpen}        // ✅ OTWIERA dialog
         sx={{ color: 'red', fontWeight: 600 }}
       >
         {buttonText}
       </Button>
     </Box>
 
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="xs" slotProps={{ paper: { sx: { borderRadius: 2, p: 2 } } }}>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="xs" PaperProps={{ sx: { borderRadius: 2, p: 2 } }}>
       <DialogTitle sx={{ textAlign: 'center', fontWeight: 600, fontSize: '1.25rem' }}>
         Potwierdzenie usunięcia konta
       </DialogTitle>

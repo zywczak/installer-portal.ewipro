@@ -30,7 +30,7 @@ export const FinanceChart: React.FC<FinanceChartProps> = ({ data, chartConfig })
             cornerRadius={6}
           >
             {chartConfig.data.map((entry, index) => (
-              <Cell key={entry.name || `cell-${index}`} fill={chartConfig.colors[index]} />
+              <Cell key={index} fill={chartConfig.colors[index]} />
             ))}
           </Pie>
         </PieChart>

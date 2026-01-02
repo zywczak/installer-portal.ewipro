@@ -11,9 +11,9 @@ interface FinanceLegendProps {
 export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
   const { t } = useTranslation();
 
-  const remaining = Number.parseFloat(data.remainingLimit);
-  const spent = Number.parseFloat(data.outstandingBalance);
-  const overdueAmount = Number.parseFloat(data.overdueBalance);
+  const remaining = parseFloat(data.remainingLimit);
+  const spent = parseFloat(data.outstandingBalance);
+  const overdueAmount = parseFloat(data.overdueBalance);
 
   return (
     <Box
@@ -24,6 +24,7 @@ export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
         gap: 1.5,
       }}
     >
+      {/* Remaining Credit Limit */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
         <Box
           sx={{
@@ -43,6 +44,7 @@ export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
         </Box>
       </Box>
 
+      {/* Used (Outstanding Balance) */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
         <Box
           sx={{
@@ -62,6 +64,7 @@ export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
         </Box>
       </Box>
 
+      {/* Overdue Amount */}
       {overdueAmount > 0 && (
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
           <Box

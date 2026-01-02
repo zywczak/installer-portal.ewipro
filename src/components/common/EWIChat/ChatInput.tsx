@@ -30,7 +30,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    /// add upload -> onSendMessage({ content: "", picture: URL })
+    // TODO: upload -> onSendMessage({ content: "", picture: URL })
     e.target.value = "";
   };
 
@@ -57,23 +57,21 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             "& textarea": { overflow: "hidden", height: "20px" },
           }}
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <IconButton onClick={handleAddPhotoClick} sx={{ color: sendIconColor }}>
-                    <PhotoCameraIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleSend} disabled={!input.trim()} sx={{ color: sendIconColor }}>
-                    <SendIcon sx={{ fontSize: "26px" }} />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            },
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <IconButton onClick={handleAddPhotoClick} sx={{ color: sendIconColor }}>
+                  <PhotoCameraIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={handleSend} disabled={!input.trim()} sx={{ color: sendIconColor }}>
+                  <SendIcon sx={{ fontSize: "26px" }} />
+                </IconButton>
+              </InputAdornment>
+            ),
           }}
         />
       </Box>

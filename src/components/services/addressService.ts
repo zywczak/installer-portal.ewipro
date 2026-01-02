@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export const ukPostcodeRegex =
-  /^(([Gg][Ii][Rr] 0[Aa]{2})|([A-Za-z]{1,2}\d{1,2}[A-Za-z]?\s?\d[A-Za-z]{2}))$/;
+  /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})$/;
 
 export const roiEircodeRegex =
-  /^[AC-FHKNPRTV-Y]\d{2}\s?\d[AC-FHKNPRTV-Y]{3}$/;
+  /^[AC-FHKNPRTV-Y]{1}[0-9]{2}\s?[0-9AC-FHKNPRTV-Y]{4}$/;
 
 export const isValidPostcode = (code: string) => {
   const trimmed = code.trim().toUpperCase();

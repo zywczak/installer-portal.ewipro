@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ChatMessage } from "./ChatMessage.types";
-import UserAvatar from "../UserAvatar";
+import UserAvatar from "../UserAvatar"; // importujemy nowy avatar
 
 interface ChatMessageBubbleProps {
   message: ChatMessage;

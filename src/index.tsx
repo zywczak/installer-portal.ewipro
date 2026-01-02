@@ -4,18 +4,28 @@ import App from './pages/app';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './theme/theme';
 import './index.css';
 import "./i18n";
+// import { AuthProvider } from './api/authProvider.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
+        {/* <AuthProvider> */}
           <Routes>
             <Route path="/auth" element={<Auth />} />
             
-            <Route path="/" element={<App />} />
+            {/* <Route element={<RequireAuth requiredRole={["admin", "user"]} verification={true} />}> */}
+              <Route path="/" element={<App />} />
+            {/* </Route> */}
+
           </Routes>
+        {/* </AuthProvider> */}
       </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>
 );
 

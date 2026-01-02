@@ -10,7 +10,7 @@ export const useDeleteAccount = (showSuccess?: (msg: string) => void, showError?
       await api.post({ action: "removeUserAccount" });
       showSuccess?.("Konto zostało usunięte");
       localStorage.removeItem("access");
-      globalThis.location.href = "/auth";
+      window.location.href = "/auth";
     } catch (err) {
       console.error(err);
       showError?.("Nie udało się usunąć konta");

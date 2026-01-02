@@ -1,4 +1,4 @@
-import { Box, Divider, List } from "@mui/material";
+import { Box, Divider, List, useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useState, useRef } from "react";
 
@@ -23,6 +23,7 @@ const Settings: React.FC<SettingsProps> = ({
   showSuccess,
   showError,
 }) => {
+  const theme = useTheme();
   const { t, i18n } = useTranslation();
 
   const [isDefaultOwnerEnabled, setIsDefaultOwnerEnabled] = useState(() => {
