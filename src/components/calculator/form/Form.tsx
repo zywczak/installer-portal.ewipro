@@ -171,7 +171,7 @@ const Form = ({
             bottom: "-18px",
             left: "28px",
             display: "flex",
-            gap: "4px",
+            gap: "24px",
             overflowX: "auto",
             py: 1,
           }}

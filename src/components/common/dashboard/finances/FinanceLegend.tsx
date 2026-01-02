@@ -11,9 +11,9 @@ interface FinanceLegendProps {
 export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
   const { t } = useTranslation();
 
-  const remaining = parseFloat(data.remainingLimit);
-  const spent = parseFloat(data.outstandingBalance);
-  const overdueAmount = parseFloat(data.overdueBalance);
+  const remaining = Number.parseFloat(data.remainingLimit);
+  const spent = Number.parseFloat(data.outstandingBalance);
+  const overdueAmount = Number.parseFloat(data.overdueBalance);
 
   return (
     <Box

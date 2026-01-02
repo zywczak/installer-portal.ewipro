@@ -95,7 +95,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product, onClick }) =
               boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
             }}
           >
-            -{Math.round(((parseFloat(product.originalPrice) - parseFloat(product.price)) / parseFloat(product.originalPrice)) * 100)}%
+            -{Math.round(((Number.parseFloat(product.originalPrice) - Number.parseFloat(product.price)) / Number.parseFloat(product.originalPrice)) * 100)}%
           </Box>
         )}
       </Box>

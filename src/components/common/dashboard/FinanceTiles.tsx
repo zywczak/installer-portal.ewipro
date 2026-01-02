@@ -101,7 +101,7 @@
 //       <Typography
 //         variant="body2"
 //         sx={{
-//           color: parseFloat(data.overdueBalance) > 0 ? "error.main" : "text.primary",
+//           color: Number.parseFloat(data.overdueBalance) > 0 ? "error.main" : "text.primary",
 //           fontWeight: "bold",
 //         }}
 //       >
