@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useMemo } from "react";
 import { AuthNotification } from "../types/auth.types";
 
 interface AuthContextType {
@@ -17,8 +17,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const showSuccess = (message: string) => setNotification({ message, type: "success" });
   const clearNotification = () => setNotification(null);
 
+  const value = useMemo(() => ({
+    notification,
+    showError,
+    showSuccess,
+    clearNotification
+  }), [notification]);
+
   return (
-    <AuthContext.Provider value={{ notification, showError, showSuccess, clearNotification }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
