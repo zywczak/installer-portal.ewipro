@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api/axiosApi";
 import { TeamMember } from "../common/steps/types";
 
 export const fetchSubcontractors = async (
@@ -8,22 +8,19 @@ export const fetchSubcontractors = async (
 ): Promise<TeamMember[]> => {
   if (!ownerId) return [];
 
-  setLoading?.(true);
-  setError?.(null);
-
   try {
-    const token = localStorage.getItem("access");
-    const resp = await axios.post(
-      "https://api-veen-e.ewipro.com/installer/info/",
-      { action: "getSubcontractorsList", ownerId },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    setLoading?.(true);
+    setError?.(null);
+
+    const resp = await api.post({
+      action: "getSubcontractorsList",
+      ownerId,
+    });
 
     const results = resp.data?.results || [];
     console.log("Fetched subcontractors:", results);
-    return results.map((u: any) => ({
+
+    return results.map((u: any): TeamMember => ({
       id: u.ID,
       name: u.nameSurname,
       role: "",
@@ -39,3 +36,4 @@ export const fetchSubcontractors = async (
     setLoading?.(false);
   }
 };
+

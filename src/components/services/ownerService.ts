@@ -1,73 +1,63 @@
-import axios from "axios";
+import api from "../../api/axiosApi";
 
 export const getInitial = (name: string | undefined) => {
-  if (!name || typeof name !== 'string') return 'U';
+  if (!name || typeof name !== "string") return "U";
   return name.charAt(0).toUpperCase();
 };
 
-export const fixAvatarUrl = (avatarUrl: string | undefined | null): string | undefined => {
-  if (!avatarUrl || avatarUrl === "null" || avatarUrl === "undefined" || avatarUrl === "false") {
+export const fixAvatarUrl = (
+  avatarUrl: string | undefined | null
+): string | undefined => {
+  if ( !avatarUrl ) {
     return undefined;
   }
-  
-  if (avatarUrl.startsWith('http')) {
-    return avatarUrl;
-  }
-  
-  if (avatarUrl.startsWith('/')) {
-    return `https://afd-veen-e.ewipro.com${avatarUrl}`;
-  }
-  
-  if (avatarUrl.includes('CRMAvatars')) {
-    return `https://afd-veen-e.ewipro.com/${avatarUrl}`;
-  }
-  
-  return undefined;
+
+  return avatarUrl;
 };
 
-export const loadOwners = async (setLoading?: (loading: boolean) => void) => {
+export const loadOwners = async (
+  setLoading?: (loading: boolean) => void
+) => {
   try {
     setLoading?.(true);
-    const token = localStorage.getItem("access");
 
-    const resp = await axios.post(
-      "https://api-veen-e.ewipro.com/installer/info/",
-      { action: "getMyOwners" },
-      { 
-        headers: { 
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        } 
-      }
-    );
+    const resp = await api.post({
+      action: "getMyOwners",
+    });
 
     let ownersList = resp.data?.results || [];
 
     const currentUserID = Number(localStorage.getItem("userID"));
-    const currentUserName = localStorage.getItem("userNameSurname") || "";
-    const currentUserEmail = localStorage.getItem("userEmail") || "";
-    const currentUserCompany = localStorage.getItem("companyName") || "";
-    const currentUserAvatar = localStorage.getItem("userAvatar");
+    const currentUserName =
+      localStorage.getItem("userNameSurname") || "";
+    const currentUserEmail =
+      localStorage.getItem("userEmail") || "";
+    const currentUserCompany =
+      localStorage.getItem("companyName") || "";
+    const currentUserAvatar =
+      localStorage.getItem("userAvatar");
 
-    const currentUserExists = ownersList.some((owner: any) => owner.userID === currentUserID);
-    
+    const currentUserExists = ownersList.some(
+      (owner: any) => owner.userID === currentUserID
+    );
+
     if (!currentUserExists && currentUserName) {
-      const currentUser = {
-        userID: currentUserID,
-        namesurname: currentUserName,
-        email: currentUserEmail,
-        company_name: currentUserCompany,
-        avatar: fixAvatarUrl(currentUserAvatar),
-      };
-      ownersList = [currentUser, ...ownersList];
+      ownersList = [
+        {
+          userID: currentUserID,
+          namesurname: currentUserName,
+          email: currentUserEmail,
+          company_name: currentUserCompany,
+          avatar: fixAvatarUrl(currentUserAvatar),
+        },
+        ...ownersList,
+      ];
     }
-    
-    const fixedOwners = ownersList.map((owner: any) => ({
-      ...owner,
-      avatar: fixAvatarUrl(owner.avatar)
-    }));
 
-    return fixedOwners;
+    return ownersList.map((owner: any) => ({
+      ...owner,
+      avatar: fixAvatarUrl(owner.avatar),
+    }));
   } catch (err: any) {
     console.error("Error fetching owners list:", err);
     console.error("Error details:", err.response?.data);
