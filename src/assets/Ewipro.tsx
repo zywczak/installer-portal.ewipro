@@ -1,7 +1,7 @@
 import React from "react";
 import LogoSvg from "./Ewi.svg";
 
-const EwiproLogo: React.FC<{ width?: number | string; height?: number | string }> = ({
+const EwiproLogo: React.FC<{ height?: number | string }> = ({
   height = 100,
 }) => {
   return (
