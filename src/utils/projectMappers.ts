@@ -1,5 +1,3 @@
-// Mapowanie wartości tekstowych na ID dla projektu
-
 export const mapBuildTypeToId = (buildType: string): number => {
   const mapping: Record<string, number> = {
     "New Build": 2,
