@@ -4,14 +4,11 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { format, parseISO } from "date-fns";
-import { gap } from "@mui/system";
 import { enGB } from 'date-fns/locale';
 
-
-// Minimal definition of FormData
 interface FormData {
   occupierName: string;
-  startDate: string; // YYYY-MM-DD format
+  startDate: string;
 }
 
 interface GeneralInfoStepProps {
@@ -32,7 +29,6 @@ export default function GeneralInfoStep({ formData, setFormData }: GeneralInfoSt
 
   const startDateObject = formData.startDate ? parseISO(formData.startDate) : null;
 
-  // --- Poprawiona implementacja DatePicker ---
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Box sx={{ mb: 4, fontFamily: 'Inter, sans-serif' }}>
@@ -41,7 +37,6 @@ export default function GeneralInfoStep({ formData, setFormData }: GeneralInfoSt
         </Typography>
 
         <Stack direction={{ xs: 'column', sm: 'row', }} sx={{gap: 2}}>
-          {/* Property Occupier Name TextField (Bez zmian) */}
           <TextField
             fullWidth
             label="Property occupier name"
@@ -63,8 +58,6 @@ export default function GeneralInfoStep({ formData, setFormData }: GeneralInfoSt
             }}
           />
 
-          {/* Zmiana: Użycie 'slots' i 'slotProps' zamiast 'renderInput' */}
-          {/* Zmiana: Użycie 'slots' i 'slotProps' zamiast 'renderInput' */}
           <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={enGB}>
   <DatePicker
     label="Start Date"
@@ -78,7 +71,6 @@ export default function GeneralInfoStep({ formData, setFormData }: GeneralInfoSt
         name: "startDate",
         InputLabelProps: { shrink: true },
         inputProps: { 
-          // Wymuszamy format wyświetlania w polu tekstowym
           pattern: "\\d{2}/\\d{2}/\\d{4}",
         },
         sx: {

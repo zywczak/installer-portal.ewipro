@@ -73,20 +73,12 @@ export default function ProjectDetailsStep({
     try {
       const addresses = await lookupAddress(postcode);
 
-      // const formattedAddresses: LookupAddress[] = addresses.map((addr: any) => ({
-      //   line_1: addr.line_1 || "",
-      //   line_2: addr.line_2 || "",
-      //   town: addr.town || "",
-      //   traditional_county: addr.traditional_county || "",
-      //   udprn: addr.udprn,
-      //   postcode: addr.postcode || postcode,
-      // }));
       const formattedAddresses: LookupAddress[] = addresses.map((addr: any) => ({
   line_1: typeof addr.line_1 === "string" ? addr.line_1 : " ",
   line_2: typeof addr.line_2 === "string" ? addr.line_2 : " ",
   town: typeof addr.town === "string" ? addr.town : " ",
   traditional_county: typeof addr.traditional_county === "string" ? addr.traditional_county : " ",
-  udprn: addr.udprn || "", // fallback na pusty string, jeśli brak
+  udprn: addr.udprn || "",
   postcode: typeof addr.postcode === "string" ? addr.postcode : postcode,
 }));
 
@@ -191,9 +183,9 @@ export default function ProjectDetailsStep({
           onClose={() => setAddressDialogOpen(false)}
           fullWidth
           maxWidth="sm"
-          PaperProps={{ sx: { margin: { xs: 1, sm: 2 }, maxHeight: '85vh', borderRadius: 2 } }}
+          PaperProps={{ sx: { margin: { xs: 1, sm: 2 }, maxHeight: '85vh', borderRadius: "12px", padding: "24px" } }}
         >
-          <DialogTitle sx={{ fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 1 }}>
+          <DialogTitle sx={{ fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
             Select Address
             <IconButton onClick={() => setAddressDialogOpen(false)} size="small">
               <CloseIcon />
@@ -201,7 +193,7 @@ export default function ProjectDetailsStep({
           </DialogTitle>
 
           <DialogContent sx={{ p: 0 }}>
-            <Box sx={{ p: 2, pb: 1 }}>
+            <Box sx={{ py: "24px" }}>
               <TextField
                 fullWidth
                 placeholder="Search addresses..."
@@ -220,7 +212,19 @@ export default function ProjectDetailsStep({
               />
             </Box>
 
-            <Box sx={{ maxHeight: '400px', overflow: 'auto' }}>
+           <Box
+  sx={{
+    maxHeight: '400px',
+    overflow: 'auto',
+
+    scrollbarWidth: 'none',
+    msOverflowStyle: 'none',
+
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+  }}
+>
               {filteredAddresses.length > 0 ? (
                 <List sx={{ pt: 0 }}>
                   {filteredAddresses.map((a) => (

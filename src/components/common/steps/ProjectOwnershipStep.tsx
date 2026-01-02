@@ -42,7 +42,6 @@ export default function ProjectOwnershipStep({ formData, setFormData }: ProjectO
     return avatarUrl;
   };
 
-  // Inicjalizacja właściciela z localStorage
   useEffect(() => {
     const initializeOwner = () => {
       const defaultEnabled = JSON.parse(localStorage.getItem("defaultProjectOwner") || "false");
@@ -97,7 +96,6 @@ export default function ProjectOwnershipStep({ formData, setFormData }: ProjectO
     initializeOwner();
   }, [setFormData]);
 
-  // Załadowanie właścicieli przy otwarciu menu
   const handleToggleMenu = async () => {
     setMenuOpen(prev => !prev);
 
@@ -111,7 +109,6 @@ export default function ProjectOwnershipStep({ formData, setFormData }: ProjectO
       const userAvatar = localStorage.getItem("userAvatar");
 
       let fixedOwners: Owner[] = owners.map((o: any) => {
-        // Jeśli to zalogowany użytkownik, użyj danych z localStorage
         if (o.userID === userID) {
           return {
             userID: o.userID,
@@ -130,7 +127,6 @@ export default function ProjectOwnershipStep({ formData, setFormData }: ProjectO
         };
       });
 
-      // Dodaj zalogowanego użytkownika, jeśli nie ma go na liście
       if (userID && !fixedOwners.some(o => o.userID === userID)) {
         fixedOwners.unshift({
           userID,
@@ -209,6 +205,10 @@ export default function ProjectOwnershipStep({ formData, setFormData }: ProjectO
               overflowY: 'auto',
               boxShadow: 3,
               minWidth: boxRef.current?.offsetWidth,
+               /* ukrycie scrollbara */
+    '&::-webkit-scrollbar': { width: 0, height: 0 },
+    scrollbarWidth: 'none', // Firefox
+    msOverflowStyle: 'none', // IE 10+
             }}
           >
             {loadingOwners && <Box sx={{ px: 3, py: 2 }}>Loading owners...</Box>}

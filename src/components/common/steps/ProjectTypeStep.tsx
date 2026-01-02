@@ -1,144 +1,3 @@
-// import React from "react";
-// import {
-//   Card,
-//   CardContent,
-//   Typography,
-//   TextField,
-//   Stack,
-//   MenuItem,
-// } from "@mui/material";
-// import { FormData } from "../../app/AddProjectForm";
-// import { Box } from "@mui/system";
-
-// interface ProjectTypeStepProps {
-//   formData: FormData;
-//   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
-// }
-
-// export default function ProjectTypeStep({ formData, setFormData }: ProjectTypeStepProps) {
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({ ...prev, [name]: value }));
-//   };
-
-//   return (
-//     <Box  sx={{ mb: 4 }}>
-//         <Typography variant="h6" fontWeight={600} mb={2}>
-//           3. Project Type
-//         </Typography>
-//         <Stack spacing={2}>
-//           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-//             <TextField
-//               select
-//               fullWidth
-//               label="Build Type"
-//               name="buildType"
-//               value={formData.buildType}
-//               onChange={handleChange}
-//             >
-//               {[
-//                 "New Build",
-//                 "Retrofit or Refurbishment",
-//               ].map((opt) => (
-//                 <MenuItem key={opt} value={opt}>
-//                   {opt}
-//                 </MenuItem>
-//               ))}
-//             </TextField>
-
-//             <TextField
-//               select
-//               fullWidth
-//               label="Substrate"
-//               name="substrate"
-//               value={formData.substrate}
-//               onChange={handleChange}
-//             >
-//               {[
-//                 "Standard Brick",
-//                 "Block",
-//                 "Other Masonry (Cavity, Stone, Clay)",
-//                 "Park Home",
-//                 "Timber Frame / SIPS",
-//                 "Metal Frame",
-//                 "ICF",
-//                 "Other",
-//               ].map((opt) => (
-//                 <MenuItem key={opt} value={opt}>
-//                   {opt}
-//                 </MenuItem>
-//               ))}
-//             </TextField>
-//           </Stack>
-
-//           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-//             <TextField
-//               select
-//               fullWidth
-//               label="System"
-//               name="system"
-//               value={formData.system}
-//               onChange={handleChange}
-//             >
-//               {[
-//                 "EWI EPS",
-//                 "EWI Mineral Wool",
-//                 "EWI K5",
-//                 "Render Only",
-//                 "Durashield Pro (Innovation System)",
-//               ].map((opt) => (
-//                 <MenuItem key={opt} value={opt}>
-//                   {opt}
-//                 </MenuItem>
-//               ))}
-//             </TextField>
-
-//             <TextField
-//               select
-//               fullWidth
-//               label="PAS 2035"
-//               name="pasRole"
-//               value={formData.pasRole}
-//               onChange={handleChange}
-//             >
-//               {["Yes", "No"].map((opt) => (
-//                 <MenuItem key={opt} value={opt}>
-//                   {opt}
-//                 </MenuItem>
-//               ))}
-//             </TextField>
-//           </Stack>
-//         </Stack>
-//       </Box>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from "react";
 import {
   Typography,
@@ -216,14 +75,13 @@ export default function ProjectTypeStep({ formData, setFormData }: ProjectTypeSt
         Project type
       </Typography>
 
-      {/* Elastyczny flex-wrap, pola zawijają się jeśli nie mieszczą się w kontenerze */}
       <Stack
         direction="row"
         sx={{
           display: "flex",
           flexWrap: "wrap",
           width: "100%",
-          gap: 2, // odstęp między polami
+          gap: 2,
         }}
       >
         {fields.map((field) => (
@@ -237,11 +95,18 @@ export default function ProjectTypeStep({ formData, setFormData }: ProjectTypeSt
               IconComponent: CustomSelectIcon,
               displayEmpty: true,
               renderValue: (value) => renderValue(field.label, value as string),
+              MenuProps: {
+      PaperProps: {
+        sx: {
+          borderRadius: '12px',
+        },
+      },
+    },
             }}
             sx={{
               ...selectStyle,
               flexGrow: 1,
-              minWidth: 200, // minimalna szerokość pola
+              minWidth: 200,
               maxWidth: "100%",
             }}
           >

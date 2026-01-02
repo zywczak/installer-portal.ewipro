@@ -4,7 +4,7 @@ import {
   Stack,
   Box,
   MenuItem,
-  TextField, // Używamy TextField, ale zmieniamy mu styl na minimalistyczny "wybieralny"
+  TextField
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { FormData } from "./types";
@@ -20,14 +20,13 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Minimalistyczny styl selektorów, który ma wyglądać jak interaktywny wiersz/przycisk
   const selectStyle = {
     '.MuiOutlinedInput-root': {
       borderRadius: '8px',
-      backgroundColor: 'white', // Białe tło
-      border: '1px solid #e0e0e0', // Delikatna ramka wokół całego pola (karty)
+      backgroundColor: 'white',
+      border: '1px solid #e0e0e0',
       boxShadow: 'none',
-      '& fieldset': { border: 'none' }, // Ukrycie domyślnej ramki TextField
+      '& fieldset': { border: 'none' },
       '&:hover fieldset': { border: 'none' },
       '&.Mui-focused fieldset': { border: 'none' },
       padding: '0 !important', 
@@ -38,15 +37,12 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
       display: 'flex',
       alignItems: 'center',
     },
-    // Ukrycie standardowej etykiety/labela, aby użyć tylko wartości i tekstu tytułowego
     '.MuiInputLabel-root': {
       display: 'none',
     },
-    // Usunięcie marginesu dla ułożenia w Stack
     mb: 0, 
   };
   
-  // Custom ikona strzałki dla Selecta
   const CustomSelectIcon = (props: any) => (
     <ArrowForwardIosIcon 
       {...props} 
@@ -59,9 +55,7 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
     />
   );
   
-  // Custom Render Value dla wyświetlania tytułu + wartości
   const renderValue = (title: string, value: string) => {
-      // Jeśli wartość jest pusta, wyświetl "Choose"
       const displayValue = value || 'Choose'; 
 
       return (
@@ -76,7 +70,6 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
       );
   };
   
-  // Lista opcji na lata gwarancji
   const warrantyPeriods = ["2", "3", "5", "10", "15", "25", "DSW"];
 
   useEffect(() => {
@@ -101,17 +94,15 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
         Warranty
       </Typography>
       
-      {/* Na desktopie (sm: 'row') elementy są obok siebie. Na mobile (xs: 'column') jeden pod drugim. */}
       <Stack
   direction="row"
   sx={{
     display: "flex",
-    flexWrap: "wrap", // pozwala przenosić pola pod siebie jeśli nie mieszczą się w jednym wierszu
+    flexWrap: "wrap",
     width: "100%",
     gap: 2
   }}
 >
-  {/* 1. Warranty 3rd party provider */}
   <TextField
     select
     label="Warranty 3rd party provider"
@@ -127,8 +118,8 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
     sx={{
       ...selectStyle,
       flexGrow: 1,
-      minWidth: 200, // minimalna szerokość pola
-      maxWidth: "100%", // nie wychodzi poza kontener
+      minWidth: 200,
+      maxWidth: "100%",
       '.MuiOutlinedInput-root': {
         ...selectStyle['.MuiOutlinedInput-root'],
         borderRadius: "16px",
@@ -142,7 +133,6 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
     ))}
   </TextField>
 
-  {/* 2. Warranty period */}
   <TextField
     select
     label="Warranty period"
@@ -157,8 +147,8 @@ export default function WarrantyStep({ formData, setFormData }: WarrantyStepProp
     sx={{
       ...selectStyle,
       flexGrow: 1,
-      minWidth: 150, // minimalna szerokość pola
-      maxWidth: "100%", // nie wychodzi poza kontener
+      minWidth: 150,
+      maxWidth: "100%",
       '.MuiOutlinedInput-root': {
         ...selectStyle['.MuiOutlinedInput-root'],
         borderRadius: "16px",

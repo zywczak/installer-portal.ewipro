@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Card,
   Typography,
   Button,
   Box,
@@ -9,9 +8,7 @@ import {
   IconButton,
   TextField,
   Checkbox,
-  Popper,
   Paper,
-  ClickAwayListener,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
@@ -24,7 +21,6 @@ interface TeamMembersStepProps {
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
 }
 
-// Funkcja pomocnicza do pobierania inicjałów
 const getInitial = (name: string | undefined): string => {
     if (!name) return '?';
     const parts = name.split(' ');
@@ -41,7 +37,6 @@ export default function TeamMembersStep({ formData, setFormData }: TeamMembersSt
   const [menuOpen, setMenuOpen] = useState(false);
   const [teamMemberSearch, setTeamMemberSearch] = useState("");
   const [selectedTeamMembers, setSelectedTeamMembers] = useState<Set<number>>(new Set());
-  const boxRef = useRef<HTMLDivElement | null>(null);
 
   const getCurrentUser = (): TeamMember | null => {
     const userId = Number(localStorage.getItem("userID"));
@@ -65,8 +60,6 @@ export default function TeamMembersStep({ formData, setFormData }: TeamMembersSt
   const currentUser = getCurrentUser();
   const isCurrentUserOwner = currentUser && currentUser.id === formData.ownerId;
 
-
-// Reset i reload team members gdy owner się zmienia
 useEffect(() => {
   const loadSubcontractorsForOwner = async () => {
     console.log("Owner changed, loading subcontractors for ownerId:", formData.ownerId);
@@ -77,18 +70,14 @@ useEffect(() => {
 
     try {
       setSubcontractorLoading(true);
-      // setSubcontractorError(null); // Komentujemy, aby uniknąć błędu kompilacji
 
       const result = await fetchSubcontractors(formData.ownerId, setSubcontractorLoading, setSubcontractorError);
       
-      // Wyklucz ownera z listy
       const filtered = result.filter(member => member.id !== formData.ownerId);
       setSubcontractors(filtered);
 
-      // Reset zaznaczonych członków w dialogu
       setSelectedTeamMembers(new Set());
 
-      // Reset formData.teamMembers do currentUser jeśli nie jest ownerem
       const currentUser = getCurrentUser();
       const newTeamMembers: TeamMember[] = [];
       if (currentUser && currentUser.id !== formData.ownerId) {
@@ -96,7 +85,6 @@ useEffect(() => {
       }
       setFormData(prev => ({ ...prev, teamMembers: newTeamMembers }));
     } catch (err: any) {
-      // setSubcontractorError(err.message || "Failed to load team members"); // Komentujemy, aby uniknąć błędu kompilacji
       console.error("Loading error:", err);
       setSubcontractors([]);
       setSelectedTeamMembers(new Set());
@@ -106,12 +94,8 @@ useEffect(() => {
   };
 
   loadSubcontractorsForOwner();
-  // Poniżej: dodajemy poprawne zależności dla useEffect
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [formData.ownerId]);
 
-
-  // Automatically add current user if not owner
   useEffect(() => {
     if (!currentUser || !formData.ownerId) return;
 
@@ -122,10 +106,8 @@ useEffect(() => {
         teamMembers: [...prev.teamMembers, currentUser]
       }));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.ownerId, setFormData, currentUser]);
 
-  // Remove owner from teamMembers if accidentally added
   useEffect(() => {
     if (formData.ownerId && formData.teamMembers.some(m => m.id === formData.ownerId)) {
       setFormData(prev => ({
@@ -133,12 +115,8 @@ useEffect(() => {
         teamMembers: prev.teamMembers.filter(m => m.id !== prev.ownerId)
       }));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.ownerId, formData.teamMembers, setFormData]);
 
-  // Reset team members when owner changes
-  // Ostatni useEffect w oryginalnym kodzie wydaje się powtarzać logikę pierwszego useEffect,
-  // ale dodam logikę resetu, która była w nim ważna.
   useEffect(() => {
     if (!formData.ownerId) {
       setFormData(prev => ({ ...prev, teamMembers: [] }));
@@ -150,18 +128,15 @@ useEffect(() => {
     const currentUser = getCurrentUser();
     const newTeamMembers: TeamMember[] = [];
 
-    // Dodaj currentUser jeśli nie jest właścicielem
     if (currentUser && currentUser.id !== formData.ownerId) {
       newTeamMembers.push(currentUser);
     }
 
     setFormData(prev => ({ ...prev, teamMembers: newTeamMembers }));
 
-    // Reset selected team members w dialogu
     setSelectedTeamMembers(new Set());
-    // Wymuś ponowne załadowanie podwykonawców
+
     setSubcontractors([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.ownerId]);
 
 
@@ -189,14 +164,12 @@ useEffect(() => {
     const isAlreadyInTeam = formData.teamMembers.some(m => m.id === member.id);
     
     if (isAlreadyInTeam) {
-      // Remove from team
       if (currentUser && member.id === currentUser.id && member.id !== formData.ownerId) return;
       setFormData(prev => ({
         ...prev,
         teamMembers: prev.teamMembers.filter(m => m.id !== member.id)
       }));
     } else {
-      // Add to team
       setFormData(prev => ({
         ...prev,
         teamMembers: [...prev.teamMembers, member]
@@ -223,9 +196,6 @@ useEffect(() => {
   return (
     <Box sx={{ mb: 4 }}>
         
-        {/* NAGŁÓWEK I PRZYCISK "ADD MEMBER" */}
-    
-
 <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
         <Typography variant="h6" fontWeight={600}>Team members</Typography>
 
@@ -239,7 +209,6 @@ useEffect(() => {
         </Button>
       </Box>
 
-        {/* LISTA CZŁONKÓW ZESPOŁU W FORMIE KART */}
         {formData.teamMembers.length > 0 ? (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
   {formData.teamMembers.map(member => {
@@ -312,7 +281,6 @@ useEffect(() => {
             </Typography>
         )}
 
-      {/* MODAL Z LISTĄ WYBORU CZŁONKÓW ZESPOŁU */}
       {menuOpen && (
         <Box
           sx={{
@@ -339,10 +307,11 @@ useEffect(() => {
               display: 'flex',
               flexDirection: 'column',
               boxShadow: 24,
+              p: "24px"
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <Box sx={{ p: 2, borderBottom: '1px solid', borderColor: 'divider', display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box sx={{ pb: "24px",borderBottom: '1px solid', borderColor: 'divider', display: 'flex', alignItems: 'center', gap: 1 }}>
               <TextField
                 fullWidth
                 placeholder="Search team members..."
@@ -360,7 +329,14 @@ useEffect(() => {
               </IconButton>
             </Box>
 
-            <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
+            <Box sx={{ flexGrow: 1,  overflowY: 'auto',
+
+    /* ukrycie scrollbara */
+    '&::-webkit-scrollbar': { width: 0, height: 0 },
+    scrollbarWidth: 'none', // Firefox
+    msOverflowStyle: 'none', // IE 10+
+    
+  }}>
               {subcontractorLoading && (
                 <Box textAlign="center" py={4}>
                   <Typography color="text.secondary">Loading team members...</Typography>
@@ -382,9 +358,7 @@ useEffect(() => {
                         alignItems: 'center',
                         px: 2,
                         py: 1.5,
-                        cursor: isForcedMember ? 'default' : 'pointer',
-                        backgroundColor: isInTeam ? 'action.selected' : 'transparent',
-                        '&:hover': { backgroundColor: isForcedMember ? 'action.selected' : 'action.hover' },
+                        cursor: 'pointer',
                         borderBottom: '1px solid',
                         borderColor: 'divider',
                       }}
@@ -436,9 +410,3 @@ useEffect(() => {
     </Box>
   );
 }
-
-
-
-
-
-
