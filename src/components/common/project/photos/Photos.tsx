@@ -141,7 +141,7 @@ const Photos: React.FC<PhotosProps> = ({ projectId, contactId, isProjectClosed, 
           <EmptyStateBox
             icon={<PhotoCameraIcon />}
             text="No photos yet"
-            onClick={!isProjectClosed ? handleUploadClick : undefined}
+            onClick={isProjectClosed ? undefined : handleUploadClick}
           />
         ) : (
           sortedStages.map((stage, idx) => {
@@ -169,7 +169,7 @@ const Photos: React.FC<PhotosProps> = ({ projectId, contactId, isProjectClosed, 
         initialIndex={currentIndex}
         isOpen={lightboxOpen}
         onClose={closeLightbox}
-        onDelete={!isProjectClosed ? handleDelete : undefined}
+        onDelete={isProjectClosed ? undefined : handleDelete}
         showDeleteButton={!isProjectClosed}
       />
 

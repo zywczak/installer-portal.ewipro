@@ -85,7 +85,7 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
           >
             <ListItemText
               primary={text}
-              primaryTypographyProps={{ fontWeight: 500, fontSize: "0.875rem" }}
+              slotProps={{ primary: { sx: { fontWeight: 500, fontSize: "0.875rem" } } }}
               sx={{ ml: 1 }}
             />
           </motion.div>

@@ -3,8 +3,6 @@ import {
   Box,
   CircularProgress,
   Typography,
-  BottomNavigation,
-  BottomNavigationAction,
 } from "@mui/material";
 
 import HomeIcon from "@mui/icons-material/Home";
@@ -18,7 +16,7 @@ import { Documents } from "../common/project/document/Documents";
 import { DeliveriesList } from "../common/DeliveriesList";
 import EWIProBoard from "../common/EWIProBoard/EWIProBoard";
 import { Orders } from "../common/Orders";
-import BottomTabs, { TabItem } from "../common/BottomTabs";
+import BottomTabs from "../common/BottomTabs";
 import Photos from "../common/project/photos/Photos";
 
 interface ProjectProps {

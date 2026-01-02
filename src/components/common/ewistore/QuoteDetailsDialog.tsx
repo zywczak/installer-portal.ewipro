@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
-  DialogTitle,
   DialogContent,
   IconButton,
   Typography,
   Box,
   Button,
-  Divider
+  Divider,
+  Chip,
+  Select,
+  MenuItem 
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -17,7 +19,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { QuoteItem, ProformaItem, QuoteDetailsResponse, OrderDetailsItem } from "./types";
 import { fetchQuoteDetails } from "./api";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
-import { Chip, TextField, Select, MenuItem } from "@mui/material";
 
 interface QuoteProductItemProps {
   item: any;

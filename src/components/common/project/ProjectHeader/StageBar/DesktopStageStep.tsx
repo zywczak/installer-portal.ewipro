@@ -120,7 +120,7 @@ const DesktopStageStep: React.FC<StageStepProps> = ({
       >
         <Box textAlign="center" width="100%">
           <Typography fontWeight="bold" fontSize={13} color={color.color}>
-            {!isLast ? `Stage ${index + 1}` : ""}
+            {isLast ? "" : `Stage ${index + 1}`}
           </Typography>
           <Typography fontWeight="bold" fontSize={18} color={color.color} lineHeight={1}>
             {stage.stageNameShort}

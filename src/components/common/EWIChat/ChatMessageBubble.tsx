@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ChatMessage } from "./ChatMessage.types";
-import UserAvatar from "../UserAvatar"; // importujemy nowy avatar
+import UserAvatar from "../UserAvatar";
 
 interface ChatMessageBubbleProps {
   message: ChatMessage;
@@ -36,7 +36,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
         if (/^\d+$/.test(c)) date = new Date(c.length === 10 ? Number(c) * 1000 : Number(c));
         else date = new Date(c.replace(" ", "T"));
       }
-      if (date && !isNaN(date.getTime())) {
+      if (date && !Number.isNaN(date.getTime())) {
         const today = new Date();
         const isToday =
           date.getDate() === today.getDate() &&

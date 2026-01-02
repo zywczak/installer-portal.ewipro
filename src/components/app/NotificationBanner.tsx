@@ -66,7 +66,7 @@ const NotificationBanner: React.FC<Props> = ({
         anchor="left"
         open={drawerOpen}
         onClose={onClose}
-        PaperProps={{ sx: { width: '100%', height: '100%', maxWidth: '100%' } }}
+        slotProps={{ paper : {sx: { width: '100%', height: '100%', maxWidth: '100%' } }}}
       >
         <Box display="flex" flexDirection="column" height="100%">
           {header}
@@ -83,8 +83,9 @@ const NotificationBanner: React.FC<Props> = ({
       onClose={onClose}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       transformOrigin={{ vertical: "top", horizontal: "right" }}
-      PaperProps={{
-        sx: {
+      slotProps={{
+        paper: {
+          sx: {
           width: 450,
           height: 500,
           display: "flex",
@@ -92,6 +93,7 @@ const NotificationBanner: React.FC<Props> = ({
           borderRadius: 2,
           border: "1px solid #e0e0e0",
         },
+      },
       }}
     >
       {header}

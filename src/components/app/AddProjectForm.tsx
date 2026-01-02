@@ -72,7 +72,7 @@ export default function AddProjectForm() {
       const payload = createProjectPayload(formData);
       console.log("Sending payload:", payload);
 
-      // await api.post(API_ENDPOINT, payload);
+      /// await api.post(API_ENDPOINT, payload);
 
       setNotification({
         open: true,

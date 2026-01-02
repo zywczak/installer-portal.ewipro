@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  AppBar,
   Toolbar,
   IconButton,
   TextField,
@@ -286,7 +285,8 @@ const OrderCreationPage: React.FC<OrderCreationPageProps> = ({ projectId, contac
           placeholder="Search Product"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          InputProps={{
+          slotProps={{
+            input : {
             startAdornment: (
               <InputAdornment position="start">
                 <SearchIcon />
@@ -297,6 +297,7 @@ const OrderCreationPage: React.FC<OrderCreationPageProps> = ({ projectId, contac
               borderRadius: 2,
               '& fieldset': { border: 'none' }
             }
+          },
           }}
         />
 

@@ -16,7 +16,7 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed, isMobile }) 
       icon: <LogoutIcon />,
       action: () => {
         localStorage.removeItem("access");
-        window.location.href = "/auth";
+        globalThis.location.href = "/auth";
       },
     },
   ];

@@ -39,10 +39,9 @@ const EmptyStateBox: React.FC<EmptyStateBoxProps> = ({
       bgcolor: isDisabled ? "#f5f5f5" : "#eee",
     },
 
-    ...(boxProps?.sx || {}),
+    ...(boxProps?.sx),
   };
 
-  // poprawione klonowanie ikony (sx jest częścią MUI, więc TS potrzebuje cast)
   const styledIcon = React.cloneElement(icon as React.ReactElement<any>, {
     sx: {
       fontSize: 40,

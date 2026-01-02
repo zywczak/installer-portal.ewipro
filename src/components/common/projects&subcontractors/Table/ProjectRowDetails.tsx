@@ -3,7 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 export default function ProjectRowDetails({ row }: { row: any }) {
 
   const handleShowProject = () => {
-    window.location.hash = `projects/${row.id}/${row.contactID}`;
+    globalThis.location.hash = `projects/${row.id}/${row.contactID}`;
   };
     
   return (

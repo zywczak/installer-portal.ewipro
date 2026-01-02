@@ -140,7 +140,7 @@ const ResultsTable: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) =>
     >
       <Box
         sx={{
-          height: isMobile ? 400 : 400,
+          height: 400,
           overflowY: "auto",
 
           maskImage: "linear-gradient(to bottom, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",

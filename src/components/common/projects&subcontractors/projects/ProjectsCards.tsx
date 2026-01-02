@@ -28,7 +28,7 @@ const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter }) => {
         isWarranty: p.isWarranty,
       }))}
       type="project"
-      onItemClick={(item) => { window.location.hash = `projects/${item.id}/${item.contactID}`; }}
+      onItemClick={(item) => { globalThis.location.hash = `projects/${item.id}/${item.contactID}`; }}
       stickyFooter={stickyFooter}
     />
   );

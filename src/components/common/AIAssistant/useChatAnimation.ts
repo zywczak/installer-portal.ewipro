@@ -29,7 +29,7 @@ export const useChatAnimation = (
   const [chatStyle, setChatStyle] = useState<ChatStyle>(getClosedStyle);
 
   const updateOpenStyle = () => {
-    const isMobile = window.matchMedia("(max-width: 705px)").matches;
+    const isMobile = globalThis.matchMedia("(max-width: 705px)").matches;
 
     setChatStyle({
       top: 0,

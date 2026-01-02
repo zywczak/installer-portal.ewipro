@@ -3,15 +3,11 @@ import {
   Box,
   CircularProgress,
   Typography,
-  Paper,
   List,
   ListItem,
-  ListItemText,
   Divider,
   Switch,
   FormControlLabel,
-  BottomNavigation,
-  BottomNavigationAction,
   Card,
   Stack,
 } from "@mui/material";
@@ -87,9 +83,6 @@ const Subcontractor: React.FC<SubcontractorProps> = ({ subcontractorId, onNameCh
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number>(1200);
 
-  const userID = subcontractorId;
-
-  // ResizeObserver
   useEffect(() => {
     if (!containerRef.current) return;
     const obs = new ResizeObserver((entries) => {
@@ -210,13 +203,12 @@ const filtered = allProjects.filter((item: any) => {
     fetchData();
   }, [fetchData]);
 
-  // Przekazywanie nazwy do rodzica tylko gdy NIE jesteśmy na zakładce "info"
   useEffect(() => {
     if (onNameChange && info) {
-      if (activeTab !== "info") {
-        onNameChange(info.name);
-      } else {
+      if (activeTab == "info") {
         onNameChange(null);
+      } else {
+        onNameChange(info.name);
       }
     }
     
@@ -246,7 +238,7 @@ const filtered = allProjects.filter((item: any) => {
       render: (p) => (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Typography>{p.projectCode}</Typography>
-          {p.isWarranty && <img src={warranty} style={{ width: 20, height: 20 }} />}
+          {p.isWarranty && <img src={warranty} alt="warranty" style={{ width: 20, height: 20 }} />}
         </Box>
       ),
     },
@@ -315,7 +307,7 @@ const filtered = allProjects.filter((item: any) => {
           }))}
           type="project"
           onItemClick={(item) => {
-            window.location.hash = `projects/${item.id}/${item.contactID}`;
+            globalThis.location.hash = `projects/${item.id}/${item.contactID}`;
           }}
         />
       );
@@ -327,7 +319,7 @@ const filtered = allProjects.filter((item: any) => {
         rowKey={(row) => row.id}
         type="project"
         onRowClick={(row) => {
-          window.location.hash = `projects/${row.id}/${row.contactID}`;
+          globalThis.location.hash = `projects/${row.id}/${row.contactID}`;
         }}
       />
     );

@@ -39,7 +39,7 @@ const ProjectMembers: React.FC<Props> = ({ members }) => {
               }}
             >
               {avatarSrc ? (
-                <img src={avatarSrc} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src={avatarSrc} alt="avatar"style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               ) : (
                 initials
               )}

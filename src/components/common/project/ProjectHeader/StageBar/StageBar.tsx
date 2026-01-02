@@ -42,8 +42,8 @@ const StageBar: React.FC<StageBarProps> = ({
         : totalWidth > width + hysteresis;
 
       if (shouldBeMobile !== forceMobile) {
-        window.clearTimeout(debounceTimeout);
-        debounceTimeout = window.setTimeout(
+        globalThis.clearTimeout(debounceTimeout);
+        debounceTimeout = globalThis.setTimeout(
           () => setForceMobile(shouldBeMobile),
           20
         );
@@ -53,7 +53,7 @@ const StageBar: React.FC<StageBarProps> = ({
     observer.observe(containerRef.current);
 
     return () => {
-      window.clearTimeout(debounceTimeout);
+      globalThis.clearTimeout(debounceTimeout);
       observer.disconnect();
     };
   }, [stages, forceMobile]);

@@ -4,9 +4,6 @@ import DataTableHeader from "./DataTableHeader";
 import Footer from "../Footer";
 import ProjectRow from "./ProjectRow";
 import SubcontractorRow from "./SubcontractorRow";
-import ExpandedRow from "./ExpandedRow";
-import ProjectRowDetails from "./ProjectRowDetails";
-import Legend from "../Legend";
 
 export interface Column<T> {
   key: keyof T | string;
@@ -116,7 +113,6 @@ export default function DataTable<T>({
           <TableBody>
             {paginatedRows.map((row, index) => {
               const key = `${currentPage}-${index}`;
-              const isExpanded = expandedRow === key;
 
               return (
                 <React.Fragment key={key}>
@@ -129,12 +125,6 @@ export default function DataTable<T>({
                     getRowStatusColor={getRowStatusColor}
                   />
 
-                  {/* Rozwijane wiersze jeśli potrzebne */}
-                  {/* {type === "project" && isExpanded && (
-                    <ExpandedRow>
-                      <ProjectRowDetails row={row} />
-                    </ExpandedRow>
-                  )} */}
                 </React.Fragment>
               );
             })}

@@ -24,7 +24,7 @@ const ProjectAvatars: React.FC<Props> = ({ ownerId, ownerAvatar, ownerName, memb
           size={48}
           tooltip={ownerName}
           onClick={() => {
-            window.location.hash = `subcontractors/${ownerId}`;
+            globalThis.location.hash = `subcontractors/${ownerId}`;
           }}
         />
       )}
@@ -36,7 +36,7 @@ const ProjectAvatars: React.FC<Props> = ({ ownerId, ownerAvatar, ownerName, memb
           size={40}
           tooltip={m.name}
           onClick={() => {
-            window.location.hash = `subcontractors/${m.userID || m.id}`;
+            globalThis.location.hash = `subcontractors/${m.userID || m.id}`;
           }}
           sx={{
             marginLeft: index === 0 && !ownerId ? 0 : -2,

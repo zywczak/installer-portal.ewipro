@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Divider, IconButton, Button, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Typography, Divider, IconButton, Button, useMediaQuery } from "@mui/material";
 import FinanceTiles from "../common/dashboard/FinanceTiles";
 import StatementDownloadTile from "../common/dashboard/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
@@ -12,15 +12,14 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
-  const theme = useTheme();
   const showDownload = useMediaQuery("(min-width:960px)");
 
   const handleAddProjectClick = () => {
-    window.location.hash = "#addProject";
+    globalThis.location.hash = "#addProject";
   };
 
   const handleSeeAllClick = () => {
-    window.location.hash = "#projects";
+    globalThis.location.hash = "#projects";
   };
 
   const handleDownloadStatement = () => {

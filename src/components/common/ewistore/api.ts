@@ -1,5 +1,4 @@
-import {  Finances, QuoteDetailsResponse } from './types';
-import { OrderItem, QuoteItem, ProformaItem } from './types';
+import {  Finances, QuoteDetailsResponse, OrderItem, QuoteItem, ProformaItem  } from './types';
 
 export interface OrdersResponse {
   status: boolean;

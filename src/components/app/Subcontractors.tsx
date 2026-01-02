@@ -20,7 +20,7 @@ const Subcontractors: React.FC<Props> = ({ isMobile, onSubcontractorClick }) => 
 
   const handleRowClick = (user: User) => {
     if (onSubcontractorClick) onSubcontractorClick(user.id.toString());
-    else window.location.hash = `subcontractors/${user.id}`;
+    else globalThis.location.hash = `subcontractors/${user.id}`;
   };
 
   const handleTableOverflow = (isOverflowing: boolean) => {

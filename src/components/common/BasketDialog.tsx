@@ -44,9 +44,9 @@ export const BasketDialog: React.FC<BasketDialogProps> = ({
       onClose={onClose}
       fullWidth
       maxWidth="md"
-      PaperProps={{ sx: { borderRadius: 3, maxHeight: '90vh', display: 'flex', flexDirection: 'column' } }}
+      slotProps={{ paper: { sx: { borderRadius: 3, maxHeight: '90vh', display: 'flex', flexDirection: 'column' } } }}
     >
-      {/* HEADER */}
+
       <Box sx={{ py: 2, px: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0, bgcolor: 'white' }}>
         <Typography variant="h6" fontWeight={700}>Basket</Typography>
         <IconButton onClick={onClose} size="small">
@@ -198,14 +198,14 @@ export const BasketDialog: React.FC<BasketDialogProps> = ({
                         return;
                       }
                       
-                      const numValue = parseInt(value, 10);
-                      if (!isNaN(numValue) && numValue > 0) {
+                      const numValue = Number.parseInt(value, 10);
+                      if (!Number.isNaN(numValue) && numValue > 0) {
                         const maxQty = item.stockQty || 100;
                         onUpdateQuantity(item.id, Math.min(numValue, maxQty));
                       }
                     }}
                     onBlur={(e) => {
-                      if (e.target.value === '' || parseInt(e.target.value, 10) < 1) {
+                      if (e.target.value === '' || Number.parseInt(e.target.value, 10) < 1) {
                         onUpdateQuantity(item.id, 1);
                       }
                     }}

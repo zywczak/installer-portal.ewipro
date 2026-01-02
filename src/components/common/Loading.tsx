@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import { keyframes } from "@mui/system";
 import Logo from "../../assets/EWI-Pro-Render-Systems.png";
 
@@ -9,7 +9,6 @@ const spin = keyframes`
 `;
 
 const Loading: React.FC = () => {
-    const theme = useTheme();
     
   return (
     <Box

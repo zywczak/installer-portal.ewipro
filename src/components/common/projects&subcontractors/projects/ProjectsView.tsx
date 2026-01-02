@@ -27,7 +27,7 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
   const { projects, loading, error } = useProjects({ sort, ongoingOnly });
 
   const handleRowClick = (row: any) => {
-    window.location.hash = `projects/${row.id}/${row.contactID}`;
+    globalThis.location.hash = `projects/${row.id}/${row.contactID}`;
   };
 
   const handleTableOverflow = (isOverflowing: boolean) => {

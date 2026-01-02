@@ -79,7 +79,6 @@ const OrdersHeader: React.FC<OrdersHeaderProps> = ({ onAddOrder, finances }) => 
 interface EmptyStateProps {
   onAddOrder: () => void;
 }
-// --- Komponent stanu pustego (EmptyState) ---
 
 const EmptyState: React.FC<EmptyStateProps> = ({ onAddOrder }) => (
   <Box
@@ -97,7 +96,6 @@ const EmptyState: React.FC<EmptyStateProps> = ({ onAddOrder }) => (
       Place your first order for project materials at EWI Store.
     </Typography>
     
-    {/* Przycisk START ORDERING */}
     <Button
       variant="outlined"
       sx={{
@@ -122,9 +120,6 @@ const EmptyState: React.FC<EmptyStateProps> = ({ onAddOrder }) => (
   </Box>
 );
 
-
-// --- Główny komponent Orders ---
-
 export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
   const [orders, setOrders] = useState<OrderItem[]>([]);
   const [quotes, setQuotes] = useState<QuoteItem[]>([]);
@@ -145,7 +140,6 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
     const token = localStorage.getItem("access");
     if (!token) return;
 
-    // Fetch orders, quotes and proformas z jednego endpointu
     fetchOrders(projectID, contactID).then((data) => {
       setOrders(data.orders);
       setProformas(data.proformas);
@@ -154,10 +148,8 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
     });
   }, [projectID, contactID]);
 
-  // Filtruj tylko niesprzedane quotes
   const unsoldQuotes = quotes.filter(quote => !quote.sold);
-  
-  // Combine orders and proformas for main list
+
   const allOrders = [...orders, ...proformas.map(p => ({
     orderNumber: p.id,
     orderType: "proforma",
@@ -173,16 +165,13 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
     }
   } as OrderItem))];
 
-  // WARUNEK: Sprawdzenie, czy nie ma żadnych zamówień, proform ani ofert
   const isListEmpty = allOrders.length === 0 && unsoldQuotes.length === 0;
 
-  // Logika przekierowania na stronę tworzenia zamówienia
   const handleAddOrder = () => {
     globalThis.location.hash = `createOrder/${projectID}/${contactID}`;
   };
 
   if (isListEmpty) {
-    // Renderowanie stanu początkowego z obrazka
     return (
       <Box p={3} borderRadius={3} boxShadow={2} bgcolor="#fff">
         <EmptyState onAddOrder={handleAddOrder} />
@@ -190,20 +179,16 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
     );
   }
 
-  // Normalne renderowanie listy zamówień/ofert
   const pageCount = Math.ceil(allOrders.length / ITEMS_PER_PAGE);
   const ordersToShow = allOrders.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
   
-  // Paginacja dla quotes
   const quotesPageCount = Math.ceil(unsoldQuotes.length / ITEMS_PER_PAGE);
   const quotesToShow = unsoldQuotes.slice((quotesPage - 1) * ITEMS_PER_PAGE, quotesPage * ITEMS_PER_PAGE);
 
   return (
     <Box p={3} borderRadius={3} boxShadow={2} bgcolor="#fff">
-      {/* 1. Nagłówek i karty (jeśli nie jest pusto) */}
       <OrdersHeader onAddOrder={handleAddOrder} finances={finances} />
 
-      {/* 2. Sekcja Zamówienia i Proformy */}
       <Box display="flex" alignItems="center" mt={3} mb={2}>
         <Typography fontWeight="bold" variant="h6">
           Zamówienia i Proformy ({allOrders.length})
@@ -220,7 +205,6 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
         <>
           <Box display="flex" flexWrap="wrap" gap={2}>
             {ordersToShow.map((order) => {
-              // Jeśli to proforma, kliknięcie otwiera QuoteDetailsDialog
               if (order.orderType === "proforma") {
                 const proforma = proformas.find(p => p.id === order.orderNumber);
                 return (
@@ -233,7 +217,6 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
                   />
                 );
               }
-              // Zwykłe zamówienie otwiera OrderDetailsDialog
               return (
                 <OrderCard 
                   key={order.orderNumber} 
@@ -264,7 +247,6 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
         </>
       )}
 
-      {/* 3. Sekcja Oferty*/}
       {unsoldQuotes.length > 0 && (
         <>
           <Divider sx={{ my: 3 }} />
@@ -295,7 +277,6 @@ export const Orders: React.FC<OrdersListProps> = ({ projectID, contactID }) => {
         </>
       )}
 
-      {/* Dialogs */}
       <OrderDetailsDialog 
         order={selectedOrder} 
         projectID={projectID}

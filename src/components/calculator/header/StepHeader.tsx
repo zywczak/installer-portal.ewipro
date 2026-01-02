@@ -1,20 +1,10 @@
 import React from "react";
-import { Box, Typography, Divider, IconButton } from "@mui/material";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { Box, Typography, Divider } from "@mui/material";
 import HelpButton from "./helpButton";
 import EwiproLogo from "../../../assets/EWI-Pro-Render-Systems.png";
 
-// ============================================================================
-// VERSION 1: Accepts null for step_name - ACTIVE
-// ============================================================================
 interface StepHeaderProps {
   stepName: string | null;
-
-// ============================================================================
-// VERSION 2: Backend version - COMMENTED OUT
-// ============================================================================
-// interface StepHeaderProps {
-//   stepName: string;
   stepIndex?: number;
   maxSteps?: number;
   helpAvailable: boolean;

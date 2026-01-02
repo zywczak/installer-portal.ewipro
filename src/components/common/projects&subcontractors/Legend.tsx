@@ -11,7 +11,7 @@ interface LegendProps {
 
 const Legend: React.FC<LegendProps> = ({ type, showAddButton = true }) => {
   const handleAddProjectClick = () => {
-    window.location.hash = "#addProject";
+    globalThis.location.hash = "#addProject";
   };
 
   if (type === "project") {

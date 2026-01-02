@@ -57,10 +57,10 @@ const ProfileView: React.FC<ProfileViewProps> = ({ showSuccess, showError }) => 
     setPhone(val);
     if (!val.trim()) {
       setError("Numer telefonu jest wymagany");
-    } else if (!phoneRegex.test(val)) {
-      setError("Nieprawidłowy format numeru");
-    } else {
+    } else if (phoneRegex.test(val)) {
       setError(null);
+    } else {
+      setError("Nieprawidłowy format numeru");
     }
   };
 

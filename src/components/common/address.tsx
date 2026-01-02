@@ -16,8 +16,8 @@ export const Address: React.FC<{ addr: string }> = ({ addr }) => {
                 lineHeight: 1.2,
                 display: "flex",
                 flexWrap: "wrap",
-                justifyContent: "center", // wyśrodkowanie poziome
-                alignItems: "center",     // wyśrodkowanie pionowe
+                justifyContent: "center",
+                alignItems: "center",
                 gap: 0.5,
             }}
         >

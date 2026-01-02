@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { 
-  Box, Typography, List, Card, Chip, Divider, Dialog, DialogTitle, DialogContent, IconButton, Link, 
+  Box, Typography, List, Card, Chip, Divider, Dialog, IconButton, Link, 
   Pagination,
   Stack
 } from "@mui/material";
@@ -46,43 +46,6 @@ interface DeliveriesListProps {
   deliveries: DeliveryItem[];
 }
 
-// const ProductDetail: React.FC<{ item: DeliveryProduct }> = ({ item }) => (
-//   <Box 
-//     key={item.id} 
-//     sx={{ 
-//       display: 'flex', 
-//       gap: 2, 
-//       alignItems: 'flex-start', 
-//       mb: 1.5, 
-//       p: 2, 
-//       border: '1px solid #eee',
-//       borderRadius: 2,
-//       bgcolor: '#fafafa',
-//     }}
-//   >
-//     <Box 
-//       component="img" 
-//       src={item.productPhotoURI || 'placeholder_for_no_image.png'} 
-//       alt={item.description} 
-//       sx={{ width: 60, height: 60, objectFit: 'contain' }} 
-//     />
-//     <Box sx={{ flexGrow: 1 }}>
-//       <Typography variant="body2" sx={{ fontWeight: 600 }}>{item.description}</Typography>
-//       <Typography variant="caption" color="textSecondary" display="block">{item.productCode}</Typography>
-//       {item.variationCode && (
-//         <Typography variant="caption" color="textSecondary" display="block">{item.variationCode}</Typography>
-//       )}
-//     </Box>
-//     <Box sx={{ textAlign: 'right' }}>
-//       <Typography variant="caption" color="text.secondary" display="block">
-//         Ilość
-//       </Typography>
-//       <Typography variant="caption" sx={{ fontWeight: 600 }}>
-//         {item.quantity}
-//       </Typography>
-//     </Box>
-//   </Box>
-// );
 export const ProductDetail: React.FC<{ item: DeliveryProduct }> = ({ item }) => (
   <Box 
     key={item.id} 
@@ -178,7 +141,7 @@ const DeliveryCard: React.FC<{ delivery: DeliveryItem; onClick: (delivery: Deliv
         />
       </Box>
       <Typography variant="h6" sx={{ fontWeight: 700, mt: 0.5 }}>Dostawa #{delivery.deliveryID}</Typography>
-      <Typography variant="body2" color="textSecondary">{delivery.items.length} przedmiot{delivery.items.length !== 1 ? 'ów' : ''}</Typography>
+      <Typography variant="body2" color="textSecondary">{delivery.items.length} przedmiot</Typography>
     </Card>
   );
 };
@@ -291,14 +254,15 @@ export const DeliveriesList: React.FC<DeliveriesListProps> = ({ deliveries }) =>
         onClose={closeDialog} 
         fullWidth 
         maxWidth="sm" 
-        PaperProps={{
-          sx: { 
+        slotProps={{
+          paper : {sx: { 
             borderRadius: 3,
             maxHeight: '90vh',
             display: 'flex',
             flexDirection: 'column'
           }
-        }}
+        }
+      }}
       >
         {selectedDelivery && (
   <>

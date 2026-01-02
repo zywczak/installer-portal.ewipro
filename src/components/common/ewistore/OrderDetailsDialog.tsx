@@ -5,7 +5,7 @@ import {
   IconButton,
   Typography,
   Box,
-  Divider, // Added Divider for visual separation
+  Divider,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import DownloadIcon from "@mui/icons-material/Download";
@@ -18,7 +18,6 @@ import OrderPlaced from '../../../assets/order_placed.png';
 import OrderFulfillment from '../../../assets/order_fulfillment.png';
 import OrderCancelled from '../../../assets/order_cancelled.png';
 
-// --- Interface Definitions (Kept as is) ---
 interface OrderStatusStep {
   name: string;
   date: string;
@@ -92,7 +91,7 @@ const formatAddress = (address: OrderDetails['shippingAddress']): string => {
     part => part && part.trim() !== ""
   );
 
-  return addressParts.length > 0 ? addressParts.join('\n') : "Brak adresu"; // Use \n for pre-wrap in address box
+  return addressParts.length > 0 ? addressParts.join('\n') : "Brak adresu";
 };
 
 const mapIconToPNG = (iconName: string) => {
@@ -198,21 +197,19 @@ const StatusTimeline: React.FC<{ steps: OrderStatusStep[] }> = ({ steps }) => {
           <Box
             key={index}
             display="flex"
-            alignItems="center"           // ← KLUCZ: centruje ikonę i tekst względem siebie
+            alignItems="center"
             mb={index < visibleSteps.length - 1 ? 2 : 0}
             sx={{ opacity: isGrayed ? 0.4 : 1 }}
           >
 
-            {/* LEFT: Icon + Connector */}
             <Box
               display="flex"
               flexDirection="column"
               alignItems="center"
-              justifyContent="center"     // ← Ikona idealnie w pionie
+              justifyContent="center"
               mr={2}
               position="relative"
             >
-              {/* ICON */}
               <Box
                 width={32}
                 height={32}
@@ -224,23 +221,21 @@ const StatusTimeline: React.FC<{ steps: OrderStatusStep[] }> = ({ steps }) => {
                 {mapIconToPNG(step.icon)}
               </Box>
 
-              {/* CONNECTOR LINE (middle → middle) */}
               {index < visibleSteps.length - 1 && (
                 <Box
                   position="absolute"
-                  top="36px"               // Start EXACT middle-bottom of icon
+                  top="36px"
                   left="50%"
                   sx={{
                     transform: "translateX(-50%)",
                     width: "2px",
-                    height: "calc(100% - 14px)", // Automatic perfect height
+                    height: "calc(100% - 14px)",
                     borderLeft: "1px dashed #e0e0e0"
                   }}
                 />
               )}
             </Box>
 
-            {/* RIGHT: Text */}
             <Box>
               <Typography variant="body1" fontWeight={600}>
                 {step.name}
@@ -258,8 +253,6 @@ const StatusTimeline: React.FC<{ steps: OrderStatusStep[] }> = ({ steps }) => {
     </Box>
   );
 };
-
-// --- Main Component ---
 
 export const OrderDetailsDialog: React.FC<OrderDetailsDialogProps> = ({ order, projectID, contactID, onClose }) => {
   const [details, setDetails] = useState<OrderDetailsResponse | null>(null);
@@ -297,14 +290,14 @@ export const OrderDetailsDialog: React.FC<OrderDetailsDialogProps> = ({ order, p
       open={!!order} 
       onClose={onClose} 
       fullWidth 
-      maxWidth="md" // Changed to 'sm' for better mobile feel
+      maxWidth="md"
       PaperProps={{
           sx: { 
             borderRadius: 3,
             maxHeight: '90vh',
             display: 'flex',
             flexDirection: 'column',
-            bgcolor: '#fff' // Light grey background for the dialog content area
+            bgcolor: '#fff'
           }
         }}
     >
@@ -319,7 +312,6 @@ export const OrderDetailsDialog: React.FC<OrderDetailsDialogProps> = ({ order, p
     bgcolor: "white"
   }}
 >
-  {/* LEWA STRONA */}
   <Box>
     <Typography variant="h6" fontWeight={700}>
       Order #{order.orderNumber}
@@ -335,7 +327,6 @@ export const OrderDetailsDialog: React.FC<OrderDetailsDialogProps> = ({ order, p
     )}
   </Box>
 
-  {/* PRAWA – X */}
   <IconButton onClick={onClose} size="small">
     <CloseIcon fontSize="medium" sx={{ color: "text.primary" }} />
   </IconButton>
