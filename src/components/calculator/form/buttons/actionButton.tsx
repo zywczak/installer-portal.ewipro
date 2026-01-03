@@ -27,8 +27,8 @@ const ActionButton: React.FC<ActionButtonProps> = ({
       disabled={disabled}
       sx={{
         backgroundColor: disabled ? "#BDBDBD" : "#438E44",
-        width: isNextStep ? (isMobile ? "130px" : "202px") : isMobile ? "80px" : "99px",
-        minWidth: isNextStep ? (isMobile ? "130px" : "202px") : isMobile ? "80px" : "99px",
+        width: isMobile ? "100%" : isNextStep ? "202px" : "99px",
+        minWidth: isMobile ? "100%" : undefined,
         borderRadius: "999px",
         textTransform: "none",
         fontSize: "16px",

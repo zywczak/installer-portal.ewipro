@@ -16,7 +16,7 @@ const HelpButton: React.FC<HelpButtonProps> = ({ helpAvailable, onHelpClick, isM
       onClick={onHelpClick}
       sx={{
         backgroundColor: "#437A8E",
-        width: isMobile ? "130px" : "202px",
+        width: isMobile ? "100%" : "202px",
         borderRadius: "999px",
         textTransform: "none",
         fontSize: "16px",
