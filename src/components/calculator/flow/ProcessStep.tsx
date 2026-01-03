@@ -1,14 +1,17 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Tooltip } from "@mui/material";
 
-type StepStatus = "disabled" | "enabled" | "current";
+
+type StepStatus = "disabled" | "enabled" | "current" | "clickable";
 
 interface ProcessStepProps {
   order: number;
   status: StepStatus;
+  stepName?: string;
+  onClick: () => void;
 }
 
-const ProcessStep: React.FC<ProcessStepProps> = ({ order, status }) => {
+const ProcessStep: React.FC<ProcessStepProps> = ({ order, status, stepName, onClick }) => {
   const getColorStyles = (status: StepStatus) => {
     switch (status) {
       case "enabled":
@@ -23,6 +26,12 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ order, status }) => {
           text: "#ffffff",
           border: "none",
         };
+      case "clickable":
+        return {
+          bg: "#D0D0D0",
+          text: "#666666",
+          border: "none",
+        };
       case "disabled":
       default:
         return {
@@ -35,8 +44,16 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ order, status }) => {
 
   const colors = getColorStyles(status);
 
+  const stripHtml = (html: string) => {
+    const tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  };
+
   return (
+    <Tooltip title={stepName ? stripHtml(stepName) : ""} arrow>
     <Box
+      onClick={status === "enabled" || status === "clickable" ? onClick : undefined}
       sx={{
         display: "flex",
         alignItems: "center",
@@ -49,6 +66,11 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ order, status }) => {
         boxSizing: "border-box",
         border: "2px solid #ffffff",
         flexShrink: 0,
+        cursor: (status === "enabled" || status === "clickable") ? "pointer" : "default",
+        transition: "transform 0.2s ease",
+        '&:hover': (status === "enabled" || status === "clickable") ? {
+          transform: "scale(1.1)",
+        } : {},
       }}
     >
       <Typography 
@@ -62,6 +84,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ order, status }) => {
         {order}
       </Typography>
     </Box>
+    </Tooltip>
   );
 };
 
