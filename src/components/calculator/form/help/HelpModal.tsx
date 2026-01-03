@@ -9,6 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import HelpImages from "./HelpImages";
 import HelpTable from "./HelpTable";
 import { HelpSection } from "../../../../data/steps/stepsData";
+import HelpColourSamples from "./HelpColourSamples";
 
 interface HelpModalProps {
   open: boolean;
@@ -220,13 +221,13 @@ const HelpModal: React.FC<HelpModalProps> = ({
           sx={{
             flex: 1,
             width: isMobile ? "100%" : "auto",
-            backgroundColor: "#f4f4f4",
+            backgroundColor: currentHelp.useColourSamples ? "transparent" : "#f4f4f4",
             borderTopLeftRadius: isMobile ? 0 : "20px",
             borderBottomLeftRadius: isMobile ? 0 : "20px",
             boxSizing: "border-box",
             maxHeight: isMobile ? "auto" : "545px",
             p: isMobile ? "0px" : "28px",
-            py: "28px",
+            py: currentHelp.useColourSamples ? "0px" : "28px",
             overflowY: isMobile ? "visible" : "auto",
             overflowX: isMobile ? "visible" : "auto",
             ...(!isMobile && {
@@ -238,8 +239,22 @@ const HelpModal: React.FC<HelpModalProps> = ({
             }),
           }}
         >
+          {currentHelp.side_description && (
+            <Typography
+              sx={{
+                fontSize: "12px",
+                color: "#000",
+                mb: "16px",
+                textAlign: "center",
+              }}
+              dangerouslySetInnerHTML={{
+                __html: currentHelp.side_description,
+              }}
+            />
+          )}
+
           {currentHelp.images && currentHelp.images.length > 0 && (
-            <HelpImages images={currentHelp.images} isMobile={isMobile} />
+            <HelpImages images={currentHelp.images.map((img, index) => ({ ...img, id: index }))} isMobile={isMobile} />
           )}
 
           {currentHelp.table && (
@@ -247,6 +262,28 @@ const HelpModal: React.FC<HelpModalProps> = ({
               <HelpTable table={currentHelp.table} />
             </Box>
           )}
+
+          {currentHelp.useColourSamples && (
+            <HelpColourSamples />
+          )}
+
+          {currentHelp.disclaimer && (
+          <Box
+            sx={{
+              pt: "12px",
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "10px",
+                color: "#8B959A",
+              }}
+              dangerouslySetInnerHTML={{
+                __html: currentHelp.disclaimer,
+              }}
+            />
+          </Box>
+        )}
         </Box>
       </Box>
     </Dialog>
