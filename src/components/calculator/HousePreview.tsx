@@ -42,6 +42,8 @@ const HousePreview: React.FC<HousePreviewProps> = ({
 
   useEffect(() => {
     const newOverlays = buildOverlayImages(selectedOptions);
+    console.log("Selected Options:", selectedOptions);
+    console.log("Colour:", colour);
     setOverlayImages(newOverlays);
   }, [selectedOptions, colour]);
 

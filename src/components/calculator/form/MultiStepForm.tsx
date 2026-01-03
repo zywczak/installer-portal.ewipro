@@ -3,16 +3,7 @@ import { Box, Divider, Typography } from "@mui/material";
 import StepInput from "./step/StepInput";
 import SubStep from "./step/SubStep";
 
-// ============================================================================
-// VERSION 1: Local data types (FormStep) - ACTIVE
-// ============================================================================
 import { FormStep } from "../../../data/steps/stepsData";
-
-// ============================================================================
-// VERSION 2: Backend types (Step) - COMMENTED OUT
-// ============================================================================
-// import { Step } from "./types";
-// Change all FormStep to Step throughout the file
 
 interface MultiStepFormProps {
   currentStep: number;
@@ -31,9 +22,6 @@ interface MultiStepFormProps {
   setValues: React.Dispatch<React.SetStateAction<Record<number, string | number>>>;
   errors: Record<number, boolean>;
   setErrors: React.Dispatch<React.SetStateAction<Record<number, boolean>>>;
-  onNextClick?: () => void;
-  onPrevClick?: () => void;
-  isStepComplete?: boolean;
 }
 
 const MultiStepForm: React.FC<MultiStepFormProps> = ({
@@ -50,14 +38,11 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   errors,
   setErrors,
 }) => {
-  const isFirst = currentStep === 0;
   const isLast = currentStep === totalSteps - 1;
-  
+
   const [jsonValues, setJsonValues] = React.useState<
     Record<string, string | number | Record<string, any>>
   >({});
-  const [helpClickedSteps, setHelpClickedSteps] = React.useState<Record<number, boolean>>({});
-  const [openHelp, setOpenHelp] = React.useState(false);
 
   const isStepComplete = React.useMemo(() => {
     const allSteps = [parentStep, ...(parentStep.substeps || [])];
@@ -150,14 +135,22 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
 
     if (step.json_key !== undefined) {
       if (step.input_type === "radio") {
-        const selectedOption = step.options?.find((o: { id: number; option_value: string; json_value?: string | null }) => o.option_value === stepValue);
+        const selectedOption = step.options?.find(
+          o => o.option_value === stepValue
+        );
         if (selectedOption?.json_value !== undefined) {
           result[step.json_key] = selectedOption.json_value;
         }
-      } else if (step.input_type === "text" || step.input_type === "number") {
+      }
+      else if (
+        step.input_type === "text" ||
+        step.input_type === "number" ||
+        step.input_type === "colour"
+      ) {
         result[step.json_key] = stepValue;
       }
     }
+
 
     if (step.substeps?.length) {
       const nested: Record<string, any> = {};
@@ -234,7 +227,6 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
     onPrev();
   };
 
-  // Eksportuj funkcje i stan poprzez callback ref
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       (window as any).__multiStepFormHandlers = {
@@ -255,62 +247,71 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
     >
       {isMobile && (
         <>
-          <Typography
-            sx={{
-              fontSize: "20px",
-              fontWeight: 700,
-              lineHeight: "38px",
-              pl: "24px",
-              mb: "10px",
-            }}
-          >
-            {parentStep.step_name}
-          </Typography>
+  <Typography
+    sx={{
+      fontSize: "20px",
+      fontWeight: 700,
+      lineHeight: "38px",
+      pl: "24px",
+      mb: "10px",
+    }}
+    dangerouslySetInnerHTML={{ __html: parentStep.step_name || "" }}
+  />
+  <Typography
+          sx={{
+            fontSize: "12px",
+            fontWeight: 400,
+            color: "#424242",
+            mt: "24px",
+            px: "24px",
+          }}
+          dangerouslySetInnerHTML={{ __html: parentStep.description || "" }}
+        />
           <Divider sx={{ mb: "24px", ml: "24px", mr: "20px", color: "#D0DBE0" }} />
         </>
       )}
-        <StepInput
-          step={parentStep}
-          value={values[parentStep.id] || ""}
-          onChange={(val, optionId) => handleChange(parentStep.id, val, optionId)}
-          onErrorChange={(hasError) =>
-            setErrors(prev => ({ ...prev, [parentStep.id]: hasError }))
-          }
-          isMobile={isMobile}
-        />
+      <StepInput
+        step={parentStep}
+        value={values[parentStep.id] || ""}
+        onChange={(val, optionId) => handleChange(parentStep.id, val, optionId)}
+        onErrorChange={(hasError) =>
+          setErrors(prev => ({ ...prev, [parentStep.id]: hasError }))
+        }
+        isMobile={isMobile}
+      />
 
-        {(parentStep.substeps || [])
-          .sort((a, b) => a.order - b.order)
-          .map((sub) => {
-            const value = values[sub.id] || "";
+      {(parentStep.substeps || [])
+        .sort((a, b) => a.order - b.order)
+        .map((sub) => {
+          const value = values[sub.id] || "";
 
-            if (isLast && (sub.input_type === "text" || sub.input_type === "number")) {
-              return (
-                <StepInput
-                  key={sub.id}
-                  step={sub}
-                  label={sub.step_name || undefined}
-                  value={value}
-                  onChange={(val) => handleChange(sub.id, val)}
-                  onErrorChange={(hasError) =>
-                    setErrors(prev => ({ ...prev, [sub.id]: hasError }))
-                  }
-                  isMobile={isMobile}
-                />
-              );
-            }
-
+          if (isLast && (sub.input_type === "text" || sub.input_type === "number")) {
             return (
-              <SubStep
+              <StepInput
                 key={sub.id}
                 step={sub}
-                value={values[sub.id] || ""}
-                onChange={handleChange}
-                valuesMap={values}
+                label={sub.step_name || undefined}
+                value={value}
+                onChange={(val) => handleChange(sub.id, val)}
+                onErrorChange={(hasError) =>
+                  setErrors(prev => ({ ...prev, [sub.id]: hasError }))
+                }
                 isMobile={isMobile}
               />
             );
-          })}
+          }
+
+          return (
+            <SubStep
+              key={sub.id}
+              step={sub}
+              value={values[sub.id] || ""}
+              onChange={handleChange}
+              valuesMap={values}
+              isMobile={isMobile}
+            />
+          );
+        })}
     </Box>
   );
 };

@@ -6,7 +6,7 @@ import EwiproLogo from "../../assets/EWI-Pro-Render-Systems.png";
 import Form from "../calculator/form/Form";
 import HelpModal from "../calculator/form/help/HelpModal";
 import ActionButton from "../calculator/form/buttons/actionButton";
-import HelpButton from "../calculator/header/helpButton";
+import HelpButton from "../calculator/form/help/helpButton";
 import ResponsiveCalculatorWrapper from "../calculator/form/FormWrapper";
 
 import { STEPS_DATA, StepsData } from "../../data/steps/stepsData";
@@ -14,6 +14,8 @@ import { STEPS_DATA, StepsData } from "../../data/steps/stepsData";
 const Calculator: React.FC = () => {
   const [stepsData] = useState<StepsData>(STEPS_DATA);
   const [currentStep, setCurrentStep] = useState(0);
+  const [farthestStep, setFarthestStep] = useState(0);
+  const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set([]));
   const [skipStepIds, ] = useState<number[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 705);
@@ -60,6 +62,19 @@ useEffect(() => {
     .filter(step => !step.parent)
     .sort((a, b) => a.order - b.order);
 
+  // Funkcja sprawdzająca czy krok jest skipowany
+  const isStepSkipped = (stepIndex: number, selectedOpts: number[]) => {
+    const step = parentSteps[stepIndex];
+    return parentSteps
+      .slice(0, stepIndex)
+      .some(prevStep =>
+        prevStep.conditions?.some(cond =>
+          cond.skip_steps.includes(step.id) &&
+          selectedOpts.includes(cond.trigger_option)
+        )
+      );
+  };
+
   const handleNext = (
     values?: Record<string, string | number | Record<string, any>>,
     triggerStepId?: number,
@@ -94,7 +109,10 @@ useEffect(() => {
       setSelectedOptions(effectiveSelected);
     }
 
-    setCurrentStep(Math.min(nextStep, parentSteps.length - 1));
+    const newStep = Math.min(nextStep, parentSteps.length - 1);
+    setCompletedSteps(prev => new Set([...prev, currentStep]));
+    setCurrentStep(newStep);
+    setFarthestStep(prev => Math.max(prev, newStep));
   };
 
   const handlePrev = () => {
@@ -119,7 +137,80 @@ useEffect(() => {
     const allowedStepIds = parentSteps.slice(0, Math.max(prevStep + 1, 0)).flatMap(step => step.options?.map(o => o.id) || []);
     setSelectedOptions(prev => prev.filter(optId => allowedStepIds.includes(optId)));
 
-    setCurrentStep(Math.max(prevStep, 0));
+    const newPrevStep = Math.max(prevStep, 0);
+    // Usuń ukończone kroki po tym kroku
+    setCompletedSteps(prev => {
+      const newSet = new Set(prev);
+      for (let i = newPrevStep; i < parentSteps.length; i++) {
+        newSet.delete(i);
+      }
+      return newSet;
+    });
+    setCurrentStep(newPrevStep);
+  };
+
+  const handleGoToStep = (targetStep: number) => {
+    // Cofanie się - zawsze dozwolone (ale nie do skipowanych kroków)
+    if (targetStep < currentStep) {
+      // Sprawdź czy targetStep nie jest skipowany
+      if (isStepSkipped(targetStep, selectedOptions)) return;
+      
+      const allowedStepIds = parentSteps.slice(0, targetStep + 1).flatMap(step => step.options?.map(o => o.id) || []);
+      setSelectedOptions(prev => prev.filter(optId => allowedStepIds.includes(optId)));
+      setCurrentStep(targetStep);
+      return;
+    }
+    
+    // Przejście do przodu - sprawdź warunki
+    if (targetStep > currentStep) {
+      // Sprawdź czy targetStep nie jest skipowany
+      if (isStepSkipped(targetStep, selectedOptions)) return;
+      
+      // Znajdź pierwszy nieukończony wymagany krok (pomijając skipowane)
+      let firstIncompleteRequiredStep = parentSteps.length;
+      for (let i = currentStep; i < parentSteps.length; i++) {
+        const step = parentSteps[i];
+        const isRequired = step.required !== false;
+        const isCompleted = completedSteps.has(i);
+        const isCurrent = i === currentStep;
+        const isSkipped = isStepSkipped(i, selectedOptions);
+        
+        // Pomijamy skipowane kroki
+        if (isSkipped) continue;
+        
+        // Dla aktualnego kroku sprawdź isStepComplete zamiast completedSteps
+        if (i === currentStep) {
+          if (isRequired && !isStepComplete) {
+            firstIncompleteRequiredStep = i;
+            break;
+          }
+        } else {
+          // Dla innych kroków sprawdź completedSteps
+          if (isRequired && !isCompleted) {
+            firstIncompleteRequiredStep = i;
+            break;
+          }
+        }
+      }
+      
+      // Nie można przejść dalej niż pierwszy nieukończony wymagany krok
+      // Ale można przeskoczyć skipowane kroki między current a target
+      if (targetStep > firstIncompleteRequiredStep) return;
+      
+      // Sprawdź czy wszystkie kroki między current a target są albo skipowane albo niewymagane/ukończone
+      for (let i = currentStep + 1; i < targetStep; i++) {
+        if (isStepSkipped(i, selectedOptions)) continue; // skipowane ok
+        
+        const step = parentSteps[i];
+        const isRequired = step.required !== false;
+        const isCompleted = completedSteps.has(i);
+        
+        // Jeśli krok jest wymagany i nieukończony - blokuj
+        if (isRequired && !isCompleted) return;
+      }
+      
+      setCurrentStep(targetStep);
+    }
   };
 
   const parentStep = parentSteps[currentStep];
@@ -190,7 +281,7 @@ useEffect(() => {
             boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
         }}
         >
-        {isMobileView ? null : <ProcessFlow currentStep={currentStep} totalSteps={parentSteps.length} />}
+        {isMobileView ? null : <ProcessFlow currentStep={currentStep} totalSteps={parentSteps.length} steps={parentSteps} onStepClick={handleGoToStep} completedSteps={completedSteps} isCurrentStepComplete={isStepComplete} isCurrentStepRequired={parentStep.required !== false} selectedOptions={selectedOptions} />}
 
         <Box
         sx={{
@@ -203,6 +294,7 @@ useEffect(() => {
             <StepHeader
                 stepIndex={currentStep + 1}
                 stepName={parentStep.step_name}
+                description={parentStep.description}
                 maxSteps={parentSteps.length}
                 helpAvailable={!!parentStep.help?.length}
                 onHelpClick={() => {
@@ -229,43 +321,53 @@ useEffect(() => {
                 stepsData={stepsData}
             />
         </Box>
-        {isMobileView ?
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          px: '24px', 
-          mt: '24px' 
-        }}>
-          <Box sx={{ visibility: isFirstStep ? 'hidden' : 'visible' }}>
-            <ActionButton onClick={handlePrevClick}  isMobile={isMobileView} variant="prev" />
-          </Box>
-          
-          <Box sx={{ visibility: !!parentStep.help?.length ? 'visible' : 'hidden' }}>
-            <HelpButton 
-              helpAvailable={true}
-              isMobile={isMobileView}
-              onHelpClick={() => {
-                setOpenHelp(true);
-                setHelpClickedSteps((prev) => ({ ...prev, [parentStep.id]: true }));
-              }}
-            />
-          </Box>
-          
-          <Box>
-            {isLastStep ? (
-              <ActionButton variant="send" isMobile={isMobileView} onClick={handleNextClick} disabled={!isStepComplete} />
-            ) : (
-              <ActionButton onClick={handleNextClick} variant="next" isMobile={isMobileView} disabled={!isStepComplete} />
-            )}
-          </Box>
-        </Box> : 
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end',  mr: "24px", mt: "24px" }}>
-            <img 
-            src={EwiproLogo} 
-            alt="Ewipro Logo" 
-            style={{ height: "40px" }} 
-            />
-        </Box>}
+        {isMobileView ? (
+  <Box
+    sx={{
+      display: "flex",
+      gap: "12px",
+      px: "24px",
+      mt: "24px",
+      alignItems: "center",
+    }}
+  >
+    <Box sx={{ flex: 1 }}>
+      {!isFirstStep && (
+        <ActionButton
+          onClick={handlePrevClick}
+          isMobile
+          variant="prev"
+        />
+      )}
+    </Box>
+
+    <Box sx={{ flex: 2 }}>
+      {!!parentStep.help?.length && (
+        <HelpButton
+          helpAvailable
+          isMobile
+          onHelpClick={() => {
+            setOpenHelp(true);
+            setHelpClickedSteps((prev) => ({
+              ...prev,
+              [parentStep.id]: true,
+            }));
+          }}
+        />
+      )}
+    </Box>
+
+    <Box sx={{ flex: 1 }}>
+      <ActionButton
+        onClick={handleNextClick}
+        isMobile
+        variant={isLastStep ? "send" : "next"}
+        disabled={!isStepComplete}
+      />
+    </Box>
+  </Box>
+) : null}
+
         <HelpModal
           open={openHelp}
           onClose={() => setOpenHelp(false)}
