@@ -1,10 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Box, Typography, Divider } from "@mui/material";
-import HelpButton from "./helpButton";
+import HelpButton from "../form/help/helpButton";
 import EwiproLogo from "../../../assets/EWI-Pro-Render-Systems.png";
 
 interface StepHeaderProps {
   stepName: string | null;
+  description?: string | ReactNode | null;
   stepIndex?: number;
   maxSteps?: number;
   helpAvailable: boolean;
@@ -14,6 +15,7 @@ interface StepHeaderProps {
 
 const StepHeader: React.FC<StepHeaderProps> = ({
   stepName,
+  description,
   stepIndex,
   maxSteps,
   helpAvailable,
@@ -109,10 +111,20 @@ const StepHeader: React.FC<StepHeaderProps> = ({
           fontWeight: 700,
           lineHeight: "38px",
         }}
-      >
-        {stepName}
-      </Typography>
+        dangerouslySetInnerHTML={{ __html: stepName || "" }}
+      />
 }
+{!isMobile && description && (
+  <Typography
+        sx={{
+          fontSize: "12px",
+          fontWeight: 400,
+          color: "#424242",
+          mt: "24px",
+        }}
+        dangerouslySetInnerHTML={{ __html: description || "" }}
+      />
+)}
       {helpAvailable && !isMobile && (
         <Box sx={{ position: "absolute", bottom: "-16px", left: "34px" }}>
           <HelpButton helpAvailable={helpAvailable} onHelpClick={onHelpClick} />
