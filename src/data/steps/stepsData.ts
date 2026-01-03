@@ -33,7 +33,6 @@ export interface FormStepOption {
 }
 
 export interface HelpImage {
-  id: number;
   image_name: string;
   caption: string | null;
   image_url: string;
@@ -43,11 +42,13 @@ export interface HelpImage {
 export type DescriptionType = string | ReactNode | null;
 
 export interface HelpSection {
-  id: number;
   help_title: string;
   description: DescriptionType;
-  images: HelpImage[];
+  images?: HelpImage[];
   table?: SimpleTable;
+  side_description?: string;
+  disclaimer?: string;
+  useColourSamples?: boolean;
 }
 
 export interface StepCondition {
@@ -100,7 +101,7 @@ export const STEPS_DATA: StepsData = {
     // ========================================================================
     {
       id: 3,
-      step_name: "Type of House",
+      step_name: "Type of house",
       description: "",
       order: 1,
       json_key: "house",
@@ -111,9 +112,9 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.HOUSE.TERRACED, option_value: "mid terrace", order: 3, json_value: "3", icon_name: "/media/mid-terrace.png" },
-        { id: OPTION_IDS.HOUSE.SEMI_DETACHED, option_value: "semi-detached", order: 2, json_value: "2", icon_name: "/media/semi-dateched.png" },
-        { id: OPTION_IDS.HOUSE.DETACHED, option_value: "detached", order: 1, json_value: "1", icon_name: "/media/detached.png" },
+        { id: OPTION_IDS.HOUSE.TERRACED, option_value: "Mid terrace", order: 3, json_value: "3", icon_name: "/media/mid-terrace.png" },
+        { id: OPTION_IDS.HOUSE.SEMI_DETACHED, option_value: "Semi - detached", order: 2, json_value: "2", icon_name: "/media/semi-dateched.png" },
+        { id: OPTION_IDS.HOUSE.DETACHED, option_value: "Detached", order: 1, json_value: "1", icon_name: "/media/detached.png" },
       ],
       help: [],
       conditions: []
@@ -135,29 +136,28 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.SURFACE.STONE, option_value: "stone", order: null, json_value: "8", icon_name: null },
-        { id: OPTION_IDS.SURFACE.RENDER_CARRIER, option_value: "render carrier board", order: null, json_value: "7", icon_name: null },
-        { id: OPTION_IDS.SURFACE.ICF, option_value: "icf", order: null, json_value: "6", icon_name: null },
-        { id: OPTION_IDS.SURFACE.SAND_CEMENT, option_value: "sand and cement render", order: null, json_value: "5", icon_name: null },
-        { id: OPTION_IDS.SURFACE.PEBBLEDASH, option_value: "pebbledash", order: null, json_value: "4", icon_name: null },
-        { id: OPTION_IDS.SURFACE.BLOCK, option_value: "blockwork", order: null, json_value: "3", icon_name: null },
-        { id: OPTION_IDS.SURFACE.PAINTED_BRICK, option_value: "painted brick", order: null, json_value: "2", icon_name: null },
-        { id: OPTION_IDS.SURFACE.BRICK, option_value: "brick", order: null, json_value: "1", icon_name: null }
+        { id: OPTION_IDS.SURFACE.STONE, option_value: "Stone", order: 1, json_value: "8", icon_name: null },
+        { id: OPTION_IDS.SURFACE.RENDER_CARRIER, option_value: "Render carrier board", order: 8, json_value: "7", icon_name: null },
+        { id: OPTION_IDS.SURFACE.ICF, option_value: "ICF", order: 7, json_value: "6", icon_name: null },
+        { id: OPTION_IDS.SURFACE.SAND_CEMENT, option_value: "Sand & cement render", order: 6, json_value: "5", icon_name: null },
+        { id: OPTION_IDS.SURFACE.PEBBLEDASH, option_value: "Pebbledash", order: 5, json_value: "4", icon_name: null },
+        { id: OPTION_IDS.SURFACE.BLOCK, option_value: "Blockwork", order: 4, json_value: "3", icon_name: null },
+        { id: OPTION_IDS.SURFACE.PAINTED_BRICK, option_value: "Painted brick", order: 3, json_value: "2", icon_name: null },
+        { id: OPTION_IDS.SURFACE.BRICK, option_value: "Brick", order: 2, json_value: "1", icon_name: null }
       ],
       help: [
         {
-          id: 8,
           help_title: "What's it going on to?",
           description: "By letting us know what substrate the EWI Pro materials are being installed on, we can provide you with the correct primer (if required) - typically the primer helps aid adhesion and regulate absorption of the substrate.",
           images: [
-            { id: 2, image_name: "stone.jpg", caption: "Stone", image_url: "/media/stone.jpg", description: null },
-            { id: 3, image_name: "sandandcement.jpg", caption: "Sand-and-Cement", image_url: "/media/sandandcement.jpg", description: null },
-            { id: 4, image_name: "rendercarrierboard.jpg", caption: "Render-Carrier-Board", image_url: "/media/rendercarrierboard.jpg", description: null },
-            { id: 5, image_name: "pebbledash.jpg", caption: "Pebbledash", image_url: "/media/pebbledash.jpg", description: null },
-            { id: 6, image_name: "paintedbrick.jpg", caption: "Painted-Brick", image_url: "/media/paintedbrick.jpg", description: null },
-            { id: 7, image_name: "icf.jpg", caption: "ICF", image_url: "/media/icf.jpg", description: null },
-            { id: 8, image_name: "brick.jpg", caption: "Brick", image_url: "/media/brick.jpg", description: null },
-            { id: 9, image_name: "block.jpg", caption: "Block", image_url: "/media/block.jpg", description: null }
+            { image_name: "stone.jpg", caption: "Stone", image_url: "/media/stone.jpg", description: null },
+            { image_name: "sandandcement.jpg", caption: "Sand-and-Cement", image_url: "/media/sandandcement.jpg", description: null },
+            { image_name: "rendercarrierboard.jpg", caption: "Render-Carrier-Board", image_url: "/media/rendercarrierboard.jpg", description: null },
+            { image_name: "pebbledash.jpg", caption: "Pebbledash", image_url: "/media/pebbledash.jpg", description: null },
+            { image_name: "paintedbrick.jpg", caption: "Painted-Brick", image_url: "/media/paintedbrick.jpg", description: null },
+            { image_name: "icf.jpg", caption: "ICF", image_url: "/media/icf.jpg", description: null },
+            { image_name: "brick.jpg", caption: "Brick", image_url: "/media/brick.jpg", description: null },
+            { image_name: "block.jpg", caption: "Block", image_url: "/media/block.jpg", description: null }
           ]
         }
       ],
@@ -174,7 +174,7 @@ export const STEPS_DATA: StepsData = {
       order: 3,
       json_key: "measurement",
       input_type: "number",
-      placeholder: "Size of property",
+      placeholder: "Enter m²",
       required: true,
       parent: null,
       validation_regex: null,
@@ -182,11 +182,10 @@ export const STEPS_DATA: StepsData = {
       options: [],
       help: [
         {
-          id: 10,
           help_title: "The area",
           description: "We do not recommend removing window + doors from your calculations.<br /> <br /> <br /> <span style='color: #437A8E; font-size: 20px; display: block;'>It's easy</span><b style='font-size: 28px; display: block; font-weight: 700'>a x b = surface area</b>",
           images: [
-            { id: 1, image_name: "areadiagram.png", caption: null, image_url: "/media/areadiagram.png", description: null }
+            { image_name: "areadiagram.png", caption: null, image_url: "/media/areadiagram.png", description: null }
           ]
         }
       ],
@@ -209,12 +208,11 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.SYSTEM_TYPE.INSULATION_AND_RENDER, option_value: "insulation and render", order: null, json_value: "insulation&render", icon_name: null },
-        { id: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, option_value: "render only", order: null, json_value: "render", icon_name: null }
+        { id: OPTION_IDS.SYSTEM_TYPE.INSULATION_AND_RENDER, option_value: "Insulation & Render", order: null, json_value: "insulation&render", icon_name: null },
+        { id: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, option_value: "Render Only", order: null, json_value: "render", icon_name: null }
       ],
       help: [
         {
-          id: 9,
           help_title: "Type of insulation",
           description: null,
           images: [],
@@ -242,13 +240,12 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.INSULATION.KINGSPAN, option_value: "kingspan k5", order: null, json_value: "Kingspan", icon_name: null },
-        { id: OPTION_IDS.INSULATION.EPS, option_value: "eps", order: null, json_value: "EPS", icon_name: null },
-        { id: OPTION_IDS.INSULATION.WOOL, option_value: "mineral wool", order: null, json_value: "Wool", icon_name: null }
+        { id: OPTION_IDS.INSULATION.KINGSPAN, option_value: "Kingspan k5", order: null, json_value: "Kingspan", icon_name: null },
+        { id: OPTION_IDS.INSULATION.EPS, option_value: "EPS", order: null, json_value: "EPS", icon_name: null },
+        { id: OPTION_IDS.INSULATION.WOOL, option_value: "Mineral wool", order: null, json_value: "Wool", icon_name: null }
       ],
       help: [
         {
-          id: 7,
           help_title: "Type of Insulation",
           description: "We offer three main types of insulation material - EPS, Mineral Wool (Rockwool) and Kingspan K5, which all have slightly different properties.",
           images: [],
@@ -285,7 +282,6 @@ export const STEPS_DATA: StepsData = {
       ],
       help: [
         {
-          id: 6,
           help_title: "Thickness of insulation",
           description: `The term U-value is used to define the rate of heat loss through a material. The lower the u-value, the better the insulation product performance.<br/><br/>U-value is measured in W/m<sup>2</sup>.K (Watts per metre squared Kelvin) and in the table below you can see the different u-values based on the different insulation materials and thicknesses (based on applying the insulation to a solid brick wall).`,
           images: [],
@@ -300,7 +296,7 @@ export const STEPS_DATA: StepsData = {
     // ========================================================================
     {
       id: 9,
-      step_name: "Metal / Plastic Fixings",
+      step_name: "Type of fixings",
       description: null,
       order: 7,
       json_key: "fixings",
@@ -311,17 +307,16 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.FIXINGS.PLASTIC, option_value: "plastic", order: null, json_value: "2", icon_name: null },
-        { id: OPTION_IDS.FIXINGS.METAL, option_value: "metal", order: null, json_value: "1", icon_name: null },
-        { id: OPTION_IDS.FIXINGS.SCREW, option_value: "screw", order: null, json_value: "3", icon_name: null }
+        { id: OPTION_IDS.FIXINGS.PLASTIC, option_value: "Plastic", order: null, json_value: "2", icon_name: null },
+        { id: OPTION_IDS.FIXINGS.METAL, option_value: "Metal", order: null, json_value: "1", icon_name: null },
+        { id: OPTION_IDS.FIXINGS.SCREW, option_value: "Screw", order: null, json_value: "3", icon_name: null }
       ],
       help: [
         {
-          id: 5,
           help_title: "Type of mechanical Fixings",
           description: `When you install our external wall insulation systems, the insulation boards are held in place with both adhesive and mechanical fixings.<br/><br/>We offer two types of fixing – metal or plastic pin and both types are available in 4 different lengths depending on the thickness of the insusulation used.<br/><br/>We recommend that the fixing is always <strong>50mm longer</strong> than the thickness of the insulation used to ensure it is anchored securely to the wall.`,
           images: [
-            { id: 10, image_name: "fixings.jpg", caption: null, image_url: "/media/fixings.jpg", description: null }
+            { image_name: "fixings.jpg", caption: null, image_url: "/media/fixings.jpg", description: null }
           ]
         }
       ],
@@ -384,8 +379,8 @@ export const STEPS_DATA: StepsData = {
               validation_regex: null,
               substeps: [],
               options: [
-                { id: OPTION_IDS.STARTER_TRACKS.METAL, option_value: "metal", order: null, json_value: null, icon_name: null },
-                { id: OPTION_IDS.STARTER_TRACKS.PLASTIC, option_value: "plastic", order: null, json_value: null, icon_name: null }
+                { id: OPTION_IDS.STARTER_TRACKS.METAL, option_value: "Metal", order: null, json_value: null, icon_name: null },
+                { id: OPTION_IDS.STARTER_TRACKS.PLASTIC, option_value: "Plastic", order: null, json_value: null, icon_name: null }
               ],
               help: [],
               conditions: []
@@ -447,40 +442,34 @@ export const STEPS_DATA: StepsData = {
       options: [],
       help: [
         {
-          id: 4,
           help_title: "Beads & Trims",
           description: "Our beads and trims provide the perfect finishing touch for external wall insulation and render systems, ensuring clean lines, protected edges, and long-lasting durability. Designed for easy installation and compatibility with modern render systems, they help prevent cracking, manage movement, and deliver a professional finish every time. Ideal for corners, windows, doors, and terminations, they combine performance with a neat, high-quality appearance.",
           images: [
             {
-              id: 11,
               image_name: "bellcastbead.png",
               caption: "Bellcast Bead",
               image_url: "/media/bellcastbead.png",
               description: "Bellcast bead consists of a rigid PVC 45-degree angle and is used at the bottom of render only systems to direct water away from the render system."
             },
             {
-              id: 12,
               image_name: "stopbead.png",
               caption: "Stop Bead",
               image_url: "/media/stopbead.png",
               description: 'The 6mm stop bead is made from PVC and has a "wing" of fibre glass mesh connected to it that gets basecoated into the thin coat render system. The 90-degree angle on the stop bead help create a tidy square finish at the edge of the external render systems'
             },
             {
-              id: 13,
               image_name: "cornerbead.png",
               caption: "Corner Bead",
               image_url: "/media/cornerbead.png",
               description: 'The corner bead consists of a rigid PVC 90-degree angle, with two "wings" of fibreglass mesh. It gets embedded on all external corners of a render only or external wall insulation system within the cementitious basecoat layer. Corner bead is used to prov'
             },
             {
-              id: 14,
               image_name: "startertrack.png",
               caption: "Starter track",
               image_url: "/media/startertrack.png",
               description: "Stater track is used at the bottom of insulation systems to protect this area of the system. It also provides a plinth which can be used as a level guide to build the insulation up from."
             },
             {
-              id: 15,
               image_name: "windowreveal.png",
               caption: "Window Reveal Bead",
               image_url: "/media/windowreveal.png",
@@ -508,15 +497,14 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.RENDER_TYPE.SILICONE_SILICATE, option_value: "silicone silicate", order: null, json_value: "2", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.SILICONE, option_value: "silicone", order: null, json_value: "1", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, option_value: "premium bio silicone", order: null, json_value: "5", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.NANO_DREX, option_value: "nano drex silicone", order: null, json_value: "6", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, option_value: "brick slips", order: null, json_value: "7", icon_name: null }
+        { id: OPTION_IDS.RENDER_TYPE.SILICONE_SILICATE, option_value: "Silicone Silicate", order: 4, json_value: "2", icon_name: null },
+        { id: OPTION_IDS.RENDER_TYPE.SILICONE, option_value: "Silicone", order: 3, json_value: "1", icon_name: null },
+        { id: OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, option_value: "Premium Bio Silicone", order: 2, json_value: "5", icon_name: null },
+        { id: OPTION_IDS.RENDER_TYPE.NANO_DREX, option_value: "Nano Drex Silicone", order: 1, json_value: "6", icon_name: null },
+        { id: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, option_value: "Brick Slips", order: 5, json_value: "7", icon_name: null }
       ],
       help: [
         {
-          id: 3,
           help_title: "Type of Render",
           description: null,
           images: [],
@@ -546,9 +534,40 @@ export const STEPS_DATA: StepsData = {
         { id: OPTION_IDS.GRAINSIZE["2MM"], option_value: "2 mm", order: null, json_value: null, icon_name: null },
         { id: OPTION_IDS.GRAINSIZE["1_5MM"], option_value: "1.5 mm", order: null, json_value: null, icon_name: null },
         { id: OPTION_IDS.GRAINSIZE["1MM"], option_value: "1 mm", order: null, json_value: null, icon_name: null },
-        { id: OPTION_IDS.GRAINSIZE["0_5MM"], option_value: "0.5 mm", order: null, json_value: null, icon_name: null }
       ],
-      help: [],
+      help: [
+        {
+          help_title: "Render grain size",
+          description: "Our renders are available in 4 different grains thicknesses. Render samples available online and in-store are in 1.0mm and 1.5mm sizes.",
+          side_description:  "We offer 4 grain sizes, 1mm, 1.5mm, 2mm and 3mm depending on the finish required. <br /> <b>Silicone, Silicone-Silicate, Nano Drex Silicone, Premium Bio Silicone</b>",
+          images: [
+            {
+              image_name: "bellcastbead.png",
+              caption: "1 mm",
+              image_url: "/media/bellcastbead.png",
+              description: null
+            },
+            {
+              image_name: "stopbead.png",
+              caption: "1.5 mm",
+              image_url: "/media/stopbead.png",
+              description: null
+            },
+            {
+              image_name: "cornerbead.png",
+              caption: "2 mm",
+              image_url: "/media/cornerbead.png",
+              description: null
+            },
+            {
+              image_name: "startertrack.png",
+              caption: "3 mm",
+              image_url: "/media/startertrack.png",
+              description: null
+            },
+          ]
+        }
+      ],
       conditions: []
     },
 
@@ -567,13 +586,21 @@ export const STEPS_DATA: StepsData = {
       parent: null,
       validation_regex: null,
       substeps: [],
-      options: [
-        { id: OPTION_IDS.COLOURS.LILAC, option_value: "#C8A2C8", order: null, json_value: "#C8A2C8", icon_name: null },
-        { id: OPTION_IDS.COLOURS.GREY, option_value: "#5B5D74", order: null, json_value: "#5B5D74", icon_name: null },
-        { id: OPTION_IDS.COLOURS.GOLD, option_value: "#D4C279", order: null, json_value: "#D4C279", icon_name: null },
-        { id: OPTION_IDS.COLOURS.BLACK, option_value: "#000000", order: null, json_value: "#000000", icon_name: null }
+      // options: [
+      //   { id: OPTION_IDS.COLOURS.LILAC, option_value: "#C8A2C8", order: null, json_value: "#C8A2C8", icon_name: null },
+      //   { id: OPTION_IDS.COLOURS.GREY, option_value: "#5B5D74", order: null, json_value: "#5B5D74", icon_name: null },
+      //   { id: OPTION_IDS.COLOURS.GOLD, option_value: "#D4C279", order: null, json_value: "#D4C279", icon_name: null },
+      //   { id: OPTION_IDS.COLOURS.BLACK, option_value: "#000000", order: null, json_value: "#000000", icon_name: null }
+      // ],
+      options: [],
+      help: [
+        {
+          help_title: "The colours",
+          description: "<b>This is only preview</b> <br />For best matching or colour find, order one of our samples, or visit our store. <br />We offer 50 most popular colours in stock. <br />,br />For better user experience, we offer render samples: <ul><li>colour chart books</li><li>render sample sleeves</li><li>sample pots with render</li></ul>",
+          useColourSamples: true,
+          disclaimer:  "Disclaimer: Render colours may appear differently on-screen compared to real life. Therefore, we always recommend that you order a colour sample before making a final decision.",
+        }
       ],
-      help: [],
       conditions: []
     },
 
@@ -667,7 +694,7 @@ export const STEPS_DATA: StepsData = {
     // ========================================================================
     {
       id: 15,
-      step_name: "Receive your personalised quote!",
+      step_name: "Receive <span style='color: #48D858'>your</span> personalised quote!",
       description: "To get a personalised quote (with generous discount!) please fill in your details below. You will then receive the quote by email within a couple of minutes.",
       order: 13,
       json_key: "customer_details",
