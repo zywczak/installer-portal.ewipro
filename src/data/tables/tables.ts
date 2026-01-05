@@ -68,7 +68,7 @@ export const THICKNESS_UVALUE_TABLE: SimpleTable = {
 
 export const RENDER_TYPE_TABLE: SimpleTable = {
   id: 3,
-  title: "Type of Render",
+  title: "Type of the system",
   description: null,
   
   columns: [

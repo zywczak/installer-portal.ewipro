@@ -474,7 +474,7 @@ export const STEPS_DATA: StepsData = {
       json_key: "system",
       input_type: "radio",
       placeholder: null,
-      required: null,
+      required: true,
       parent: null,
       validation_regex: null,
       substeps: [],
