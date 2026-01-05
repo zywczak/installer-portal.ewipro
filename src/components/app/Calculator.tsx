@@ -90,7 +90,7 @@ useEffect(() => {
 
   const parentSteps = stepsData.steps
     .filter(step => !step.parent)
-    .sort((a, b) => a.order - b.order);
+    .sort((a, b) => a.id - b.id);
 
   // Funkcja sprawdzająca czy krok jest skipowany
   const isStepSkipped = (stepIndex: number, selectedOpts: number[]) => {

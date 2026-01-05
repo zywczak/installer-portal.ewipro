@@ -57,10 +57,9 @@ export interface StepCondition {
 }
 
 export interface FormStep {
-  id: number;
+  id: number; //is also used as step order
   step_name: string | null;
   description: string | ReactNode | null;
-  order: number;
   json_key: string;
   input_type: InputType;
   placeholder: string | null;
@@ -98,10 +97,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 1: Type of House
     // ========================================================================
     {
-      id: 3,
+      id: 1,
       step_name: "Type of house",
       description: "",
-      order: 1,
       json_key: "house",
       input_type: "radio",
       placeholder: null,
@@ -122,10 +120,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 2: Surface Material
     // ========================================================================
     {
-      id: 12,
+      id: 2,
       step_name: "What's it going on to?",
       description: null,
-      order: 2,
       json_key: "surfaceMaterial",
       input_type: "radio",
       placeholder: null,
@@ -166,10 +163,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 3: Size of Property
     // ========================================================================
     {
-      id: 14,
+      id: 3,
       step_name: "Size of property",
       description: "",
-      order: 3,
       json_key: "measurement",
       input_type: "number",
       placeholder: "Enter m²",
@@ -194,10 +190,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 4: Insulation or Render Only
     // ========================================================================
     {
-      id: 13,
+      id: 4,
       step_name: "Insulation or Render Only?",
       description: "",
-      order: 4,
       json_key: "type",
       input_type: "radio",
       placeholder: null,
@@ -218,7 +213,7 @@ export const STEPS_DATA: StepsData = {
         }
       ],
       conditions: [
-        { trigger_step: 13, trigger_option: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, skip_steps: [11, 10, 9] }
+        { trigger_step: 4, trigger_option: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, skip_steps: [5, 6, 7] }
       ]
     },
 
@@ -226,10 +221,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 5: Type of Insulation
     // ========================================================================
     {
-      id: 11,
+      id: 5,
       step_name: "Type of Insulation",
       description: null,
-      order: 5,
       json_key: "insulationType",
       input_type: "radio",
       placeholder: null,
@@ -257,10 +251,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 6: Thickness of Insulation
     // ========================================================================
     {
-      id: 10,
+      id: 6,
       step_name: "Thickness of insulation",
       description: null,
-      order: 6,
       json_key: "thickness",
       input_type: "radio",
       placeholder: null,
@@ -293,10 +286,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 7: Fixings Type
     // ========================================================================
     {
-      id: 9,
+      id: 7,
       step_name: "Type of fixings",
       description: null,
-      order: 7,
       json_key: "fixings",
       input_type: "radio",
       placeholder: null,
@@ -328,7 +320,6 @@ export const STEPS_DATA: StepsData = {
       id: 8,
       step_name: "Beads & Trims",
       description: null,
-      order: 8,
       json_key: "beadsTrims",
       input_type: null,
       placeholder: null,
@@ -340,7 +331,6 @@ export const STEPS_DATA: StepsData = {
           id: 30,
           step_name: null,
           description: null,
-          order: 1,
           json_key: "startbeads",
           input_type: null,
           placeholder: null,
@@ -349,10 +339,9 @@ export const STEPS_DATA: StepsData = {
           validation_regex: null,
           substeps: [
             {
-              id: 21,
+              id: 17,
               step_name: "Number of starter tracks (2.5m)",
               description: null,
-              order: 1,
               json_key: "count",
               input_type: "number",
               placeholder: null,
@@ -365,10 +354,9 @@ export const STEPS_DATA: StepsData = {
               conditions: []
             },
             {
-              id: 20,
+              id: 18,
               step_name: "Type of starter tracks (2.5m)",
               description: null,
-              order: 2,
               json_key: "type",
               input_type: "radio",
               placeholder: null,
@@ -392,7 +380,6 @@ export const STEPS_DATA: StepsData = {
           id: 19,
           step_name: "Number of corner beads (2.5m)",
           description: null,
-          order: 2,
           json_key: "cornerbeads",
           input_type: "number",
           placeholder: null,
@@ -405,10 +392,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 18,
+          id: 20,
           step_name: "Number of stop beads (2.5m)",
           description: null,
-          order: 3,
           json_key: "stopbeads",
           input_type: "number",
           placeholder: null,
@@ -421,10 +407,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 17,
+          id: 21,
           step_name: "Number of window reveal (2.5m)",
           description: null,
-          order: 4,
           json_key: "revealbeads",
           input_type: "number",
           placeholder: null,
@@ -483,10 +468,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 9: Type of System (Render Type)
     // ========================================================================
     {
-      id: 7,
+      id: 9,
       step_name: "Type of the system",
       description: null,
-      order: 9,
       json_key: "system",
       input_type: "radio",
       placeholder: null,
@@ -497,7 +481,7 @@ export const STEPS_DATA: StepsData = {
 
       options: [
         { id: OPTION_IDS.RENDER_TYPE.NANO_DREX, option_value: "Nano Drex Silicone", json_value: "6", image: "/media/nanodrex.png" },
-        {id: OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, option_value: "Premium Bio Silicone", json_value: "5", image: "/media/premiumbio.png" },
+        { id: OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, option_value: "Premium Bio Silicone", json_value: "5", image: "/media/premiumbio.png" },
         { id: OPTION_IDS.RENDER_TYPE.SILICONE, option_value: "Silicone", json_value: "1", image: "/media/silicone.png" },
         { id: OPTION_IDS.RENDER_TYPE.SILICONE_SILICATE, option_value: "Silicone Silicate", json_value: "2", image: "/media/siliconesilicate.png" },
         { id: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, option_value: "Brick Slips", json_value: "7", image: "/media/brickslips.png" }
@@ -511,7 +495,7 @@ export const STEPS_DATA: StepsData = {
         }
       ],
       conditions: [
-        { trigger_step: 7, trigger_option: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, skip_steps: [6] }
+        { trigger_step: 9, trigger_option: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, skip_steps: [10] }
       ]
     },
 
@@ -519,10 +503,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 10: Render Grain Size
     // ========================================================================
     {
-      id: 6,
+      id: 10,
       step_name: "Render grain size",
       description: null,
-      order: 10,
       json_key: "grainsize",
       input_type: "radio",
       placeholder: null,
@@ -576,10 +559,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 11: Colour Selection
     // ========================================================================
     {
-      id: 5,
+      id: 11,
       step_name: "Select colour",
       description: null,
-      order: 11,
       json_key: "colour",
       input_type: "colour",
       placeholder: null,
@@ -609,10 +591,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 12: Additional Products
     // ========================================================================
     {
-      id: 4,
+      id: 12,
       step_name: "Additional products",
       description: null,
-      order: 12,
       json_key: "additionalProducts",
       input_type: null,
       placeholder: null,
@@ -621,10 +602,9 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [
         {
-          id: 29,
+          id: 26,
           step_name: "Any levelling coat required (25kg bags)",
           description: null,
-          order: 1,
           json_key: "levelling-coat\n",
           input_type: "number",
           placeholder: null,
@@ -637,10 +617,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 28,
+          id: 27,
           step_name: "Any fungicidal wash required (5L bottles)",
           description: null,
-          order: 2,
           json_key: "fungicidalwash",
           input_type: "number",
           placeholder: null,
@@ -653,10 +632,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 27,
+          id: 28,
           step_name: "Any blue film required (100m rolls)",
           description: null,
-          order: 3,
           json_key: "bluefilm",
           input_type: "number",
           placeholder: null,
@@ -669,10 +647,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 26,
+          id: 29,
           step_name: "Any orange tape required (100m rolls)",
           description: null,
-          order: 4,
           json_key: "orangetape",
           input_type: "number",
           placeholder: null,
@@ -694,10 +671,9 @@ export const STEPS_DATA: StepsData = {
     // STEP 13: Customer Details
     // ========================================================================
     {
-      id: 15,
+      id: 13,
       step_name: "Receive <span style='color: #48D858'>your</span> personalised quote!",
       description: "To get a personalised quote (with generous discount!) please fill in your details below. You will then receive the quote by email within a couple of minutes.",
-      order: 13,
       json_key: "customer_details",
       input_type: null,
       placeholder: null,
@@ -706,10 +682,9 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [
         {
-          id: 25,
+          id: 22,
           step_name: "Name",
           description: null,
-          order: 1,
           json_key: "name",
           input_type: "text",
           placeholder: null,
@@ -722,10 +697,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 24,
+          id: 23,
           step_name: "Phone",
           description: null,
-          order: 2,
           json_key: "phone",
           input_type: "text",
           placeholder: null,
@@ -738,10 +712,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 23,
+          id: 24,
           step_name: "E-mail",
           description: null,
-          order: 3,
           json_key: "email",
           input_type: "text",
           placeholder: null,
@@ -754,10 +727,9 @@ export const STEPS_DATA: StepsData = {
           conditions: []
         },
         {
-          id: 22,
+          id: 25,
           step_name: "Postcode",
           description: null,
-          order: 4,
           json_key: "postcode",
           input_type: "text",
           placeholder: null,
