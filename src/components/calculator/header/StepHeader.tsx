@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { Box, Typography, Divider } from "@mui/material";
 import HelpButton from "../form/help/helpButton";
 import EwiproLogo from "../../../assets/EWI-Pro-Render-Systems.png";
+import Slide from '@mui/material/Slide';
 
 interface StepHeaderProps {
   stepName: string | null;
@@ -11,6 +12,7 @@ interface StepHeaderProps {
   helpAvailable: boolean;
   onHelpClick: () => void;
   isMobile?: boolean;
+  selectedOptionImage?: string | null;
 }
 
 const StepHeader: React.FC<StepHeaderProps> = ({
@@ -21,6 +23,7 @@ const StepHeader: React.FC<StepHeaderProps> = ({
   helpAvailable,
   onHelpClick,
   isMobile = false,
+  selectedOptionImage,
 }) => {
   return (
     <Box
@@ -125,6 +128,21 @@ const StepHeader: React.FC<StepHeaderProps> = ({
         dangerouslySetInnerHTML={{ __html: description || "" }}
       />
 )}
+
+{!isMobile && selectedOptionImage && (
+  <Box sx={{ width: "300px", overflow: 'hidden' }}>
+    <Slide direction="left" in={!!selectedOptionImage} key={selectedOptionImage}>
+      <Box sx={{ width: "212px", textAlign: 'center', mt: '24px' }}>
+        <img
+          src={selectedOptionImage}
+          alt="Selected option"
+          style={{ width: '100%' }}
+        />
+      </Box>
+    </Slide>
+  </Box>
+)}
+
       {helpAvailable && !isMobile && (
         <Box sx={{ position: "absolute", bottom: "-16px", left: "34px" }}>
           <HelpButton helpAvailable={helpAvailable} onHelpClick={onHelpClick} />

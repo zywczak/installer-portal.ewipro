@@ -3,12 +3,8 @@ import { Box, Typography } from "@mui/material";
 import { StepInputProps } from "../StepInput";
 
 const RadioStepInput: React.FC<StepInputProps> = ({ step, value, onChange, isSubstep, isMobile = false }) => {
-  const sortedOptions = [...(step.options || [])].sort(
-    (a, b) => (a.order ?? 0) - (b.order ?? 0)
-  );
-
   const handleChange = (val: string) => {
-    const selectedOpt = sortedOptions.find((o) => o.option_value === val);
+    const selectedOpt = step.options.find((o) => o.option_value === val);
     onChange(val, selectedOpt?.id);
   };
 
@@ -18,9 +14,9 @@ const RadioStepInput: React.FC<StepInputProps> = ({ step, value, onChange, isSub
         width: isSubstep ? isMobile ? "170px" : "130px" : "100%",
       }}
     >
-      {sortedOptions.map((opt, index) => {
+      {step.options.map((opt, index) => {
         const isSelected = value === opt.option_value;
-        const isLast = index === sortedOptions.length - 1;
+        const isLast = index === step.options.length - 1;
 
         return (
           <Box

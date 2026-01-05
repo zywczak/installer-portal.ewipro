@@ -27,9 +27,8 @@ export type DataType =
 export interface FormStepOption {
   id: number;
   option_value: string;
-  order: number | null;
   json_value: string | null;
-  icon_name: string | null;
+  image: string | null;
 }
 
 export interface HelpImage {
@@ -52,7 +51,6 @@ export interface HelpSection {
 }
 
 export interface StepCondition {
-  id: number;
   trigger_step: number;
   trigger_option: number;
   skip_steps: number[];
@@ -112,9 +110,9 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.HOUSE.TERRACED, option_value: "Mid terrace", order: 3, json_value: "3", icon_name: "/media/mid-terrace.png" },
-        { id: OPTION_IDS.HOUSE.SEMI_DETACHED, option_value: "Semi - detached", order: 2, json_value: "2", icon_name: "/media/semi-dateched.png" },
-        { id: OPTION_IDS.HOUSE.DETACHED, option_value: "Detached", order: 1, json_value: "1", icon_name: "/media/detached.png" },
+        { id: OPTION_IDS.HOUSE.DETACHED, option_value: "Detached", json_value: "1", image: null },
+        { id: OPTION_IDS.HOUSE.SEMI_DETACHED, option_value: "Semi detached", json_value: "2", image: null },
+        { id: OPTION_IDS.HOUSE.TERRACED, option_value: "Mid terrace", json_value: "3", image: null },        
       ],
       help: [],
       conditions: []
@@ -136,14 +134,14 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.SURFACE.STONE, option_value: "Stone", order: 1, json_value: "8", icon_name: null },
-        { id: OPTION_IDS.SURFACE.RENDER_CARRIER, option_value: "Render carrier board", order: 8, json_value: "7", icon_name: null },
-        { id: OPTION_IDS.SURFACE.ICF, option_value: "ICF", order: 7, json_value: "6", icon_name: null },
-        { id: OPTION_IDS.SURFACE.SAND_CEMENT, option_value: "Sand & cement render", order: 6, json_value: "5", icon_name: null },
-        { id: OPTION_IDS.SURFACE.PEBBLEDASH, option_value: "Pebbledash", order: 5, json_value: "4", icon_name: null },
-        { id: OPTION_IDS.SURFACE.BLOCK, option_value: "Blockwork", order: 4, json_value: "3", icon_name: null },
-        { id: OPTION_IDS.SURFACE.PAINTED_BRICK, option_value: "Painted brick", order: 3, json_value: "2", icon_name: null },
-        { id: OPTION_IDS.SURFACE.BRICK, option_value: "Brick", order: 2, json_value: "1", icon_name: null }
+        { id: OPTION_IDS.SURFACE.STONE, option_value: "Stone", json_value: "8", image: null },
+        { id: OPTION_IDS.SURFACE.ICF, option_value: "ICF", json_value: "6", image: null },
+        { id: OPTION_IDS.SURFACE.PEBBLEDASH, option_value: "Pebbledash", json_value: "4", image: null },
+        { id: OPTION_IDS.SURFACE.BLOCK, option_value: "Blockwork", json_value: "3", image: null },
+        { id: OPTION_IDS.SURFACE.BRICK, option_value: "Brick", json_value: "1", image: null },
+        { id: OPTION_IDS.SURFACE.PAINTED_BRICK, option_value: "Painted brick", json_value: "2", image: null },
+        { id: OPTION_IDS.SURFACE.SAND_CEMENT, option_value: "Sand & cement render", json_value: "5", image: null },
+        { id: OPTION_IDS.SURFACE.RENDER_CARRIER, option_value: "Render carrier board", json_value: "7", image: null },
       ],
       help: [
         {
@@ -208,8 +206,8 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.SYSTEM_TYPE.INSULATION_AND_RENDER, option_value: "Insulation & Render", order: null, json_value: "insulation&render", icon_name: null },
-        { id: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, option_value: "Render Only", order: null, json_value: "render", icon_name: null }
+        { id: OPTION_IDS.SYSTEM_TYPE.INSULATION_AND_RENDER, option_value: "Insulation & Render", json_value: "insulation&render", image: null },
+        { id: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, option_value: "Render Only", json_value: "render", image: null }
       ],
       help: [
         {
@@ -220,7 +218,7 @@ export const STEPS_DATA: StepsData = {
         }
       ],
       conditions: [
-        { id: 1, trigger_step: 13, trigger_option: 5, skip_steps: [11, 10, 9] }
+        { trigger_step: 13, trigger_option: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, skip_steps: [11, 10, 9] }
       ]
     },
 
@@ -240,9 +238,9 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.INSULATION.KINGSPAN, option_value: "Kingspan k5", order: null, json_value: "Kingspan", icon_name: null },
-        { id: OPTION_IDS.INSULATION.EPS, option_value: "EPS", order: null, json_value: "EPS", icon_name: null },
-        { id: OPTION_IDS.INSULATION.WOOL, option_value: "Mineral wool", order: null, json_value: "Wool", icon_name: null }
+        { id: OPTION_IDS.INSULATION.KINGSPAN, option_value: "Kingspan k5", json_value: "Kingspan", image: "/media/kingspan.png" },
+        { id: OPTION_IDS.INSULATION.EPS, option_value: "EPS", json_value: "EPS", image: "/media/eps.png" },
+        { id: OPTION_IDS.INSULATION.WOOL, option_value: "Mineral wool", json_value: "Wool", image: "/media/mineralwool.png" }
       ],
       help: [
         {
@@ -271,14 +269,14 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.THICKNESS["20MM"], option_value: "20 mm", order: 1, json_value: null, icon_name: null },
-        { id: OPTION_IDS.THICKNESS["50MM"], option_value: "50 mm", order: 2, json_value: null, icon_name: null },
-        { id: OPTION_IDS.THICKNESS["60MM"], option_value: "60 mm", order: 3, json_value: null, icon_name: null },
-        { id: OPTION_IDS.THICKNESS["70MM"], option_value: "70 mm", order: 4, json_value: null, icon_name: null },
-        { id: OPTION_IDS.THICKNESS["90MM"], option_value: "90 mm", order: 5, json_value: null, icon_name: null },
-        { id: OPTION_IDS.THICKNESS["100MM"], option_value: "100 mm", order: 6, json_value: null, icon_name: null },
-        { id: OPTION_IDS.THICKNESS["110MM"], option_value: "110 mm", order: 7, json_value: null, icon_name: null },
-        { id: OPTION_IDS.THICKNESS["150MM"], option_value: "150 mm", order: 8, json_value: null, icon_name: null }
+        { id: OPTION_IDS.THICKNESS["20MM"], option_value: "20 mm", json_value: null, image: null },
+        { id: OPTION_IDS.THICKNESS["50MM"], option_value: "50 mm", json_value: null, image: null },
+        { id: OPTION_IDS.THICKNESS["60MM"], option_value: "60 mm", json_value: null, image: null },
+        { id: OPTION_IDS.THICKNESS["70MM"], option_value: "70 mm", json_value: null, image: null },
+        { id: OPTION_IDS.THICKNESS["90MM"], option_value: "90 mm", json_value: null, image: null },
+        { id: OPTION_IDS.THICKNESS["100MM"], option_value: "100 mm", json_value: null, image: null },
+        { id: OPTION_IDS.THICKNESS["110MM"], option_value: "110 mm", json_value: null, image: null },
+        { id: OPTION_IDS.THICKNESS["150MM"], option_value: "150 mm", json_value: null, image: null }
       ],
       help: [
         {
@@ -307,9 +305,9 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.FIXINGS.PLASTIC, option_value: "Plastic", order: null, json_value: "2", icon_name: null },
-        { id: OPTION_IDS.FIXINGS.METAL, option_value: "Metal", order: null, json_value: "1", icon_name: null },
-        { id: OPTION_IDS.FIXINGS.SCREW, option_value: "Screw", order: null, json_value: "3", icon_name: null }
+        { id: OPTION_IDS.FIXINGS.PLASTIC, option_value: "Plastic", json_value: "2", image: "/media/plasticfixing.png" },
+        { id: OPTION_IDS.FIXINGS.METAL, option_value: "Metal", json_value: "1", image: "/media/metalfixing.png" },
+        { id: OPTION_IDS.FIXINGS.SCREW, option_value: "Screw", json_value: "3", image: "/media/screwfixing.png" }
       ],
       help: [
         {
@@ -379,8 +377,8 @@ export const STEPS_DATA: StepsData = {
               validation_regex: null,
               substeps: [],
               options: [
-                { id: OPTION_IDS.STARTER_TRACKS.METAL, option_value: "Metal", order: null, json_value: null, icon_name: null },
-                { id: OPTION_IDS.STARTER_TRACKS.PLASTIC, option_value: "Plastic", order: null, json_value: null, icon_name: null }
+                { id: OPTION_IDS.STARTER_TRACKS.METAL, option_value: "Metal", json_value: null, image: null },
+                { id: OPTION_IDS.STARTER_TRACKS.PLASTIC, option_value: "Plastic", json_value: null, image: null }
               ],
               help: [],
               conditions: []
@@ -496,12 +494,13 @@ export const STEPS_DATA: StepsData = {
       parent: null,
       validation_regex: null,
       substeps: [],
+
       options: [
-        { id: OPTION_IDS.RENDER_TYPE.SILICONE_SILICATE, option_value: "Silicone Silicate", order: 4, json_value: "2", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.SILICONE, option_value: "Silicone", order: 3, json_value: "1", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, option_value: "Premium Bio Silicone", order: 2, json_value: "5", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.NANO_DREX, option_value: "Nano Drex Silicone", order: 1, json_value: "6", icon_name: null },
-        { id: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, option_value: "Brick Slips", order: 5, json_value: "7", icon_name: null }
+        { id: OPTION_IDS.RENDER_TYPE.NANO_DREX, option_value: "Nano Drex Silicone", json_value: "6", image: "/media/nanodrex.png" },
+        {id: OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, option_value: "Premium Bio Silicone", json_value: "5", image: "/media/premiumbio.png" },
+        { id: OPTION_IDS.RENDER_TYPE.SILICONE, option_value: "Silicone", json_value: "1", image: "/media/silicone.png" },
+        { id: OPTION_IDS.RENDER_TYPE.SILICONE_SILICATE, option_value: "Silicone Silicate", json_value: "2", image: "/media/siliconesilicate.png" },
+        { id: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, option_value: "Brick Slips", json_value: "7", image: "/media/brickslips.png" }
       ],
       help: [
         {
@@ -511,7 +510,9 @@ export const STEPS_DATA: StepsData = {
           table: HELP_TABLES.renderType
         }
       ],
-      conditions: []
+      conditions: [
+        { trigger_step: 7, trigger_option: OPTION_IDS.RENDER_TYPE.BRICK_SLIPS, skip_steps: [6] }
+      ]
     },
 
     // ========================================================================
@@ -530,10 +531,10 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.GRAINSIZE["3MM"], option_value: "3 mm", order: null, json_value: null, icon_name: null },
-        { id: OPTION_IDS.GRAINSIZE["2MM"], option_value: "2 mm", order: null, json_value: null, icon_name: null },
-        { id: OPTION_IDS.GRAINSIZE["1_5MM"], option_value: "1.5 mm", order: null, json_value: null, icon_name: null },
-        { id: OPTION_IDS.GRAINSIZE["1MM"], option_value: "1 mm", order: null, json_value: null, icon_name: null },
+        { id: OPTION_IDS.GRAINSIZE["1MM"], option_value: "1 mm", json_value: null, image: null },
+        { id: OPTION_IDS.GRAINSIZE["1_5MM"], option_value: "1.5 mm", json_value: null, image: null },
+        { id: OPTION_IDS.GRAINSIZE["2MM"], option_value: "2 mm", json_value: null, image: null },
+        { id: OPTION_IDS.GRAINSIZE["3MM"], option_value: "3 mm", json_value: null, image: null },
       ],
       help: [
         {

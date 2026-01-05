@@ -281,7 +281,6 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
       />
 
       {(parentStep.substeps || [])
-        .sort((a, b) => a.order - b.order)
         .map((sub) => {
           const value = values[sub.id] || "";
 

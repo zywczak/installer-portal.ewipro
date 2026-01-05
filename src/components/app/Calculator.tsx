@@ -14,12 +14,12 @@ import { STEPS_DATA, StepsData } from "../../data/steps/stepsData";
 const Calculator: React.FC = () => {
   const [stepsData] = useState<StepsData>(STEPS_DATA);
   const [currentStep, setCurrentStep] = useState(0);
-  const [farthestStep, setFarthestStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set([]));
   const [skipStepIds, ] = useState<number[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 705);
   const [isSmallerTitle, setIsSmallerTitle] = useState(window.innerWidth <= 900);
+  const [targetStepToReach, setTargetStepToReach] = useState<number | null>(null);
 
 useEffect(() => {
   const handleResize = () => {
@@ -49,6 +49,36 @@ useEffect(() => {
     }, 100);
     return () => clearInterval(interval);
   }, []);
+
+  // Effect do automatycznego przechodzenia do targetStepToReach
+  useEffect(() => {
+    if (targetStepToReach === null || targetStepToReach === currentStep) {
+      setTargetStepToReach(null);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      if (targetStepToReach < currentStep) {
+        // Cofaj się
+        const handlers = (window as any).__multiStepFormHandlers;
+        if (handlers?.handlePrevClick) {
+          handlers.handlePrevClick();
+        } else {
+          handlePrev();
+        }
+      } else if (targetStepToReach > currentStep) {
+        // Idź do przodu
+        const handlers = (window as any).__multiStepFormHandlers;
+        if (handlers?.handleNextClick) {
+          handlers.handleNextClick();
+        } else {
+          handleNext();
+        }
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [targetStepToReach, currentStep]);
   
   const handleOptionChange = (optionId: number, stepId: number) => {
     setSelectedOptions(prev => {
@@ -112,7 +142,6 @@ useEffect(() => {
     const newStep = Math.min(nextStep, parentSteps.length - 1);
     setCompletedSteps(prev => new Set([...prev, currentStep]));
     setCurrentStep(newStep);
-    setFarthestStep(prev => Math.max(prev, newStep));
   };
 
   const handlePrev = () => {
@@ -150,67 +179,11 @@ useEffect(() => {
   };
 
   const handleGoToStep = (targetStep: number) => {
-    // Cofanie się - zawsze dozwolone (ale nie do skipowanych kroków)
-    if (targetStep < currentStep) {
-      // Sprawdź czy targetStep nie jest skipowany
-      if (isStepSkipped(targetStep, selectedOptions)) return;
-      
-      const allowedStepIds = parentSteps.slice(0, targetStep + 1).flatMap(step => step.options?.map(o => o.id) || []);
-      setSelectedOptions(prev => prev.filter(optId => allowedStepIds.includes(optId)));
-      setCurrentStep(targetStep);
-      return;
-    }
+    // Sprawdź czy targetStep nie jest skipowany
+    if (isStepSkipped(targetStep, selectedOptions)) return;
     
-    // Przejście do przodu - sprawdź warunki
-    if (targetStep > currentStep) {
-      // Sprawdź czy targetStep nie jest skipowany
-      if (isStepSkipped(targetStep, selectedOptions)) return;
-      
-      // Znajdź pierwszy nieukończony wymagany krok (pomijając skipowane)
-      let firstIncompleteRequiredStep = parentSteps.length;
-      for (let i = currentStep; i < parentSteps.length; i++) {
-        const step = parentSteps[i];
-        const isRequired = step.required !== false;
-        const isCompleted = completedSteps.has(i);
-        const isCurrent = i === currentStep;
-        const isSkipped = isStepSkipped(i, selectedOptions);
-        
-        // Pomijamy skipowane kroki
-        if (isSkipped) continue;
-        
-        // Dla aktualnego kroku sprawdź isStepComplete zamiast completedSteps
-        if (i === currentStep) {
-          if (isRequired && !isStepComplete) {
-            firstIncompleteRequiredStep = i;
-            break;
-          }
-        } else {
-          // Dla innych kroków sprawdź completedSteps
-          if (isRequired && !isCompleted) {
-            firstIncompleteRequiredStep = i;
-            break;
-          }
-        }
-      }
-      
-      // Nie można przejść dalej niż pierwszy nieukończony wymagany krok
-      // Ale można przeskoczyć skipowane kroki między current a target
-      if (targetStep > firstIncompleteRequiredStep) return;
-      
-      // Sprawdź czy wszystkie kroki między current a target są albo skipowane albo niewymagane/ukończone
-      for (let i = currentStep + 1; i < targetStep; i++) {
-        if (isStepSkipped(i, selectedOptions)) continue; // skipowane ok
-        
-        const step = parentSteps[i];
-        const isRequired = step.required !== false;
-        const isCompleted = completedSteps.has(i);
-        
-        // Jeśli krok jest wymagany i nieukończony - blokuj
-        if (isRequired && !isCompleted) return;
-      }
-      
-      setCurrentStep(targetStep);
-    }
+    // Ustaw targetStepToReach - useEffect automatycznie będzie symulować kliknięcia
+    setTargetStepToReach(targetStep);
   };
 
   const parentStep = parentSteps[currentStep];
@@ -303,6 +276,13 @@ useEffect(() => {
                     setHelpClickedSteps((prev) => ({ ...prev, [parentStep.id]: true }));
                 }}
                 isMobile={isMobileView}
+                selectedOptionImage={
+                    (() => {
+                        const stepValue = values[parentStep.id];
+                        const selectedOption = parentStep.options?.find(o => o.option_value === stepValue);
+                        return selectedOption?.image || null;
+                    })()
+                }
             />
             <Form
                 currentStep={currentStep}
@@ -319,7 +299,7 @@ useEffect(() => {
                 setErrors={setErrors}
                 selectedOptions={selectedOptions}
                 stepsData={stepsData}
-            />
+            />            
         </Box>
         {isMobileView ? (
   <Box
@@ -366,7 +346,13 @@ useEffect(() => {
       />
     </Box>
   </Box>
-) : null}
+) : <Box sx={{ display: 'flex', justifyContent: 'flex-end',  mr: "24px", mt: "24px" }}>
+            <img 
+            src={EwiproLogo} 
+            alt="Ewipro Logo" 
+            style={{ height: "40px" }} 
+            />
+        </Box>}
 
         <HelpModal
           open={openHelp}

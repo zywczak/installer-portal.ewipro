@@ -21,13 +21,19 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   const isSend = variant === "send";
   const isNextStep = variant === "nextStep";
 
+  const getButtonWidth = () => {
+    if (isMobile) return "100%";
+    if (isNextStep) return "202px";
+    return "99px";
+  };
+
   return (
     <Button
       onClick={onClick}
       disabled={disabled}
       sx={{
         backgroundColor: disabled ? "#BDBDBD" : "#438E44",
-        width: isMobile ? "100%" : isNextStep ? "202px" : "99px",
+        width: getButtonWidth(),
         minWidth: isMobile ? "100%" : undefined,
         borderRadius: "999px",
         textTransform: "none",

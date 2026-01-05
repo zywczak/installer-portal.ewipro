@@ -71,7 +71,6 @@ const SubStep: React.FC<SubStepProps> = ({
       </Box>
 
       {(step.substeps || [])
-        .sort((a, b) => a.order - b.order)
         .map((sub) => (
           <Box key={sub.id} sx={{ width: "100%", mt: 1 }}>
             <SubStep
