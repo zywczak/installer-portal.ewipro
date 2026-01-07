@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reactToWebComponent from "react-to-webcomponent";
-import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import Calculator from "./components/app/Calculator";
 
+const theme = createTheme();
+
 const ThemedForm = () => (
-  <ThemeProvider theme={{}}>
+  <ThemeProvider theme={theme}>
     <CssBaseline />
     <Calculator />
   </ThemeProvider>

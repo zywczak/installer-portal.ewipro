@@ -50,9 +50,9 @@ const HelpTable: React.FC<HelpTableProps> = ({ table }) => {
     if (rowType === "boolean") {
       const boolValue = value === true || value === "true" || value === "1" || value === "yes" || value === "tak";
       return boolValue ? (
-        <Typography sx={{ color: "green", fontWeight: "bold", fontSize: "24px" }}>✔</Typography>
+        <Typography sx={{ color: "green", fontWeight: 700, fontSize: "24px" }}>✔</Typography>
       ) : (
-        <Typography sx={{ color: "red", fontWeight: "bold", fontSize: "24px" }}>✘</Typography>
+        <Typography sx={{ color: "red", fontWeight: 700, fontSize: "24px" }}>✘</Typography>
       );
     }
 

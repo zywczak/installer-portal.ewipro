@@ -35,7 +35,7 @@
 //         sx={{ mb: 3 }}
 
 //       >
-//         <Typography sx={{ fontSize: "16px", fontWeight: "bold", color: "#333" }}>
+//         <Typography sx={{ fontSize: "16px", fontWeight: 700, color: "#333" }}>
 //           Page <span style={{ color: "#333" }}>{page + 1}</span>
 //           <span style={{ color: "#aaa" }}>/{totalPages}</span>
 //         </Typography>
@@ -273,7 +273,7 @@ const ColourStepInput: React.FC<StepInputProps> = ({
         justifyContent="space-between"
         sx={{ mb: "12px" }}
       >
-        <Typography sx={{ fontSize: "16px", fontWeight: "bold", color: "#333" }}>
+        <Typography sx={{ fontSize: "16px", fontWeight: 700, color: "#333" }}>
           Page <span style={{ color: "#333" }}>{page + 1}</span>
           <span style={{ color: "#aaa" }}>/{totalPages}</span>
         </Typography>
