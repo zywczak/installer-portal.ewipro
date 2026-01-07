@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import HousePreview from "../HousePreview";
-import ResultsTable from "../result/ResultsTable";
+import ResultsTable from "../ResultsTable";
 import ActionButton from "./buttons/actionButton";
 import MultiStepForm from "./MultiStepForm";
 

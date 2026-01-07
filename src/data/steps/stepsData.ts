@@ -42,7 +42,8 @@ export type DescriptionType = string | ReactNode | null;
 
 export interface HelpSection {
   help_title: string;
-  description: DescriptionType;
+  upper_description: DescriptionType;
+  downer_description: DescriptionType;
   images?: HelpImage[];
   table?: SimpleTable;
   side_description?: string;
@@ -143,7 +144,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "What's it going on to?",
-          description: "By letting us know what substrate the EWI Pro materials are being installed on, we can provide you with the correct primer (if required) - typically the primer helps aid adhesion and regulate absorption of the substrate.",
+          upper_description: "By letting us know what substrate the EWI Pro materials are being installed on, we can provide you with the correct primer (if required) - typically the primer helps aid adhesion and regulate absorption of the substrate.",
+          downer_description: null,
           images: [
             { image_name: "stone.jpg", caption: "Stone", image_url: "/media/stone.jpg", description: null },
             { image_name: "sandandcement.jpg", caption: "Sand-and-Cement", image_url: "/media/sandandcement.jpg", description: null },
@@ -177,7 +179,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "The area",
-          description: "We do not recommend removing window + doors from your calculations.<br /> <br /> <br /> <span style='color: #437A8E; font-size: 20px; display: block;'>It's easy</span><b style='font-size: 28px; display: block; font-weight: 700'>a x b = surface area</b>",
+          upper_description: "We do not recommend removing window + doors from your calculations.",
+          downer_description: "<span style='color: #437A8E; font-size: 20px; display: block;'>It's easy</span><b style='font-size: 28px; display: block; font-weight: 700'>a x b = surface area</b>",
           images: [
             { image_name: "areadiagram.png", caption: null, image_url: "/media/areadiagram.png", description: null }
           ]
@@ -207,7 +210,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Type of insulation",
-          description: null,
+          upper_description: null,
+          downer_description: null,
           images: [],
           table: HELP_TABLES.insulationVsRender
         }
@@ -239,7 +243,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Type of Insulation",
-          description: "We offer three main types of insulation material - EPS, Mineral Wool (Rockwool) and Kingspan K5, which all have slightly different properties.",
+          upper_description: "We offer three main types of insulation material - EPS, Mineral Wool (Rockwool) and Kingspan K5, which all have slightly different properties.",
+          downer_description: null,
           images: [],
           table: HELP_TABLES.insulationType
         }
@@ -274,7 +279,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Thickness of insulation",
-          description: `The term U-value is used to define the rate of heat loss through a material. The lower the u-value, the better the insulation product performance.<br/><br/>U-value is measured in W/m<sup>2</sup>.K (Watts per metre squared Kelvin) and in the table below you can see the different u-values based on the different insulation materials and thicknesses (based on applying the insulation to a solid brick wall).`,
+          upper_description: null,
+          downer_description: `The term U-value is used to define the rate of heat loss through a material. The lower the u-value, the better the insulation product performance.<br/><br/>U-value is measured in W/m<sup>2</sup>.K (Watts per metre squared Kelvin) and in the table below you can see the different u-values based on the different insulation materials and thicknesses (based on applying the insulation to a solid brick wall).`,
           images: [],
           table: HELP_TABLES.thickness
         }
@@ -304,7 +310,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Type of mechanical Fixings",
-          description: `When you install our external wall insulation systems, the insulation boards are held in place with both adhesive and mechanical fixings.<br/><br/>We offer two types of fixing – metal or plastic pin and both types are available in 4 different lengths depending on the thickness of the insusulation used.<br/><br/>We recommend that the fixing is always <strong>50mm longer</strong> than the thickness of the insulation used to ensure it is anchored securely to the wall.`,
+          upper_description: null,
+          downer_description: `When you install our external wall insulation systems, the insulation boards are held in place with both adhesive and mechanical fixings.<br/><br/>We offer two types of fixing – metal or plastic pin and both types are available in 4 different lengths depending on the thickness of the insusulation used.<br/><br/>We recommend that the fixing is always <strong>50mm longer</strong> than the thickness of the insulation used to ensure it is anchored securely to the wall.`,
           images: [
             { image_name: "fixings.jpg", caption: null, image_url: "/media/fixings.jpg", description: null }
           ]
@@ -426,7 +433,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Beads & Trims",
-          description: "Our beads and trims provide the perfect finishing touch for external wall insulation and render systems, ensuring clean lines, protected edges, and long-lasting durability. Designed for easy installation and compatibility with modern render systems, they help prevent cracking, manage movement, and deliver a professional finish every time. Ideal for corners, windows, doors, and terminations, they combine performance with a neat, high-quality appearance.",
+          upper_description: null,
+          downer_description: "Our beads and trims provide the perfect finishing touch for external wall insulation and render systems, ensuring clean lines, protected edges, and long-lasting durability. Designed for easy installation and compatibility with modern render systems, they help prevent cracking, manage movement, and deliver a professional finish every time. Ideal for corners, windows, doors, and terminations, they combine performance with a neat, high-quality appearance.",
           images: [
             {
               image_name: "bellcastbead.png",
@@ -489,7 +497,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Type of Render",
-          description: null,
+          upper_description: null,
+          downer_description: null,
           images: [],
           table: HELP_TABLES.renderType
         }
@@ -522,7 +531,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Render grain size",
-          description: "Our renders are available in 4 different grains thicknesses. Render samples available online and in-store are in 1.0mm and 1.5mm sizes.",
+          upper_description: null,
+          downer_description: "Our renders are available in 4 different grains thicknesses. Render samples available online and in-store are in 1.0mm and 1.5mm sizes.",
           side_description:  "We offer 4 grain sizes, 1mm, 1.5mm, 2mm and 3mm depending on the finish required. <br /> <b>Silicone, Silicone-Silicate, Nano Drex Silicone, Premium Bio Silicone</b>",
           images: [
             {
@@ -579,7 +589,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "The colours",
-          description: "<b>This is only preview</b> <br />For best matching or colour find, order one of our samples, or visit our store. <br />We offer 50 most popular colours in stock. <br />,br />For better user experience, we offer render samples: <ul><li>colour chart books</li><li>render sample sleeves</li><li>sample pots with render</li></ul>",
+          upper_description: null,
+          downer_description: "<b>This is only preview</b> <br />For best matching or colour find, order one of our samples, or visit our store. <br />We offer 50 most popular colours in stock. <br />,br />For better user experience, we offer render samples: <ul><li>colour chart books</li><li>render sample sleeves</li><li>sample pots with render</li></ul>",
           useColourSamples: true,
           disclaimer:  "Disclaimer: Render colours may appear differently on-screen compared to real life. Therefore, we always recommend that you order a colour sample before making a final decision.",
         }

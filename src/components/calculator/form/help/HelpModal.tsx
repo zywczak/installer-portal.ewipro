@@ -67,21 +67,23 @@ const HelpModal: React.FC<HelpModalProps> = ({
           }),
       }}
 
-      PaperProps={{
-        sx: {
-          width: isMobile ? "100vw" : "1245px",
-          maxWidth: isMobile ? "100vw" : "1245px",
-          height: isMobile ? "auto" : "auto",
-          maxHeight: isMobile ? "100vh" : "625px",
-          borderRadius: "20px",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: "column",
-          boxShadow: isMobile
-            ? "none"
-            : "0px 0px 20px rgba(0, 0, 0, 0.2)",
-          pb: isMobile ? 0 : "40px",
-          m: isMobile ? 0 : "auto",
+      slotProps={{
+        paper : {
+          sx: {
+            width: isMobile ? "100vw" : "1245px",
+            maxWidth: isMobile ? "100vw" : "1245px",
+            height: "auto",
+            maxHeight: isMobile ? "100vh" : "625px",
+            borderRadius: "20px",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            boxShadow: isMobile
+              ? "none"
+              : "0px 0px 20px rgba(0, 0, 0, 0.2)",
+            pb: isMobile ? 0 : "40px",
+            m: isMobile ? 0 : "auto",
+          },
         },
       }}
 
@@ -184,7 +186,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
             pr: isMobile ? "16px" : 0,
             pb: isMobile ? "28px" : 0,
             pt: "10px",
-            flex: isMobile ? "0 0 auto" : "0 0 295px",
+            flex: isMobile ? "0 0 auto" : "0 0 200px",
             display: "flex",
             flexDirection: "column",
           }}
@@ -209,11 +211,25 @@ const HelpModal: React.FC<HelpModalProps> = ({
               {currentHelp.help_title}
             </Typography>
           )}
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: 400, fontSize: "12px" }}
-            dangerouslySetInnerHTML={{ __html: currentHelp.description || "" }}
-          />
+          
+          <Box
+  display="flex"
+  flexDirection="column"
+  justifyContent="space-between"
+  height="100%" // opcjonalnie, aby space-between zadziałało w pełnej wysokości kontenera
+>
+  <Typography
+    variant="body1"
+    sx={{ fontWeight: 400, fontSize: "12px" }}
+    dangerouslySetInnerHTML={{ __html: currentHelp.upper_description || "" }}
+  />
+  
+  <Typography
+    variant="body1"
+    sx={{ fontWeight: 400, fontSize: "12px"}}
+    dangerouslySetInnerHTML={{ __html: currentHelp.downer_description || "" }}
+  />
+</Box>
 
         </Box>
 

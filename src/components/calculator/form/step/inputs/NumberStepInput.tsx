@@ -54,9 +54,9 @@ const NumberStepInput: React.FC<StepInputProps> = ({
           color: "#9E9E9E",
           position: "absolute",
           fontSize: "16px",
-          left: !!localValue ? "14px" : "50%",
-          top: !!localValue ? 0 : "50%",
-          transform: !!localValue
+          left: localValue ? "14px" : "50%",
+          top: localValue ? 0 : "50%",
+          transform: localValue
             ? "translate(0, -50%) scale(0.75)"
             : "translate(-50%, -50%)",
           transformOrigin: "top left",

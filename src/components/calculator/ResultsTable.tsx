@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Table as MuiTable, TableBody, TableRow } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import productImage from "../../../assets/nanodrex.png";
+import productImage from "../../assets/nanodrex.png";
 
 interface Product {
   id: string;

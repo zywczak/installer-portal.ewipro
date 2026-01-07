@@ -30,6 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const isOpenMobile = isMobile && open;
 
   useEffect(() => {
+    console.log(localStorage.getItem("access"));
   const fetchUserData = async () => {
     try {
       const { data } = await api.post({ action: "getBasicUserData" });

@@ -9,23 +9,14 @@ interface ColorOption {
   thumbURI: string;
 }
 
-interface HelpColourSamplesProps {
-  isMobile?: boolean;
-}
-
-const HelpColourSamples: React.FC<HelpColourSamplesProps> = ({
-  isMobile = false,
-}) => {
+const HelpColourSamples: React.FC = () => {
   const [colors, setColors] = useState<ColorOption[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const getColourName = (code: string) => {
-  // np. "RAL-9010-White" → "White"
-    return code
-        .split("-")
-        .filter((part) => isNaN(Number(part)))
-        .pop() || code;
-    };
+  const getColourName = (code: string) =>
+  code
+    .split("-")
+    .findLast(part => Number.isNaN(Number(part))) ?? code;
 
 
   useEffect(() => {
