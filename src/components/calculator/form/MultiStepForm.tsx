@@ -22,6 +22,7 @@ interface MultiStepFormProps {
   setValues: React.Dispatch<React.SetStateAction<Record<number, string | number>>>;
   errors: Record<number, boolean>;
   setErrors: React.Dispatch<React.SetStateAction<Record<number, boolean>>>;
+  selectedOptions?: number[];
 }
 
 const MultiStepForm: React.FC<MultiStepFormProps> = ({
@@ -37,6 +38,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
   setValues,
   errors,
   setErrors,
+  selectedOptions = [],
 }) => {
   const isLast = currentStep === totalSteps - 1;
 
@@ -278,6 +280,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
           setErrors(prev => ({ ...prev, [parentStep.id]: hasError }))
         }
         isMobile={isMobile}
+        selectedParentOptionIds={selectedOptions}
       />
 
       {(parentStep.substeps || [])
@@ -308,6 +311,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({
               onChange={handleChange}
               valuesMap={values}
               isMobile={isMobile}
+              selectedParentOptionIds={selectedOptions}
             />
           );
         })}

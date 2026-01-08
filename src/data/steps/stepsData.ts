@@ -29,6 +29,7 @@ export interface FormStepOption {
   option_value: string;
   json_value: string | null;
   image: string | null;
+  parent_option_id?: number[];
 }
 
 export interface HelpImage {
@@ -148,10 +149,10 @@ export const STEPS_DATA: StepsData = {
           downer_description: null,
           images: [
             { image_name: "stone.jpg", caption: "Stone", image_url: "/media/stone.jpg", description: null },
-            { image_name: "sandandcement.jpg", caption: "Sand-and-Cement", image_url: "/media/sandandcement.jpg", description: null },
-            { image_name: "rendercarrierboard.jpg", caption: "Render-Carrier-Board", image_url: "/media/rendercarrierboard.jpg", description: null },
+            { image_name: "sandandcement.jpg", caption: "Sand and Cement", image_url: "/media/sandandcement.jpg", description: null },
+            { image_name: "rendercarrierboard.jpg", caption: "Render Carrier Board", image_url: "/media/rendercarrierboard.jpg", description: null },
             { image_name: "pebbledash.jpg", caption: "Pebbledash", image_url: "/media/pebbledash.jpg", description: null },
-            { image_name: "paintedbrick.jpg", caption: "Painted-Brick", image_url: "/media/paintedbrick.jpg", description: null },
+            { image_name: "paintedbrick.jpg", caption: "Painted Brick", image_url: "/media/paintedbrick.jpg", description: null },
             { image_name: "icf.jpg", caption: "ICF", image_url: "/media/icf.jpg", description: null },
             { image_name: "brick.jpg", caption: "Brick", image_url: "/media/brick.jpg", description: null },
             { image_name: "block.jpg", caption: "Block", image_url: "/media/block.jpg", description: null }
@@ -194,7 +195,7 @@ export const STEPS_DATA: StepsData = {
     // ========================================================================
     {
       id: 4,
-      step_name: "Insulation or Render Only?",
+      step_name: "Insulation or render only?",
       description: "",
       json_key: "type",
       input_type: "radio",
@@ -205,11 +206,11 @@ export const STEPS_DATA: StepsData = {
       substeps: [],
       options: [
         { id: OPTION_IDS.SYSTEM_TYPE.INSULATION_AND_RENDER, option_value: "Insulation & Render", json_value: "insulation&render", image: null },
-        { id: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, option_value: "Render Only", json_value: "render", image: null }
+        { id: OPTION_IDS.SYSTEM_TYPE.RENDER_ONLY, option_value: "Render only", json_value: "render", image: null }
       ],
       help: [
         {
-          help_title: "Type of insulation",
+          help_title: "Advantages of insulation",
           upper_description: null,
           downer_description: null,
           images: [],
@@ -226,7 +227,7 @@ export const STEPS_DATA: StepsData = {
     // ========================================================================
     {
       id: 5,
-      step_name: "Type of Insulation",
+      step_name: "Type of insulation",
       description: null,
       json_key: "insulationType",
       input_type: "radio",
@@ -242,7 +243,7 @@ export const STEPS_DATA: StepsData = {
       ],
       help: [
         {
-          help_title: "Type of Insulation",
+          help_title: "Type of insulation",
           upper_description: "We offer three main types of insulation material - EPS, Mineral Wool (Rockwool) and Kingspan K5, which all have slightly different properties.",
           downer_description: null,
           images: [],
@@ -267,25 +268,25 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.THICKNESS["20MM"], option_value: "20 mm", json_value: null, image: null },
-        { id: OPTION_IDS.THICKNESS["50MM"], option_value: "50 mm", json_value: null, image: null },
-        { id: OPTION_IDS.THICKNESS["60MM"], option_value: "60 mm", json_value: null, image: null },
-        { id: OPTION_IDS.THICKNESS["70MM"], option_value: "70 mm", json_value: null, image: null },
-        { id: OPTION_IDS.THICKNESS["90MM"], option_value: "90 mm", json_value: null, image: null },
-        { id: OPTION_IDS.THICKNESS["100MM"], option_value: "100 mm", json_value: null, image: null },
-        { id: OPTION_IDS.THICKNESS["110MM"], option_value: "110 mm", json_value: null, image: null },
-        { id: OPTION_IDS.THICKNESS["150MM"], option_value: "150 mm", json_value: null, image: null }
+        { id: OPTION_IDS.THICKNESS["20MM"], option_value: "20 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.EPS, OPTION_IDS.INSULATION.KINGSPAN] },
+        { id: OPTION_IDS.THICKNESS["50MM"], option_value: "50 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.WOOL, OPTION_IDS.INSULATION.EPS, OPTION_IDS.INSULATION.KINGSPAN] },
+        { id: OPTION_IDS.THICKNESS["60MM"], option_value: "60 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.KINGSPAN] },
+        { id: OPTION_IDS.THICKNESS["70MM"], option_value: "70 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.EPS, OPTION_IDS.INSULATION.KINGSPAN] },
+        { id: OPTION_IDS.THICKNESS["90MM"], option_value: "90 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.EPS] },
+        { id: OPTION_IDS.THICKNESS["100MM"], option_value: "100 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.WOOL, OPTION_IDS.INSULATION.EPS] },
+        { id: OPTION_IDS.THICKNESS["110MM"], option_value: "110 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.WOOL] },
+        { id: OPTION_IDS.THICKNESS["150MM"], option_value: "150 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.INSULATION.WOOL, OPTION_IDS.INSULATION.EPS] }
       ],
       help: [
         {
           help_title: "Thickness of insulation",
           upper_description: null,
-          downer_description: `The term U-value is used to define the rate of heat loss through a material. The lower the u-value, the better the insulation product performance.<br/><br/>U-value is measured in W/m<sup>2</sup>.K (Watts per metre squared Kelvin) and in the table below you can see the different u-values based on the different insulation materials and thicknesses (based on applying the insulation to a solid brick wall).`,
+          downer_description: `The term U-value is used to define the rate of heat loss through a material. <b>The lower the u-value, the better the insulation product performance.</b><br/><br/>U-value is measured in W/m<sup>2</sup>.K (Watts per metre squared Kelvin) and in the table below you can see the different u-values based on the different insulation materials and thicknesses (based on applying the insulation to a solid brick wall).`,
           images: [],
           table: HELP_TABLES.thickness
         }
       ],
-      conditions: []
+      conditions: [{ trigger_step: 6, trigger_option: OPTION_IDS.THICKNESS["20MM"], skip_steps: [7] }]
     },
 
     // ========================================================================
@@ -433,8 +434,8 @@ export const STEPS_DATA: StepsData = {
       help: [
         {
           help_title: "Beads & Trims",
-          upper_description: null,
-          downer_description: "Our beads and trims provide the perfect finishing touch for external wall insulation and render systems, ensuring clean lines, protected edges, and long-lasting durability. Designed for easy installation and compatibility with modern render systems, they help prevent cracking, manage movement, and deliver a professional finish every time. Ideal for corners, windows, doors, and terminations, they combine performance with a neat, high-quality appearance.",
+          upper_description: "Our beads and trims provide the perfect finishing touch for external wall insulation and render systems, ensuring clean lines, protected edges, and long-lasting durability. Designed for easy installation and compatibility with modern render systems, they help prevent cracking, manage movement, and deliver a professional finish every time. Ideal for corners, windows, doors, and terminations, they combine performance with a neat, high-quality appearance.",
+          downer_description: null,
           images: [
             {
               image_name: "bellcastbead.png",
@@ -523,10 +524,10 @@ export const STEPS_DATA: StepsData = {
       validation_regex: null,
       substeps: [],
       options: [
-        { id: OPTION_IDS.GRAINSIZE["1MM"], option_value: "1 mm", json_value: null, image: null },
-        { id: OPTION_IDS.GRAINSIZE["1_5MM"], option_value: "1.5 mm", json_value: null, image: null },
-        { id: OPTION_IDS.GRAINSIZE["2MM"], option_value: "2 mm", json_value: null, image: null },
-        { id: OPTION_IDS.GRAINSIZE["3MM"], option_value: "3 mm", json_value: null, image: null },
+        { id: OPTION_IDS.GRAINSIZE["1MM"], option_value: "1 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.RENDER_TYPE.NANO_DREX, OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, OPTION_IDS.RENDER_TYPE.SILICONE] },
+        { id: OPTION_IDS.GRAINSIZE["1_5MM"], option_value: "1.5 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.RENDER_TYPE.NANO_DREX, OPTION_IDS.RENDER_TYPE.PREMIUM_BIO, OPTION_IDS.RENDER_TYPE.SILICONE_SILICATE, OPTION_IDS.RENDER_TYPE.SILICONE] },
+        { id: OPTION_IDS.GRAINSIZE["2MM"], option_value: "2 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.RENDER_TYPE.SILICONE] },
+        { id: OPTION_IDS.GRAINSIZE["3MM"], option_value: "3 mm", json_value: null, image: null, parent_option_id: [OPTION_IDS.RENDER_TYPE.SILICONE] },
       ],
       help: [
         {
@@ -590,7 +591,7 @@ export const STEPS_DATA: StepsData = {
         {
           help_title: "The colours",
           upper_description: null,
-          downer_description: "<b>This is only preview</b> <br />For best matching or colour find, order one of our samples, or visit our store. <br />We offer 50 most popular colours in stock. <br />,br />For better user experience, we offer render samples: <ul><li>colour chart books</li><li>render sample sleeves</li><li>sample pots with render</li></ul>",
+          downer_description: "<b>This is only preview</b> <br />For best matching or colour find, order one of our samples, or visit our store. <br />We offer 50 most popular colours in stock. <br /><br />For better user experience, we offer render samples: <ul><li>colour chart books</li><li>render sample sleeves</li><li>sample pots with render</li></ul>",
           useColourSamples: true,
           disclaimer:  "Disclaimer: Render colours may appear differently on-screen compared to real life. Therefore, we always recommend that you order a colour sample before making a final decision.",
         }
@@ -618,7 +619,7 @@ export const STEPS_DATA: StepsData = {
           description: null,
           json_key: "levelling-coat\n",
           input_type: "number",
-          placeholder: null,
+          placeholder: "no. of bags",
           required: null,
           parent: 4,
           validation_regex: null,
@@ -633,7 +634,7 @@ export const STEPS_DATA: StepsData = {
           description: null,
           json_key: "fungicidalwash",
           input_type: "number",
-          placeholder: null,
+          placeholder: "no. of bottles",
           required: null,
           parent: 4,
           validation_regex: null,
@@ -644,11 +645,11 @@ export const STEPS_DATA: StepsData = {
         },
         {
           id: 28,
-          step_name: "Any blue film required (100m rolls)",
+          step_name: "Any protection film required (100m rolls)",
           description: null,
           json_key: "bluefilm",
           input_type: "number",
-          placeholder: null,
+          placeholder: "no. of rolls",
           required: null,
           parent: 4,
           validation_regex: null,
@@ -663,7 +664,7 @@ export const STEPS_DATA: StepsData = {
           description: null,
           json_key: "orangetape",
           input_type: "number",
-          placeholder: null,
+          placeholder: "no. of rolls",
           required: null,
           parent: 4,
           validation_regex: null,

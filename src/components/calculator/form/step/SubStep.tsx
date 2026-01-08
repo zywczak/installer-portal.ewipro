@@ -9,6 +9,7 @@ interface SubStepProps {
   onChange: (stepId: number, value: string | number, optionId?: number) => void;
   valuesMap?: Record<number, string | number>;
   isMobile?: boolean;
+  selectedParentOptionIds?: number[];
 }
 
 const SubStep: React.FC<SubStepProps> = ({
@@ -17,6 +18,7 @@ const SubStep: React.FC<SubStepProps> = ({
   onChange,
   valuesMap = {},
   isMobile = false,
+  selectedParentOptionIds = [],
 }) => {
   const theme = useTheme();
   const isInlineInput = step.input_type === "text" || step.input_type === "number" || step.input_type === "radio";
@@ -50,7 +52,7 @@ const SubStep: React.FC<SubStepProps> = ({
         variant="subtitle1"
         sx={{
           color: "#444",
-          fontSize: "14px",
+          fontSize: "12px",
           fontWeight: 400,
           flex: 1,
           pl: isDeepest ? "33px" : 0,
@@ -67,6 +69,7 @@ const SubStep: React.FC<SubStepProps> = ({
           isSubstep
           label={!isInlineInput ? (step.step_name || undefined) : undefined}
           isMobile={isMobile}
+          selectedParentOptionIds={selectedParentOptionIds}
         />
       </Box>
 
@@ -79,6 +82,7 @@ const SubStep: React.FC<SubStepProps> = ({
               onChange={onChange}
               valuesMap={valuesMap}
               isMobile={isMobile}
+              selectedParentOptionIds={selectedParentOptionIds}
             />
           </Box>
         ))}

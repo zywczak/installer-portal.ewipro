@@ -162,6 +162,7 @@ const Form = ({
           setValues={setValues}
           errors={errors}
           setErrors={setErrors}
+          selectedOptions={selectedOptions}
         />
       </Box>
       {isMobile ? null :
