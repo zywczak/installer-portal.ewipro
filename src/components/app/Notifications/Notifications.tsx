@@ -66,7 +66,7 @@ const Notifications: React.FC<Props> = ({
           onDelete={deleteNotification}
            onClick={(notification) => {
             if (notification.projectID && notification.contactID) {
-              globalThis.location.href = `#projects/${notification.projectID}/${notification.contactID}`;
+              globalThis.location.href = `#projects/${notification.projectID}/${notification.contactID}?${notification.slug}`;
             }
           }}
         />
