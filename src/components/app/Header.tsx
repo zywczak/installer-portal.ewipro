@@ -36,8 +36,8 @@ const Header: React.FC<HeaderProps> = ({
                     content: '""',
                     position: "absolute",
                     bottom: 0,
-                    left: 18,
-                    right: 18,
+                    left: "16px",
+                    right: "16px",
                     height: "1px",
                     backgroundColor: "#BDBDBD",
                 },
@@ -79,9 +79,23 @@ const Header: React.FC<HeaderProps> = ({
                         variant={hasNewNotifications ? "dot" : "standard"}
                         overlap="circular"
                     >
-                        <NotificationsIcon sx={{ fontSize: 32 }} />
+                        <NotificationsIcon
+                        sx={{
+                            color: "inherit",
+                            fontSize: 32,
+                            transition: "transform 0.3s ease-in-out",
+                            "&:hover": {
+                            transform: "rotate(-15deg) translateX(2px)",
+                            color: "#ffd65a"
+                            },
+                            "&:hover:nth-of-type(2n)": {
+                            transform: "rotate(15deg) translateX(-2px)",
+                            },
+                        }}
+                        />
                     </Badge>
-                </IconButton>
+                    </IconButton>
+
             </Box>
 
             {projectAddress && <Address addr={projectAddress} />}
