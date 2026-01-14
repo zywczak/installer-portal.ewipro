@@ -412,12 +412,14 @@
         "title": "Fotografie de profil"
       },
       "button": "SALVEAZĂ",
+      "saving": "SE SALVEAZĂ...",
       "deleteUserAvatarError": "Eroare",
       "form": {
         "company": "Nume companie (opțional)",
         "email": "E-mail",
         "errors": {
-          "phone": "Format de număr de telefon incorect."
+          "phone": "Format de număr de telefon incorect.",
+          "phoneRequired": "Numărul de telefon este obligatoriu."
         },
         "name": "Nume și prenume",
         "phone": "Număr de telefon"
@@ -425,7 +427,10 @@
       "formSubmitError": "Eroare",
       "formSuccessfullySubmitted": "Modificările au fost salvate.",
       "header": "Profilul meu",
-      "uploadingPictureFailed": "Ne pare rău, adăugarea fotografiei a eșuat. Încearcă din nou."
+      "uploadingPictureFailed": "Ne pare rău, adăugarea fotografiei a eșuat. Încearcă din nou.",
+      "uploadingPictureSuccess": "Fotografia a fost salvată.",
+      "photoDeleteSuccess": "Fotografia a fost ștearsă.",
+      "photoDeleteError": "Nu s-a reușit ștergerea fotografiei."
     },
     "projectDetails": {
       "archiveProjectModal": {

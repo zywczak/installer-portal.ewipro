@@ -412,12 +412,14 @@
         "title": "प्रोफाइल फोटो"
       },
       "button": "सहेजें",
+      "saving": "सहेजा जा रहा है...",
       "deleteUserAvatarError": "त्रुटि",
       "form": {
         "company": "कंपनी का नाम (वैकल्पिक)",
         "email": "ईमेल",
         "errors": {
-          "phone": "गलत फ़ोन नंबर प्रारूप।"
+          "phone": "गलत फ़ोन नंबर प्रारूप।",
+          "phoneRequired": "फ़ोन नंबर आवश्यक है।"
         },
         "name": "नाम और उपनाम",
         "phone": "फ़ोन नंबर"
@@ -425,7 +427,10 @@
       "formSubmitError": "त्रुटि",
       "formSuccessfullySubmitted": "परिवर्तन सफलतापूर्वक सहेजे गए।",
       "header": "मेरी प्रोफाइल",
-      "uploadingPictureFailed": "माफ़ करें, फोटो जोड़ने में विफल। फिर से प्रयास करें।"
+      "uploadingPictureFailed": "माफ़ करें, फोटो जोड़ने में विफल। फिर से प्रयास करें।",
+      "uploadingPictureSuccess": "तस्वीर सहेज ली गई है।",
+      "photoDeleteSuccess": "फ़ोटो हटा दी गई है।",
+      "photoDeleteError": "फ़ोटो हटाने में विफल रहा।"
     },
     "projectDetails": {
       "archiveProjectModal": {

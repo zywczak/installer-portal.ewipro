@@ -412,12 +412,14 @@
         "title": "Zdjęcie profilowe"
       },
       "button": "ZAPISZ",
+      "saving": "ZAPISYWANIE...",
       "deleteUserAvatarError": "Błąd",
       "form": {
         "company": "Nazwa firmy (opcjonalnie)",
         "email": "E-mail",
         "errors": {
-          "phone": "Nieprawidłowy format numeru telefonu."
+          "phone": "Nieprawidłowy format numeru telefonu.",
+          "phoneRequired": "Numer telefonu jest wymagany."
         },
         "name": "Imię i Nazwisko",
         "phone": "Numer komórkowy"
@@ -425,7 +427,10 @@
       "formSubmitError": "Błąd",
       "formSuccessfullySubmitted": "Zmiany zostały zapisane.",
       "header": "Mój Profil",
-      "uploadingPictureFailed": "Przykro nam, przesyłanie zdjęcia nie powiodło się. Spróbuj ponownie."
+      "uploadingPictureFailed": "Przykro nam, przesyłanie zdjęcia nie powiodło się. Spróbuj ponownie.",
+      "uploadingPictureSuccess": "Zdjęcie zostało zapisane.",
+      "photoDeleteSuccess": "Zdjęcie zostało usunięte.",
+      "photoDeleteError": "Nie udało się usunąć zdjęcia."
     },
     "projectDetails": {
       "archiveProjectModal": {

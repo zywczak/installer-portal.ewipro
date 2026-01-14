@@ -412,12 +412,14 @@
         "title": "پروفائل تصویر"
       },
       "button": "محفوظ کریں",
+      "saving": "محفوظ کیا جا رہا ہے...",
       "deleteUserAvatarError": "خرابی",
       "form": {
         "company": "کمپنی کا نام (اختیاری)",
         "email": "ای میل",
         "errors": {
-          "phone": "غلط فون نمبر فارمیٹ۔"
+          "phone": "غلط فون نمبر فارمیٹ۔",
+          "phoneRequired": "فون نمبر درکار ہے۔"
         },
         "name": "نام اور کنیت",
         "phone": "فون نمبر"
@@ -425,7 +427,10 @@
       "formSubmitError": "خرابی",
       "formSuccessfullySubmitted": "تبدیلیاں محفوظ کر دی گئی ہیں۔",
       "header": "میری پروفائل",
-      "uploadingPictureFailed": "معذرت، تصویر شامل کرنے میں ناکامی ہوئی۔ دوبارہ کوشش کریں۔"
+      "uploadingPictureFailed": "معذرت، تصویر شامل کرنے میں ناکامی ہوئی۔ دوبارہ کوشش کریں۔",
+      "uploadingPictureSuccess": "تصویر محفوظ کر لی گئی ہے۔",
+      "photoDeleteSuccess": "تصویر حذف کر دی گئی ہے۔",
+      "photoDeleteError": "تصویر حذف کرنے میں ناکام رہا۔"
     },
     "projectDetails": {
       "archiveProjectModal": {

@@ -412,12 +412,14 @@
         "title": "Profile photo"
       },
       "button": "SAVE",
+      "saving": "SAVING...",
       "deleteUserAvatarError": "Error",
       "form": {
         "company": "Company name (optional)",
         "email": "E-mail",
         "errors": {
-          "phone": "Incorrect phone number format."
+          "phone": "Incorrect phone number format.",
+          "phoneRequired": "Phone number is required."
         },
         "name": "Name and surname",
         "phone": "Phone number"
@@ -425,7 +427,10 @@
       "formSubmitError": "Error",
       "formSuccessfullySubmitted": "Changes saved.",
       "header": "My profile",
-      "uploadingPictureFailed": "Sorry, adding photo(s) failed. Try again."
+      "uploadingPictureFailed": "Sorry, adding photo(s) failed. Try again.",
+      "uploadingPictureSuccess": "The photo has been saved.",
+      "photoDeleteSuccess": "The photo has been deleted.",
+      "photoDeleteError": "Failed to delete the photo."
     },
     "projectDetails": {
       "archiveProjectModal": {
