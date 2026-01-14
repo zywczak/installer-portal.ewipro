@@ -2,14 +2,14 @@ import React from "react";
 import { Snackbar, Alert, Box } from "@mui/material";
 import { AuthNotification } from "../../types/auth.types";
 
-interface NotificationSnackbarProps {
+interface SnackbarProps {
   notification: AuthNotification | null;
   onClose: () => void;
   duration?: number;
   sidebarWidth?: number;
 }
 
-const NotificationSnackbar: React.FC<NotificationSnackbarProps> = ({
+const SnackbarAlert: React.FC<SnackbarProps> = ({
   notification,
   onClose,
   duration = 6000,
@@ -53,4 +53,4 @@ const NotificationSnackbar: React.FC<NotificationSnackbarProps> = ({
   );
 };
 
-export default NotificationSnackbar;
+export default SnackbarAlert;

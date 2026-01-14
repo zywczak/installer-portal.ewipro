@@ -131,5 +131,5 @@ export const useAIAssistantWS = (userInfo: UserInfo) => {
     return () => ws.close();
   }, [session_id, userInfo]);
 
-  return { messages, status, sendMessage };
+  return { messages, status, sendMessage};
 };
