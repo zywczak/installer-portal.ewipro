@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { AuthView } from "../types/auth.types";
+import { AuthView } from "../../types/auth.types";
 
 export const useAuthView = (initial: AuthView = "login") => {
   const [view, setView] = useState<AuthView>(initial);
