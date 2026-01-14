@@ -86,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({
                             transition: "transform 0.3s ease-in-out",
                             "&:hover": {
                             transform: "rotate(-15deg) translateX(2px)",
-                            color: "#ffd65a"
+                            color: "#ffbf00"
                             },
                             "&:hover:nth-of-type(2n)": {
                             transform: "rotate(15deg) translateX(-2px)",

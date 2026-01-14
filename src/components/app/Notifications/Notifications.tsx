@@ -2,11 +2,13 @@ import React from "react";
 import { Box, IconButton, Drawer, Popover } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
-import Header from "../common/Header";
-import { useNotifications } from "../../hooks/useNotifications";
-import NotificationList from "../common/NotificationBanner/NotificationList";
-import { Notification } from "../common/NotificationBanner/types";
+import Header from "../../common/Header";
+import EmptyStateBox from "../../common/EmptyStateBox";
+import { useNotifications } from "./useNotifications";
+import NotificationList from "./NotificationList";
+import { Notification } from "./types";
 import { t } from "i18next";
 
 interface Props {
@@ -19,7 +21,7 @@ interface Props {
   onUnreadChange?: (hasUnread: boolean) => void;
 }
 
-const NotificationBanner: React.FC<Props> = ({
+const Notifications: React.FC<Props> = ({
   isMobile,
   notifications,
   open,
@@ -51,12 +53,24 @@ const NotificationBanner: React.FC<Props> = ({
 
   const content = (
     <Box flex={1} mx={3} overflow="hidden">
-      <NotificationList
-        notifications={localNotifications}
-        onToggleRead={toggleRead}
-        onDelete={deleteNotification}
-        onClick={() => {}}
-      />
+      {localNotifications.length === 0 ? (
+        <EmptyStateBox
+          icon={<NotificationsNoneIcon />}
+          text={t("views.notifications.empty")}
+          isDisabled={true}
+        />
+      ) : (
+        <NotificationList
+          notifications={localNotifications}
+          onToggleRead={toggleRead}
+          onDelete={deleteNotification}
+           onClick={(notification) => {
+            if (notification.projectID && notification.contactID) {
+              globalThis.location.href = `#projects/${notification.projectID}/${notification.contactID}`;
+            }
+          }}
+        />
+      )}
     </Box>
   );
 
@@ -86,11 +100,12 @@ const NotificationBanner: React.FC<Props> = ({
       slotProps={{
         paper: {
           sx: {
-          width: 450,
-          height: 500,
+          width: 500,
+          height: "auto",
+          maxHeight: "80vh",
           display: "flex",
           flexDirection: "column",
-          borderRadius: 2,
+          borderRadius: "12px",
           border: "1px solid #e0e0e0",
         },
       },
@@ -102,4 +117,4 @@ const NotificationBanner: React.FC<Props> = ({
   );
 };
 
-export default NotificationBanner;
+export default Notifications;
