@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Box, Divider } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-import SidebarFooter from "../common/sidebar/SidebarFooter";
-import SidebarMenu from "../common/sidebar/SidebarMenu";
-import SidebarHeader from "../common/sidebar/SidebarHeader";
-import api from "../../api/axiosApi";
+import SidebarFooter from "./SidebarFooter";
+import SidebarMenu from "./SidebarMenu";
+import SidebarHeader from "./SidebarHeader";
+import api from "../../../api/axiosApi";
 
 interface SidebarProps {
   navigateTo: (view: string) => void;
@@ -31,27 +31,27 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   useEffect(() => {
     console.log(localStorage.getItem("access"));
-  const fetchUserData = async () => {
-    try {
-      const { data } = await api.post({ action: "getBasicUserData" });
+    const fetchUserData = async () => {
+      try {
+        const { data } = await api.post({ action: "getBasicUserData" });
 
-      setUser({
-        initials: data.name
-          ? data.name.split(" ").map((n: string) => n[0]).join("").toUpperCase()
-          : "U",
-        name: data.name || "Unknown User",
-        phone: data.phones?.mobile || data.phones?.phone || "No phone",
-        avatar: data.avatar || "",
-      });
+        setUser({
+          initials: data.name
+            ? data.name.split(" ").map((n: string) => n[0]).join("").toUpperCase()
+            : "U",
+          name: data.name || "Unknown User",
+          phone: data.phones?.mobile || data.phones?.phone || "No phone",
+          avatar: data.avatar || "",
+        });
 
-      localStorage.setItem("userAvatar", data.avatar);
-      console.log("Sidebar fetched user avatar:", data.avatar);
-    } catch (error) {
-      console.error("Błąd przy pobieraniu danych użytkownika:", error);
-    }
-  };
-  fetchUserData();
-}, []);
+        localStorage.setItem("userAvatar", data.avatar);
+        console.log("Sidebar fetched user avatar:", data.avatar);
+      } catch (error) {
+        console.error("Błąd przy pobieraniu danych użytkownika:", error);
+      }
+    };
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     if (onWidthChange && isDesktop) {
@@ -71,11 +71,21 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   if (isMobile && !isOpenMobile) return null;
 
+  let drawerWidth: string | number;
+
+  if (isMobile) {
+    drawerWidth = "100%";
+  } else if (isOpenDesktop) {
+    drawerWidth = 250;
+  } else {
+    drawerWidth = 80;
+  }
+
   const SidebarContent = (
     <Box
       sx={{
         height: "100%",
-        width: isMobile ? "100%" : isOpenDesktop ? 250 : 80,
+        width: drawerWidth,
         background: "#2D3538",
         color: "white",
         display: "flex",
