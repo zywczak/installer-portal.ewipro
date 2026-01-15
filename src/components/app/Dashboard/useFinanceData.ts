@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import api from "../api/axiosApi";
-import { FinanceData } from "../components/common/dashboard/finances/financeData";
+import api from "../../../api/axiosApi";
+import { FinanceData } from "./financeData";
 
 export const useFinanceData = () => {
   const [data, setData] = useState<FinanceData | null>(null);

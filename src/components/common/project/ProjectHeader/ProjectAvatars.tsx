@@ -1,4 +1,4 @@
-import { Box, AvatarGroup } from "@mui/material";
+import { Box } from "@mui/material";
 import UserAvatar from "../../UserAvatar";
 
 interface Member {

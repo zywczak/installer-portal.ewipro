@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { FinanceData } from "./financeData";
-import { FINANCE_COLORS } from "./financeColors";
 
 interface FinanceLegendProps {
   data: FinanceData;
@@ -24,13 +23,12 @@ export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
         gap: 1.5,
       }}
     >
-      {/* Remaining Credit Limit */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
         <Box
           sx={{
             width: 16,
             height: 16,
-            backgroundColor: FINANCE_COLORS.GREEN,
+            backgroundColor: "#4CAF50",
             borderRadius: "50%",
           }}
         />
@@ -44,13 +42,12 @@ export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
         </Box>
       </Box>
 
-      {/* Used (Outstanding Balance) */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
         <Box
           sx={{
             width: 16,
             height: 16,
-            backgroundColor: FINANCE_COLORS.LIGHT_RED,
+            backgroundColor: "#EF5350",
             borderRadius: "50%",
           }}
         />
@@ -64,14 +61,13 @@ export const FinanceLegend: React.FC<FinanceLegendProps> = ({ data }) => {
         </Box>
       </Box>
 
-      {/* Overdue Amount */}
       {overdueAmount > 0 && (
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
           <Box
             sx={{
               width: 16,
               height: 16,
-              backgroundColor: FINANCE_COLORS.DARK_RED,
+              backgroundColor: "#D32F2F",
               borderRadius: "50%",
             }}
           />

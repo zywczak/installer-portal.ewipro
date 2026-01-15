@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { Box, useTheme, useMediaQuery } from "@mui/material";
 import AuthBackground from "../components/auth/AuthBackground";
 import AuthPanel from "../components/auth/AuthPanel";
-import NotificationSnackbar from "../components/common/NotificationSnackbar";
-import { useAuthView } from "../hooks/useAuthView";
-import { AuthProvider, useAuthNotification } from "../context/AuthContext";
+import NotificationSnackbar from "../components/common/SnackbarAlert";
+import { useAuthView } from "../components/auth/useAuthView";
+import { SnackbarProvider, useAuthNotification } from "../context/AuthContext";
 
 const AuthContent: React.FC = () => {
   const { view, toLogin, toRegister, toForgot, toCheck, toReset } = useAuthView("login");
@@ -83,9 +83,9 @@ const AuthContent: React.FC = () => {
 };
 
 const Auth: React.FC = () => (
-  <AuthProvider>
+  <SnackbarProvider>
     <AuthContent />
-  </AuthProvider>
+  </SnackbarProvider>
 );
 
 export default Auth;

@@ -1,5 +1,4 @@
 import { ChartConfig, FinanceData } from "./financeData";
-import { FINANCE_COLORS } from "./financeColors";
 
 export const calculateChartData = (data: FinanceData): ChartConfig => {
   const remaining = Number.parseFloat(data.remainingLimit);
@@ -14,7 +13,7 @@ export const calculateChartData = (data: FinanceData): ChartConfig => {
         { name: "Overdue", value: overdueAmount },
         { name: "Remaining", value: remaining },
       ],
-      colors: [FINANCE_COLORS.LIGHT_RED, FINANCE_COLORS.DARK_RED, FINANCE_COLORS.GREEN],
+      colors: ["#EF5350", "#D32F2F", "#4CAF50"],
     };
   }
 
@@ -23,6 +22,6 @@ export const calculateChartData = (data: FinanceData): ChartConfig => {
       { name: "Used", value: spent },
       { name: "Remaining", value: remaining },
     ],
-    colors: [FINANCE_COLORS.LIGHT_RED, FINANCE_COLORS.GREEN],
+    colors: ["#EF5350", "#4CAF50"],
   };
 };

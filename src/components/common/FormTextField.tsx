@@ -54,7 +54,8 @@ const FormTextField: React.FC<FormTextFieldProps> = ({
         error={!!error}
         disabled={disabled}
         size={size}
-        InputProps={{
+        slotProps={{
+          input: {
           startAdornment: icon ? (
             <InputAdornment position="start">{icon}</InputAdornment>
           ) : undefined,
@@ -70,11 +71,12 @@ const FormTextField: React.FC<FormTextFieldProps> = ({
             </InputAdornment>
           ) : undefined,
           ...InputProps,
+        },
         }}
         InputLabelProps={{
           shrink: !!value,
           sx: {
-            left: !!value ? 0 : icon ? 38 : 0,
+            left: value ? 0 : icon ? 38 : 0,
           },
         }}
         sx={{

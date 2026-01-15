@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Box, Drawer } from "@mui/material";
 import Header from "../components/app/Header";
-import Sidebar from "../components/app/Sidebar";
+import Sidebar from "../components/app/sidebar/Sidebar";
 import Subcontractors from "../components/app/Subcontractors";
 import Projects from "../components/app/Projects";
-import Dashboard from "../components/app/Dashboard";
-import Settings from "../components/app/Settings";
+import Dashboard from "../components/app/Dashboard/Dashboard";
+import Settings from "../components/app/settings/Settings";
 import ChangePassword from "../components/app/ChangePassword";
-import NotificationBanner from "../components/app/NotificationBanner";
-import { Notification } from "../components/common/NotificationBanner/types";
-import ProfileView from "../components/app/MyProfile";
+import Notifications from "../components/app/Notifications/Notifications";
+import { Notification } from "../components/app/Notifications/types";
+import ProfileView from "../components/app/MyProfile/ProfileView";
 import Project from "../components/app/Project";
 import AIAssistant from "../components/app/AIAssistant";
 import Subcontractor from "../components/app/Subcontractor";
-import SuccessSnackbar from "../components/common/SuccessSnackbar";
-import ErrorSnackbar from "../components/common/ErrorSnackbar";
 import AddProjectForm from "../components/app/AddProjectForm";
 import OrderCreationPage from "../components/app/OrderCreationPage";
-import Calculator from "../components/app/Calculator";
+import Calculator from "../components/app/Calculator/Calculator";
+import { SnackbarProvider, useAuthNotification } from "../context/AuthContext";
+import SnackbarAlert from "../components/common/SnackbarAlert";
 
-function App() {
+const AppContent: React.FC = () => {
   const [view, setView] = useState<string>(globalThis.location.hash.replace("#", "") || "dashboard");
   const [viewParam, setViewParam] = useState<string | null>(null);
   const [isMobileContent, setIsMobileContent] = useState(false);
@@ -35,11 +35,7 @@ function App() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [hasUnreadNotifications, setHasUnreadNotifications] = useState(false);
 
-  const [globalSuccess, setGlobalSuccess] = useState<string | null>(null);
-  const [globalError, setGlobalError] = useState<string | null>(null);
-
-  const showSuccess = (msg: string) => setGlobalSuccess(msg);
-  const showError = (msg: string) => setGlobalError(msg);
+  const { notification, clearNotification } = useAuthNotification();
 
   const [sidebarWidth, setSidebarWidth] = useState(250);
 
@@ -92,6 +88,9 @@ useEffect(() => {
     title: n.title ?? "Powiadomienie",
 
     message: n.message ?? "", 
+    projectID: n.projectID ?? undefined,
+    contactID: n.contactID ?? undefined, 
+    slug: n.slug ?? "",
 
     date: n.date ?? "", 
 
@@ -166,19 +165,13 @@ return (
       dashboard: <Dashboard isMobile={isMobileContent} />,
       projects: <Projects isMobile={isMobileContent} />,
       subcontractors: <Subcontractors isMobile={isMobileContent} />,
-      settings: <Settings isMobile={isMobileContent} navigateTo={navigateTo} />,
-      materialsCalculator: <Calculator />,
+      settings: <Settings navigateTo={navigateTo} />,
+      calculator: <Calculator/>,
       changepassword: (
-        <ChangePassword 
-          showSuccess={showSuccess}
-          showError={showError}
-        />
+        <ChangePassword />
       ),
       profile: (
-        <ProfileView
-          showSuccess={showSuccess}
-          showError={showError}
-        />
+        <ProfileView />
       ),
       addProject: <AddProjectForm />
     };
@@ -189,7 +182,7 @@ return (
   return (
     <Box sx={{ display: "flex", height: "100vh", width: "100%" }}>
       <Box sx={{ position: "absolute", right: 16, top: 12, }}>
-        <NotificationBanner 
+        <Notifications
           isMobile={isMobileContent} 
           notifications={notifications}
           open={Boolean(anchorEl)}
@@ -239,26 +232,25 @@ return (
       subcontractorName={isSubcontractorView ? subcontractorName : null}
     />
   </Box>
+
   <Box
     sx={{
       flex: 1,
-      overflowY: "auto", // scroll tylko dla contentu
+      mt: 1,
+      overflowY: "auto",
       "&::-webkit-scrollbar": { width: 0, background: "transparent" },
       scrollbarWidth: "none",
       msOverflowStyle: "none",
     }}
   >
     {renderView()}
-    <SuccessSnackbar
-      message={globalSuccess}
-      onClose={() => setGlobalSuccess(null)}
+
+      <SnackbarAlert
+      notification={notification} 
+      onClose={clearNotification} 
       sidebarWidth={0}
     />
-    <ErrorSnackbar
-      message={globalError}
-      onClose={() => setGlobalError(null)}
-      sidebarWidth={0}
-    />
+
   </Box>
 </Box>
 ) : (
@@ -285,19 +277,11 @@ return (
             }}
           >
             {renderView()}
-
-            <SuccessSnackbar
-              message={globalSuccess}
-              onClose={() => setGlobalSuccess(null)}
+            <SnackbarAlert
+              notification={notification} 
+              onClose={clearNotification} 
               sidebarWidth={sidebarWidth}
             />
-
-            <ErrorSnackbar
-              message={globalError}
-              onClose={() => setGlobalError(null)}
-              sidebarWidth={sidebarWidth}
-            />
-
           </Box>
         </Box>
       )}
@@ -305,5 +289,11 @@ return (
     </Box>
   );
 }
+
+const App: React.FC = () => (
+  <SnackbarProvider>
+    <AppContent />
+  </SnackbarProvider>
+);
 
 export default App;

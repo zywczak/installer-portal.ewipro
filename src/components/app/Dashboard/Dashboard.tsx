@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Typography, Divider, IconButton, Button, useMediaQuery } from "@mui/material";
-import FinanceTiles from "../common/dashboard/FinanceTiles";
-import StatementDownloadTile from "../common/dashboard/StatementDownloadTile";
+import FinanceTiles from "./FinanceTiles";
+import StatementDownloadTile from "./StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
 import { ArrowForwardIos } from "@mui/icons-material";
-import ProjectsView from "../common/projects&subcontractors/projects/ProjectsView";
+import ProjectsView from "../../common/projects&subcontractors/projects/ProjectsView";
 import { t } from "i18next";
 
 interface DashboardProps {

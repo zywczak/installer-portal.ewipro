@@ -10,6 +10,12 @@ interface AcceptButtonProps {
   size?: "small" | "medium" | "large";
 }
 
+const sizeMap = {
+  small: { height: 36, fontSize: 13 },
+  medium: { height: 44, fontSize: 15 },
+  large: { height: 48, fontSize: 16 },
+};
+
 const AcceptButton: React.FC<AcceptButtonProps> = ({
   onClick,
   loading = false,
@@ -18,8 +24,7 @@ const AcceptButton: React.FC<AcceptButtonProps> = ({
   loadingLabel,
   size = "large",
 }) => {
-  const height = size === "small" ? 36 : size === "medium" ? 44 : 48;
-  const fontSize = size === "small" ? 13 : size === "medium" ? 15 : 16;
+  const { height, fontSize } = sizeMap[size] ?? sizeMap.large;
 
   return (
     <Button

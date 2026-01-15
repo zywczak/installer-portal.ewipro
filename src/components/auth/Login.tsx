@@ -7,11 +7,11 @@ import FormHeader from "../common/FormHeader";
 import FormTextField from "../common/FormTextField";
 import AcceptButton from "../common/AcceptButton";
 import ActionLink from "../common/ActionLink";
-import { useTranslation } from "react-i18next";
 import { useAuthNotification } from "../../context/AuthContext";
 import { useFormField } from "../../hooks/useFormField";
 import { validateEmail } from "../../utils/validation/validators";
 import { AUTH_ENDPOINTS } from "../../utils/api/auth.api";
+import { t } from "i18next";
 
 interface LoginProps {
   onRegister: () => void;
@@ -20,8 +20,7 @@ interface LoginProps {
   onResetPassword: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onRegister, onCheckEmail, onForgotPassword }) => {
-  const { t } = useTranslation();
+const Login: React.FC<LoginProps> = ({ onRegister, onCheckEmail, onForgotPassword, onResetPassword }) => {
   const { showError } = useAuthNotification();
 
   const emailField = useFormField("", validateEmail);

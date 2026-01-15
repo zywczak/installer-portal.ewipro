@@ -1,4 +1,3 @@
-
 export interface FinanceData {
   status: boolean;
   overdueBalance: string;

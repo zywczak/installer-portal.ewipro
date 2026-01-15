@@ -28,7 +28,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBackToLogin }) => {
   const [resetHash, setResetHash] = useState("");
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(globalThis.location.search);
     setResetHash(params.get("hash") ?? "");
   }, []);
 
@@ -77,7 +77,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBackToLogin }) => {
         onChange={repeatField.onChange}
         placeholder={t("views.settings.changePassword.form.repeatPassword.label")}
         type="password"
-        error={repeatField.error || (passwordField.value !== repeatField.value ? t("Passwords do not match") : null)}
+        error={repeatField.error || (passwordField.value == repeatField.value ? null : t("Passwords do not match"))}
         icon={<LockIcon color="action" />}
         showPasswordToggle
       />
