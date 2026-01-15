@@ -5,15 +5,11 @@ import AcceptButton from "../common/AcceptButton";
 import LockIcon from "@mui/icons-material/Lock";
 import { useChangePassword } from "../../hooks/useChangePassword";
 import MainCard from "../common/MainCard";
-import { useTranslation } from "react-i18next";
+import { useAuthNotification } from "../../context/AuthContext";
+import { t } from "i18next";
 
-interface Props {
-  showSuccess: (msg: string) => void;
-  showError: (msg: string) => void;
-}
-
-const ChangePassword: React.FC<Props> = ({ showSuccess, showError }) => {
-  const { t } = useTranslation();
+const ChangePassword: React.FC = () => {
+  const { showSuccess, showError } = useAuthNotification();
 
   const {
     currentPassword,
