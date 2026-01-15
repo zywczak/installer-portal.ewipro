@@ -517,7 +517,8 @@
       },
       "useDefaultOwner": {
         "header": "Proprietar implicit al proiectului",
-        "description": "Folosește proprietarul selectat ca implicit pentru toate proiectele noi create"
+        "description": "Folosește proprietarul selectat ca implicit pentru toate proiectele noi create",
+        "click": "Faceți clic pentru a selecta"
       },
       "deleteAccount": {
         "button": "ȘTERGE CONTUL",

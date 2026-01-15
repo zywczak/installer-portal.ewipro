@@ -517,7 +517,8 @@
       },
       "useDefaultOwner": {
         "header": "Domyślny właściciel projektu",
-        "description": "Użyj wybranego właściciela jako domyślnego dla wszystkich nowotworzonych projektów"
+        "description": "Użyj wybranego właściciela jako domyślnego dla wszystkich nowotworzonych projektów",
+        "click": "Kliknij, aby wybrać"
       },
       "deleteAccount": {
         "button": "USUŃ KONTO",

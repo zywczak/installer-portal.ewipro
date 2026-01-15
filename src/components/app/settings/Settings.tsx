@@ -1,29 +1,25 @@
 import { Box, Divider, List } from "@mui/material";
-import { useTranslation } from "react-i18next";
 import { useState, useRef } from "react";
-
-import MainCard from "../common/MainCard";
-import ChangePasswordItem from "../settings/ChangePasswordItem";
-import DefaultOwnerSwitch from "../settings/DefaultOwnerSwitch";
-import OwnerSelector, { Owner } from "../settings/OwnerSelector";
-import LanguageSelector from "../settings/LanguageSelector";
-import DeleteAccount from "../settings/DeleteAccount";
-import { useOwners } from "../../hooks/useOwners";
-import { useDeleteAccount } from "../../hooks/useDeleteAccount";
+import MainCard from "../../common/MainCard";
+import ChangePasswordItem from "./ChangePasswordItem";
+import DefaultOwnerSwitch from "./DefaultOwnerSwitch";
+import OwnerSelector, { Owner } from "./OwnerSelector";
+import LanguageSelector from "./LanguageSelector";
+import DeleteAccount from "./DeleteAccount";
+import { useOwners } from "../../../hooks/useOwners";
+import { useDeleteAccount } from "../../../hooks/useDeleteAccount";
+import { t } from "i18next";
+import i18n from "../../../i18n";
+import { useAuthNotification } from "../../../context/AuthContext";
 
 interface SettingsProps {
-  isMobile?: boolean;
   navigateTo?: (newView: string) => void;
-  showSuccess?: (msg: string) => void;
-  showError?: (msg: string) => void;
 }
 
 const Settings: React.FC<SettingsProps> = ({
   navigateTo,
-  showSuccess,
-  showError,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { showError, showSuccess } = useAuthNotification();
 
   const [isDefaultOwnerEnabled, setIsDefaultOwnerEnabled] = useState(() => {
     const saved = localStorage.getItem("defaultProjectOwner");
@@ -71,7 +67,6 @@ const Settings: React.FC<SettingsProps> = ({
     localStorage.setItem("defaultOwnerEmail", owner.email);
     localStorage.setItem("defaultOwnerAvatar", owner.avatar || "");
     setShowOwnersList(false);
-    showSuccess?.("Default owner został zapisany");
   };
 
   const handleOwnerDropdown = async () => {
@@ -84,7 +79,6 @@ const Settings: React.FC<SettingsProps> = ({
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     i18n.changeLanguage(lang);
-    globalThis.location.reload();
   };
 
   return (

@@ -1,7 +1,8 @@
 import React from "react";
 import { Box, ListItemButton, ListItemText, CircularProgress } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import UserAvatar from "../common/UserAvatar";
+import UserAvatar from "../../common/UserAvatar";
+import { t } from "i18next";
 
 export interface Owner {
   userID: number;
@@ -69,11 +70,10 @@ const OwnerSelector: React.FC<Props> = ({
           </Box>
 
           <ListItemText
-            primary={selectedOwner ? selectedOwner.name : "Kliknij aby wybrać"}
+            primary={selectedOwner ? selectedOwner.name : t("views.settings.useDefaultOwner.click")}
             secondary={selectedOwner?.email || ""}
           />
 
-          {/* Strzałka */}
           <ArrowForwardIosIcon
             sx={{
               color: "green",

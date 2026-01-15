@@ -517,7 +517,8 @@
       },
       "useDefaultOwner": {
         "header": "Default project owner",
-        "description": "Use the selected owner as default for all newly created projects"
+        "description": "Use the selected owner as default for all newly created projects",
+        "click": "Click to select"
       },
       "deleteAccount": {
         "button": "DELETE ACCOUNT",
