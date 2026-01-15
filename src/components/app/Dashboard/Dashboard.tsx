@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Divider, IconButton, Button, useMediaQuery } from "@mui/material";
-import FinanceTiles from "./FinanceTiles";
-import StatementDownloadTile from "./StatementDownloadTile";
+import FinanceTiles from "./Finance/FinanceTiles";
+import StatementDownloadTile from "./Finance/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
 import { ArrowForwardIos } from "@mui/icons-material";
 import ProjectsView from "../../common/projects&subcontractors/projects/ProjectsView";
