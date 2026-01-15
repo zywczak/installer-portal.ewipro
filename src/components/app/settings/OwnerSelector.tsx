@@ -46,7 +46,7 @@ const OwnerSelector: React.FC<Props> = ({
     }
 
     if (owners.length === 0) {
-      return <Box sx={{ textAlign: "center", p: 2 }}>Brak ownerów do wyboru</Box>;
+      return <Box sx={{ textAlign: "center", p: 2 }}>{t("views.settings.useDefaultOwner.empty")}</Box>;
     }
 
     return owners

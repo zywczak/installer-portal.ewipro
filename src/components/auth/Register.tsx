@@ -9,11 +9,11 @@ import FormHeader from "../common/FormHeader";
 import FormTextField from "../common/FormTextField";
 import AcceptButton from "../common/AcceptButton";
 import ActionLink from "../common/ActionLink";
-import { useTranslation } from "react-i18next";
 import { useAuthNotification } from "../../context/AuthContext";
 import { useFormField } from "../../hooks/useFormField";
 import { validateEmail, validatePhone } from "../../utils/validation/validators";
 import { AUTH_ENDPOINTS } from "../../utils/api/auth.api";
+import { t } from "i18next";
 
 interface RegisterProps {
   onBack: () => void;
@@ -21,7 +21,6 @@ interface RegisterProps {
 }
 
 const Register: React.FC<RegisterProps> = ({ onBack, onCheckEmail }) => {
-  const { t } = useTranslation();
   const { showError } = useAuthNotification();
 
   const nameField = useFormField("");

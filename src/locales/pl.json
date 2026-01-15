@@ -518,7 +518,9 @@
       "useDefaultOwner": {
         "header": "Domyślny właściciel projektu",
         "description": "Użyj wybranego właściciela jako domyślnego dla wszystkich nowotworzonych projektów",
-        "click": "Kliknij, aby wybrać"
+        "click": "Kliknij, aby wybrać",
+        "fetchFailed": "Nie udało się pobrać listy właścicieli.",
+        "empty" : "Brak właścicieli do wyboru"
       },
       "deleteAccount": {
         "button": "USUŃ KONTO",
@@ -527,7 +529,8 @@
           "description": "Czy na pewno chcesz usunąć swoje konto? Ta operacja jest nieodwracalna.",
           "cancel": "ANULUJ",
           "delete": "USUŃ KONTO",
-          "loading": "USUWANIE..."
+          "loading": "USUWANIE...",
+          "failed": "Nie udało się usunąć konta."
         }
       }
     },

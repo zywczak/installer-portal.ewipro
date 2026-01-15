@@ -5,12 +5,12 @@ import FormHeader from "../common/FormHeader";
 import FormTextField from "../common/FormTextField";
 import AcceptButton from "../common/AcceptButton";
 import ActionLink from "../common/ActionLink";
-import { useTranslation } from "react-i18next";
 import api from "../../api/axiosApi";
 import { useAuthNotification } from "../../context/AuthContext";
 import { useFormField } from "../../hooks/useFormField";
 import { validateEmail } from "../../utils/validation/validators";
 import { AUTH_ENDPOINTS } from "../../utils/api/auth.api";
+import { t } from "i18next";
 
 interface ForgotPasswordProps {
   onBack: () => void;
@@ -18,7 +18,6 @@ interface ForgotPasswordProps {
 }
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onBack, onCheckEmail }) => {
-  const { t } = useTranslation();
   const { showError } = useAuthNotification();
   const emailField = useFormField("", validateEmail);
   const [loading, setLoading] = React.useState(false);

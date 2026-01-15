@@ -1,5 +1,7 @@
 import { useState, useCallback } from "react";
 import api from "../api/axiosApi";
+import { useAuthNotification } from "../context/AuthContext";
+import { t } from "i18next";
 
 export interface Owner {
   userID: number;
@@ -8,9 +10,11 @@ export interface Owner {
   avatar?: string | null;
 }
 
-export const useOwners = (showError?: (msg: string) => void) => {
+export const useOwners = () => {
   const [owners, setOwners] = useState<Owner[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const { showError } = useAuthNotification();
 
   const loadOwners = useCallback(async () => {
     try {
@@ -19,7 +23,7 @@ export const useOwners = (showError?: (msg: string) => void) => {
       setOwners(res.data?.results ?? []);
     } catch (err) {
       console.error(err);
-      showError?.('Nie udało się pobrać listy Ownerów');
+      showError(t("views.settings.useDefaultOwner.fetchFailed"));
     } finally {
       setLoading(false);
     }

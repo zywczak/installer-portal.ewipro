@@ -518,7 +518,9 @@
       "useDefaultOwner": {
         "header": "Proprietar implicit al proiectului",
         "description": "Folosește proprietarul selectat ca implicit pentru toate proiectele noi create",
-        "click": "Faceți clic pentru a selecta"
+        "click": "Faceți clic pentru a selecta",
+        "fetchFailed": "Nu s-a reușit obținerea listei de proprietari.",
+        "empty": "Nu există proprietari disponibili pentru selecție."
       },
       "deleteAccount": {
         "button": "ȘTERGE CONTUL",
@@ -527,7 +529,8 @@
           "description": "Sigur doriți să vă ștergeți contul? Această operațiune este ireversibilă.",
           "cancel": "ANULAȚI",
           "delete": "ȘTERGE CONTUL",
-          "loading": "ȘTERGERE..."
+          "loading": "ȘTERGERE...",
+          "failed": "Nu s-a reușit ștergerea contului."
         }
       }
     },

@@ -7,10 +7,9 @@ import OwnerSelector, { Owner } from "./OwnerSelector";
 import LanguageSelector from "./LanguageSelector";
 import DeleteAccount from "./DeleteAccount";
 import { useOwners } from "../../../hooks/useOwners";
-import { useDeleteAccount } from "../../../hooks/useDeleteAccount";
+import { useDeleteAccount } from "./useDeleteAccount";
 import { t } from "i18next";
 import i18n from "../../../i18n";
-import { useAuthNotification } from "../../../context/AuthContext";
 
 interface SettingsProps {
   navigateTo?: (newView: string) => void;
@@ -19,8 +18,6 @@ interface SettingsProps {
 const Settings: React.FC<SettingsProps> = ({
   navigateTo,
 }) => {
-  const { showError, showSuccess } = useAuthNotification();
-
   const [isDefaultOwnerEnabled, setIsDefaultOwnerEnabled] = useState(() => {
     const saved = localStorage.getItem("defaultProjectOwner");
     return saved ? JSON.parse(saved) : false;
@@ -42,8 +39,8 @@ const Settings: React.FC<SettingsProps> = ({
   const [language, setLanguage] = useState(i18n.language || "en");
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
-  const { owners, loading, loadOwners } = useOwners(showError);
-  const { deleting, deleteAccount } = useDeleteAccount(showSuccess, showError);
+  const { owners, loading, loadOwners } = useOwners();
+  const { deleting, deleteAccount } = useDeleteAccount();
 
   const handleOwnerToggle = () => {
     const newValue = !isDefaultOwnerEnabled;

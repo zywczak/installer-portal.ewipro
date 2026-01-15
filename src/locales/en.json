@@ -518,7 +518,9 @@
       "useDefaultOwner": {
         "header": "Default project owner",
         "description": "Use the selected owner as default for all newly created projects",
-        "click": "Click to select"
+        "click": "Click to select",
+        "fetchFailed": "Failed to fetch the list of owners.",
+        "empty": "No owners available to select."
       },
       "deleteAccount": {
         "button": "DELETE ACCOUNT",
@@ -527,7 +529,8 @@
           "description": "Are you sure you want to delete your account? This operation is irreversible.",
           "cancel": "CANCEL",
           "delete": "DELETE ACCOUNT",
-          "loading": "DELETING..."
+          "loading": "DELETING...",
+          "failed": "Failed to delete the account."
         }
       }
     },
