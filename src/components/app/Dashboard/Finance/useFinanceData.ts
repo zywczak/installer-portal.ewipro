@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../../api/axiosApi";
+import api from "../../../../api/axiosApi";
 import { FinanceData } from "./financeData";
 
 export const useFinanceData = () => {
