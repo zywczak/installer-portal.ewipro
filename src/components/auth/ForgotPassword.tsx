@@ -10,7 +10,7 @@ import { useAuthNotification } from "../../context/AuthContext";
 import { useFormField } from "../../hooks/useFormField";
 import { validateEmail } from "../../utils/validation/validators";
 import { AUTH_ENDPOINTS } from "../../utils/api/auth.api";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface ForgotPasswordProps {
   onBack: () => void;
@@ -18,6 +18,7 @@ interface ForgotPasswordProps {
 }
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onBack, onCheckEmail }) => {
+  const { t } = useTranslation();
   const { showError } = useAuthNotification();
   const emailField = useFormField("", validateEmail);
   const [loading, setLoading] = React.useState(false);

@@ -11,7 +11,7 @@ import { useAuthNotification } from "../../context/AuthContext";
 import { useFormField } from "../../hooks/useFormField";
 import { validateEmail } from "../../utils/validation/validators";
 import { AUTH_ENDPOINTS } from "../../utils/api/auth.api";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface LoginProps {
   onRegister: () => void;
@@ -21,6 +21,7 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ onRegister, onCheckEmail, onForgotPassword, onResetPassword }) => {
+  const { t } = useTranslation();
   const { showError } = useAuthNotification();
 
   const emailField = useFormField("", validateEmail);

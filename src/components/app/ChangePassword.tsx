@@ -6,9 +6,11 @@ import LockIcon from "@mui/icons-material/Lock";
 import { useChangePassword } from "../../hooks/useChangePassword";
 import MainCard from "../common/MainCard";
 import { useAuthNotification } from "../../context/AuthContext";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const ChangePassword: React.FC = () => {
+  const { t } = useTranslation();
+  
   const { showSuccess, showError } = useAuthNotification();
 
   const {

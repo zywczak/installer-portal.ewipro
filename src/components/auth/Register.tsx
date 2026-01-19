@@ -13,7 +13,7 @@ import { useAuthNotification } from "../../context/AuthContext";
 import { useFormField } from "../../hooks/useFormField";
 import { validateEmail, validatePhone } from "../../utils/validation/validators";
 import { AUTH_ENDPOINTS } from "../../utils/api/auth.api";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface RegisterProps {
   onBack: () => void;
@@ -21,6 +21,7 @@ interface RegisterProps {
 }
 
 const Register: React.FC<RegisterProps> = ({ onBack, onCheckEmail }) => {
+  const { t } = useTranslation();
   const { showError } = useAuthNotification();
 
   const nameField = useFormField("");

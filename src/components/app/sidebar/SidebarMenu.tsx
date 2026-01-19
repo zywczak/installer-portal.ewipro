@@ -6,7 +6,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SidebarMenuItem from "./SidebarMenuItem";
 import ScrollableContainerWithArrows from "../../common/ScrollableContainerWithArrows";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface SidebarMenuProps {
   currentView: string;
@@ -23,6 +23,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
   onNavigate,
   onClose,
 }) => {
+  const { t } = useTranslation();
   const menuItems = [
     { text: t("drawer.dashboard"), icon: <DashboardIcon />, view: "dashboard" },
     { text: t("drawer.myProjects"), icon: <ListAltIcon />, view: "projects" },

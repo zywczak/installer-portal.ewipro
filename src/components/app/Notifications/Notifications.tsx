@@ -9,7 +9,7 @@ import EmptyStateBox from "../../common/EmptyStateBox";
 import { useNotifications } from "./useNotifications";
 import NotificationList from "./NotificationList";
 import { Notification } from "./types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   isMobile: boolean;
@@ -30,6 +30,7 @@ const Notifications: React.FC<Props> = ({
   anchorEl,
   onUnreadChange,
 }) => {
+  const { t } = useTranslation();
   const {
     notifications: localNotifications,
     toggleRead,

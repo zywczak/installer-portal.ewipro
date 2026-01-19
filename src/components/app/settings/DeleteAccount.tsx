@@ -1,6 +1,6 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography, CircularProgress } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/DeleteOutline';
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   open: boolean;
@@ -10,8 +10,9 @@ interface Props {
   deleting: boolean;
   buttonText: string;
 }
-
-const DeleteAccount: React.FC<Props> = ({ open, onOpen, onClose, onDelete, deleting, buttonText }) => (
+const DeleteAccount: React.FC<Props> = ({ open, onOpen, onClose, onDelete, deleting, buttonText }) => {
+  const { t } = useTranslation();
+  return (
   <>
     <Box sx={{ textAlign: 'center', py: 3 }}>
       <Button
@@ -42,5 +43,6 @@ const DeleteAccount: React.FC<Props> = ({ open, onOpen, onClose, onDelete, delet
     </Dialog>
   </>
 );
+};
 
 export default DeleteAccount;

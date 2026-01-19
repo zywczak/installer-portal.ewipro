@@ -2,7 +2,7 @@ import React from "react";
 import { Box, ListItemButton, ListItemText, CircularProgress } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import UserAvatar from "../../common/UserAvatar";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export interface Owner {
   userID: number;
@@ -34,6 +34,8 @@ const OwnerSelector: React.FC<Props> = ({
   onSelect,
   ownerButtonRef,
 }) => {
+  const { t } = useTranslation();
+  
   if (!isEnabled) return null;
 
   const dropdownContent = (() => {

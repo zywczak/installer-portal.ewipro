@@ -3,7 +3,7 @@ import AcceptButton from "../../common/AcceptButton";
 import ProfileAvatar from "./ProfileAvatar";
 import ProfileForm from "./ProfileForm";
 import { useProfile } from "./useProfile";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const ProfileView = () => {
   const {
@@ -22,6 +22,8 @@ const ProfileView = () => {
     handleDeletePhoto,
     handleSave,
   } = useProfile();
+  
+  const { t } = useTranslation();
 
   if (loading && !user) return <CircularProgress />;
 

@@ -5,7 +5,7 @@ import ProjectMembers from "./ProjectMembers";
 import warranty from '../../../../assets/warranty.png';
 import { Box, Tooltip, Typography } from "@mui/material";
 import { fallbackColors, stageColors } from "../../colors";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   rows: Project[];
@@ -16,7 +16,7 @@ interface Props {
 
 const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFooter }) => {
   const rowStatusColor = { Open: "#54A852", Closed: "#e91e63" };
-
+  const { t } = useTranslation();
   const columns: Column<Project>[] = [
     {
       key: "projectCode",

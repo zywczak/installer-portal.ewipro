@@ -2,7 +2,7 @@ import React from "react";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import warranty from '../../../assets/warranty.png';
 import AddIcon from "@mui/icons-material/Add";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface LegendProps {
   type: "project" | "subcontractor";
@@ -13,7 +13,8 @@ const Legend: React.FC<LegendProps> = ({ type, showAddButton = true }) => {
   const handleAddProjectClick = () => {
     globalThis.location.hash = "#addProject";
   };
-
+  const { t } = useTranslation();
+  
   if (type === "project") {
     return (
       <Stack

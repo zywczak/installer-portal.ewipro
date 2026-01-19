@@ -2,7 +2,7 @@ import React from "react";
 import DataTable, { Column } from "../Table/DataTable";
 import UserAvatar from "../../UserAvatar"; 
 import { User } from "./types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   users: User[];
@@ -17,6 +17,8 @@ const rowStatusColor: Record<User["status"], string> = {
 };
 
 const SubcontractorsTable: React.FC<Props> = ({ users, onRowClick, onOverflow }) => {
+  const { t } = useTranslation();
+  
   const columns: Column<User>[] = [
     {
       key: "photo",

@@ -4,9 +4,11 @@ import { useAuthNotification } from "../../../context/AuthContext";
 import { phoneRegex, getUserPhone } from "./profile.utils";
 import { UserProfile } from "./profile.types";
 import profilePhoto from "../../../assets/profile-photo.png";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export const useProfile = () => {
+  const { t } = useTranslation();
+  
   const [user, setUser] = useState<UserProfile | null>(null);
   const [photo, setPhoto] = useState<string>(profilePhoto);
   const [photoChanged, setPhotoChanged] = useState(false);

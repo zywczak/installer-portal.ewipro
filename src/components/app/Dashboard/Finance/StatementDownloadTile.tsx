@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Card, CardActionArea } from "@mui/material";
 import { FileDownloadOutlined } from "@mui/icons-material";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface StatementDownloadTileProps {
   onDownloadClick: () => void;
@@ -10,6 +10,7 @@ interface StatementDownloadTileProps {
 const StatementDownloadTile: React.FC<StatementDownloadTileProps> = ({
   onDownloadClick,
 }) => {
+  const { t } = useTranslation();
 
   return (
     <Card

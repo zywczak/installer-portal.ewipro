@@ -1,5 +1,5 @@
 import { Box, Divider, List } from "@mui/material";
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import MainCard from "../../common/MainCard";
 import ChangePasswordItem from "./ChangePasswordItem";
 import DefaultOwnerSwitch from "./DefaultOwnerSwitch";
@@ -8,17 +8,22 @@ import LanguageSelector from "./LanguageSelector";
 import DeleteAccount from "./DeleteAccount";
 import { useOwners } from "../../../hooks/useOwners";
 import { useDeleteAccount } from "./useDeleteAccount";
-import { t } from "i18next";
-import i18n from "../../../i18n";
+import { useTranslation } from "react-i18next";
+// ...existing code...
 
 interface SettingsProps {
   navigateTo?: (newView: string) => void;
+  language: string;
+  onLanguageChange: (lang: string) => void;
 }
 
 const Settings: React.FC<SettingsProps> = ({
   navigateTo,
+  language,
+  onLanguageChange
 }) => {
-  const [isDefaultOwnerEnabled, setIsDefaultOwnerEnabled] = useState(() => {
+  const { t } = useTranslation();
+  const [isDefaultOwnerEnabled, setIsDefaultOwnerEnabled] = React.useState(() => {
     const saved = localStorage.getItem("defaultProjectOwner");
     return saved ? JSON.parse(saved) : false;
   });
@@ -36,8 +41,7 @@ const Settings: React.FC<SettingsProps> = ({
   const ownerButtonRef = useRef<HTMLDivElement | null>(null);
   const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0 });
 
-  const [language, setLanguage] = useState(i18n.language || "en");
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
 
   const { owners, loading, loadOwners } = useOwners();
   const { deleting, deleteAccount } = useDeleteAccount();
@@ -73,10 +77,7 @@ const Settings: React.FC<SettingsProps> = ({
     setShowOwnersList(prev => !prev);
   };
 
-  const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
-    i18n.changeLanguage(lang);
-  };
+  // ...existing code...
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", flex: 1, gap: 2, px: 2 }}>
@@ -113,7 +114,7 @@ const Settings: React.FC<SettingsProps> = ({
 
           <LanguageSelector
             language={language}
-            onChange={handleLanguageChange}
+            onChange={onLanguageChange}
             title={t("views.settings.language")}
           />
         </List>

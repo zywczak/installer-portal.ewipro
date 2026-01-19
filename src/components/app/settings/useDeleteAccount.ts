@@ -1,10 +1,12 @@
 import { useState } from "react";
 import api from "../../../api/axiosApi";
 import { useAuthNotification } from "../../../context/AuthContext";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export const useDeleteAccount = () => {
   const [deleting, setDeleting] = useState(false);
+
+const { t } = useTranslation();
 
   const { showError } = useAuthNotification();
 

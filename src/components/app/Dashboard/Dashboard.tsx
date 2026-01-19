@@ -5,13 +5,14 @@ import StatementDownloadTile from "./Finance/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
 import { ArrowForwardIos } from "@mui/icons-material";
 import ProjectsView from "../../common/projects&subcontractors/projects/ProjectsView";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface DashboardProps {
   isMobile: boolean;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ isMobile }) => {
+  const { t } = useTranslation();
   const showDownload = useMediaQuery("(min-width:960px)");
 
   const handleAddProjectClick = () => {

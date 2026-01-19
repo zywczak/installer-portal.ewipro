@@ -1,6 +1,6 @@
 import { Box, Typography, IconButton, Select, MenuItem } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   currentPage: number;
@@ -21,6 +21,8 @@ export default function Footer({
   onPageSelect,
   sticky = true,
 }: Props) {
+  const { t } = useTranslation();
+  
   return (
     <Box
   sx={{

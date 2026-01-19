@@ -6,6 +6,7 @@ import Subcontractors from "../components/app/Subcontractors";
 import Projects from "../components/app/Projects";
 import Dashboard from "../components/app/Dashboard/Dashboard";
 import Settings from "../components/app/settings/Settings";
+import i18n from "../i18n";
 import ChangePassword from "../components/app/ChangePassword";
 import Notifications from "../components/app/Notifications/Notifications";
 import { Notification } from "../components/app/Notifications/types";
@@ -20,6 +21,16 @@ import { SnackbarProvider, useAuthNotification } from "../context/AuthContext";
 import SnackbarAlert from "../components/common/SnackbarAlert";
 
 const AppContent: React.FC = () => {
+  const [language, setLanguage] = React.useState(i18n.language || "en");
+
+  // Synchronizuj i18n z React state
+  React.useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
+
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang);
+  };
   const [view, setView] = useState<string>(globalThis.location.hash.replace("#", "") || "dashboard");
   const [viewParam, setViewParam] = useState<string | null>(null);
   const [isMobileContent, setIsMobileContent] = useState(false);
@@ -165,7 +176,7 @@ return (
       dashboard: <Dashboard isMobile={isMobileContent} />,
       projects: <Projects isMobile={isMobileContent} />,
       subcontractors: <Subcontractors isMobile={isMobileContent} />,
-      settings: <Settings navigateTo={navigateTo} />,
+      settings: <Settings navigateTo={navigateTo} language={language} onLanguageChange={handleLanguageChange} />,
       calculator: <Calculator/>,
       changepassword: (
         <ChangePassword />

@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import api from "../../../api/axiosApi";
 import { Notification } from "./types";
 import { useAuthNotification } from "../../../context/AuthContext";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface UseNotificationsProps {
   notifications: Notification[];
@@ -28,6 +28,8 @@ export const useNotifications = ({
     );
   }, [localNotifications, onUnreadChange]);
 
+  const { t } = useTranslation();
+  
   const sendAction = useCallback(
     async (action: string, notificationID: number) => {
       try {

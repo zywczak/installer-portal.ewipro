@@ -1,7 +1,7 @@
 import React from "react";
 import { useEWIProBoard } from "../../../hooks/useEWIProBoard";
 import { EWIChatView } from "../EWIChat/EwiChat";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface EWIProBoardProps {
   projectId: string;
@@ -9,7 +9,7 @@ interface EWIProBoardProps {
 
 const EWIProBoard: React.FC<EWIProBoardProps> = ({ projectId }) => {
   const { messages, status, sendMessage } = useEWIProBoard(projectId);
-
+  const { t } = useTranslation();
   return (
     <EWIChatView
       title={t("views.chatView.board.title")}

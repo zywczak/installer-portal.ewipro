@@ -5,10 +5,11 @@ import { useAIAssistantWS } from "../../hooks/useAIAssistantWS";
 import { useDraggableChatIcon } from "../common/AIAssistant/useDraggableChatIcon";
 import { useChatAnimation } from "../common/AIAssistant/useChatAnimation";
 import { EWIChatView } from "../common/EWIChat/EwiChat";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 
 export default function AIAssistant() {
+  const { t } = useTranslation();
   const userInfo = useMemo(() => ({
     userID: localStorage.getItem("userID") ?? "",
     userName: localStorage.getItem("userName") ?? "",

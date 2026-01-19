@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Card, CardContent, CircularProgress, useMediaQuery } from "@mui/material";
-import Ewistore from "../../../assets/ewistore.svg";
+import Ewistore from "../../../../assets/ewistore.svg";
 import { useFinanceData } from "./useFinanceData";
 import { calculateChartData } from "./chartUtils";
 import { FinanceChart } from "./FinanceChart";
