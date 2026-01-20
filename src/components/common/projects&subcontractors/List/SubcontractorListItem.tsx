@@ -3,13 +3,11 @@ import { Box, Typography } from "@mui/material";
 import UserAvatar from "../../UserAvatar";
 
 interface SubcontractorListItemProps {
-  id: string;
   name: string;
-  role?: string; 
   company?: string;
   email?: string;
   phone?: string;
-  status?: "verified" | "not_registered" | "invited" | string;
+  status?: "verified" | "not_registered" | "invited";
   avatar?: string | null;
   onClick?: () => void;
 }
@@ -22,7 +20,6 @@ const statusColors: Record<string, string> = {
 
 const SubcontractorListItem: React.FC<SubcontractorListItemProps> = ({
   name,
-  role,
   company,
   email,
   phone,

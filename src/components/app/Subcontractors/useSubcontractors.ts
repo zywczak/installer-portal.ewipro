@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import api from "../api/axiosApi";
-import { User } from "../components/common/projects&subcontractors/subcontractors/types";
+import api from "../../../api/axiosApi";
+import { User } from "./types";
 
 const mapSubcontractorItem = (
   item: any,

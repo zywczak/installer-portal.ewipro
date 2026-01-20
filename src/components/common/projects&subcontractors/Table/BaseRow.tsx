@@ -2,11 +2,11 @@ import { TableRow, TableCell } from "@mui/material";
 import { Column } from "./DataTable";
 
 interface BaseRowProps<T> {
-  row: T;
-  columns: Column<T>[];
-  rowKey: string | number;
-  onClick: () => void;
-  getRowStatusColor?: (row: T) => string;
+  readonly row: T;
+  readonly columns: Column<T>[];
+  readonly rowKey: string | number;
+  readonly onClick: () => void;
+  readonly getRowStatusColor?: (row: T) => string;
 }
 
 export default function BaseRow<T>({

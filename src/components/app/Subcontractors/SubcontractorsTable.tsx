@@ -1,6 +1,6 @@
 import React from "react";
-import DataTable, { Column } from "../Table/DataTable";
-import UserAvatar from "../../UserAvatar"; 
+import DataTable, { Column } from "../../common/projects&subcontractors/Table/DataTable";
+import UserAvatar from "../../common/UserAvatar"; 
 import { User } from "./types";
 import { useTranslation } from "react-i18next";
 

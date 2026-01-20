@@ -1,5 +1,5 @@
 import React from "react";
-import CardList from "../List/CardList";
+import CardList from "../../common/projects&subcontractors/List/CardList";
 import { User } from "./types";
 
 interface Props {

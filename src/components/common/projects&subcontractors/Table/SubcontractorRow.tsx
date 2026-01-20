@@ -2,12 +2,12 @@ import BaseRow from "./BaseRow";
 import { Column } from "./DataTable";
 
 interface Props<T> {
-  row: T;
-  columns: Column<T>[];
-  index: number;
-  rowKey: (row: T, index: number) => string | number;
-  onClick: () => void;
-  getRowStatusColor?: (row: T) => string;
+  readonly row: T;
+  readonly columns: Column<T>[];
+  readonly index: number;
+  readonly rowKey: (row: T, index: number) => string | number;
+  readonly onClick: () => void;
+  readonly getRowStatusColor?: (row: T) => string;
 }
 
 export default function SubcontractorRow<T>(props: Props<T>) {

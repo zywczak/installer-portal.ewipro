@@ -2,7 +2,7 @@ import { TableHead, TableRow, TableCell, Typography } from "@mui/material";
 import { Column } from "./DataTable";
 
 interface Props<T> {
-  columns: Column<T>[];
+  readonly columns: Column<T>[];
 }
 
 export default function DataTableHeader<T>({ columns }: Props<T>) {

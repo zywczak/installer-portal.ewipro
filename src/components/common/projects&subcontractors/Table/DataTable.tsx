@@ -14,18 +14,17 @@ export interface Column<T> {
 }
 
 interface Props<T> {
-  columns: Column<T>[];
-  rows: T[];
-  rowKey: (row: T, index: number) => string | number;
-  maxHeight?: string | number;
-  onHorizontalOverflow?: (isOverflowing: boolean) => void;
-  onRowClick: (row: T, page: number) => void;
+  readonly columns: Column<T>[];
+  readonly rows: T[];
+  readonly rowKey: (row: T, index: number) => string | number;
+  readonly maxHeight?: string | number;
+  readonly onHorizontalOverflow?: (isOverflowing: boolean) => void;
+  readonly onRowClick: (row: T, page: number) => void;
 
-  getRowStatusColor?: (row: T) => string;
+  readonly getRowStatusColor?: (row: T) => string;
 
-  type: "project" | "subcontractor";
-
-  stickyFooter?: boolean;
+  readonly type: "project" | "subcontractor";
+  readonly stickyFooter?: boolean;
 }
 
 export default function DataTable<T>({

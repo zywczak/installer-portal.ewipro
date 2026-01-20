@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Box, CircularProgress, Typography } from "@mui/material";
-import SubcontractorsTable from "../common/projects&subcontractors/subcontractors/SubcontractorsTable";
-import SubcontractorsCards from "../common/projects&subcontractors/subcontractors/SubcontractorsCards";
-import { useSubcontractors } from "../../hooks/useSubcontractors";
-import { User } from "../common/projects&subcontractors/subcontractors/types";
-import Legend from "../common/projects&subcontractors/Legend";
+import SubcontractorsTable from "./SubcontractorsTable";
+import SubcontractorsCards from "./SubcontractorsCards";
+import { useSubcontractors } from "./useSubcontractors";
+import { User } from "./types";
+import Legend from "../../common/projects&subcontractors/Legend";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   isMobile: boolean;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const Subcontractors: React.FC<Props> = ({ isMobile, onSubcontractorClick }) => {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [useTiles, setUseTiles] = useState(false);
   const [savedWidth, setSavedWidth] = useState<number | null>(null);
@@ -47,7 +49,7 @@ const Subcontractors: React.FC<Props> = ({ isMobile, onSubcontractorClick }) => 
 
   if (loading) return <Box textAlign="center" py={4}><CircularProgress /></Box>;
   if (error) return <Box textAlign="center" py={4}><Typography color="error">{error}</Typography></Box>;
-  if (users.length === 0) return <Box textAlign="center" py={4}><Typography color="text.secondary">Nie znaleziono żadnych danych.</Typography></Box>;
+  if (users.length === 0) return <Box textAlign="center" py={4}><Typography color="text.secondary">{t("views.subcontractors.listEmpty.title")}</Typography></Box>;
 
   return (
     <Box sx={{ height: "100%" }} ref={containerRef}>

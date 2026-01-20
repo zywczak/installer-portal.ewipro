@@ -3,13 +3,13 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 
 interface Props {
-  currentPage: number;
-  totalPages: number;
-  itemsCount: number;
-  onPrev: () => void;
-  onNext: () => void;
-  onPageSelect: (page: number) => void;
-  sticky?: boolean;
+  readonly currentPage: number;
+  readonly totalPages: number;
+  readonly itemsCount: number;
+  readonly onPrev: () => void;
+  readonly onNext: () => void;
+  readonly onPageSelect: (page: number) => void;
+  readonly sticky?: boolean;
 }
 
 export default function Footer({
