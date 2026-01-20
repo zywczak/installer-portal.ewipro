@@ -1,4 +1,4 @@
-import { FormData, TeamMember } from "../components/common/steps/types";
+import { FormData, TeamMember } from "../components/app/addProject/types";
 import {
   mapBuildTypeToId,
   mapSubstrateToId,

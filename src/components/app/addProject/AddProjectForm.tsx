@@ -3,28 +3,31 @@ import {
   Box,
   Button,
   CircularProgress,
-  Snackbar,
-  Alert,
   Card,
 } from "@mui/material";
-import ProjectOwnershipStep from "../common/steps/ProjectOwnershipStep";
-import ProjectDetailsStep from "../common/steps/ProjectDetailsStep";
-import GeneralInfoStep from "../common/steps/GeneralInfoStep";
-import ProjectTypeStep from "../common/steps/ProjectTypeStep";
-import WarrantyStep from "../common/steps/WarrantyStep";
-import TeamMembersStep from "../common/steps/TeamMembersStep";
-import { FormData } from "../common/steps/types";
+import ProjectOwnershipStep from "./ProjectOwnershipStep";
+import ProjectDetailsStep from "./ProjectDetailsStep";
+import GeneralInfoStep from "./GeneralInfoStep";
+import ProjectTypeStep from "./ProjectTypeStep";
+import WarrantyStep from "./WarrantyStep";
+import TeamMembersStep from "./TeamMembersStep";
+import { FormData } from "./types";
 import {
   getInitialOwnerId,
   getTodayDate,
   isFormValid,
   canShowNextSteps as canShowSteps,
-} from "../../utils/formHelpers";
-import { createProjectPayload } from "../../utils/projectPayload";
+} from "../../../utils/formHelpers";
+import { createProjectPayload } from "../../../utils/projectPayload";
+import api from "../../../api/axiosApi";
+import { useAuthNotification } from "../../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const API_ENDPOINT = "https://api-veen-e.ewipro.com/installer/info/";
 
 export default function AddProjectForm() {
+  const { t } = useTranslation();
+  
   const [formData, setFormData] = useState<FormData>({
     postCode: "",
     addressLine1: "",
@@ -49,21 +52,14 @@ export default function AddProjectForm() {
 
   const [isPostcodeValid, setIsPostcodeValid] = useState<boolean | null>(null);
   const [saving, setSaving] = useState(false);
-  const [notification, setNotification] = useState<{
-    open: boolean;
-    message: string;
-    severity: "success" | "error";
-  }>({
-    open: false,
-    message: "",
-    severity: "success",
-  });
 
   const canShowNextSteps = canShowSteps(
     isPostcodeValid,
     formData.addressLine1,
     formData.city
   );
+
+  const { showSuccess, showError } = useAuthNotification();
 
   const handleFormSubmit = async () => {
     setSaving(true);
@@ -72,27 +68,16 @@ export default function AddProjectForm() {
       const payload = createProjectPayload(formData);
       console.log("Sending payload:", payload);
 
-      /// await api.post(API_ENDPOINT, payload);
+      await api.post(API_ENDPOINT, payload);
 
-      setNotification({
-        open: true,
-        message: "Project saved successfully!",
-        severity: "success",
-      });
+      showSuccess(t("views.newProject.OnSuccessfullyCreatedProject.message"));
 
-      // Reset form or redirect after success
-      // setTimeout(() => {
-      //   window.location.hash = "#projects";
-      // }, 1500);
+      setTimeout(() => {
+        globalThis.location.hash = "#projects";
+      }, 1500);
     } catch (error: any) {
       console.error("Error saving project:", error);
-      setNotification({
-        open: true,
-        message:
-          error.response?.data?.message ||
-          "Failed to save project. Please try again.",
-        severity: "error",
-      });
+      showError(error.response?.data?.message || "Failed to save project. Please try again.",)
     } finally {
       setSaving(false);
     }
@@ -168,20 +153,6 @@ export default function AddProjectForm() {
             </>
           )}
 
-          <Snackbar
-            open={notification.open}
-            autoHideDuration={6000}
-            onClose={() => setNotification({ ...notification, open: false })}
-            anchorOrigin={{ vertical: "top", horizontal: "center" }}
-          >
-            <Alert
-              onClose={() => setNotification({ ...notification, open: false })}
-              severity={notification.severity}
-              sx={{ width: "100%" }}
-            >
-              {notification.message}
-            </Alert>
-          </Snackbar>
         </Box>
       </Card>
     </Box>

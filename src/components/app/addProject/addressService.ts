@@ -1,4 +1,4 @@
-import api from "../../api/axiosApi";
+import api from "../../../api/axiosApi";
 
 export const ukPostcodeRegex =
   /^(([Gg][Ii][Rr] 0[Aa]{2})|([A-Za-z]{1,2}\d{1,2}[A-Za-z]?\s?\d[A-Za-z]{2}))$/;

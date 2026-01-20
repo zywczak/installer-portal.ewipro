@@ -14,7 +14,7 @@ import ProfileView from "../components/app/MyProfile/ProfileView";
 import Project from "../components/app/Project";
 import AIAssistant from "../components/app/AIAssistant";
 import Subcontractor from "../components/app/Subcontractor";
-import AddProjectForm from "../components/app/AddProjectForm";
+import AddProjectForm from "../components/app/addProject/AddProjectForm";
 import OrderCreationPage from "../components/app/OrderCreationPage";
 import Calculator from "../components/app/Calculator/Calculator";
 import { SnackbarProvider, useAuthNotification } from "../context/AuthContext";

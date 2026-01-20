@@ -286,7 +286,9 @@
         "Header": "Addres"
       },
       "buildType": {
-        "title": "Typ budowli"
+        "title": "Typ budowli",
+        "newBuild": "Nowa budowa",
+        "retrofit": "Modernizacja lub remont"
       },
       "ChangeOwnerBottomSheet": {
         "header": "Zmień właściciela"
@@ -312,7 +314,8 @@
             }
           },
           "StartDate": {
-            "label": "Data rozpoczęcia"
+            "label": "Data rozpoczęcia",
+            "noWorry": "Nie martw się, jeśli nie znasz dokładnej daty. Będziesz mógł/mogła ją zmienić później."
           }
         },
         "Header": "Podstawowe informacje"
@@ -335,7 +338,8 @@
       "ProjectOwner": {
         "changeOwner": "Zmień właściciela",
         "Header": "Właściciel projektu",
-        "useThisOwner": "Użyj tego właściciela domyślnie tworząc nowy projekt."
+        "useThisOwner": "Użyj tego właściciela domyślnie tworząc nowy projekt.",
+        "noOwnersAvailable": "Brak dostępnych właścicieli"
       },
       "projectType": {
         "header": "Typ projektu",
@@ -359,14 +363,27 @@
         "searchPrompt": "Wyszukaj..."
       },
       "substrateType": {
-        "title": "Podłoże"
+        "title": "Podłoże",
+        "standardBrick": "Cegła standardowa",                      
+        "block": "Bloczek",                                         
+        "otherMasonry": "Inna murowana (Cavity, Kamień, Glina)",   
+        "parkHome": "Dom mobilny",                                  
+        "timberFrame": "Konstrukcja drewniana / SIPS",             
+        "metalFrame": "Konstrukcja metalowa",                      
+        "icf": "ICF",                                              
+        "other": "Inne"
       },
       "systemType": {
         "title": "System"
       },
       "TeamMembers": {
         "addMemberButton": "Dodaj członka zespołu",
-        "Header": "Członkowie zespołu"
+        "Header": "Członkowie zespołu",
+        "noMembers": "Żaden członek zespołu jeszcze nie został dodany. Kliknij 'Dodaj członka', aby wybrać podwykonawców.",
+        "search": "Szukaj członków zespołu...",
+        "notFound": "Nie znaleziono członków zespołu.",
+        "notAvailable": "Brak dostępnych członków zespołu.",
+        "me": "(ja)" 
       },
       "warranty": {
         "header": "Gwarancja",

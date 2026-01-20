@@ -1,4 +1,4 @@
-import api from "../../api/axiosApi";
+import api from "../../../api/axiosApi";
 
 export const getInitial = (name: string | undefined) => {
   if (!name || typeof name !== "string") return "U";

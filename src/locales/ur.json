@@ -286,7 +286,9 @@
         "Header": "پتہ"
       },
       "buildType": {
-        "title": "تعمیر کی قسم"
+        "title": "تعمیر کی قسم",
+        "newBuild": "نئی تعمیر", 
+        "retrofit": "ریٹروفٹ یا مرمت"
       },
       "ChangeOwnerBottomSheet": {
         "header": "مالک تبدیل کریں"
@@ -312,7 +314,8 @@
             }
           },
           "StartDate": {
-            "label": "آغاز کی تاریخ"
+            "label": "آغاز کی تاریخ",
+            "noWorry": "اگر آپ صحیح تاریخ نہیں جانتے تو فکر نہ کریں۔ آپ بعد میں اسے تبدیل کر سکیں گے۔" 
           }
         },
         "Header": "عمومی معلومات"
@@ -335,7 +338,8 @@
       "ProjectOwner": {
         "changeOwner": "مالک تبدیل کریں",
         "Header": "منصوبے کی ملکیت",
-        "useThisOwner": "نئے منصوبے شامل کرتے وقت اس مالک کو ڈیفالٹ کے طور پر استعمال کریں"
+        "useThisOwner": "نئے منصوبے شامل کرتے وقت اس مالک کو ڈیفالٹ کے طور پر استعمال کریں",
+        "noOwnersAvailable": "کوئی مالک دستیاب نہیں ہے"
       },
       "projectType": {
         "header": "منصوبے کی قسم",
@@ -359,14 +363,27 @@
         "searchPrompt": "تلاش کریں..."
       },
       "substrateType": {
-        "title": "ذیلی مواد"
+        "title": "ذیلی مواد",
+        "standardBrick": "معیاری اینٹ",                             
+"block": "بلاک",                                           
+"otherMasonry": "دیگر مٹی یا پتھر کی دیواریں (Cavity, پتھر، مٹی)",
+"parkHome": "موبائل گھر",                                   
+"timberFrame": "لکڑی کا فریم / SIPS",                     
+"metalFrame": "دھات کا فریم",                               
+"icf": "ICF",                                             
+"other": "دیگر"
       },
       "systemType": {
         "title": "نظام"
       },
       "TeamMembers": {
         "addMemberButton": "رکن شامل کریں",
-        "Header": "ٹیم کے رکن"
+        "Header": "ٹیم کے رکن",
+        "noMembers": "ابھی تک کوئی ٹیم ممبر شامل نہیں کیا گیا۔ 'Add member' پر کلک کریں تاکہ سب کنٹریکٹرز منتخب کیے جا سکیں۔",
+        "search": "ٹیم کے اراکین تلاش کریں...",
+        "notFound": "کوئی ٹیم ممبر نہیں ملا۔",
+        "notAvailable": "کوئی ٹیم ممبر دستیاب نہیں۔",
+        "me": "(میں)"
       },
       "warranty": {
         "header": "ضمانت",

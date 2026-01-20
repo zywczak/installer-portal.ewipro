@@ -286,7 +286,9 @@
         "Header": "Adresă"
       },
       "buildType": {
-        "title": "Tip de construcție"
+        "title": "Tip de construcție",
+        "newBuild": "Construcție nouă",
+        "retrofit": "Modernizare sau renovare"
       },
       "ChangeOwnerBottomSheet": {
         "header": "Schimbă proprietarul"
@@ -312,7 +314,8 @@
             }
           },
           "StartDate": {
-            "label": "Data începerii"
+            "label": "Data începerii",
+            "noWorry": "Nu vă faceți griji dacă nu cunoașteți data exactă. Veți putea să o schimbați mai târziu."
           }
         },
         "Header": "Informații generale"
@@ -335,7 +338,8 @@
       "ProjectOwner": {
         "changeOwner": "Schimbă proprietarul",
         "Header": "Proprietarul proiectului",
-        "useThisOwner": "Folosește acest proprietar implicit când adaugi noi proiecte"
+        "useThisOwner": "Folosește acest proprietar implicit când adaugi noi proiecte",
+        "noOwnersAvailable": "Nu există proprietari disponibili"
       },
       "projectType": {
         "header": "Tip de proiect",
@@ -359,14 +363,27 @@
         "searchPrompt": "Caută..."
       },
       "substrateType": {
-        "title": "Substrat"
+        "title": "Substrat",
+        "standardBrick": "Cărămidă standard",
+          "block": "Bloc",
+          "otherMasonry": "Alte zidărie (Cavity, Piatră, Cărămidă)",
+          "parkHome": "Casă mobilă",
+          "timberFrame": "Cadru din lemn / SIPS",
+          "metalFrame": "Cadru metalic",
+          "icf": "ICF",
+          "other": "Altele"
       },
       "systemType": {
         "title": "Sistem"
       },
       "TeamMembers": {
         "addMemberButton": "Adaugă membru",
-        "Header": "Membrii echipei"
+        "Header": "Membrii echipei",
+        "noMembers": "Niciun membru al echipei nu a fost adăugat încă. Faceți clic pe 'Adăugați membru' pentru a selecta subcontractori.",
+        "search": "Căutați membri ai echipei...",
+        "notFound": "Nu s-au găsit membri ai echipei.",
+        "notAvailable": "Nu există membri ai echipei disponibili.",
+        "me": "(eu)" 
       },
       "warranty": {
         "header": "Garanție",

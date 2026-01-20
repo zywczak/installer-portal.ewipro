@@ -77,8 +77,6 @@ const Settings: React.FC<SettingsProps> = ({
     setShowOwnersList(prev => !prev);
   };
 
-  // ...existing code...
-
   return (
     <Box sx={{ display: "flex", flexDirection: "column", flex: 1, gap: 2, px: 2 }}>
       <MainCard>

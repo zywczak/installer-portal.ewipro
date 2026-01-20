@@ -1,4 +1,4 @@
-import { FormData } from "../components/common/steps/types";
+import { FormData } from "../components/app/addProject/types";
 
 export const getInitialOwnerId = (): number => {
   const defaultEnabled = JSON.parse(

@@ -1,5 +1,5 @@
-import api from "../../api/axiosApi";
-import { TeamMember } from "../common/steps/types";
+import api from "../../../api/axiosApi";
+import { TeamMember } from "./types";
 
 export const fetchSubcontractors = async (
   ownerId: number,
@@ -18,7 +18,6 @@ export const fetchSubcontractors = async (
     });
 
     const results = resp.data?.results || [];
-    console.log("Fetched subcontractors:", results);
 
     return results.map((u: any): TeamMember => ({
       id: u.ID,

@@ -286,7 +286,9 @@
         "Header": "Address"
       },
       "buildType": {
-        "title": "Build type"
+        "title": "Build type",
+        "newBuild": "New Build",
+        "retrofit": "Retrofit or Refurbishment"
       },
       "ChangeOwnerBottomSheet": {
         "header": "Change owner"
@@ -312,7 +314,8 @@
             }
           },
           "StartDate": {
-            "label": "Start date"
+            "label": "Start date",
+            "noWorry": " No worry if you don't know the exact date. You'll be able to change it later."
           }
         },
         "Header": "General info"
@@ -335,7 +338,8 @@
       "ProjectOwner": {
         "changeOwner": "Change owner",
         "Header": "Project ownership",
-        "useThisOwner": "Use this Owner by default when adding new projects"
+        "useThisOwner": "Use this Owner by default when adding new projects",
+        "noOwnersAvailable": "No owners available"
       },
       "projectType": {
         "header": "Project type",
@@ -359,14 +363,27 @@
         "searchPrompt": "Search..."
       },
       "substrateType": {
-        "title": "Substrate"
+        "title": "Substrate",
+        "standardBrick": "Standard brick",
+          "block": "Block",
+          "otherMasonry": "Other Masonry (Cavity, Stone, Clay)",
+"parkHome": "Park home",
+"timberFrame": "Timber Frame / SIPS",
+"metalFrame": "Metal Frame",
+"icf": "ICF",
+"other": "Other"
       },
       "systemType": {
         "title": "System"
       },
       "TeamMembers": {
         "addMemberButton": "Add member",
-        "Header": "Team members"
+        "Header": "Team members",
+        "noMembers": " No team members added yet. Click 'Add member' to select subcontractors.",
+        "search": "Search team members...",
+        "notFound": "No team members found",
+        "notAvailable": "No team members available.",
+        "me": "(me)"
       },
       "warranty": {
         "header": "Warranty",
