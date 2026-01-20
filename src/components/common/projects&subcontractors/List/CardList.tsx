@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import ProjectListItem from "./ProjectListItem";
+import ProjectListItem from "../../../app/Projects/ProjectListItem";
 import SubcontractorListItem from "./SubcontractorListItem";
 import Footer from "../Footer";
 

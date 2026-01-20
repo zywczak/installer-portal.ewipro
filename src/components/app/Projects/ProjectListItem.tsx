@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Stack, Typography, Tooltip } from "@mui/material";
-import warranty from '../../../../assets/warranty.png';
-import { fallbackColors, stageColors } from "../../colors";
-import UserAvatar from "../../UserAvatar";
+import warranty from '../../../assets/warranty.png';
+import { fallbackColors, stageColors } from "../../common/colors";
+import UserAvatar from "../../common/UserAvatar";
 
 interface Member {
   installerID: string;
@@ -11,8 +11,6 @@ interface Member {
 }
 
 interface ProjectListItemProps {
-  id: string;
-  title?: string;
   postcode?: string;
   subtitle?: string;
   details?: Record<string, string>;
@@ -57,6 +55,15 @@ const ProjectListItem: React.FC<ProjectListItemProps> = ({
   isWarranty,
   onClick,
 }) => {
+  let borderLeft: string;
+
+if (status === "Open") {
+  borderLeft = "4px solid #54A852";
+} else if (status === "Closed") {
+  borderLeft = "4px solid #e91e63";
+} else {
+  borderLeft = "4px solid transparent";
+}
 
   return (
     <Box
@@ -67,7 +74,7 @@ const ProjectListItem: React.FC<ProjectListItemProps> = ({
         flexDirection: "column",
         p: 2,
         border: "1px solid #ddd",
-        borderLeft: status === "Open" ? "4px solid #54A852" : status === "Closed" ? "4px solid #e91e63" : "4px solid transparent",
+        borderLeft: borderLeft,
         borderRadius: "8px",
         cursor: onClick ? "pointer" : "default",
         backgroundColor: "#fff",

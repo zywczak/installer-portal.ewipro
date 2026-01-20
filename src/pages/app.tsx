@@ -3,7 +3,7 @@ import { Box, Drawer } from "@mui/material";
 import Header from "../components/app/Header";
 import Sidebar from "../components/app/sidebar/Sidebar";
 import Subcontractors from "../components/app/Subcontractors";
-import Projects from "../components/app/Projects";
+import Projects from "../components/app/Projects/Projects";
 import Dashboard from "../components/app/Dashboard/Dashboard";
 import Settings from "../components/app/settings/Settings";
 import i18n from "../i18n";

@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectsView from "../common/projects&subcontractors/projects/ProjectsView";
+import ProjectsView from "./ProjectsView";
 
 
 interface ProjectsProps {

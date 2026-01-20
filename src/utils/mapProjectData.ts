@@ -1,4 +1,4 @@
-import { Project } from "../components/common/projects&subcontractors/projects/types";
+import { Project } from "../components/app/Projects/types";
 
 export const mapProjectData = (item: any, userID: string): Project => {
   const postcode = item.postcode || "";

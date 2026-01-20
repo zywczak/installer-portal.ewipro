@@ -2,8 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import ProjectsTable from "./ProjectsTable";
 import ProjectsCards from "./ProjectsCards";
-import { useProjects } from "../../../../hooks/useProjects";
-import Legend from "../Legend";
+import { useProjects } from "./useProjects";
+import Legend from "../../common/projects&subcontractors/Legend";
+import { useTranslation } from "react-i18next";
 
 interface ProjectsViewProps {
   isMobile: boolean;
@@ -20,6 +21,7 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
   showAddButton = true,
   stickyFooter = true,
 }) => {
+   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [useTiles, setUseTiles] = useState(false);
   const [savedWidth, setSavedWidth] = useState<number | null>(null);
@@ -75,7 +77,7 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
   if (projects.length === 0)
     return (
       <Box textAlign="center" py={4}>
-        <Typography color="text.secondary">Nie znaleziono żadnych danych.</Typography>
+        <Typography color="text.secondary">{t("views.dashboard.projectList.listEmpty")}</Typography>
       </Box>
     );
 

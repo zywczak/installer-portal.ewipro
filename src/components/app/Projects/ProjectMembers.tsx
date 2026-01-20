@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Tooltip } from "@mui/material";
+import UserAvatar from "../../common/UserAvatar";
 import { Project } from "./types";
-import UserAvatar from "../../UserAvatar";
 
 interface Props {
   members: Project["members"];

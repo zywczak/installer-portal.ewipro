@@ -1,10 +1,10 @@
 import React from "react";
 import { Project } from "./types";
-import DataTable, { Column } from "../Table/DataTable";
+import DataTable, { Column } from "../../common/projects&subcontractors/Table/DataTable";
 import ProjectMembers from "./ProjectMembers";
-import warranty from '../../../../assets/warranty.png';
+import warranty from '../../../assets/warranty.png';
 import { Box, Tooltip, Typography } from "@mui/material";
-import { fallbackColors, stageColors } from "../../colors";
+import { fallbackColors, stageColors } from "../../common/colors";
 import { useTranslation } from "react-i18next";
 
 interface Props {

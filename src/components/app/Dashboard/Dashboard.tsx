@@ -4,7 +4,7 @@ import FinanceTiles from "./Finance/FinanceTiles";
 import StatementDownloadTile from "./Finance/StatementDownloadTile";
 import AddIcon from "@mui/icons-material/Add";
 import { ArrowForwardIos } from "@mui/icons-material";
-import ProjectsView from "../../common/projects&subcontractors/projects/ProjectsView";
+import ProjectsView from "../Projects/ProjectsView";
 import { useTranslation } from "react-i18next";
 
 interface DashboardProps {
