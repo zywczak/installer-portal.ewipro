@@ -5,11 +5,15 @@ import { Project } from "./types";
 interface Props {
   projects: Project[];
   stickyFooter?: boolean;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
+  onItemClick?: (project: Project) => void;
 }
 
-const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter }) => {
+const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter, currentPage, onPageChange, onItemClick }) => {
   return (
     <CardList
+      type="project"
       items={projects.map(p => ({
         id: p.id,
         title: p.projectCode,
@@ -27,9 +31,10 @@ const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter }) => {
         isOwner: p.isOwner,
         isWarranty: p.isWarranty,
       }))}
-      type="project"
-      onItemClick={(item) => { globalThis.location.hash = `projects/${item.id}/${item.contactID}`; }}
       stickyFooter={stickyFooter}
+      currentPage={currentPage}
+      onPageChange={onPageChange}
+      onItemClick={onItemClick}
     />
   );
 };

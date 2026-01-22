@@ -21,12 +21,44 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
   showAddButton = true,
   stickyFooter = true,
 }) => {
-   const { t } = useTranslation();
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [useTiles, setUseTiles] = useState(false);
   const [savedWidth, setSavedWidth] = useState<number | null>(null);
 
   const { projects, loading, error } = useProjects({ sort, ongoingOnly });
+
+  // Odczyt page z URL
+  const getCurrentPage = (): number => {
+    try {
+      const rawHash = globalThis.location.hash || "";
+      const hashWithoutHash = rawHash.startsWith("#") ? rawHash.slice(1) : rawHash;
+      const queryPart = hashWithoutHash.includes("?") ? hashWithoutHash.split("?")[1] : "";
+      const params = new URLSearchParams(queryPart);
+      const page = params.get("page");
+      return page ? Number.parseInt(page, 10) : 1;
+    } catch {
+      return 1;
+    }
+  };
+
+  const [currentPage, setCurrentPage] = useState(getCurrentPage());
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentPage(getCurrentPage());
+    };
+    globalThis.addEventListener("hashchange", handleHashChange);
+    return () => globalThis.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const handlePageChange = (page: number) => {
+    const rawHash = globalThis.location.hash || "";
+    const hashWithoutHash = rawHash.startsWith("#") ? rawHash.slice(1) : rawHash;
+    const basePath = hashWithoutHash.includes("?") ? hashWithoutHash.split("?")[0] : hashWithoutHash;
+    globalThis.location.hash = `${basePath}?page=${page}`;
+    setCurrentPage(page);
+  };
 
   const handleRowClick = (row: any) => {
     globalThis.location.hash = `projects/${row.id}/${row.contactID}`;
@@ -83,17 +115,24 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({
 
   return (
     <Box sx={{ height: "100%" }} ref={containerRef}>
-
       <Legend type="project" showAddButton={showAddButton} />
 
       {isMobile || useTiles ? (
-        <ProjectsCards projects={projects} stickyFooter={stickyFooter}/>
+        <ProjectsCards 
+          projects={projects} 
+          stickyFooter={stickyFooter}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+          onItemClick={handleRowClick}
+        />
       ) : (
         <ProjectsTable
           rows={projects}
           onRowClick={handleRowClick}
           onOverflow={handleTableOverflow}
           stickyFooter={stickyFooter}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
         />
       )}
     </Box>

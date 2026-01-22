@@ -12,9 +12,11 @@ interface Props {
   onRowClick: (row: Project) => void;
   onOverflow: (overflow: boolean) => void;
   stickyFooter?: boolean;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
 }
 
-const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFooter }) => {
+const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFooter, currentPage, onPageChange }) => {
   const rowStatusColor = { Open: "#54A852", Closed: "#e91e63" };
   const { t } = useTranslation();
   const columns: Column<Project>[] = [
@@ -76,6 +78,8 @@ const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFo
       getRowStatusColor={(row) => rowStatusColor[row.status]}
       type="project"
       stickyFooter={stickyFooter}
+      currentPage={currentPage}
+      onPageChange={onPageChange}
     />
   );
 };
