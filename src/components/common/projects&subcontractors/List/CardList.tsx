@@ -10,15 +10,41 @@ interface CardListProps {
   itemsPerPage?: number;
   onItemClick?: (item: any) => void;
   stickyFooter?: boolean;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
 }
 
-const CardList: React.FC<CardListProps> = ({ items, type, itemsPerPage = 20, onItemClick, stickyFooter = true }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const CardList: React.FC<CardListProps> = ({ 
+  items, 
+  type, 
+  itemsPerPage = 20, 
+  onItemClick, 
+  stickyFooter = true,
+  currentPage: externalPage,
+  onPageChange
+}) => {
+  const [currentPage, setCurrentPage] = useState(externalPage || 1);
   const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
   const paginatedItems = items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  useEffect(() => setCurrentPage(1), [items]);
-  useEffect(() => { if(currentPage > totalPages) setCurrentPage(totalPages || 1); }, [totalPages]);
+  useEffect(() => {
+    if (externalPage !== undefined) {
+      setCurrentPage(externalPage);
+    }
+  }, [externalPage]);
+
+  useEffect(() => { 
+    if(currentPage > totalPages && totalPages > 0) {
+      const newPage = totalPages;
+      setCurrentPage(newPage);
+      if (onPageChange) onPageChange(newPage);
+    }
+  }, [totalPages]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    if (onPageChange) onPageChange(page);
+  };
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100% - 52px)" }}>
@@ -48,9 +74,9 @@ const CardList: React.FC<CardListProps> = ({ items, type, itemsPerPage = 20, onI
         currentPage={currentPage}
         totalPages={totalPages}
         itemsCount={paginatedItems.length}
-        onPrev={() => setCurrentPage(p => Math.max(p - 1, 1))}
-        onNext={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
-        onPageSelect={(page) => setCurrentPage(page)}
+        onPrev={() => handlePageChange(Math.max(currentPage - 1, 1))}
+        onNext={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+        onPageSelect={handlePageChange}
         sticky={stickyFooter}
       />
     </Box>
