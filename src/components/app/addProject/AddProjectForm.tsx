@@ -23,11 +23,9 @@ import api from "../../../api/axiosApi";
 import { useAuthNotification } from "../../../context/AuthContext";
 import { useTranslation } from "react-i18next";
 
-const API_ENDPOINT = "https://api-veen-e.ewipro.com/installer/info/";
-
 export default function AddProjectForm() {
   const { t } = useTranslation();
-  
+
   const [formData, setFormData] = useState<FormData>({
     postCode: "",
     addressLine1: "",
@@ -68,7 +66,7 @@ export default function AddProjectForm() {
       const payload = createProjectPayload(formData);
       console.log("Sending payload:", payload);
 
-      await api.post(API_ENDPOINT, payload);
+      await api.post(payload);
 
       showSuccess(t("views.newProject.OnSuccessfullyCreatedProject.message"));
 

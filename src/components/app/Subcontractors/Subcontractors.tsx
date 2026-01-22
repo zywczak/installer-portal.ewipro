@@ -20,6 +20,37 @@ const Subcontractors: React.FC<Props> = ({ isMobile, onSubcontractorClick }) => 
 
   const { users, loading, error } = useSubcontractors();
 
+  const getCurrentPage = (): number => {
+    try {
+      const rawHash = globalThis.location.hash || "";
+      const hashWithoutHash = rawHash.startsWith("#") ? rawHash.slice(1) : rawHash;
+      const queryPart = hashWithoutHash.includes("?") ? hashWithoutHash.split("?")[1] : "";
+      const params = new URLSearchParams(queryPart);
+      const page = params.get("page");
+      return page ? Number.parseInt(page, 10) : 1;
+    } catch {
+      return 1;
+    }
+  };
+
+  const [currentPage, setCurrentPage] = useState(getCurrentPage());
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentPage(getCurrentPage());
+    };
+    globalThis.addEventListener("hashchange", handleHashChange);
+    return () => globalThis.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const handlePageChange = (page: number) => {
+    const rawHash = globalThis.location.hash || "";
+    const hashWithoutHash = rawHash.startsWith("#") ? rawHash.slice(1) : rawHash;
+    const basePath = hashWithoutHash.includes("?") ? hashWithoutHash.split("?")[0] : hashWithoutHash;
+    globalThis.location.hash = `${basePath}?page=${page}`;
+    setCurrentPage(page);
+  };
+
   const handleRowClick = (user: User) => {
     if (onSubcontractorClick) onSubcontractorClick(user.id.toString());
     else globalThis.location.hash = `subcontractors/${user.id}`;
@@ -55,8 +86,19 @@ const Subcontractors: React.FC<Props> = ({ isMobile, onSubcontractorClick }) => 
     <Box sx={{ height: "100%" }} ref={containerRef}>
       <Legend type="subcontractor" />
       {isMobile || useTiles
-        ? <SubcontractorsCards users={users} onItemClick={(id) => handleRowClick({ id } as unknown as User)} />
-        : <SubcontractorsTable users={users} onRowClick={handleRowClick} onOverflow={handleTableOverflow} />}
+        ? <SubcontractorsCards 
+            users={users} 
+            onItemClick={(id) => handleRowClick({ id } as unknown as User)}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        : <SubcontractorsTable 
+            users={users} 
+            onRowClick={handleRowClick} 
+            onOverflow={handleTableOverflow}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />}
     </Box>
   );
 };

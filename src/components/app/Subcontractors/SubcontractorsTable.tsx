@@ -8,6 +8,8 @@ interface Props {
   users: User[];
   onRowClick: (user: User) => void;
   onOverflow: (overflow: boolean) => void;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
 }
 
 const rowStatusColor: Record<User["status"], string> = {
@@ -16,7 +18,7 @@ const rowStatusColor: Record<User["status"], string> = {
   not_registered: "#9b9b9bff",
 };
 
-const SubcontractorsTable: React.FC<Props> = ({ users, onRowClick, onOverflow }) => {
+const SubcontractorsTable: React.FC<Props> = ({ users, onRowClick, onOverflow, currentPage, onPageChange }) => {
   const { t } = useTranslation();
   
   const columns: Column<User>[] = [
@@ -42,6 +44,8 @@ const SubcontractorsTable: React.FC<Props> = ({ users, onRowClick, onOverflow })
       onRowClick={onRowClick}
       type="subcontractor"
       getRowStatusColor={(row) => rowStatusColor[row.status]}
+      currentPage={currentPage}
+      onPageChange={onPageChange}
     />
   );
 };

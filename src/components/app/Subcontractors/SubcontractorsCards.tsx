@@ -5,9 +5,11 @@ import { User } from "./types";
 interface Props {
   users: User[];
   onItemClick: (id: string) => void;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
 }
 
-const SubcontractorsCards: React.FC<Props> = ({ users, onItemClick }) => {
+const SubcontractorsCards: React.FC<Props> = ({ users, onItemClick, currentPage, onPageChange }) => {
   return (
     <CardList
       type="subcontractor"
@@ -23,6 +25,8 @@ const SubcontractorsCards: React.FC<Props> = ({ users, onItemClick }) => {
         avatar: u.avatar || undefined,
       }))}
       onItemClick={(item) => onItemClick(item.id)}
+      currentPage={currentPage}
+      onPageChange={onPageChange}
     />
   );
 };
