@@ -20,11 +20,11 @@ interface Props<T> {
   readonly maxHeight?: string | number;
   readonly onHorizontalOverflow?: (isOverflowing: boolean) => void;
   readonly onRowClick: (row: T, page: number) => void;
-
   readonly getRowStatusColor?: (row: T) => string;
-
   readonly type: "project" | "subcontractor";
   readonly stickyFooter?: boolean;
+  readonly currentPage?: number;
+  readonly onPageChange?: (page: number) => void;
 }
 
 export default function DataTable<T>({
@@ -36,11 +36,13 @@ export default function DataTable<T>({
   onRowClick,
   getRowStatusColor,
   type,
-  stickyFooter
+  stickyFooter,
+  currentPage: externalPage,
+  onPageChange
 }: Props<T>) {
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(externalPage || 1);
   const itemsPerPage = 20;
   const totalPages = Math.max(1, Math.ceil(rows.length / itemsPerPage));
 
@@ -50,8 +52,10 @@ export default function DataTable<T>({
   );
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [rows]);
+    if (externalPage !== undefined) {
+      setCurrentPage(externalPage);
+    }
+  }, [externalPage]);
 
   const [expandedRow, setExpandedRow] = useState<string | number | null>(null);
 
@@ -86,6 +90,11 @@ export default function DataTable<T>({
   }, [onHorizontalOverflow, rows]);
 
   const RowComponent = type === "project" ? ProjectRow : SubcontractorRow;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    if (onPageChange) onPageChange(page);
+  };
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100% - 52px)", borderRadius: 2 }}>
@@ -135,9 +144,9 @@ export default function DataTable<T>({
         currentPage={currentPage}
         totalPages={totalPages}
         itemsCount={paginatedRows.length}
-        onPrev={() => setCurrentPage(p => Math.max(p - 1, 1))}
-        onNext={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
-        onPageSelect={(page) => setCurrentPage(page)}
+        onPrev={() => handlePageChange(Math.max(currentPage - 1, 1))}
+        onNext={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+        onPageSelect={handlePageChange}
         sticky={stickyFooter}
       />
 
