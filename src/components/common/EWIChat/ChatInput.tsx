@@ -68,13 +68,6 @@
             onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
             slotProps={{
               input : {
-              // startAdornment: showFileInput ? (
-              //   <InputAdornment position="start">
-              //     <IconButton onClick={handleAddPhotoClick} sx={{ color: sendIconColor }}>
-              //       <PhotoCameraIcon />
-              //     </IconButton>
-              //   </InputAdornment>
-              // ) : null,
               startAdornment: (showFileInput || showIconsInput) ? (
     <InputAdornment position="start">
       {showFileInput && (

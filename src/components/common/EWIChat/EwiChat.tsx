@@ -55,7 +55,7 @@ export const EWIChatView: React.FC<EWIChatViewProps> = ({
     const allPhotos = messages.filter(m => m.picture).map((m, idx) => ({ id: `${m.id}-${idx}`, url: m.picture! }));
     const clickedIndex = allPhotos.findIndex(p => p.url === clickedUrl);
     setGalleryPhotos(allPhotos);
-    setGalleryInitialIndex(clickedIndex >= 0 ? clickedIndex : 0);
+    setGalleryInitialIndex(Math.max(clickedIndex, 0));
     setGalleryOpen(true);
   };
 
