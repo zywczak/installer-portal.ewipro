@@ -55,7 +55,8 @@
   },
   "projectDetails": {
     "ApplyForWarrantyButton": "ضمانت کے لیے درخواست دیں",
-    "PhotoDocumentation": "تصویری دستاویزات",
+    "photos": "تصاویر",
+"PhotoDocumentation": "بصری دستاویزات",
     "ProjectPhotoContainerStage": "مرحلہ {{stage}}",
     "projectStage": "مرحلہ {{stage}}",
     "ReApplyForWarrantyButton": "دوبارہ درخواست دیں",
@@ -74,6 +75,13 @@
       "now": "اب",
       "sendingErrorToastMessage": "پیغام بھیجنے میں ناکامی ہوئی۔ دوبارہ کوشش کریں۔"
     },
+    "documents": {
+  "title": "دستاویزات",
+  "description": "ڈاؤن لوڈ چینل",
+  "listEmpty": "ابھی کوئی دستاویز موجود نہیں",
+  "investigation": "تحقیقات نمبر",
+  "signed": "فارم پر دستخط کرنے والا"
+},
     "dashboard": {
       "hello": "ہیلو {{name}}!",
       "ongoingProjects": "جاری منصوبے",
@@ -133,9 +141,11 @@
         "cancel": "منسوخ کریں",
         "confirm": "ہاں، ہٹائیں",
         "description": "کیا آپ واقعی تصویر ہٹانا چاہتے ہیں؟",
-        "header": "تصویر ہٹائیں؟"
+        "header": "تصویر ہٹائیں؟",
+        "upload": "اپ لوڈ کریں",
+"uploading": "اپ لوڈ ہو رہا ہے..."
       },
-      "projectStage": "مرحلہ {{stage}}"
+      "projectStage": "مرحلہ"
     },
     "galleryPicker": {
       "button": "منتخب کردہ ({{amount}}) شامل کریں",
@@ -450,6 +460,7 @@
       "photoDeleteError": "تصویر حذف کرنے میں ناکام رہا۔"
     },
     "projectDetails": {
+      "empty": "پروجیکٹ نہیں ملا۔",
       "archiveProjectModal": {
         "cancel": "منسوخ کریں",
         "confirm": "تصدیق کریں",

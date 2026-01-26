@@ -55,7 +55,8 @@
   },
   "projectDetails": {
     "ApplyForWarrantyButton": "APLICĂ PENTRU GARANȚIE",
-    "PhotoDocumentation": "Documentație foto",
+    "photos": "Fotografii",
+"PhotoDocumentation": "Documentație vizuală",
     "ProjectPhotoContainerStage": "Etapa {{stage}}",
     "projectStage": "ETAPA {{stage}}",
     "ReApplyForWarrantyButton": "REAPLICĂ PENTRU GARANȚIE",
@@ -74,6 +75,13 @@
       "now": "Acum",
       "sendingErrorToastMessage": "Mesajul nu a putut fi trimis. Încearcă din nou."
     },
+    "documents": {
+  "title": "Documente",
+  "description": "Canal de descărcare",
+  "listEmpty": "Nu există documente",
+  "investigation": "Număr investigație",
+  "signed": "Formular semnat de"
+},
     "dashboard": {
       "hello": "Salut {{name}}!",
       "ongoingProjects": "Proiecte în desfășurare",
@@ -133,9 +141,11 @@
         "cancel": "Anulează",
         "confirm": "Da, Elimină",
         "description": "Ești sigur că vrei să elimini fotografia?",
-        "header": "Elimină fotografia?"
+        "header": "Elimină fotografia?",
+        "upload": "Încarcă",
+"uploading": "Se încarcă..."
       },
-      "projectStage": "Etapa {{stage}}"
+      "projectStage": "Etapa"
     },
     "galleryPicker": {
       "button": "Adaugă Selectate ({{amount}})",
@@ -450,6 +460,7 @@
       "photoDeleteError": "Nu s-a reușit ștergerea fotografiei."
     },
     "projectDetails": {
+      "empty": "Proiectul nu a fost găsit.",
       "archiveProjectModal": {
         "cancel": "ANULEAZĂ",
         "confirm": "CONFIRMĂ",

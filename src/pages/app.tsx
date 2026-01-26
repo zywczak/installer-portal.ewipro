@@ -11,7 +11,6 @@ import ChangePassword from "../components/app/ChangePassword";
 import Notifications from "../components/app/Notifications/Notifications";
 import { Notification } from "../components/app/Notifications/types";
 import ProfileView from "../components/app/MyProfile/ProfileView";
-import Project from "../components/app/Project";
 import AIAssistant from "../components/app/AIAssistant";
 import Subcontractor from "../components/app/Subcontractor";
 import AddProjectForm from "../components/app/addProject/AddProjectForm";
@@ -19,6 +18,7 @@ import OrderCreationPage from "../components/app/OrderCreationPage";
 import Calculator from "../components/app/Calculator/Calculator";
 import { SnackbarProvider, useAuthNotification } from "../context/AuthContext";
 import SnackbarAlert from "../components/common/SnackbarAlert";
+import Project from "../components/app/Project/project";
 
 const AppContent: React.FC = () => {
   const [language, setLanguage] = React.useState(i18n.language || "en");
@@ -52,10 +52,14 @@ const AppContent: React.FC = () => {
 
   useEffect(() => {
   const onHashChange = () => {
-  const hash = globalThis.location.hash.replace("#", "") || "dashboard";
-  setView(hash);
+  const rawHash = globalThis.location.hash.replace("#", "") || "dashboard";
+  
+  // Usuń query string z hash przed parsowaniem view
+  const hashWithoutQuery = rawHash.includes("?") ? rawHash.split("?")[0] : rawHash;
+  
+  setView(hashWithoutQuery);
 
-  const parts = hash.split("/");
+  const parts = hashWithoutQuery.split("/");
 
   if (parts[0] === "projects") {
     setViewParam(parts[1] || null);
@@ -125,9 +129,12 @@ useEffect(() => {
   }, []);
 
   const navigateTo = (newView: string) => {
-  setView(newView);
+  // Usuń query string z newView przed ustawieniem
+  const viewWithoutQuery = newView.includes("?") ? newView.split("?")[0] : newView;
+  
+  setView(viewWithoutQuery);
 
-  const parts = newView.split("/");
+  const parts = viewWithoutQuery.split("/");
 
   if (parts[0] === "projects") {
     setViewParam(parts[1] || null);
@@ -145,8 +152,8 @@ useEffect(() => {
   const renderView = () => {
     if (view.startsWith("projects/") && viewParam) {
 const parts = view.split("/");
-const projectId = parts[1];
-const contactId = parts[2] ?? "";
+const projectId = Number(parts[1]);
+const contactId = Number(parts[2]);
 return (
 <Project
   projectId={projectId}

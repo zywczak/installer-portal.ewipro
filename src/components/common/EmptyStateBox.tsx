@@ -32,11 +32,10 @@ const EmptyStateBox: React.FC<EmptyStateBoxProps> = ({
     justifyContent: "center",
 
     cursor: isDisabled ? "default" : "pointer",
-    opacity: isDisabled ? 0.7 : 1,
     transition: "opacity 0.3s",
 
     "&:hover": {
-      bgcolor: isDisabled ? "#f5f5f5" : "#eee",
+      bgcolor: isDisabled ? undefined : "#eee",
     },
 
     ...(boxProps?.sx),

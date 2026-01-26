@@ -55,7 +55,8 @@
   },
   "projectDetails": {
     "ApplyForWarrantyButton": "गारंटी के लिए आवेदन करें",
-    "PhotoDocumentation": "फोटो दस्तावेज़",
+    "photos": "तस्वीरें",
+"PhotoDocumentation": "दृश्य दस्तावेज़ीकरण",
     "ProjectPhotoContainerStage": "चरण {{stage}}",
     "projectStage": "चरण {{stage}}",
     "ReApplyForWarrantyButton": "पुनः गारंटी के लिए आवेदन करें",
@@ -74,6 +75,13 @@
       "now": "अभी",
       "sendingErrorToastMessage": "संदेश भेजने में विफल। फिर से प्रयास करें।"
     },
+    "documents": {
+  "title": "दस्तावेज़",
+  "description": "डाउनलोड चैनल",
+  "listEmpty": "कोई दस्तावेज़ नहीं",
+  "investigation": "जांच संख्या",
+  "signed": "फॉर्म पर हस्ताक्षर करने वाला"
+},
     "dashboard": {
       "hello": "नमस्ते {{name}}!",
       "ongoingProjects": "चल रहे प्रोजेक्ट्स",
@@ -133,9 +141,11 @@
         "cancel": "रद्द करें",
         "confirm": "हाँ, हटाएँ",
         "description": "क्या आप वास्तव में फोटो हटाना चाहते हैं?",
-        "header": "फोटो हटाएँ?"
+        "header": "फोटो हटाएँ?",
+        "upload": "अपलोड करें",
+"uploading": "अपलोड हो रहा है..."
       },
-      "projectStage": "चरण {{stage}}"
+      "projectStage": "चरण"
     },
     "galleryPicker": {
       "button": "चयनित जोड़ें ({{amount}})",
@@ -371,8 +381,7 @@
 "timberFrame": "लकड़ी का फ्रेम / SIPS",                   
 "metalFrame": "धातु का फ्रेम",                              
 "icf": "ICF",                                             
-"other": "अन्य"                                           
-        
+"other": "अन्य"                                             
       },
       "systemType": {
         "title": "सिस्टम"
@@ -451,6 +460,7 @@
       "photoDeleteError": "फ़ोटो हटाने में विफल रहा।"
     },
     "projectDetails": {
+      "empty": "प्रोजेक्ट नहीं मिला।",
       "archiveProjectModal": {
         "cancel": "रद्द करें",
         "confirm": "पुष्टि करें",

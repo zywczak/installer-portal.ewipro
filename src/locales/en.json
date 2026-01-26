@@ -55,7 +55,8 @@
   },
   "projectDetails": {
     "ApplyForWarrantyButton": "APPLY FOR WARRANTY",
-    "PhotoDocumentation": "Photo documentation",
+    "photos": "Photos",
+    "PhotoDocumentation": "Visual Documentation",
     "ProjectPhotoContainerStage": "Stage {{stage}}",
     "projectStage": "STAGE {{stage}}",
     "ReApplyForWarrantyButton": "REAPPLY FOR WARRANTY",
@@ -73,6 +74,13 @@
       "inputPlaceholder": "Type a message...",
       "now": "Now",
       "sendingErrorToastMessage": "Couldn't send message. Try again."
+    },
+    "documents": {
+      "title": "Documents",
+      "description": "Download channel",
+      "listEmpty": "No documents yet",
+      "investigation": "Investigation No",
+      "signed": "Form signed by"
     },
     "dashboard": {
       "hello": "Hi {{name}}!",
@@ -133,9 +141,11 @@
         "cancel": "Cancel",
         "confirm": "Yes, Remove",
         "description": "Do you really want to remove photo?",
-        "header": "Remove photo?"
+        "header": "Remove photo?",
+        "upload" : "Upload",
+        "uploading": "Uploading..."
       },
-      "projectStage": "Stage {{stage}}"
+      "projectStage": "Stage"
     },
     "galleryPicker": {
       "button": "Add Selected ({{amount}})",
@@ -450,6 +460,7 @@
       "photoDeleteError": "Failed to delete the photo."
     },
     "projectDetails": {
+      "empty": "Project not found.",
       "archiveProjectModal": {
         "cancel": "CANCEL",
         "confirm": "CONFIRM",

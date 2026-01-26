@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-const BASE_API_URL = "https://api-veen-e-test.ewipro.com";
+const BASE_API_URL = "https://api-veen-e.ewipro.com";
 const DEFAULT_PATH = "/installer/info/";
 
 const getAccessToken = () => localStorage.getItem("access");
@@ -30,7 +30,6 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-// Interceptor response – obsługa błędu 401
 api.interceptors.response.use(
     (response) => response,
     (error) => {

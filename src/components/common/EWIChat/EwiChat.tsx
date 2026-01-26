@@ -4,7 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { ChatMessage } from "./ChatMessage.types";
 import { ChatMessageBubble } from "./ChatMessageBubble";
 import { ChatInput } from "./ChatInput";
-import PhotoGallery from "../project/photoGallery/PhotoGallery";
+import PhotoGallery from "../photoGallery/PhotoGallery";
 import Header from "../Header";
 import Ewi from "../../../assets/Ewi.svg";
 
@@ -13,13 +13,15 @@ interface EWIChatViewProps {
   description?: string;
   status?: "connected" | "disconnected";
   messages: ChatMessage[];
-  onSendMessage: (text: string) => void;
+  onSendMessage: (payload: { text?: string; picture?: File }) => void;
   onClose?: () => void;
   inputPlaceholder?: string;
   showStatus?: boolean;
   showDetails?: boolean;
   alignWithAvatar?: boolean;
   showCloseButton?: boolean;
+  showFileInput?: boolean;
+  showIconsInput?: boolean;
 }
 
 export const EWIChatView: React.FC<EWIChatViewProps> = ({
@@ -34,6 +36,8 @@ export const EWIChatView: React.FC<EWIChatViewProps> = ({
   showDetails = true,
   alignWithAvatar = false,
   showCloseButton = true,
+  showFileInput = false,
+  showIconsInput = false,
 }) => {
   const theme = useTheme();
   const listRef = useRef<HTMLDivElement>(null);
@@ -86,7 +90,7 @@ export const EWIChatView: React.FC<EWIChatViewProps> = ({
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        borderRadius: 2,
+        borderRadius: "12px",
         boxShadow: "0 10px 30px rgba(2,6,23,.15)",
         border: "1px solid #e0e0e0"
       }}
@@ -140,6 +144,8 @@ export const EWIChatView: React.FC<EWIChatViewProps> = ({
         onSendMessage={onSendMessage}
         userAvatarUrl={userAvatarUrl || ""}
         inputPlaceholder={inputPlaceholder}
+        showFileInput={showFileInput}
+        showIconsInput={showIconsInput}
       />
 
       <PhotoGallery

@@ -55,7 +55,8 @@
   },
   "projectDetails": {
     "ApplyForWarrantyButton": "ZŁÓŻ WNIOSEK O GWARANCJĘ",
-    "PhotoDocumentation": "Dokumentacja fotograficzna",
+    "photos": "Zdjęcia",
+    "PhotoDocumentation": "Dokumentacja wizualna",
     "ProjectPhotoContainerStage": "Etap {{stage}}",
     "projectStage": "ETAP {{stage}}",
     "ReApplyForWarrantyButton": "PONOWNA APLIKACJA O GWARANCJĘ",
@@ -74,6 +75,13 @@
       "now": "Teraz",
       "sendingErrorToastMessage": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
     },
+    "documents": {
+  "title": "Dokumenty",
+  "description": "Kanał pobierania",
+  "listEmpty": "Brak dokumentów",
+  "investigation": "Numer dochodzenia",
+  "signed": "Formularz podpisany przez"
+},
     "dashboard": {
       "hello": "Witaj {{name}}!",
       "ongoingProjects": "Trwające projekty",
@@ -133,9 +141,11 @@
         "cancel": "Anuluj",
         "confirm": "Tak, Usuń",
         "description": "Czy na pewno chcesz usunąć to zdjęcie?",
-        "header": "Usunąć zdjęcie?"
+        "header": "Usunąć zdjęcie?",
+        "upload": "Prześlij",
+"uploading": "Przesyłanie..."
       },
-      "projectStage": "Etap {{stage}}"
+      "projectStage": "Etap"
     },
     "galleryPicker": {
       "button": "Dodaj zaznaczone ({{amount}})",
@@ -450,6 +460,7 @@
       "photoDeleteError": "Nie udało się usunąć zdjęcia."
     },
     "projectDetails": {
+      "empty": "Nie znaleziono projektu.",
       "archiveProjectModal": {
         "cancel": "ANULUJ",
         "confirm": "POTWIERDŹ",
