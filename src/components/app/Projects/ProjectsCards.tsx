@@ -8,9 +8,10 @@ interface Props {
   currentPage?: number;
   onPageChange?: (page: number) => void;
   onItemClick?: (project: Project) => void;
+  noFooterOffset?: boolean;
 }
 
-const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter, currentPage, onPageChange, onItemClick }) => {
+const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter, currentPage, onPageChange, onItemClick, noFooterOffset }) => {
   return (
     <CardList
       type="project"
@@ -35,6 +36,7 @@ const ProjectsCards: React.FC<Props> = ({ projects, stickyFooter, currentPage, o
       currentPage={currentPage}
       onPageChange={onPageChange}
       onItemClick={onItemClick}
+      noFooterOffset={noFooterOffset}
     />
   );
 };

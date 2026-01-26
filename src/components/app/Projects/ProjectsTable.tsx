@@ -14,9 +14,10 @@ interface Props {
   stickyFooter?: boolean;
   currentPage?: number;
   onPageChange?: (page: number) => void;
+  noFooterOffset?: boolean;
 }
 
-const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFooter, currentPage, onPageChange }) => {
+const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFooter, currentPage, onPageChange, noFooterOffset }) => {
   const rowStatusColor = { Open: "#54A852", Closed: "#e91e63" };
   const { t } = useTranslation();
   const columns: Column<Project>[] = [
@@ -80,6 +81,7 @@ const ProjectsTable: React.FC<Props> = ({ rows, onRowClick, onOverflow, stickyFo
       stickyFooter={stickyFooter}
       currentPage={currentPage}
       onPageChange={onPageChange}
+      noFooterOffset={noFooterOffset}
     />
   );
 };

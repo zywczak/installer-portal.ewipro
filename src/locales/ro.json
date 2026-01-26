@@ -56,7 +56,7 @@
   "projectDetails": {
     "ApplyForWarrantyButton": "APLICĂ PENTRU GARANȚIE",
     "photos": "Fotografii",
-"PhotoDocumentation": "Documentație vizuală",
+    "PhotoDocumentation": "Documentație vizuală",
     "ProjectPhotoContainerStage": "Etapa {{stage}}",
     "projectStage": "ETAPA {{stage}}",
     "ReApplyForWarrantyButton": "REAPLICĂ PENTRU GARANȚIE",
@@ -76,12 +76,12 @@
       "sendingErrorToastMessage": "Mesajul nu a putut fi trimis. Încearcă din nou."
     },
     "documents": {
-  "title": "Documente",
-  "description": "Canal de descărcare",
-  "listEmpty": "Nu există documente",
-  "investigation": "Număr investigație",
-  "signed": "Formular semnat de"
-},
+      "title": "Documente",
+      "description": "Canal de descărcare",
+      "listEmpty": "Nu există documente",
+      "investigation": "Număr investigație",
+      "signed": "Formular semnat de"
+    },
     "dashboard": {
       "hello": "Salut {{name}}!",
       "ongoingProjects": "Proiecte în desfășurare",
@@ -143,7 +143,7 @@
         "description": "Ești sigur că vrei să elimini fotografia?",
         "header": "Elimină fotografia?",
         "upload": "Încarcă",
-"uploading": "Se încarcă..."
+        "uploading": "Se încarcă..."
       },
       "projectStage": "Etapa"
     },
@@ -169,12 +169,12 @@
       "sendingErrorToast": "Ne pare rău, adăugarea fotografiilor a eșuat. Încearcă din nou.",
       "warningToast": "Poți adăuga maxim 5 fotografii în total."
     },
-    "register":{
-      "header":{
+    "register": {
+      "header": {
         "register": "Cereți să vă înregistrați",
         "description": "Lăsați-ne datele dvs. și vă vom contacta odată ce contul dvs. este înregistrat."
       },
-      "button":{
+      "button": {
         "login": "ÎNAPOI LA AUTENTIFICARE"
       }
     },
@@ -375,13 +375,13 @@
       "substrateType": {
         "title": "Substrat",
         "standardBrick": "Cărămidă standard",
-          "block": "Bloc",
-          "otherMasonry": "Alte zidărie (Cavity, Piatră, Cărămidă)",
-          "parkHome": "Casă mobilă",
-          "timberFrame": "Cadru din lemn / SIPS",
-          "metalFrame": "Cadru metalic",
-          "icf": "ICF",
-          "other": "Altele"
+        "block": "Bloc",
+        "otherMasonry": "Alte zidărie (Cavity, Piatră, Cărămidă)",
+        "parkHome": "Casă mobilă",
+        "timberFrame": "Cadru din lemn / SIPS",
+        "metalFrame": "Cadru metalic",
+        "icf": "ICF",
+        "other": "Altele"
       },
       "systemType": {
         "title": "Sistem"
@@ -393,7 +393,7 @@
         "search": "Căutați membri ai echipei...",
         "notFound": "Nu s-au găsit membri ai echipei.",
         "notAvailable": "Nu există membri ai echipei disponibili.",
-        "me": "(eu)" 
+        "me": "(eu)"
       },
       "warranty": {
         "header": "Garanție",
@@ -676,6 +676,9 @@
           },
           "header": "Detalii"
         },
+        "info": {
+    "header": "Informații"
+  },
         "permissions": {
           "header": "Permisiuni"
         },
@@ -701,6 +704,32 @@
         "subcontractorAdded": "Subcontractantul a fost adăugat.",
         "subcontractorAddedAndInvited": "Subcontractantul a fost adăugat și invitat.",
         "subcontractorRemoved": "Subcontractantul a fost eliminat."
+      },
+      "permissions": {
+        "ownershipTransfer": {
+          "label": "Transfer de proprietate",
+          "description": "Acest utilizator va putea crea un proiect pentru tine și te va seta ca proprietar."
+        },
+        "newEntriesInSubcontractors": {
+          "label": "Intrări noi la subcontractori",
+          "description": "Dacă activezi această opțiune, utilizatorul va putea crea intrări noi în lista ta de subcontractori."
+        },
+        "canManageTeamMembers": {
+          "label": "Gestionare membri echipă",
+          "description": "Utilizatorul va putea adăuga/elimina membri ai echipei în proiectele în care este membru."
+        },
+        "submitStages": {
+          "label": "Trimitere etape",
+          "description": "Utilizatorul va putea trimite etape în proiectele în care este membru al echipei."
+        },
+        "projectDocumentsAccess": {
+          "label": "Acces la documente proiect",
+          "description": "Utilizatorul va putea vedea și descărca documente în proiectele în care este membru."
+        },
+        "projectChatAccess": {
+          "label": "Acces chat proiect",
+          "description": "Utilizatorul va putea vedea și trimite mesaje în chat-urile proiectelor în care este membru."
+        }
       }
     },
     "chatView": {

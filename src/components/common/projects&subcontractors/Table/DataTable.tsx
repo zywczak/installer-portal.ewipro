@@ -25,6 +25,7 @@ interface Props<T> {
   readonly stickyFooter?: boolean;
   readonly currentPage?: number;
   readonly onPageChange?: (page: number) => void;
+  readonly noFooterOffset?: boolean;
 }
 
 export default function DataTable<T>({
@@ -38,7 +39,8 @@ export default function DataTable<T>({
   type,
   stickyFooter,
   currentPage: externalPage,
-  onPageChange
+  onPageChange,
+  noFooterOffset
 }: Props<T>) {
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
@@ -97,7 +99,7 @@ export default function DataTable<T>({
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100% - 52px)", borderRadius: 2 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: noFooterOffset ? "100%" : "calc(100% - 52px)", borderRadius: 2 }}>
 
       <TableContainer
         ref={tableContainerRef}
@@ -109,6 +111,7 @@ export default function DataTable<T>({
           width: "98%",
           mx: "auto",
           maxHeight,
+          pb: noFooterOffset ? 13 : 0, // padding na dole, by ostatni wiersz nie był zasłonięty
           "&::-webkit-scrollbar": { display: "none" },
           scrollbarWidth: "none",
           msOverflowStyle: "none",

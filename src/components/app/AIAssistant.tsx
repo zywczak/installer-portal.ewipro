@@ -110,7 +110,7 @@ export default function AIAssistant() {
             inputPlaceholder={t("views.chatView.AI.inputPlaceholder")}
             status={status}
             messages={messages}
-            onSendMessage={sendMessage}
+            onSendMessage={(payload) => sendMessage(payload.text ?? "")}
             onClose={closeChat}
             showDetails={false}
           />

@@ -12,6 +12,7 @@ interface CardListProps {
   stickyFooter?: boolean;
   currentPage?: number;
   onPageChange?: (page: number) => void;
+  noFooterOffset?: boolean;
 }
 
 const CardList: React.FC<CardListProps> = ({ 
@@ -21,7 +22,8 @@ const CardList: React.FC<CardListProps> = ({
   onItemClick, 
   stickyFooter = true,
   currentPage: externalPage,
-  onPageChange
+  onPageChange,
+  noFooterOffset
 }) => {
   const [currentPage, setCurrentPage] = useState(externalPage || 1);
   const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
@@ -47,13 +49,16 @@ const CardList: React.FC<CardListProps> = ({
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "calc(100% - 52px)" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: noFooterOffset ? "100%" : "calc(100% - 52px)" }}>
       <Box sx={{ 
         flex: 1, 
         overflowY: "auto", 
-        p: 2, 
+        p: 2,
+        pb: noFooterOffset ? 13 : 2, 
         display: "grid", 
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
+        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+        gridAutoRows: "max-content",
+        alignContent: "start",
         gap: 2,  
         "&::-webkit-scrollbar": {
           width: 0,

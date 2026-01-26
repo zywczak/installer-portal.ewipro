@@ -56,7 +56,7 @@
   "projectDetails": {
     "ApplyForWarrantyButton": "गारंटी के लिए आवेदन करें",
     "photos": "तस्वीरें",
-"PhotoDocumentation": "दृश्य दस्तावेज़ीकरण",
+    "PhotoDocumentation": "दृश्य दस्तावेज़ीकरण",
     "ProjectPhotoContainerStage": "चरण {{stage}}",
     "projectStage": "चरण {{stage}}",
     "ReApplyForWarrantyButton": "पुनः गारंटी के लिए आवेदन करें",
@@ -76,12 +76,12 @@
       "sendingErrorToastMessage": "संदेश भेजने में विफल। फिर से प्रयास करें।"
     },
     "documents": {
-  "title": "दस्तावेज़",
-  "description": "डाउनलोड चैनल",
-  "listEmpty": "कोई दस्तावेज़ नहीं",
-  "investigation": "जांच संख्या",
-  "signed": "फॉर्म पर हस्ताक्षर करने वाला"
-},
+      "title": "दस्तावेज़",
+      "description": "डाउनलोड चैनल",
+      "listEmpty": "कोई दस्तावेज़ नहीं",
+      "investigation": "जांच संख्या",
+      "signed": "फॉर्म पर हस्ताक्षर करने वाला"
+    },
     "dashboard": {
       "hello": "नमस्ते {{name}}!",
       "ongoingProjects": "चल रहे प्रोजेक्ट्स",
@@ -143,7 +143,7 @@
         "description": "क्या आप वास्तव में फोटो हटाना चाहते हैं?",
         "header": "फोटो हटाएँ?",
         "upload": "अपलोड करें",
-"uploading": "अपलोड हो रहा है..."
+        "uploading": "अपलोड हो रहा है..."
       },
       "projectStage": "चरण"
     },
@@ -169,12 +169,12 @@
       "sendingErrorToast": "माफ़ करें, फोटो जोड़ने में विफल। फिर से प्रयास करें।",
       "warningToast": "आप अधिकतम 5 फोटो जोड़ सकते हैं।"
     },
-    "register":{
-      "header":{
+    "register": {
+      "header": {
         "register": "पंजीकरण करने के लिए कहें",
         "description": "हमें अपना डेटा दें और जब आपका खाता पंजीकृत हो जाएगा तो हम आपसे संपर्क करेंगे।"
       },
-      "button":{
+      "button": {
         "login": "लॉगिन पर वापस जाएं"
       }
     },
@@ -374,14 +374,14 @@
       },
       "substrateType": {
         "title": "सब्सट्रेट",
-        "standardBrick": "मानक ईंट",                               
-"block": "ब्लॉक",                                         
-"otherMasonry": "अन्य ईंट/पत्थर की दीवारें (Cavity, पत्थर, मिट्टी)", 
-"parkHome": "मोबाइल घर",                                   
-"timberFrame": "लकड़ी का फ्रेम / SIPS",                   
-"metalFrame": "धातु का फ्रेम",                              
-"icf": "ICF",                                             
-"other": "अन्य"                                             
+        "standardBrick": "मानक ईंट",
+        "block": "ब्लॉक",
+        "otherMasonry": "अन्य ईंट/पत्थर की दीवारें (Cavity, पत्थर, मिट्टी)",
+        "parkHome": "मोबाइल घर",
+        "timberFrame": "लकड़ी का फ्रेम / SIPS",
+        "metalFrame": "धातु का फ्रेम",
+        "icf": "ICF",
+        "other": "अन्य"
       },
       "systemType": {
         "title": "सिस्टम"
@@ -543,7 +543,7 @@
           "header": "पिन सेट हो गया!"
         }
       },
-     "useDefaultOwner": {
+      "useDefaultOwner": {
         "header": "डिफ़ॉल्ट परियोजना मालिक",
         "description": "सभी नए बनाए गए परियोजनाओं के लिए चयनित मालिक को डिफ़ॉल्ट के रूप में उपयोग करें",
         "click": "चुनने के लिए क्लिक करें",
@@ -561,7 +561,6 @@
           "failed": "खाता हटाने में विफल रहा।"
         }
       }
-
     },
     "staticPage": {
       "TSCNegativeButton": "अस्वीकार करें",
@@ -677,6 +676,9 @@
           },
           "header": "विवरण"
         },
+        "info": {
+    "header": "जानकारी"
+  },
         "permissions": {
           "header": "अनुमतियाँ"
         },
@@ -702,6 +704,32 @@
         "subcontractorAdded": "सब-कॉन्ट्रैक्टर जोड़ा गया।",
         "subcontractorAddedAndInvited": "सब-कॉन्ट्रैक्टर जोड़ा गया और आमंत्रित किया गया।",
         "subcontractorRemoved": "सब-कॉन्ट्रैक्टर को हटा दिया गया।"
+      },
+      "permissions": {
+        "ownershipTransfer": {
+          "label": "स्वामित्व स्थानांतरण",
+          "description": "यह उपयोगकर्ता आपके लिए प्रोजेक्ट बना सकेगा और आपको उसका स्वामी बना सकेगा।"
+        },
+        "newEntriesInSubcontractors": {
+          "label": "सब-कॉन्ट्रैक्टर्स में नई प्रविष्टियाँ",
+          "description": "इस विकल्प को सक्षम करने पर उपयोगकर्ता आपकी सब-कॉन्ट्रैक्टर सूची में नई प्रविष्टियाँ जोड़ सकेगा।"
+        },
+        "canManageTeamMembers": {
+          "label": "टीम सदस्यों का प्रबंधन",
+          "description": "उपयोगकर्ता उन प्रोजेक्ट्स में टीम सदस्यों को जोड़/हटा सकेगा जिनमें वह सदस्य है।"
+        },
+        "submitStages": {
+          "label": "स्टेज सबमिट करें",
+          "description": "उपयोगकर्ता उन प्रोजेक्ट्स में स्टेज सबमिट कर सकेगा जिनमें वह टीम सदस्य है।"
+        },
+        "projectDocumentsAccess": {
+          "label": "प्रोजेक्ट दस्तावेज़ों तक पहुँच",
+          "description": "उपयोगकर्ता उन प्रोजेक्ट्स में दस्तावेज़ देख और डाउनलोड कर सकेगा जिनमें वह टीम सदस्य है।"
+        },
+        "projectChatAccess": {
+          "label": "प्रोजेक्ट चैट एक्सेस",
+          "description": "उपयोगकर्ता उन प्रोजेक्ट्स की चैट में संदेश देख और भेज सकेगा जिनमें वह टीम सदस्य है।"
+        }
       }
     },
     "chatView": {

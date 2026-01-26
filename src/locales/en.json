@@ -142,7 +142,7 @@
         "confirm": "Yes, Remove",
         "description": "Do you really want to remove photo?",
         "header": "Remove photo?",
-        "upload" : "Upload",
+        "upload": "Upload",
         "uploading": "Uploading..."
       },
       "projectStage": "Stage"
@@ -169,12 +169,12 @@
       "sendingErrorToast": "Sorry, adding photo(s) failed. Try again.",
       "warningToast": "You can add max 5 photos in total."
     },
-    "register":{
-      "header":{
+    "register": {
+      "header": {
         "register": "Ask to register",
         "description": "Leave us your data and we will contact you once your account is registered."
       },
-      "button":{
+      "button": {
         "login": "BACK TO LOGIN"
       }
     },
@@ -224,14 +224,14 @@
         "closed": "Project closed",
         "warranty": "Warranty"
       },
-      "table":{
+      "table": {
         "project": "PROJECT",
         "address": "ADDRESS",
         "stage": "STAGE",
         "access": "ACCESS",
         "members": "MEMBERS"
       },
-      "footer":{
+      "footer": {
         "page": "Page",
         "of": "of",
         "items": "items"
@@ -375,13 +375,13 @@
       "substrateType": {
         "title": "Substrate",
         "standardBrick": "Standard brick",
-          "block": "Block",
-          "otherMasonry": "Other Masonry (Cavity, Stone, Clay)",
-"parkHome": "Park home",
-"timberFrame": "Timber Frame / SIPS",
-"metalFrame": "Metal Frame",
-"icf": "ICF",
-"other": "Other"
+        "block": "Block",
+        "otherMasonry": "Other Masonry (Cavity, Stone, Clay)",
+        "parkHome": "Park home",
+        "timberFrame": "Timber Frame / SIPS",
+        "metalFrame": "Metal Frame",
+        "icf": "ICF",
+        "other": "Other"
       },
       "systemType": {
         "title": "System"
@@ -676,6 +676,9 @@
           },
           "header": "Details"
         },
+        "info": {
+          "header": "Info"
+        },
         "permissions": {
           "header": "Permissions"
         },
@@ -701,6 +704,32 @@
         "subcontractorAdded": "Subcontractor added.",
         "subcontractorAddedAndInvited": "Subcontractor added and invited.",
         "subcontractorRemoved": "Subcontractor removed."
+      },
+      "permissions": {
+        "ownershipTransfer": {
+          "label": "Ownership transfer",
+          "description": "This user will be allowed to create a project for you and make you an Owner of it."
+        },
+        "newEntriesInSubcontractors": {
+          "label": "New entries in Subcontractors",
+          "description": "If you enable this option the user will be able to create new entries in your subcontractors list."
+        },
+        "canManageTeamMembers": {
+          "label": "Can manage Team Members",
+          "description": "If you enable this option the user will be able to add/remove team members to the projects here he is a Team Member to make it simpler for you."
+        },
+        "submitStages": {
+          "label": "Submit stages",
+          "description": "The user will be able to submit stages in your projects where he is added as a team member."
+        },
+        "projectDocumentsAccess": {
+          "label": "Project documents access",
+          "description": "User will have access to see and download documents in your projects where he is added as a team member."
+        },
+        "projectChatAccess": {
+          "label": "Project Chat access",
+          "description": "If you enable this option this user will have access to see and post into the chats on your projects where he is added as a team member."
+        }
       }
     },
     "chatView": {
@@ -708,12 +737,12 @@
         "connected": "Connected",
         "disconnected": "Disconnected"
       },
-      "AI":{
+      "AI": {
         "title": "Veen-E Assistant",
         "description": "Your AI assistant",
         "inputPlaceholder": "Try me! I will do my best to help You"
       },
-      "board":{
+      "board": {
         "title": "EWI Pro Board",
         "description": "Technical Team Channel",
         "inputPlaceholder": "Write a message to EWI Pro Technical Team.."

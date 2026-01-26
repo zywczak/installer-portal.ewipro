@@ -676,6 +676,9 @@
           },
           "header": "تفصیلات"
         },
+        "info": {
+    "header": "معلومات"
+  },
         "permissions": {
           "header": "اجازتیں"
         },

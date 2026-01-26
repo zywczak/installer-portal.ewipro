@@ -76,12 +76,12 @@
       "sendingErrorToastMessage": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
     },
     "documents": {
-  "title": "Dokumenty",
-  "description": "Kanał pobierania",
-  "listEmpty": "Brak dokumentów",
-  "investigation": "Numer dochodzenia",
-  "signed": "Formularz podpisany przez"
-},
+      "title": "Dokumenty",
+      "description": "Kanał pobierania",
+      "listEmpty": "Brak dokumentów",
+      "investigation": "Numer dochodzenia",
+      "signed": "Formularz podpisany przez"
+    },
     "dashboard": {
       "hello": "Witaj {{name}}!",
       "ongoingProjects": "Trwające projekty",
@@ -143,7 +143,7 @@
         "description": "Czy na pewno chcesz usunąć to zdjęcie?",
         "header": "Usunąć zdjęcie?",
         "upload": "Prześlij",
-"uploading": "Przesyłanie..."
+        "uploading": "Przesyłanie..."
       },
       "projectStage": "Etap"
     },
@@ -169,12 +169,12 @@
       "sendingErrorToast": "Przesyłanie zdjęć się nie powiodło. Spróbuj ponownie.",
       "warningToast": "Możesz dodać maksymalnie 5 zdjęć."
     },
-    "register":{
-      "header":{
+    "register": {
+      "header": {
         "register": "Poproś o rejestrację",
         "description": "Zostaw nam swoje dane, a skontaktujemy się z Tobą, gdy Twoje konto zostanie zarejestrowane."
       },
-      "button":{
+      "button": {
         "login": "WRÓĆ DO LOGOWANIA"
       }
     },
@@ -374,13 +374,13 @@
       },
       "substrateType": {
         "title": "Podłoże",
-        "standardBrick": "Cegła standardowa",                      
-        "block": "Bloczek",                                         
-        "otherMasonry": "Inna murowana (Cavity, Kamień, Glina)",   
-        "parkHome": "Dom mobilny",                                  
-        "timberFrame": "Konstrukcja drewniana / SIPS",             
-        "metalFrame": "Konstrukcja metalowa",                      
-        "icf": "ICF",                                              
+        "standardBrick": "Cegła standardowa",
+        "block": "Bloczek",
+        "otherMasonry": "Inna murowana (Cavity, Kamień, Glina)",
+        "parkHome": "Dom mobilny",
+        "timberFrame": "Konstrukcja drewniana / SIPS",
+        "metalFrame": "Konstrukcja metalowa",
+        "icf": "ICF",
         "other": "Inne"
       },
       "systemType": {
@@ -393,7 +393,7 @@
         "search": "Szukaj członków zespołu...",
         "notFound": "Nie znaleziono członków zespołu.",
         "notAvailable": "Brak dostępnych członków zespołu.",
-        "me": "(ja)" 
+        "me": "(ja)"
       },
       "warranty": {
         "header": "Gwarancja",
@@ -548,7 +548,7 @@
         "description": "Użyj wybranego właściciela jako domyślnego dla wszystkich nowotworzonych projektów",
         "click": "Kliknij, aby wybrać",
         "fetchFailed": "Nie udało się pobrać listy właścicieli.",
-        "empty" : "Brak właścicieli do wyboru"
+        "empty": "Brak właścicieli do wyboru"
       },
       "deleteAccount": {
         "button": "USUŃ KONTO",
@@ -676,6 +676,9 @@
           },
           "header": "Szczegóły"
         },
+        "info": {
+    "header": "Informacje"
+  },
         "permissions": {
           "header": "Uprawnienia"
         },
@@ -701,6 +704,32 @@
         "subcontractorAdded": "Podwykonawca został dodany.",
         "subcontractorAddedAndInvited": "Podwykonawca został zapisany i zaproszony.",
         "subcontractorRemoved": "Podwykonawca został usunięty."
+      },
+      "permissions": {
+        "ownershipTransfer": {
+          "label": "Przeniesienie własności",
+          "description": "Ten użytkownik będzie mógł utworzyć projekt dla Ciebie i ustawić Cię jako właściciela."
+        },
+        "newEntriesInSubcontractors": {
+          "label": "Nowe wpisy w podwykonawcach",
+          "description": "Po włączeniu tej opcji użytkownik będzie mógł tworzyć nowe wpisy na liście podwykonawców."
+        },
+        "canManageTeamMembers": {
+          "label": "Zarządzanie członkami zespołu",
+          "description": "Użytkownik będzie mógł dodawać i usuwać członków zespołu w projektach, w których jest członkiem zespołu."
+        },
+        "submitStages": {
+          "label": "Zatwierdzanie etapów",
+          "description": "Użytkownik będzie mógł zatwierdzać etapy w projektach, w których jest dodany jako członek zespołu."
+        },
+        "projectDocumentsAccess": {
+          "label": "Dostęp do dokumentów projektu",
+          "description": "Użytkownik będzie miał dostęp do przeglądania i pobierania dokumentów w projektach, w których jest członkiem zespołu."
+        },
+        "projectChatAccess": {
+          "label": "Dostęp do czatu projektu",
+          "description": "Użytkownik będzie miał dostęp do przeglądania i wysyłania wiadomości na czatach projektów, w których jest członkiem zespołu."
+        }
       }
     },
     "chatView": {
