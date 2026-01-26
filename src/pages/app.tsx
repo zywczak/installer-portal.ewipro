@@ -11,7 +11,7 @@ import ChangePassword from "../components/app/ChangePassword";
 import Notifications from "../components/app/Notifications/Notifications";
 import { Notification } from "../components/app/Notifications/types";
 import ProfileView from "../components/app/MyProfile/ProfileView";
-import AIAssistant from "../components/app/AIAssistant";
+import AIAssistant from "../components/app/AIAssistant/AIAssistant";
 import Subcontractor from "../components/app/subcontractor/Subcontractor";
 import AddProjectForm from "../components/app/addProject/AddProjectForm";
 import OrderCreationPage from "../components/app/OrderCreationPage";

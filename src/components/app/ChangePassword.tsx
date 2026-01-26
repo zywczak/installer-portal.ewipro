@@ -52,7 +52,6 @@ const ChangePassword: React.FC = () => {
             type="password"
             error={newPasswordError}
             icon={<LockIcon color="action" />}
-            helperText={t('views.settings.changePassword.form.newPassword.hint')}
             showPasswordToggle={true}
             size="medium"
           />

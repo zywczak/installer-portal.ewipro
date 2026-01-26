@@ -1,12 +1,11 @@
 import { useMemo } from "react";
 import { Box, IconButton } from "@mui/material";
 import ChatIcon from '@mui/icons-material/Chat';
-import { useAIAssistantWS } from "../../hooks/useAIAssistantWS";
-import { useDraggableChatIcon } from "../common/AIAssistant/useDraggableChatIcon";
-import { useChatAnimation } from "../common/AIAssistant/useChatAnimation";
-import { EWIChatView } from "../common/EWIChat/EwiChat";
+import { useAIAssistantWS } from "../../../hooks/useAIAssistantWS";
+import { useDraggableChatIcon } from "./useDraggableChatIcon";
+import { useChatAnimation } from "./useChatAnimation";
+import { EWIChatView } from "../../common/EWIChat/EwiChat";
 import { useTranslation } from "react-i18next";
-
 
 export default function AIAssistant() {
   const { t } = useTranslation();

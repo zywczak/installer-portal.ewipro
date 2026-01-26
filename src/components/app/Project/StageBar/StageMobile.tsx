@@ -40,7 +40,7 @@ const StageMobile: React.FC<StageMobileProps> = ({
           const isActive = index + 1 === currentStage;
 
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={stage.id}>
               <Box
                 display="flex"
                 alignItems="center"

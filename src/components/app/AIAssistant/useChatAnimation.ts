@@ -58,7 +58,6 @@ export const useChatAnimation = (
     }, 300);
   };
 
-  /** resize – dokładnie jak w starej wersji */
   useEffect(() => {
     const handleResize = () => {
       if (!open) return;

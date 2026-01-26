@@ -9,7 +9,6 @@ import DeleteAccount from "./DeleteAccount";
 import { useOwners } from "../../../hooks/useOwners";
 import { useDeleteAccount } from "./useDeleteAccount";
 import { useTranslation } from "react-i18next";
-// ...existing code...
 
 interface SettingsProps {
   navigateTo?: (newView: string) => void;
