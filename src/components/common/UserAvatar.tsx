@@ -10,7 +10,7 @@ interface UserAvatarProps {
   sx?: object;
 }
 
-const MotionAvatar = motion(Avatar);
+const MotionAvatar = motion.create(Avatar);
 
 const UserAvatar: React.FC<UserAvatarProps> = ({
   avatarUrl,

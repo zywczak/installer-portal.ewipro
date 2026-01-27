@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Notification } from "../../components/app/Notifications/types"; 
+import { Notification } from "../../components/app/Notifications/types";
+import api from "../../api/axiosApi";
 
 export const useNotifications = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -10,37 +11,22 @@ export const useNotifications = () => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const token = localStorage.getItem("access");
-        const res = await fetch("https://api-veen-e.ewipro.com/installer/info/", {
-          method: "POST",
-          headers: {
-            Authorization: token ? `Bearer ${token}` : "",
-          },
-          body: JSON.stringify({
-            action: "getUserNotifications",
-            limit: 50,
-          }),
+        const res = await api.post({
+          action: "getUserNotifications",
+          limit: 50,
         });
 
-        if (!res.ok) {
-          throw new Error("Network error: " + res.status);
-        }
-
-        const data = await res.json();
-        console.log("Raw notifications data:", data);
-
-        const mapped = (data?.results || []).map((n: any) => ({
+        const mapped = (res.data?.results || []).map((n: any) => ({
           id: n.id?.toString(),
           title: n.title ?? "Powiadomienie",
-          message: n.message ?? "", 
+          message: n.message ?? "",
           projectID: n.projectID ?? undefined,
-          contactID: n.contactID ?? undefined, 
+          contactID: n.contactID ?? undefined,
           slug: n.slug ?? "",
-          date: n.date ?? "", 
-          read: !(n.unread ?? false), 
+          date: n.date ?? "",
+          read: !(n.unread ?? false),
         }));
-        
-        console.log("Fetched notifications:", mapped);
+
         setNotifications(mapped);
       } catch (err) {
         console.error("Error fetching notifications:", err);

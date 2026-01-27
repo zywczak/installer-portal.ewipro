@@ -108,6 +108,8 @@ export const useAIAssistantWS = (userInfo: UserInfo) => {
   );
 
   useEffect(() => {
+    if (wsRef.current) return; 
+
     const ws = new WebSocket(WS_URL);
     wsRef.current = ws;
 
@@ -128,7 +130,10 @@ export const useAIAssistantWS = (userInfo: UserInfo) => {
     ws.onmessage = processMessage;
     ws.onclose = () => setStatus("disconnected");
 
-    return () => ws.close();
+    return () => {
+      wsRef.current = null;
+      ws.close();
+    };
   }, [session_id, userInfo]);
 
   return { messages, status, sendMessage};

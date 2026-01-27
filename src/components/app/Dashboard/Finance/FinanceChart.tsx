@@ -15,8 +15,7 @@ export const FinanceChart: React.FC<FinanceChartProps> = ({ data, chartConfig })
 
   return (
     <Box sx={{ width: 200, height: 200, position: "relative" }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
+        <PieChart width={200} height={200}>
           <Pie
             data={chartConfig.data}
             innerRadius="65%"
@@ -34,8 +33,7 @@ export const FinanceChart: React.FC<FinanceChartProps> = ({ data, chartConfig })
             ))}
           </Pie>
         </PieChart>
-      </ResponsiveContainer>
-
+        
       <Box
         sx={{
           position: "absolute",

@@ -1,14 +1,12 @@
 import reportWebVitals from './reportWebVitals';
 import Auth from './pages/auth';
 import App from './pages/app';
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './index.css';
 import "./i18n";
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
       <BrowserRouter>
           <Routes>
             <Route path="/auth" element={<Auth />} />
@@ -16,7 +14,6 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/" element={<App />} />
           </Routes>
       </BrowserRouter>
-  </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
