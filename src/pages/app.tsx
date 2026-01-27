@@ -1,232 +1,101 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Drawer } from "@mui/material";
-import Header from "../components/app/Header";
 import Sidebar from "../components/app/sidebar/Sidebar";
-import Subcontractors from "../components/app/Subcontractors/Subcontractors";
-import Projects from "../components/app/Projects/Projects";
-import Dashboard from "../components/app/Dashboard/Dashboard";
-import Settings from "../components/app/settings/Settings";
-import i18n from "../i18n";
-import ChangePassword from "../components/app/ChangePassword";
-import Notifications from "../components/app/Notifications/Notifications";
-import { Notification } from "../components/app/Notifications/types";
-import ProfileView from "../components/app/MyProfile/ProfileView";
 import AIAssistant from "../components/app/AIAssistant/AIAssistant";
-import Subcontractor from "../components/app/subcontractor/Subcontractor";
-import AddProjectForm from "../components/app/addProject/AddProjectForm";
-import OrderCreationPage from "../components/app/OrderCreationPage";
-import Calculator from "../components/app/Calculator/Calculator";
-import { SnackbarProvider, useAuthNotification } from "../context/AuthContext";
-import SnackbarAlert from "../components/common/SnackbarAlert";
-import Project from "../components/app/Project/project";
+import Notifications from "../components/app/Notifications/Notifications";
+import { useAuthNotification, SnackbarProvider } from "../context/AuthContext";
+import MobileLayout from "./app/mobileLayout";
+import DesktopLayout from "./app/desktopLayout";
+import ViewRenderer from "./app/ViewRenderer";
+import { useLanguage } from "./app/useLanguage";
+import { useNotifications } from "./app/useNotifications";
+import { useResponsive } from "./app/useResponsive";
+import { useViewNavigation } from "./app/useViewNavigation";
 
 const AppContent: React.FC = () => {
-  const [language, setLanguage] = React.useState(i18n.language || "en");
+  const { language, handleLanguageChange } = useLanguage();
+  
+  const {
+    view,
+    viewParam,
+    projectAddress,
+    subcontractorName,
+    isProjectView,
+    isSubcontractorView,
+    setProjectAddress,
+    setSubcontractorName,
+    navigateTo,
+  } = useViewNavigation();
 
-  // Synchronizuj i18n z React state
-  React.useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language]);
+  const {
+    isMobileContent,
+    mobileSidebarOpen,
+    sidebarWidth,
+    setMobileSidebarOpen,
+    setSidebarWidth,
+  } = useResponsive();
 
-  const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
-  };
-  const [view, setView] = useState<string>(globalThis.location.hash.replace("#", "") || "dashboard");
-  const [viewParam, setViewParam] = useState<string | null>(null);
-  const [isMobileContent, setIsMobileContent] = useState(false);
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-
-  const isProjectView = view.startsWith("projects/");
-  const isSubcontractorView = view.startsWith("subcontractors/");
-  const [projectAddress, setProjectAddress] = useState<string | null>(null);
-  const [subcontractorName, setSubcontractorName] = useState<string | null>(null);
-
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [hasUnreadNotifications, setHasUnreadNotifications] = useState(false);
+  const {
+    notifications,
+    hasUnreadNotifications,
+    anchorEl,
+    drawerOpen,
+    setHasUnreadNotifications,
+    setAnchorEl,
+    setDrawerOpen,
+  } = useNotifications();
 
   const { notification, clearNotification } = useAuthNotification();
 
-  const [sidebarWidth, setSidebarWidth] = useState(250);
-
-  useEffect(() => {
-  const onHashChange = () => {
-  const rawHash = globalThis.location.hash.replace("#", "") || "dashboard";
-  
-  // Usuń query string z hash przed parsowaniem view
-  const hashWithoutQuery = rawHash.includes("?") ? rawHash.split("?")[0] : rawHash;
-  
-  setView(hashWithoutQuery);
-
-  const parts = hashWithoutQuery.split("/");
-
-  if (parts[0] === "projects") {
-    setViewParam(parts[1] || null);
-  } else if (parts[0] === "subcontractors") {
-    setViewParam(parts[1] || null);
-  } else {
-    setViewParam(null);
-  }
-
-  setMobileSidebarOpen(false);
-};
-
-    globalThis.addEventListener("hashchange", onHashChange);
-    onHashChange();
-    return () => globalThis.removeEventListener("hashchange", onHashChange);
-  }, []);
-useEffect(() => {
-  const fetchNotifications = async () => {
-    try {
-      const token = localStorage.getItem("access");
-      const res = await fetch("https://api-veen-e.ewipro.com/installer/info/", {
-        method: "POST",
-        headers: {
-          Authorization: token ? `Bearer ${token}` : "",
-        },
-        body: JSON.stringify({
-          action: "getUserNotifications",
-          limit: 50,
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Network error: " + res.status);
-      }
-
-      const data = await res.json();
-      console.log("Raw notifications data:", data);
-
-      const mapped = (data?.results || []).map((n: any) => ({
-    id: n.id?.toString(),
-    title: n.title ?? "Powiadomienie",
-
-    message: n.message ?? "", 
-    projectID: n.projectID ?? undefined,
-    contactID: n.contactID ?? undefined, 
-    slug: n.slug ?? "",
-
-    date: n.date ?? "", 
-
-    read: !(n.unread ?? false), 
-}));
-      console.log("Fetched notifications:", mapped);
-      setNotifications(mapped);
-    } catch (err) {
-      console.error("Error fetching notifications:", err);
+  const handleNotificationsClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (isMobileContent) {
+      setDrawerOpen(true);
+    } else {
+      setAnchorEl((prev) => (prev ? null : e.currentTarget));
     }
-  };
-
-  fetchNotifications();
-}, []);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobileContent(window.innerWidth < 705);
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const navigateTo = (newView: string) => {
-  // Usuń query string z newView przed ustawieniem
-  const viewWithoutQuery = newView.includes("?") ? newView.split("?")[0] : newView;
-  
-  setView(viewWithoutQuery);
-
-  const parts = viewWithoutQuery.split("/");
-
-  if (parts[0] === "projects") {
-    setViewParam(parts[1] || null);
-  } else if (parts[0] === "subcontractors") {
-    setViewParam(parts[1] || null);
-  } else {
-    setViewParam(null);
-  }
-
-  globalThis.location.hash = newView;
-};
-
-
-
-  const renderView = () => {
-    if (view.startsWith("projects/") && viewParam) {
-const parts = view.split("/");
-const projectId = Number(parts[1]);
-const contactId = Number(parts[2]);
-return (
-<Project
-  projectId={projectId}
-  contactId={contactId}
-  onAddressChange={(addr) => setProjectAddress(addr)}
-/>
-);
-
-}
-    if (view.startsWith("subcontractors/") && viewParam) {
-      return (
-        <Subcontractor 
-          subcontractorId={viewParam}
-          onNameChange={(name) => setSubcontractorName(name)}
-        />
-      );
-    }
-
-    if (view.startsWith("createOrder/")) {
-      const parts = view.split("/");
-      const projectId = parts[1];
-      const contactId = parts[2];
-      return <OrderCreationPage projectId={projectId} contactId={contactId} />;
-    }
-
-    const viewMap: Record<string, React.ReactNode> = {
-      dashboard: <Dashboard isMobile={isMobileContent} />,
-      projects: <Projects isMobile={isMobileContent} />,
-      subcontractors: <Subcontractors isMobile={isMobileContent} />,
-      settings: <Settings navigateTo={navigateTo} language={language} onLanguageChange={handleLanguageChange} />,
-      calculator: <Calculator/>,
-      changepassword: (
-        <ChangePassword />
-      ),
-      profile: (
-        <ProfileView />
-      ),
-      addProject: <AddProjectForm />
-    };
-
-    return viewMap[view] || <Box>Not found</Box>;
   };
 
   return (
     <Box sx={{ display: "flex", height: "100vh", width: "100%" }}>
-      <Box sx={{ position: "absolute", right: 16, top: 12, }}>
+      <Box sx={{ position: "absolute", right: 16, top: 12 }}>
         <Notifications
           isMobile={isMobileContent} 
           notifications={notifications}
           open={Boolean(anchorEl)}
           drawerOpen={drawerOpen}
-          onClose={() => { setDrawerOpen(false); setAnchorEl(null); }}
+          onClose={() => { 
+            setDrawerOpen(false); 
+            setAnchorEl(null); 
+          }}
           anchorEl={anchorEl}
           onUnreadChange={setHasUnreadNotifications}
         />
       </Box>
 
-      {/* Desktop Sidebar - zawsze widoczny */}
+      {/* Desktop Sidebar */}
       {!isMobileContent && (
         <Sidebar
           navigateTo={navigateTo}
           currentView={view}
-          onWidthChange={(width) => setSidebarWidth(width)}
+          onWidthChange={setSidebarWidth}
         />
       )}
 
-      {/* Mobile Sidebar - w Drawer, na pełną szerokość */}
+      {/* Mobile Sidebar */}
       {isMobileContent && mobileSidebarOpen && (
         <Drawer
           anchor="left"
           open={mobileSidebarOpen}
           onClose={() => setMobileSidebarOpen(false)}
-          slotProps={{ paper: { sx: { width: "100%", height: "100%", background: "transparent" } } }}
+          slotProps={{ 
+            paper: { 
+              sx: { 
+                width: "100%", 
+                height: "100%", 
+                background: "transparent" 
+              } 
+            } 
+          }}
         >
           <Sidebar
             navigateTo={navigateTo}
@@ -235,78 +104,59 @@ return (
           />
         </Drawer>
       )}
+
       {isMobileContent ? (
-<Box sx={{ flex: 1, display: "flex", flexDirection: "column", overflowY: "hidden" }}>
-  <Box sx={{ position: "sticky", top: 0, zIndex: 1000 }}>
-    <Header
-      isMobile={isMobileContent}
-      onNotificationsClick={(e) => {
-        if (isMobileContent) setDrawerOpen(true);
-        else setAnchorEl((prev) => (prev ? null : e.currentTarget));
-      }}
-      onMenuClick={() => setMobileSidebarOpen(true)}
-      hasNewNotifications={hasUnreadNotifications}
-      projectAddress={isProjectView ? projectAddress : null}
-      subcontractorName={isSubcontractorView ? subcontractorName : null}
-    />
-  </Box>
-
-  <Box
-    sx={{
-      flex: 1,
-      mt: 1,
-      overflowY: "auto",
-      "&::-webkit-scrollbar": { width: 0, background: "transparent" },
-      scrollbarWidth: "none",
-      msOverflowStyle: "none",
-    }}
-  >
-    {renderView()}
-
-      <SnackbarAlert
-      notification={notification} 
-      onClose={clearNotification} 
-      sidebarWidth={0}
-    />
-
-  </Box>
-</Box>
-) : (
-        <Box sx={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
-          <Header
-            isMobile={isMobileContent}
-            onNotificationsClick={(e) => {
-              if (isMobileContent) setDrawerOpen(true);
-              else setAnchorEl((prev: HTMLElement | null) => (prev ? null : e.currentTarget));
-            }}
-            hasNewNotifications={hasUnreadNotifications}
-            projectAddress={isProjectView ? projectAddress : null}
-            subcontractorName={isSubcontractorView ? subcontractorName : null}
+        <MobileLayout
+          projectAddress={projectAddress}
+          subcontractorName={subcontractorName}
+          isProjectView={isProjectView}
+          isSubcontractorView={isSubcontractorView}
+          hasUnreadNotifications={hasUnreadNotifications}
+          notification={notification}
+          onNotificationsClick={handleNotificationsClick}
+          onMenuClick={() => setMobileSidebarOpen(true)}
+          onClearNotification={clearNotification}
+        >
+          <ViewRenderer
+            view={view}
+            viewParam={viewParam}
+            isMobileContent={isMobileContent}
+            language={language}
+            onLanguageChange={handleLanguageChange}
+            onNavigateTo={navigateTo}
+            onProjectAddressChange={setProjectAddress}
+            onSubcontractorNameChange={setSubcontractorName}
           />
-          <Box
-            sx={{
-              flex: 1,
-              mt: 1,
-              overflowY: "auto",
-              overflowX: "hidden",
-              "&::-webkit-scrollbar": { width: 0, background: "transparent" },
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
-          >
-            {renderView()}
-            <SnackbarAlert
-              notification={notification} 
-              onClose={clearNotification} 
-              sidebarWidth={sidebarWidth}
-            />
-          </Box>
-        </Box>
+        </MobileLayout>
+      ) : (
+        <DesktopLayout
+          projectAddress={projectAddress}
+          subcontractorName={subcontractorName}
+          isProjectView={isProjectView}
+          isSubcontractorView={isSubcontractorView}
+          hasUnreadNotifications={hasUnreadNotifications}
+          notification={notification}
+          sidebarWidth={sidebarWidth}
+          onNotificationsClick={handleNotificationsClick}
+          onClearNotification={clearNotification}
+        >
+          <ViewRenderer
+            view={view}
+            viewParam={viewParam}
+            isMobileContent={isMobileContent}
+            language={language}
+            onLanguageChange={handleLanguageChange}
+            onNavigateTo={navigateTo}
+            onProjectAddressChange={setProjectAddress}
+            onSubcontractorNameChange={setSubcontractorName}
+          />
+        </DesktopLayout>
       )}
+
       <AIAssistant />
     </Box>
   );
-}
+};
 
 const App: React.FC = () => (
   <SnackbarProvider>
