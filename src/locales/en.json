@@ -195,6 +195,12 @@
         "password": "Password"
       }
     },
+    "reset": {
+      "header": {
+        "reset": "Reset Password",
+        "description": "Enter a new password for your account."
+      }
+    },
     "MyProjects": {
       "filterPopup": {
         "filtering": {

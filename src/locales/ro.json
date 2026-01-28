@@ -195,6 +195,12 @@
         "password": "Parolă"
       }
     },
+    "reset": {
+      "header": {
+        "reset": "Resetează parola",
+        "description": "Introduceți o parolă nouă pentru contul dvs."
+      }
+    },
     "MyProjects": {
       "filterPopup": {
         "filtering": {

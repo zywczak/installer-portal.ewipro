@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-const BASE_API_URL = "https://api-veen-e.ewipro.com";
+const BASE_API_URL = "https://api-veen-e-test.ewipro.com";
 const DEFAULT_PATH = "/installer/info/";
 
 const getAccessToken = () => localStorage.getItem("access");

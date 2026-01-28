@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './index.css';
 import "./i18n";
+import ResetPassword from './pages/reset';
 
 createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
@@ -12,6 +13,8 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/auth" element={<Auth />} />
             
             <Route path="/" element={<App />} />
+
+            <Route path="/reset-password" element={<ResetPassword />} />
           </Routes>
       </BrowserRouter>
 );

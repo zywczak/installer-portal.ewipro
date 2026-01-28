@@ -195,6 +195,12 @@
         "password": "Hasło"
       }
     },
+    "reset": {
+      "header": {
+        "reset": "Zresetuj hasło",
+        "description": "Wprowadź nowe hasło dla swojego konta."
+      }
+    },
     "MyProjects": {
       "filterPopup": {
         "filtering": {

@@ -195,6 +195,12 @@
         "password": "पासवर्ड"
       }
     },
+    "reset": {
+      "header": {
+        "reset": "पासवर्ड रीसेट करें",
+        "description": "अपने खाते के लिए नया पासवर्ड दर्ज करें।"
+      }
+    },
     "MyProjects": {
       "filterPopup": {
         "filtering": {

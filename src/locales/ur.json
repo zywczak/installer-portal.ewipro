@@ -195,6 +195,12 @@
         "password": "پاس ورڈ"
       }
     },
+    "reset": {
+      "header": {
+        "reset": "پاس ورڈ ری سیٹ کریں",
+        "description": "اپنے اکاؤنٹ کے لیے نیا پاس ورڈ درج کریں۔"
+      }
+    },
     "MyProjects": {
       "filterPopup": {
         "filtering": {

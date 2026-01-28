@@ -6,11 +6,11 @@ import Notifications from "../components/app/Notifications/Notifications";
 import { useAuthNotification, SnackbarProvider } from "../context/AuthContext";
 import MobileLayout from "./app/mobileLayout";
 import DesktopLayout from "./app/desktopLayout";
-import ViewRenderer from "./app/ViewRenderer";
 import { useLanguage } from "./app/useLanguage";
 import { useNotifications } from "./app/useNotifications";
 import { useResponsive } from "./app/useResponsive";
 import { useViewNavigation } from "./app/useViewNavigation";
+import ViewRenderer from "./app/viewRenderer";
 
 const AppContent: React.FC = () => {
   const { language, handleLanguageChange } = useLanguage();

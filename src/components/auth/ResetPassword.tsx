@@ -20,7 +20,7 @@ interface ResetPasswordProps {
 
 const ResetPassword: React.FC<ResetPasswordProps> = ({ onBackToLogin }) => {
   const { t } = useTranslation();
-  const { showError, showSuccess } = useAuthNotification();
+  const { showError } = useAuthNotification();
 
   const passwordField = useFormField("", validatePassword);
   const repeatField = useFormField("", validatePassword);
@@ -49,8 +49,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBackToLogin }) => {
         password: md5(passwordField.value),
       }, { headers: { "Content-Type": "application/json" } });
 
-      showSuccess(t("Password reset successful!"));
-      setTimeout(() => onBackToLogin(), 1500);
+      onBackToLogin();
     } catch (err: any) {
       showError(err.response?.data?.detail || err.response?.data?.message || "Failed to reset password.");
     } finally {
@@ -60,7 +59,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBackToLogin }) => {
 
   return (
     <Stack spacing={2} paddingY={2}>
-      <FormHeader title={t("Reset Password")} description={t("Reset your password")} />
+      <FormHeader title={t("views.reset.header.reset")} description={t("views.reset.header.description")} />
 
       <FormTextField
         value={passwordField.value}
@@ -84,7 +83,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBackToLogin }) => {
 
       <AcceptButton
         onClick={handleSubmit}
-        label={t("Reset Password")}
+        label={t("views.forgotPassword.button.send")}
         loading={loading}
         disabled={isFormInvalid}
       />
