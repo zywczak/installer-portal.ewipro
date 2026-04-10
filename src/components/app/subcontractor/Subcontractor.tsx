@@ -64,7 +64,7 @@ const Subcontractor: React.FC<SubcontractorProps> = ({
 
     switch (activeTab) {
       case "info":
-        return <InfoTab info={info} />;
+        return <InfoTab info={info} subcontractorId={subcontractorId} />;
 
       case "projects":
         return (

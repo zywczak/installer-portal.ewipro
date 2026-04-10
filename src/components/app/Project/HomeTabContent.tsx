@@ -30,6 +30,7 @@ const HomeTabContent: React.FC<HomeTabContentProps> = ({
   return (
     <>
       <ProjectHeader
+        contactId={contactId}
         installer={project.owner?.name ?? ""}
         startDate={project.projectStartDate}
         finishDate={project.projectFinishDate}
